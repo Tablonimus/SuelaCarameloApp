@@ -1,0 +1,4 @@
+export const GET_ALL_NOTICES ="GET_ALL_NOTICES";
+export const CREATE_NOTICE ="CREATE_NOTICE";
+export const POST_IMAGE ="POST_IMAGE";
+export const CLEAR_STATE = "CLEAR_STATE";
