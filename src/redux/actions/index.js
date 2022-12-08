@@ -5,23 +5,6 @@ const url = "http://localhost:3001";
 
 
 
-
-export function postImage(archivo) {
-  return async function (dispatch) {
-    try {
-      let json = await axios.post(
-        `https://happytails2.herokuapp.com/home/images`,
-        archivo
-      );
-      return dispatch({
-        type: action.POST_IMAGE,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
 //------------GET ALL------------
 export function getAllNotices() {
   return async function (dispatch) {

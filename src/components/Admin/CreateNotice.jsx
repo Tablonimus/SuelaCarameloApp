@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postImage } from "../../redux/actions/index";
+import { createNotice, postImage } from "../../redux/actions/index";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateNotice() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [image, setImage] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
@@ -16,13 +18,15 @@ export default function CreateNotice() {
     category: "",
   });
 
-  console.log("IMAGE:", image);
-  console.log("INPUTS:", input);
-
   function onSubmitHandler(e) {
     e.preventDefault();
+    dispatch(createNotice(input)).then(
+      navigate("/"),
+      alert("Noticia Creada Correctamente")
+    );
   }
 
+  console.log(input);
   function handleChange(e) {
     setInput({
       ...input,
@@ -40,56 +44,61 @@ export default function CreateNotice() {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "pretty");
-    data.append("folder", "Images");
+    data.append("upload_preset", "suelApp");
+    data.append("folder", "suelApp");
     setLoadingImage(true);
     const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/tablonimus/images/upload",
+      "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
       data
     );
-
-    console.log("RESPUESTA",res);
+    console.log(res);
     setImage(res.data.secure_url);
     setInput({
       ...input,
-      image: res.data.secure_url,
+      images: [res.data.secure_url],
     });
 
     setLoadingImage(false);
   }
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center bg-black h-screen">
       <form
         onSubmit={(e) => onSubmitHandler(e)}
-        className="flex flex-col w-96 items-center justify-center"
+        className="flex flex-col w-96 items-center justify-center gap-3 bg-gray-500 rounded-lg p-5"
       >
         <input
+          className="rounded-lg"
           type="text"
           name="title"
           placeholder="Titulo de la noticia"
           onChange={(e) => handleChange(e)}
         />
         <input
+          className="rounded-lg"
           type="text"
           name="subtitle"
           placeholder="Subtitulo de la noticia"
           onChange={(e) => handleChange(e)}
         />
-        <input
-          type="text"
+        <textarea
+          className="rounded-lg"
           name="content"
           placeholder="Contenido de la noticia"
           height={50}
           onChange={(e) => handleChange(e)}
         />
-        <select name="category" onChange={(e) => handleChange(e)}>
+        <select
+          className="rounded-lg"
+          name="category"
+          onChange={(e) => handleChange(e)}
+        >
           <option value="A1">Seleccione una categoria</option>
           <option value="A1">A1</option>
           <option value="FEM">FEM</option>
         </select>
-        <div>
+        <div className="flex flex-col items-center">
           <label className="font-light text-white text-xl">
-            Imagen de perfil
+            Imagen de la noticia
           </label>
           {/* <input
             type="file"
@@ -117,6 +126,9 @@ export default function CreateNotice() {
             </p>
           )} */}
         </div>
+        <button className="shadow-lg text-white font-bold bg-green-600 rounded-lg w-24 h-14 border border-white">
+          SUBIR
+        </button>
       </form>
     </div>
   );
