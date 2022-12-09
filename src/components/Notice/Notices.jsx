@@ -10,9 +10,10 @@ export default function Notices({
   content,
   category,
 }) {
+  console.log(id);
   return (
     <div className="max-w-sm m-4">
-      <Link to={`/noticia/${id}`}>
+      <Link to={`/notices/${id}`}>
         <Card
           // imgAlt="image"
           imgSrc={images[0]}

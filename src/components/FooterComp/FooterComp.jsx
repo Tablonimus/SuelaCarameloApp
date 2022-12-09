@@ -1,5 +1,5 @@
 import React from 'react'
-import suela from "../../assets/assets/images/suela.jpg"
+import suela from "../../assets/images/suela.jpg"
 import { Footer } from 'flowbite-react'
 
 export default function FooterComp() {

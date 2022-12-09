@@ -1,9 +1,9 @@
 import React from "react";
-import suela from "../../assets/assets/images/suela.jpg";
-import aleman from "../../assets/assets/images/aleman.png";
-import godoy from "../../assets/assets/images/godoy.png";
-import gye from "../../assets/assets/images/gye.png";
-import calendario from "../../assets/assets/images/calendario.png";
+import suela from "../../assets/images/suela.jpg";
+import aleman from "../../assets/images/aleman.png";
+import godoy from "../../assets/images/godoy.png";
+import gye from "../../assets/images/gye.png";
+import calendario from "../../assets/images/calendario.png";
 import { Navbar } from "flowbite-react";
 
 export default function NavTwo() {

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { createNotice, postImage } from "../../redux/actions/index";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
 
 export default function CreateNotice() {
   const dispatch = useDispatch();
@@ -10,10 +11,13 @@ export default function CreateNotice() {
 
   const [image, setImage] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
+  const [video, setVideo] = useState("");
+  const [loadingVideo, setLoadingVideo] = useState(false);
   const [input, setInput] = useState({
     title: "",
     subtitle: "",
     images: [],
+    videos: [],
     content: "",
     category: "",
   });
@@ -32,12 +36,6 @@ export default function CreateNotice() {
       ...input,
       [e.target.name]: e.target.value,
     });
-    // setErrors(
-    //   validate({
-    //     ...input,
-    //     [e.target.name]: e.target.value,
-    //   })
-    // );
   }
 
   async function handleImage(e) {
@@ -60,11 +58,32 @@ export default function CreateNotice() {
 
     setLoadingImage(false);
   }
+  async function handleVideo(e) {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "suelApp");
+    data.append("folder", "suelApp");
+    setLoadingVideo(true);
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/tablonimus/video/upload",
+      data
+    );
+    console.log(res);
+    setVideo(res.data.secure_url);
+    setInput({
+      ...input,
+      videos: [res.data.secure_url],
+    });
+
+    setLoadingVideo(false);
+  }
   return (
-    <div className="flex items-center justify-center bg-black h-screen">
+    <div className="flex flex-col items-center justify-between bg-black h-screen">
+      <NavBar />
       <form
         onSubmit={(e) => onSubmitHandler(e)}
-        className="flex flex-col w-96 items-center justify-center gap-3 bg-gray-500 rounded-lg p-5"
+        className="mt-20 flex flex-col w-96 items-center justify-center gap-3 bg-gray-500 rounded-lg p-5"
       >
         <input
           className="rounded-lg"
@@ -120,11 +139,21 @@ export default function CreateNotice() {
           ) : (
             <img src={image} alt="" width="300px" />
           )}
-          {/* {errors.image && (
-            <p className="font-bold text-red-700 text-center p-2">
-              {errors.image}
-            </p>
-          )} */}
+          <label className="font-light text-white text-xl">
+            Video de la noticia
+          </label>
+          <input
+            type="file"
+            name="video"
+            accept=".jpg, .png, .jpeg , .mp4"
+            onChange={(e) => handleVideo(e)}
+            className="rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
+          />
+          {loadingVideo ? (
+            <h3 className="font-light text-white text-xl">Cargando video...</h3>
+          ) : (
+            <video src={video} alt="" width="300px" />
+          )}
         </div>
         <button className="shadow-lg text-white font-bold bg-green-600 rounded-lg w-24 h-14 border border-white">
           SUBIR NOTICIA

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import { Carousel } from "flowbite-react";
-import suela1 from "../../assets/assets/images/suela1.jpeg";
-import suela2 from "../../assets/assets/images/suela2.jpeg";
-import suela3 from "../../assets/assets/images/suela3.jpeg";
+import suela1 from "../../assets/images/suela1.jpeg";
+import suela2 from "../../assets/images/suela2.jpeg";
+import suela3 from "../../assets/images/suela3.jpeg";
 import FooterComp from "../FooterComp/FooterComp.jsx";
 import { Card } from "flowbite-react";
 import NavTwo from "../NavBar/NavTwo";
@@ -15,9 +15,10 @@ import Notices from "../Notice/Notices";
 
 export default function Home() {
   const dispatch = useDispatch();
-
+  const categoryState = useSelector(state=>state.category);
+console.log(categoryState);
   useEffect(() => {
-    dispatch(getAllNotices());
+    dispatch(getAllNotices(categoryState));
   }, []);
 
   const allNotices = useSelector((state) => state.allNotices);
@@ -33,6 +34,7 @@ export default function Home() {
         ? allNotices.map((notice) => (
             <Notices
               key={notice.id}
+              id={notice.id}
               title={notice.title}
               subtitle={notice.subtitle}
               images={notice.images}

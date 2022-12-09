@@ -1,4 +1,7 @@
-export const GET_ALL_NOTICES ="GET_ALL_NOTICES";
-export const CREATE_NOTICE ="CREATE_NOTICE";
-export const POST_IMAGE ="POST_IMAGE";
+export const GET_ALL_NOTICES = "GET_ALL_NOTICES";
+export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
+export const GET_CATEGORY = "GET_CATEGORY";
+export const GET_NOTICE_DETAIL = "GET_NOTICE_DETAIL";
+export const CREATE_NOTICE = "CREATE_NOTICE";
+export const POST_IMAGE = "POST_IMAGE";
 export const CLEAR_STATE = "CLEAR_STATE";
