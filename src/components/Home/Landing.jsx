@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Landing() {
   const navigate = useNavigate();
   function handleClick(e) {
-    console.log("clicl");
-    navigate("/home");
+     navigate("/home");
   }
   return (
     <div className="w-full bg-black h-screen ">

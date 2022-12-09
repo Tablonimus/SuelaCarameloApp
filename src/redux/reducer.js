@@ -5,6 +5,7 @@ const initialState = {
   allNotices: [],
   noticeDetail: [],
   teams: [],
+  category:"",
 
   copyAllNotices: [],
 };
@@ -20,6 +21,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         allNotices: payload,
+        copyAllNotices:payload
       };
     }
     case action.CREATE_NOTICE: {

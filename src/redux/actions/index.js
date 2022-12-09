@@ -1,9 +1,8 @@
 import * as action from "../actions/actionTypes";
 import axios from "axios";
 
-const url = "http://localhost:3001";
-
-
+const url = "https://suelacarameloapp-backend-production.up.railway.app/";
+/*const url = "http://localhost:3001"; */
 
 //------------GET ALL------------
 export function getAllNotices() {

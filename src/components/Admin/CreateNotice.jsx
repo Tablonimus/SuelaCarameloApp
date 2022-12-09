@@ -127,7 +127,7 @@ export default function CreateNotice() {
           )} */}
         </div>
         <button className="shadow-lg text-white font-bold bg-green-600 rounded-lg w-24 h-14 border border-white">
-          SUBIR
+          SUBIR NOTICIA
         </button>
       </form>
     </div>
