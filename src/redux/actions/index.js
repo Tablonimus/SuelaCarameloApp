@@ -62,7 +62,7 @@ export function getAllNotices(category) {
 
         dispatch({
           type: action.GET_ALL_NOTICES,
-          payload: filters.length > 0 ? filters : json.data,
+          payload: filters.length > 0 ? filters.reverse() : json.data.reverse(),
         });
       } else {
         const filters = json.data.filter((cat) => cat.category === category);

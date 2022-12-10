@@ -1,5 +1,5 @@
 import React from "react";
-import suela from "../../assets/images/suela.jpg";
+import suela from "../../assets/images/suela.png";
 import aleman from "../../assets/images/aleman.png";
 import godoy from "../../assets/images/godoy.png";
 import gye from "../../assets/images/gye.png";

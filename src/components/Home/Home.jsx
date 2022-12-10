@@ -26,7 +26,7 @@ export default function Home() {
   console.log(allNotices);
 
   return (
-    <div className="bg-black justify-between flex flex-col items-center">
+    <div className=" bg-black justify-between flex flex-col items-center">
       <NavBar />
       <section className="mt-20">
         <CategoryHome />

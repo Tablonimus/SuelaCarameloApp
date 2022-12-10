@@ -19,7 +19,7 @@ export default function NoticeDetail() {
   }, [dispatch, params.id]);
 
   return (
-    <div className="bg-amber-600 h-screen flex flex-col justify-between items-center">
+    <div className="bg-[#E96F22] flex flex-col justify-between items-center">
       <NavBar />
 
       <div className="mt-20 flex flex-col items-center justify-center">

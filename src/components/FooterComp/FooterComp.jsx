@@ -1,109 +1,46 @@
-import React from 'react'
-import suela from "../../assets/images/suela.jpg"
-import { Footer } from 'flowbite-react'
+import React from "react";
+import suela from "../../assets/images/suela.png";
+import b1 from "../../assets/images/b1.png";
+import b2 from "../../assets/images/b2.png";
+import b3 from "../../assets/images/b3.png";
+import b4 from "../../assets/images/b4.png";
+import { Footer } from "flowbite-react";
 
 export default function FooterComp() {
   return (
-<Footer  >
-  <div className="w-full ">
-{/*     <div className="grid w-full grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
-      <div>
-        <Footer.Title title="Company" />
-        <Footer.LinkGroup col={true}>
-          <Footer.Link href="#">
-            About
-          </Footer.Link>
-          <Footer.Link href="#">
-            Careers
-          </Footer.Link>
-          <Footer.Link href="#">
-            Brand Center
-          </Footer.Link>
-          <Footer.Link href="#">
-            Blog
-          </Footer.Link>
-        </Footer.LinkGroup>
-      </div>
-      <div>
-        <Footer.Title title="help center" />
-        <Footer.LinkGroup col={true}>
-          <Footer.Link href="#">
-            Discord Server
-          </Footer.Link>
-          <Footer.Link href="#">
-            Twitter
-          </Footer.Link>
-          <Footer.Link href="#">
-            Facebook
-          </Footer.Link>
-          <Footer.Link href="#">
-            Contact Us
-          </Footer.Link>
-        </Footer.LinkGroup>
-      </div>
-      <div>
-        <Footer.Title title="legal" />
-        <Footer.LinkGroup col={true}>
-          <Footer.Link href="#">
-            Privacy Policy
-          </Footer.Link>
-          <Footer.Link href="#">
-            Licensing
-          </Footer.Link>
-          <Footer.Link href="#">
-            Terms & Conditions
-          </Footer.Link>
-        </Footer.LinkGroup>
-      </div>
-      <div>
-        <Footer.Title title="download" />
-        <Footer.LinkGroup col={true}>
-          <Footer.Link href="#">
-            iOS
-          </Footer.Link>
-          <Footer.Link href="#">
-            Android
-          </Footer.Link>
-          <Footer.Link href="#">
-            Windows
-          </Footer.Link>
-          <Footer.Link href="#">
-            MacOS
-          </Footer.Link>
-        </Footer.LinkGroup>
-      </div>
-    </div> */}
-    <div className="w-full bg-black py-6 px-4 sm:flex sm:items-center sm:justify-between ">
-      <Footer.Copyright
-        href="#"
-        by="Suela Caramelo ™"
-        year={2022}
-      />
-      <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-      <img src={suela} alt="" className='w-8 rounded-full'/>
-        {/* <Footer.Icon
-          href="#"
-          icon={BsFacebook}
-        />
-        <Footer.Icon
-          href="#"
-          icon={BsInstagram}
-        />
-        <Footer.Icon
-          href="#"
-          icon={BsTwitter}
-        />
-        <Footer.Icon
-          href="#"
-          icon={BsGithub}
-        />
-        <Footer.Icon
-          href="#"
-          icon={BsDribbble}
-        /> */}
+    <div className="bg-black rounded-t-lg w-full">
+      <div className="w-full text-center bg-black">
+        <Footer.Divider />
+        <div className="w-full flex justify-around items-center">
+          <a href="https://www.instagram.com/hache_market/">
+            <img src={b4} alt="" className="w-24" />
+          </a>
+          <a href="https://www.google.com/maps/place/Electricidad+San+Luis/@-32.8856233,-68.8357053,16.5z/data=!4m5!3m4!1s0x0:0xe1d67ca3ac640c37!8m2!3d-32.8845727!4d-68.8358074">
+            <img src={b1} alt="" className="w-24" />
+          </a>
+
+          <a href="https://www.google.com/maps/place/Granja+Zulueta/@-32.9088319,-68.8389289,15z/data=!4m5!3m4!1s0x0:0x7bc9f6cc51b1d57e!8m2!3d-32.9087853!4d-68.8389242">
+            <img src={b3} alt="" className="w-24" />
+          </a>
+
+          <a href="https://www.instagram.com/squadraindumentaria/?hl=es">
+            <img src={b2} alt="" className="w-24" />
+          </a>
+        </div>
+        <Footer.Divider />
+        <section>
+          <Footer.LinkGroup className="flex items-center justify-center gap-3">
+            <Footer.Link href="#">Sobre Nosotros</Footer.Link>
+            <Footer.Link href="#">Politica de Privacidad</Footer.Link>
+            <Footer.Link href="#">Licencia</Footer.Link>
+            <Footer.Link href="#">Contacto</Footer.Link>
+          </Footer.LinkGroup>
+          <section className="flex items-center justify-center">
+            <Footer.Brand href="#" src={suela} alt="Flowbite Logo" name="" />
+            <Footer.Copyright href="#" by="Suela Caramelo™" year={2022} />
+          </section>
+        </section>
       </div>
     </div>
-  </div>
-</Footer>
-  )
+  );
 }
