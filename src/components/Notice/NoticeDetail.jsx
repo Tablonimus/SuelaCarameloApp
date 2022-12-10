@@ -23,10 +23,10 @@ export default function NoticeDetail() {
       <NavBar />
 
       <div className="mt-20 flex flex-col items-center justify-center">
-        <h1 className="px-5 font-sans py-2 font-bold font-sans text-black text-3xl lg:text-4xl">
+        <h1 className="px-5 lg:px-56 font-sans py-2 font-bold font-sans text-black text-3xl lg:text-4xl">
           {notice?.title}
         </h1>
-        <h2 className="px-5 py-2 text-md lg:text-lg v font-semibold">
+        <h2 className="px-5 lg:px-56 py-2 text-md lg:text-lg v font-semibold">
           {notice?.subtitle}
         </h2>
       </div>

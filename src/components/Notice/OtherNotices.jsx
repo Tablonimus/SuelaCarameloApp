@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import zulueta from "../../assets/images/zulueta.gif";
+import hache from "../../assets/images/hache.gif";
 import electricidad from "../../assets/images/electricidad.gif";
+import sqadra from "../../assets/images/sqadra.gif";
 
 export default function OtherNotices() {
   const allNotices = useSelector((state) => state.copyAllNotices);
@@ -15,24 +17,23 @@ export default function OtherNotices() {
   let random2 = allNotices[Math.floor(Math.random() * allNotices.length)];
   let random3 = allNotices[Math.floor(Math.random() * allNotices.length)];
 
-  console.log(randomBig);
   return (
-    <div className="rounded-lg border-t border-white drop-shadow-2xl m-5 bg-black w-screen flex flex-col items-center justify-center">
-      <span className="text-white">Mirá tambien:</span>{" "}
-      <div className="grid grid-cols-2 gap-2 drop-shadow-2xl  border-y border-[#E96F22] bg-black w-screen">
-        <div className="flex flex-col gap-3 items-center justify-center  ">
+    <div className="rounded-lg border-t border-white drop-shadow-2xl  bg-black flex flex-col items-center justify-center my-5 p-2">
+      <span className="text-white text-md lg:text-3xl lg:p-2">Mirá tambien:</span>
+      <div className="rounded-lg grid grid-cols-2 drop-shadow-2xl  border-t border-[#E96F22] bg-black gap-5 py-5">
+        <div className="flex flex-col gap-3 items-center justify-between">
           <Link to={`/notices/${randomBig?.id}`}>
-            <div className="flex flex-col items-center justify-center border-y border-[#E96F22]  ">
+            <div className="flex flex-col items-center border-y border-[#E96F22] ">
               {randomBig?.videos?.length ? (
                 <video
                   src={randomBig?.videos[0]}
-                  className="w-96 h-24 lg:w-96 lg:h-56"
+                  className="object-cover w-96 h-24 lg:w-96 lg:h-56"
                 />
               ) : (
                 <img
                   src={randomBig?.images[0]}
                   alt=""
-                  className="w-96 h-32 lg:w-96 lg:h-56"
+                  className="object-cover w-96 h-32 lg:w-96 lg:h-56"
                 />
               )}
 
@@ -52,15 +53,18 @@ export default function OtherNotices() {
             href={
               "https://www.google.com/maps/place/Granja+Zulueta/@-32.9088319,-68.8389289,15z/data=!4m5!3m4!1s0x0:0x7bc9f6cc51b1d57e!8m2!3d-32.9087853!4d-68.8389242"
             }
-            className=""
           >
             <img src={zulueta} alt="" />
           </a>
+
+          <a href="https://www.instagram.com/squadraindumentaria/?hl=es">
+            <img src={sqadra} alt="" className="" />
+          </a>
         </div>
 
-        <div className="flex flex-col gap-3 my-5 p-1">
+        <div className="flex flex-col gap-3 items-center justify-between">
           <Link to={`/notices/${random1?.id}`}>
-            <div className=" flex flex-row items-center gap-3  border-y border-[#E96F22]">
+            <div className="flex flex-row items-center gap-3  border-y border-[#E96F22]">
               <section className="w-1/3">
                 {random1?.videos?.length ? (
                   <video
@@ -157,6 +161,9 @@ export default function OtherNotices() {
               </section>
             </div>
           </Link>
+          <a href="https://www.instagram.com/hache_market/">
+            <img src={hache} alt="" className="" />
+          </a>
         </div>
       </div>
     </div>
