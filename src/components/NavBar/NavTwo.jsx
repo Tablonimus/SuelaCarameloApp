@@ -20,7 +20,7 @@ export default function NavTwo() {
         <h1 className="text-white font-bold text-[#E96F22]">#FEMxSuela</h1>
       )}
 
-      <NavResults />
+      {/* <NavResults /> */}
       <CategoryHome />
     </div>
   );
