@@ -15,11 +15,14 @@ export default function Landing() {
         <section className="absolute top-3/4">
           <CategoryButton />
         </section>
+        <audio src=""></audio>
         <video
           src={landing1}
           autoPlay={true}
+          muted={true}
           loop={true}
           className="h-screen w-screen"
+          
           poster=""
         />
       </div>
