@@ -12,11 +12,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllNotices } from "../../redux/actions";
 import Notices from "../Notice/Notices";
+import CategoryHome from "../Buttons/CategoryHome";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const categoryState = useSelector(state=>state.category);
-console.log(categoryState);
+  const categoryState = useSelector((state) => state.category);
+  console.log(categoryState);
   useEffect(() => {
     dispatch(getAllNotices(categoryState));
   }, []);
@@ -25,24 +26,27 @@ console.log(categoryState);
   console.log(allNotices);
 
   return (
-    <div className="bg-black h-full flex flex-col items-center">
+    <div className="bg-black justify-between flex flex-col items-center">
       <NavBar />
-
-      <NavTwo />
-
-      {allNotices?.length > 0
-        ? allNotices.map((notice) => (
-            <Notices
-              key={notice.id}
-              id={notice.id}
-              title={notice.title}
-              subtitle={notice.subtitle}
-              images={notice.images}
-              content={notice.content}
-              category={notice.category}
-            />
-          ))
-        : false}
+      <section className="mt-20">
+        <CategoryHome />
+      </section>
+      {/* <NavTwo /> */}
+      <section className="mt-5 h-full">
+        {allNotices?.length > 0
+          ? allNotices.map((notice) => (
+              <Notices
+                key={notice.id}
+                id={notice.id}
+                title={notice.title}
+                subtitle={notice.subtitle}
+                images={notice.images}
+                content={notice.content}
+                category={notice.category}
+              />
+            ))
+          : false}
+      </section>
 
       <FooterComp />
     </div>

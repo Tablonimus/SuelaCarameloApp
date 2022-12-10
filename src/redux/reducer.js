@@ -22,6 +22,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         category: payload,
+     
       };
     }
     case action.POST_IMAGE: {

@@ -1,5 +1,6 @@
 import * as action from "../actions/actionTypes";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const url = "https://suelacarameloapp-backend-production.up.railway.app";
 /*const url = "http://localhost:3001"; */
@@ -20,7 +21,6 @@ export function clearPage() {
 export function getNoticeDetail(id) {
   return async function (dispatch) {
     try {
-      
       let json = await axios.get(`${url}/notices/${id}`);
       dispatch({
         type: action.GET_NOTICE_DETAIL,
@@ -52,14 +52,26 @@ export function changeCategory(category) {
 }
 
 //------------GET ALL------------
-export function getAllNotices() {
+export function getAllNotices(category) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`${url}/notices`);
-      dispatch({
-        type: action.GET_ALL_NOTICES,
-        payload: json.data,
-      });
+
+      if (!category) {
+        const filters = json.data.filter((cat) => cat.category === "A1");
+
+        dispatch({
+          type: action.GET_ALL_NOTICES,
+          payload: filters.length > 0 ? filters : json.data,
+        });
+      } else {
+        const filters = json.data.filter((cat) => cat.category === category);
+
+        dispatch({
+          type: action.GET_ALL_NOTICES,
+          payload: filters.length > 0 ? filters : json.data,
+        });
+      }
 
       return "Success";
     } catch (error) {
