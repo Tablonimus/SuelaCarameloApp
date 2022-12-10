@@ -17,7 +17,7 @@ import CategoryHome from "../Buttons/CategoryHome";
 export default function Home() {
   const dispatch = useDispatch();
   const categoryState = useSelector((state) => state.category);
-  console.log(categoryState);
+ 
   useEffect(() => {
     dispatch(getAllNotices(categoryState));
   }, []);

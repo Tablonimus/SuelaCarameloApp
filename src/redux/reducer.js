@@ -12,6 +12,12 @@ const initialState = {
 
 export default function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
+    case action.COPY_ALL: {
+      return {
+        ...state,
+        copyAllNotices: payload,
+      };
+    }
     case action.GET_NOTICE_DETAIL: {
       return {
         ...state,
@@ -22,7 +28,6 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         category: payload,
-     
       };
     }
     case action.POST_IMAGE: {
@@ -33,8 +38,8 @@ export default function rootReducer(state = initialState, { type, payload }) {
     case action.GET_ALL_NOTICES: {
       return {
         ...state,
-        allNotices: payload,
-        copyAllNotices: payload,
+        allNotices: payload.filtered,
+        copyAllNotices: payload.copy,
       };
     }
     case action.CREATE_NOTICE: {

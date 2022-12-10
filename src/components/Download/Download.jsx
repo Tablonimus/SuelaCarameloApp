@@ -12,15 +12,15 @@ export default function Download() {
   async function handlerNotification(e) {
     e.preventDefault();
 
-    Push.create("Dale prendelo, no te conozco uno 🚬", {
-      body: "Puto el que lee",
-      icon: "./copa.png",
-      timeout: 4000,
-      onClick: function () {
-        window.focus();
-        this.close();
-      },
-    });
+    // Push.create("Dale prendelo, no te conozco uno 🚬", {
+    //   body: "Puto el que lee",
+    //   icon: "./copa.png",
+    //   timeout: 4000,
+    //   onClick: function () {
+    //     window.focus();
+    //     this.close();
+    //   },
+    // });
   }
 
   return (
@@ -32,34 +32,36 @@ export default function Download() {
         copyAddHomeButtonLabel="2) Presiona para descargar."
         copyClosePrompt="Mas Tarde"
         copyTitle="Descargar APP"
-        copyBody="Agrega el album al menú principal."
+        copyBody="Agrega SuelaCaramelo al menú principal."
         permanentlyHideOnDismiss={false}
       />
 
       <div className=" justify-between rounded-lg flex flex-col items-center">
-        <button
+        {/* <button
           className=" p-5 font-bold bg-[#F6D50E] m-5 rounded-lg shadow-lg"
           onClick={(e) => handlerNotification(e)}
         >
           🔔MENSAJE ESPECIAL🔔
-        </button>
+        </button> */}
         <div className="flex flex-col items-center rounded-lg bg-gray-300 w-96 h-56 m-5 p-5 border justify-center opacity-90 shadow-lg">
-          <button
-            className="p-5 font-bold bg-green-400 rounded-lg shadow-lg"
-            onClick={install}
-          >
-            Instalar Aplicación si tenes android
-          </button>
-          <Link to="/" className="mt-5">
+          {install ? (
             <button
-              className="p-5 font-bold bg-blue-400 rounded-lg shadow-lg"
+              className="p-5 font-bold bg-green-400 rounded-lg shadow-lg"
               onClick={install}
             >
-              Para los chetos que tienen iPhone
+              Descargar Aplicación
             </button>
-          </Link>
+          ) : (
+            <Link to="/" className="mt-5">
+              <button
+                className="p-5 font-bold bg-blue-400 rounded-lg shadow-lg"
+                onClick={install}
+              >
+                Ir al inicio
+              </button>
+            </Link>
+          )}
         </div>
-
       </div>
     </div>
   );

@@ -6,11 +6,22 @@ import gye from "../../assets/images/gye.png";
 import calendario from "../../assets/images/calendario.png";
 import { Navbar } from "flowbite-react";
 import CategoryHome from "../Buttons/CategoryHome";
+import { useSelector } from "react-redux";
 
 export default function NavTwo() {
+  const category = useSelector((state) => state.category);
+
   return (
     <div className="bg-black w-full flex flex-col items-center mt-14 m-2">
-      <h1 className="text-white font-bold text-[#E96F22]">#A1xSuela</h1>
+
+      {
+        category === "A1"?
+        <h1 className="text-white font-bold text-[#E96F22]">#A1xSuela</h1>:
+        <h1 className="text-white font-bold text-[#E96F22]">#FEMxSuela</h1>
+      }
+
+
+
       <div className="m-2 flex items-center justify-center border-t border-b border-[#E96F22] rounded-lg w-full">
         <div className="m-2 h-24 w-36 border rounded-lg">
           <span className="flex flex-row items-center m-1 justify-between">
@@ -89,16 +100,6 @@ export default function NavTwo() {
         </div>
       </div>
       <CategoryHome />
-      {/* <div className=" flex items-center">
-        <a className=" m-2 flex bg-[#E96F22] flex-col w-12 rounded-full border border-slate-700 items-center text-white">
-          <h5 className="font-bold font-serif text-[20px] ">🏆</h5>
-          <h5 className="font-bold text-[10px] font-serif">A1</h5>
-        </a>
-        <a className=" m-2 flex flex-col w-12 rounded-full border border-slate-700 items-center text-white">
-          <h5 className="font-bold font-serif text-[20px] ">🎖</h5>
-          <h5 className="font-bold text-[10px] font-serif">FEM</h5>
-        </a>
-      </div> */}
     </div>
   );
 }

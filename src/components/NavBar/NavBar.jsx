@@ -5,14 +5,14 @@ import { Navbar } from "flowbite-react";
 export default function NavBar() {
   return (
     <Navbar
-      class="bg-black flex flex-rowjustify-around items-center w-full fixed"
+      class="bg-black flex flex-row justify-around items-center w-full fixed z-30"
       fluid={true}
       rounded={true}
     >
       <Navbar.Brand href="/home">
         <span className="flex items-center ml-2 self-center whitespace-nowrap text-xl font-semibold text-white">
           <img src={suela} className="h-14 rounded-full flex" alt="Logo" />
-          <h1 className="font-bold font-serif text-md lg:text-2xl ml-2 mr-5">
+          <h1 className="font-sans text-md lg:text-2xl ml-2 mr-5">
             {" "}
             Suela Caramelo
           </h1>
