@@ -5,7 +5,7 @@ import { Navbar } from "flowbite-react";
 export default function NavBar() {
   return (
     <Navbar
-      class="bg-black items-center w-full fixed"
+      class="bg-black flex flex-rowjustify-around items-center w-full fixed"
       fluid={true}
       rounded={true}
     >
@@ -20,28 +20,24 @@ export default function NavBar() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link href="/home">
-          <span className="text-white hover:text-orange-600">Inicio</span>
-        </Navbar.Link>
-        <Navbar.Link href="/home">
-          {" "}
-          <span className="text-white hover:text-orange-600">Fechas</span>{" "}
-        </Navbar.Link>
-        <Navbar.Link href="/navbars">
+        <Navbar.Link href="/descargar">
           {" "}
           <span className="text-white hover:text-orange-600">
-            FemAxSuela
+            Descargar App
+          </span>{" "}
+        </Navbar.Link>
+
+        <Navbar.Link href="/home">
+          {" "}
+          <span className="text-white hover:text-orange-600">
+            Sponsors
           </span>{" "}
         </Navbar.Link>
         <Navbar.Link href="/navbars">
           {" "}
           <span className="text-white hover:text-orange-600">
-            A1xSuela
+            Contacto
           </span>{" "}
-        </Navbar.Link>
-        <Navbar.Link href="/navbars">
-          {" "}
-          <span className="text-white hover:text-orange-600">Nada</span>{" "}
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>

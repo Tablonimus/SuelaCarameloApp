@@ -23,15 +23,13 @@ export default function Home() {
   }, []);
 
   const allNotices = useSelector((state) => state.allNotices);
-  console.log(allNotices);
+ 
 
   return (
     <div className=" bg-black justify-between flex flex-col items-center">
       <NavBar />
-      <section className="mt-20">
-        <CategoryHome />
-      </section>
-      {/* <NavTwo /> */}
+
+      <NavTwo />
       <section className="mt-5 h-full">
         {allNotices?.length > 0
           ? allNotices.map((notice) => (

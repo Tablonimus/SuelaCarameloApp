@@ -12,13 +12,17 @@ export default function CategoryButton() {
   function handleClickA1(e) {
     e.preventDefault();
     const category = "A1";
-    dispatch(getAllNotices(category)).then(navigate("/home"));
+    dispatch(getAllNotices(category));
+    dispatch(changeCategory(category));
+    navigate("/home");
   }
 
   function handleClickFem(e) {
     e.preventDefault();
     const category = "FEM";
-    dispatch(getAllNotices(category)).then(navigate("/home"));
+    dispatch(getAllNotices(category));
+    dispatch(changeCategory(category));
+    navigate("/home");
   }
 
   return (

@@ -38,7 +38,7 @@ export function getNoticeDetail(id) {
 export function changeCategory(category) {
   return async function (dispatch) {
     try {
-      // let json = await axios.get(`${url}/notices`);
+     console.log("category de redux",category);
       dispatch({
         type: action.CHANGE_CATEGORY,
         payload: category,
@@ -51,7 +51,7 @@ export function changeCategory(category) {
   };
 }
 
-//------------GET ALL------------
+//------------GET ALL------------TODO LOS FILTROS AL BACK CAMPEON---------------
 export function getAllNotices(category) {
   return async function (dispatch) {
     try {
@@ -59,17 +59,15 @@ export function getAllNotices(category) {
 
       if (!category) {
         const filters = json.data.filter((cat) => cat.category === "A1");
-
         dispatch({
           type: action.GET_ALL_NOTICES,
           payload: filters.length > 0 ? filters.reverse() : json.data.reverse(),
         });
       } else {
         const filters = json.data.filter((cat) => cat.category === category);
-
         dispatch({
           type: action.GET_ALL_NOTICES,
-          payload: filters.length > 0 ? filters : json.data,
+          payload: filters.length > 0 ? filters.reverse() : json.data.reverse(),
         });
       }
 

@@ -5,12 +5,13 @@ import godoy from "../../assets/images/godoy.png";
 import gye from "../../assets/images/gye.png";
 import calendario from "../../assets/images/calendario.png";
 import { Navbar } from "flowbite-react";
+import CategoryHome from "../Buttons/CategoryHome";
 
 export default function NavTwo() {
   return (
     <div className="bg-black w-full flex flex-col items-center mt-14 m-2">
       <h1 className="text-white font-bold text-[#E96F22]">#A1xSuela</h1>
-      <div className="m-2 flex border-t border-b border-[#E96F22] rounded-lg w-full">
+      <div className="m-2 flex items-center justify-center border-t border-b border-[#E96F22] rounded-lg w-full">
         <div className="m-2 h-24 w-36 border rounded-lg">
           <span className="flex flex-row items-center m-1 justify-between">
             <div className="flex flex-col">
@@ -87,8 +88,8 @@ export default function NavTwo() {
           <h5 className="text-black font-bold text-[25px] m-1 ">→ </h5>
         </div>
       </div>
-
-      <div className=" flex items-center">
+      <CategoryHome />
+      {/* <div className=" flex items-center">
         <a className=" m-2 flex bg-[#E96F22] flex-col w-12 rounded-full border border-slate-700 items-center text-white">
           <h5 className="font-bold font-serif text-[20px] ">🏆</h5>
           <h5 className="font-bold text-[10px] font-serif">A1</h5>
@@ -97,7 +98,7 @@ export default function NavTwo() {
           <h5 className="font-bold font-serif text-[20px] ">🎖</h5>
           <h5 className="font-bold text-[10px] font-serif">FEM</h5>
         </a>
-      </div>
+      </div> */}
     </div>
   );
 }

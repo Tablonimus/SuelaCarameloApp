@@ -17,7 +17,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/notices/:id" element={<NoticeDetail />} />
-        <Route path="/dwnld" element={<Download />} />
+        <Route path="/descargar" element={<Download />} />{/* Ruta en español para la gente */}
         <Route path="/createnotice" element={<CreateNotice />} />
       </Routes>
     </AnimatePresence>
