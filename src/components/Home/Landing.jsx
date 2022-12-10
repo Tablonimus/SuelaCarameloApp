@@ -17,11 +17,9 @@ export default function Landing() {
         </section>
         <video
           src={landing1}
-        autoPlay={true}
-          muted={false}
+          autoPlay={true}
           loop={true}
           className="h-screen w-screen"
-          
           poster=""
         />
       </div>

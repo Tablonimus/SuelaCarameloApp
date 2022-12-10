@@ -38,7 +38,7 @@ export default function NoticeDetail() {
         />
       </div>
       <div className="w-11/12">
-        <h5 className="p-5 text-black font-sans">{notice?.content}</h5>
+        <h5 className="p-5 lg:px-56 text-black font-sans">{notice?.content}</h5>
       </div>
 
 

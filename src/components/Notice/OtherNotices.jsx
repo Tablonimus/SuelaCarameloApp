@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import b1 from "../../assets/images/b1.png";
 
+import zulueta from "../../assets/images/zulueta.gif";
 import electricidad from "../../assets/images/electricidad.gif";
-import b2 from "../../assets/images/b2.png";
+
 export default function OtherNotices() {
   const allNotices = useSelector((state) => state.copyAllNotices);
   console.log(allNotices);
@@ -17,35 +17,62 @@ export default function OtherNotices() {
 
   console.log(randomBig);
   return (
-    <div className="rounded-lg border-t border-white m-5 bg-black w-screen flex flex-col items-center justify-center">
+    <div className="rounded-lg border-t border-white drop-shadow-2xl m-5 bg-black w-screen flex flex-col items-center justify-center">
       <span className="text-white">Mirá tambien:</span>{" "}
-      <div className="grid grid-cols-2 gap-2 drop-shadow-2xl  border-t border-white bg-black w-screen">
-        <div className="flex flex-col gap-3 items-center justify-around">
+      <div className="grid grid-cols-2 gap-2 drop-shadow-2xl  border-y border-[#E96F22] bg-black w-screen">
+        <div className="flex flex-col gap-3 items-center justify-center  ">
           <Link to={`/notices/${randomBig?.id}`}>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center border-y border-[#E96F22]  ">
               {randomBig?.videos?.length ? (
-                <video src={randomBig?.videos[0]} className="w-24 h-24" />
+                <video
+                  src={randomBig?.videos[0]}
+                  className="w-96 h-24 lg:w-96 lg:h-56"
+                />
               ) : (
-                <img src={randomBig?.images[0]} alt="" className="w-96 h-24" />
+                <img
+                  src={randomBig?.images[0]}
+                  alt=""
+                  className="w-96 h-32 lg:w-96 lg:h-56"
+                />
               )}
 
-              <span className="text-md text-white">{randomBig?.title}</span>
+              <span className="text-md text-white px-2">
+                {randomBig?.title}
+              </span>
+              <span className="text-sm text-white px-2">
+                {" "}
+                {randomBig?.subtitle?.length > 20
+                  ? `${randomBig?.subtitle.slice(0, 45)}...`
+                  : randomBig?.subtitle}
+              </span>
             </div>
           </Link>
 
-          <Link to={`/home`} className="">
-            <img src={b1} alt="" />
-          </Link>
+          <a
+            href={
+              "https://www.google.com/maps/place/Granja+Zulueta/@-32.9088319,-68.8389289,15z/data=!4m5!3m4!1s0x0:0x7bc9f6cc51b1d57e!8m2!3d-32.9087853!4d-68.8389242"
+            }
+            className=""
+          >
+            <img src={zulueta} alt="" />
+          </a>
         </div>
 
-        <div className="flex flex-col gap-2 my-5 p-1">
+        <div className="flex flex-col gap-3 my-5 p-1">
           <Link to={`/notices/${random1?.id}`}>
-            <div className=" flex flex-row items-center gap-3  border-y">
+            <div className=" flex flex-row items-center gap-3  border-y border-[#E96F22]">
               <section className="w-1/3">
                 {random1?.videos?.length ? (
-                  <video src={random1?.videos[0]} className="w-24 h-14 object-cover" />
+                  <video
+                    src={random1?.videos[0]}
+                    className="w-24 h-14 object-cover lg:w-56 lg:h-32"
+                  />
                 ) : (
-                  <img src={random1?.images[0]} alt="" className="w-24 h-14 object-cover" />
+                  <img
+                    src={random1?.images[0]}
+                    alt=""
+                    className="w-24 h-14 object-cover lg:w-56 lg:h-32"
+                  />
                 )}
               </section>
               <section className="flex flex-col justify-center">
@@ -64,16 +91,25 @@ export default function OtherNotices() {
           </Link>
 
           <div className="flex flex-row items-center justify-center">
-            <img src={b2} alt="" className="" />
+            <a href="https://www.google.com/maps/place/Electricidad+San+Luis/@-32.8856233,-68.8357053,16.5z/data=!4m5!3m4!1s0x0:0xe1d67ca3ac640c37!8m2!3d-32.8845727!4d-68.8358074">
+              <img src={electricidad} alt="" className="" />
+            </a>
           </div>
 
           <Link to={`/notices/${random2?.id}`}>
-            <div className=" flex flex-row items-center gap-3 border-y">
+            <div className=" flex flex-row items-center gap-3 border-y border-[#E96F22]">
               <section className="w-1/3">
                 {random2?.videos?.length ? (
-                  <video src={random2?.videos[0]} className="object-cover w-24 h-14" />
+                  <video
+                    src={random2?.videos[0]}
+                    className="object-cover w-24 h-14 lg:w-56 lg:h-32"
+                  />
                 ) : (
-                  <img src={random2?.images[0]} alt="" className="object-cover w-24 h-14" />
+                  <img
+                    src={random2?.images[0]}
+                    alt=""
+                    className="object-cover w-24 h-14 lg:w-56 lg:h-32"
+                  />
                 )}
               </section>
               <section className="flex flex-col justify-center">
@@ -92,12 +128,19 @@ export default function OtherNotices() {
           </Link>
 
           <Link to={`/notices/${random3?.id}`}>
-            <div className=" flex flex-row items-center gap-3 border-y">
+            <div className=" flex flex-row items-center gap-3 border-y border-[#E96F22]">
               <section className="w-1/3">
                 {random3?.videos?.length ? (
-                  <video src={random3?.videos[0]} className="object-cover w-24 h-14" />
+                  <video
+                    src={random3?.videos[0]}
+                    className="object-cover w-24 h-14 lg:w-56 lg:h-32"
+                  />
                 ) : (
-                  <img src={random3?.images[0]} alt="" className="object-cover w-24 h-14" />
+                  <img
+                    src={random3?.images[0]}
+                    alt=""
+                    className="object-cover w-24 h-14 lg:w-56 lg:h-32"
+                  />
                 )}
               </section>
               <section className="flex flex-col justify-center">
@@ -109,7 +152,7 @@ export default function OtherNotices() {
                 <span className="text-[8px] text-white">
                   {random3?.subtitle?.length > 20
                     ? `${random3?.subtitle.slice(0, 20)}...`
-                    : random3 ?.subtitle}
+                    : random3?.subtitle}
                 </span>
               </section>
             </div>
