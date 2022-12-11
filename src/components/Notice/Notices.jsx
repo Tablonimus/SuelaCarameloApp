@@ -18,10 +18,7 @@ export default function Notices({
           imgSrc={images[0]}
           class="bg-[#E96F22] rounded-lg shadow-lg"
         >
-          <div className="lg:h-11/12 w-24 lg:w-1/2">
-            {/* <YoutubeEmbed embedId="3dmGzwSRl2s" /> */}
-            {/* <img src={notice?.images[0]} alt="" className="object-cover"/> */}
-          </div>
+         
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
           </h5>
