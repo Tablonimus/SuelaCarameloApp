@@ -17,6 +17,9 @@ export default function CreateNotice() {
 
   const teams = useSelector((state) => state.allTeams);
 
+  const [selectMatch, setSelectMatch] = useState("A1");
+  const [selectNotice, setSelectNotice] = useState("A1");
+
   //---------------MATCH HANDLERS---------------------------------
   const [match, setMatch] = useState({
     place: "",
@@ -367,6 +370,15 @@ export default function CreateNotice() {
                 onSubmit={(e) => onSubmitHandler(e)}
                 className=" flex flex-col  items-center justify-center gap-3 bg-gray-500 rounded-lg p-5"
               >
+                <select
+                  className="rounded-lg"
+                  name="category"
+                  onChange={(e) => handleChange(e)}
+                >
+                  <option value="A1">Seleccione una categoria</option>
+                  <option value="A1">A1</option>
+                  <option value="FEM">FEM</option>
+                </select>
                 <div className="grid grid-cols-2 gap-3">
                   <section className="flex flex-col items-center justify-center">
                     <label
@@ -397,15 +409,7 @@ export default function CreateNotice() {
                     />
                   </section>
                 </div>
-                <select
-                  className="rounded-lg"
-                  name="category"
-                  onChange={(e) => handleChange(e)}
-                >
-                  <option value="A1">Seleccione una categoria</option>
-                  <option value="A1">A1</option>
-                  <option value="FEM">FEM</option>
-                </select>
+
                 <input
                   className="rounded-lg"
                   type="text"

@@ -31,7 +31,7 @@ export default function NavTwo() {
               <Link key={team.id} to={`/teams/${team.id}`}>
                 <img
                   src={team.logo}
-                  className="object-cover w-8 shadow-lg shadow-white rounded-full"
+                  className="bg-white object-cover w-8 h-8 shadow-lg shadow-white rounded-full"
                 />
               </Link>
             ))

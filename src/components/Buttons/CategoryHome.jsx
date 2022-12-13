@@ -22,6 +22,7 @@ export default function CategoryHome() {
     dispatch(getAllNotices(category));
     dispatch(changeCategory(category));
     dispatch(getAllTeams(category));
+    dispatch(getAllMatches(category));
   }
 
   function handleClickFem(e) {
