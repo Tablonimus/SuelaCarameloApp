@@ -13,7 +13,7 @@ export default function NoticeDetail() {
   const notice = useSelector((state) => state.noticeDetail);
 
   const parrafo = notice?.content?.split("//");
-  console.log(parrafo);
+
   useEffect(() => {
     dispatch(getNoticeDetail(params.id));
     return () => dispatch(clearPage());

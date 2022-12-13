@@ -7,29 +7,31 @@ import Download from "./components/Download/Download";
 import NoticeDetail from "./components/Notice/NoticeDetail";
 
 import CreateNotice from "./components/Admin/CreateNotice";
-import { getAllNotices } from "./redux/actions";
+import { getAllNotices, getAllTeams } from "./redux/actions";
 import { useDispatch } from "react-redux";
 
 function AnimatedRoutes() {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllNotices());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllNotices());
+  //   dispatch(getAllTeams());
+  // }, [dispatch]);
 
-  
   return (
-    <AnimatePresence>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/notices/:id" element={<NoticeDetail />} />
-        <Route path="/descargar" element={<Download />} />
-        {/* Ruta en español para la gente */}
-        <Route path="/createnotice" element={<CreateNotice />} />
-      </Routes>
-    </AnimatePresence>
+    <section className="bg-black h-screen">
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/notices/:id" element={<NoticeDetail />} />
+          <Route path="/descargar" element={<Download />} />
+          {/* Ruta en español para la gente */}
+          <Route path="/createnotice" element={<CreateNotice />} />
+        </Routes>
+      </AnimatePresence>
+    </section>
   );
 }
 

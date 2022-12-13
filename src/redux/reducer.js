@@ -3,11 +3,12 @@ import moment from "moment";
 
 const initialState = {
   allNotices: [],
-  noticeDetail: [],
-  teams: [],
-  category: "",
-
   copyAllNotices: [],
+  noticeDetail: [],
+  allTeams: [],
+  allMatches:[],
+
+  category: "",
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -42,7 +43,29 @@ export default function rootReducer(state = initialState, { type, payload }) {
         copyAllNotices: payload.copy,
       };
     }
+    case action.GET_ALL_TEAMS: {
+      return {
+        ...state,
+        allTeams: payload.filtered,
+      };
+    }
+    case action.GET_ALL_MATCHES: {
+      return {
+        ...state,
+        allMatches: payload.filtered,
+      };
+    }
     case action.CREATE_NOTICE: {
+      return {
+        ...state,
+      };
+    }
+    case action.CREATE_MATCH: {
+      return {
+        ...state,
+      };
+    }
+    case action.CREATE_TEAM: {
       return {
         ...state,
       };

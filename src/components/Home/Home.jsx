@@ -10,20 +10,21 @@ import NavTwo from "../NavBar/NavTwo";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllNotices } from "../../redux/actions";
+import { getAllMatches, getAllNotices, getAllTeams } from "../../redux/actions";
 import Notices from "../Notice/Notices";
 import CategoryHome from "../Buttons/CategoryHome";
 
 export default function Home() {
   const dispatch = useDispatch();
   const categoryState = useSelector((state) => state.category);
- 
+
   useEffect(() => {
     dispatch(getAllNotices(categoryState));
+    dispatch(getAllTeams(categoryState));
+    dispatch(getAllMatches(categoryState));
   }, []);
 
   const allNotices = useSelector((state) => state.allNotices);
- 
 
   return (
     <div className=" bg-black justify-between flex flex-col items-center">

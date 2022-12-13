@@ -1,7 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { changeCategory, getAllNotices } from "../../redux/actions";
+import {
+  changeCategory,
+  getAllMatches,
+  getAllNotices,
+  getAllTeams,
+} from "../../redux/actions";
 import naranja from "../../assets/images/remeranaranja.png";
 import negra from "../../assets/images/remeranegra.png";
 
@@ -16,6 +21,7 @@ export default function CategoryHome() {
     const category = "A1";
     dispatch(getAllNotices(category));
     dispatch(changeCategory(category));
+    dispatch(getAllTeams(category));
   }
 
   function handleClickFem(e) {
@@ -23,6 +29,8 @@ export default function CategoryHome() {
     const category = "FEM";
     dispatch(getAllNotices(category));
     dispatch(changeCategory(category));
+    dispatch(getAllTeams(category));
+    dispatch(getAllMatches(category));
   }
 
   return (
