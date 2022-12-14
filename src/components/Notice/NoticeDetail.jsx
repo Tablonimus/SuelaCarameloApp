@@ -20,7 +20,7 @@ export default function NoticeDetail() {
   }, [dispatch, params.id]);
 
   return (
-    <div className="bg-[#E96F22] flex flex-col justify-between items-center">
+    <div className="bg-[#F98958] flex flex-col justify-between items-center">
       <NavBar />
 
       <div className="mt-20 w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
@@ -36,7 +36,7 @@ export default function NoticeDetail() {
         <img
           src={notice?.images?.length > 0 ? notice?.images[0] : false}
           alt=""
-          className="w-full h-full"
+          className="w-full h-full rounded-lg "
         />
       </div>
       <div className="w-11/12 lg:w-1/2 flex flex-col items-center justify-center">

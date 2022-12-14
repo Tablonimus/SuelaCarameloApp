@@ -25,7 +25,7 @@ export default function NavTwo() {
 
       <NavResults />
 
-      <section className="flex gap-2">
+      <section className="flex items-center justify-center gap-2  rounded-b-lg border-b pb-2 mb-5 border-[#E96F22] w-full h-full">
         {teams?.length
           ? teams?.map((team) => (
               <Link key={team.id} to={`/teams/${team.id}`}>

@@ -7,8 +7,8 @@ import {
   getAllNotices,
   getAllTeams,
 } from "../../redux/actions";
-import naranja from "../../assets/images/remeranaranja.png";
-import negra from "../../assets/images/remeranegra.png";
+import naranja from "../../assets/images/f1.png";
+import negra from "../../assets/images/a1.png";
 
 export default function CategoryHome() {
   const navigate = useNavigate();
@@ -40,26 +40,26 @@ export default function CategoryHome() {
         onClick={(e) => handleClickA1(e)}
         className={
           categoryState === "A1"
-            ? "opacity-80  m-2 flex bg-[#E96F22] flex-row w-24 h-8 gap-3  drop-shadow-2xl rounded-lg border border-slate-700 items-center justify-center text-black ring ring-yellow-200"
-            : "opacity-80  m-2 flex bg-gray-200 flex-row w-24 h-8 gap-3  drop-shadow-2xl rounded-lg border border-slate-700 items-center justify-center text-black"
+            ? "opacity-80  m-2 flex bg-[#E96F22] flex-row w-16 h-16 gap-3  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-black ring ring-yellow-200"
+            : "opacity-80  m-2 flex bg-gray-200 flex-row w-16 h-16 gap-3  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-black"
         }
         value={"A1"}
       >
-        <img src={negra} alt="" className="drop-shadow-2xl w-6" />
-        <span className="font-bold text-sm font-serif">A1</span>
+        <img src={negra} alt="" className="drop-shadow-2xl w-14" />
+      
       </button>
 
       <button
         onClick={(e) => handleClickFem(e)}
         className={
           categoryState === "FEM"
-            ? "opacity-80  m-2 flex bg-[#E96F22] flex-row w-24 h-8 gap-3  drop-shadow-2xl rounded-lg border border-slate-700 items-center justify-center text-black  ring ring-yellow-200"
-            : "opacity-80  m-2 flex bg-gray-200 flex-row w-24 h-8 gap-3  drop-shadow-2xl rounded-lg border border-slate-700 items-center justify-center text-black"
-        }
+          ? "opacity-80  m-2 flex bg-[#E96F22] flex-row w-16 h-16 gap-3  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-black ring ring-yellow-200"
+          : "opacity-80  m-2 flex bg-gray-200 flex-row w-16 h-16 gap-3  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-black"
+      }
         value={"FEM"}
       >
-        <img src={naranja} alt="" className="drop-shadow-2xl w-6" />
-        <span className="font-bold text-sm font-serif">FEM</span>
+        <img src={naranja} alt="" className="drop-shadow-2xl w-14" />
+   
       </button>
     </div>
   );

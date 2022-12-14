@@ -6,7 +6,7 @@ export default function NavResults() {
   const matches = useSelector((state) => state.allMatches);
 
   return (
-    <div className="m-2 flex items-center justify-center border-t border-b border-[#E96F22] rounded-lg w-full">
+    <div className="m-2 flex items-center justify-center border-t border-b border-[#E96F22] rounded-t-lg w-full">
       {matches.length > 0 ? (
         matches.map((match) => (
           <section>

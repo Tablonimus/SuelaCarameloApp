@@ -1,5 +1,5 @@
 import React from "react";
-import suela from "../../assets/images/suela.png";
+import suela from "../../assets/images/banner2.png";
 import { Navbar } from "flowbite-react";
 
 export default function NavBar() {
@@ -11,11 +11,7 @@ export default function NavBar() {
     >
       <Navbar.Brand href="/home">
         <span className="flex items-center ml-2 self-center whitespace-nowrap text-xl font-semibold text-white">
-          <img src={suela} className="h-14 rounded-full flex" alt="Logo" />
-          <h1 className="font-sans text-md lg:text-2xl ml-2 mr-5">
-            {" "}
-            Suela Caramelo
-          </h1>
+          <img src={suela} className="h-14 rounded-full flex" alt="Suela Caramelo" />
         </span>
       </Navbar.Brand>
       <Navbar.Toggle />
