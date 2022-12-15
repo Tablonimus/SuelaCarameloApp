@@ -1,3 +1,4 @@
+import { Carousel } from "flowbite-react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -34,18 +35,30 @@ export default function NoticeDetail() {
       </div>
 
       <div className="w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
-        {notice?.images?.length > 0 ? 
-        <img
-          src={notice?.images?.length > 0 ? notice?.images[0] : false}
-          alt=""
-          className="w-full h-full rounded-lg "
-        />:<YoutubeEmbed embedId={notice?.videos} />
-
-        }
+        {notice?.images?.length > 0 ? (
+          <div className="flex flex-col">
+           
+            {notice?.images[0] ? (
+              <div className=" h-56 sm:h-64 xl:h-80 2xl:h-[530px]">
+                <Carousel>
+                  {notice?.images?.map((img) => (
+                    <img src={img} alt="" />
+                  ))}
+                </Carousel>
+              </div>
+            ) : (
+              false
+            )}
+          </div>
+        ) : (
+          <YoutubeEmbed embedId={notice?.videos} />
+        )}
       </div>
       <div className="w-11/12 lg:w-1/2 flex flex-col items-center justify-center">
         {parrafo?.map((parra) => (
-          <p key={parra} className="px-5 py-2 text-md">{parra}</p>
+          <p key={parra} className="px-5 py-2 text-md">
+            {parra}
+          </p>
         ))}
       </div>
 

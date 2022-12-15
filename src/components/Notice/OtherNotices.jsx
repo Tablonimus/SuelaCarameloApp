@@ -14,7 +14,7 @@ export default function OtherNotices() {
   // useEffect(()=>{
   //   dispatch(getAllN)
   // })
-  console.log(allNotices);
+
 
   let randomBig = allNotices[Math.floor(Math.random() * allNotices.length)];
 
