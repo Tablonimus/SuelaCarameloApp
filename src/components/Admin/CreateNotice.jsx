@@ -102,6 +102,8 @@ export default function CreateNotice() {
     team2: "",
   });
 
+
+
   function handleChange(e) {
     if (e.target.name === "videos") {
       setInput({
@@ -113,7 +115,7 @@ export default function CreateNotice() {
     if (e.target.name === "teams") {
       setInput({
         ...input,
-        [e.target.name]: [e.target.value],
+        [e.target.name]: e.target.value,
       });
     } else {
       setInput({
@@ -133,11 +135,11 @@ export default function CreateNotice() {
       "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
       data
     );
-    console.log(res);
+
     setImage(res.data.secure_url);
     setInput({
       ...input,
-      images: [res.data.secure_url],
+      images: [...input.images, res.data.secure_url],
     });
 
     setLoadingImage(false);
@@ -168,6 +170,13 @@ export default function CreateNotice() {
       navigate("/home"),
       alert("Noticia Creada Correctamente")
     );
+  }
+
+  function handleDelete(event) {
+    setInput({
+      ...input,
+      images: input.images.filter((e) => e !== event),
+    });
   }
 
   return (
@@ -444,11 +453,21 @@ export default function CreateNotice() {
                     className="rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
                   />
                   {loadingImage ? (
-                    <h3 className="font-light text-white text-xl">
-                      Cargando imagen...
-                    </h3>
+                    <h3>Cargando imagen...</h3>
                   ) : (
-                    <img src={image} alt="" width="300px" />
+                    input.images.map((el) => (
+                      <div key={el}>
+                        <button
+                          key={el}
+                          type="button"
+                          onClick={() => handleDelete(el)}
+                          className="px-2 border-4 rounded-lg font-bold text-yellow-900 border-yellow-900"
+                        >
+                          x
+                        </button>
+                        <img src={el} alt="" width="300px" />
+                      </div>
+                    ))
                   )}
                   <label className="font-light text-white text-xl">
                     Video de la noticia

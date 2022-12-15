@@ -5,6 +5,7 @@ import { clearPage, getNoticeDetail } from "../../redux/actions";
 
 import FooterComp from "../FooterComp/FooterComp";
 import NavBar from "../NavBar/NavBar";
+import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import OtherNotices from "./OtherNotices";
 
 export default function NoticeDetail() {
@@ -33,15 +34,18 @@ export default function NoticeDetail() {
       </div>
 
       <div className="w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
+        {notice?.images?.length > 0 ? 
         <img
           src={notice?.images?.length > 0 ? notice?.images[0] : false}
           alt=""
           className="w-full h-full rounded-lg "
-        />
+        />:<YoutubeEmbed embedId={notice?.videos} />
+
+        }
       </div>
       <div className="w-11/12 lg:w-1/2 flex flex-col items-center justify-center">
         {parrafo?.map((parra) => (
-          <p className="px-5 py-2 text-md">{parra}</p>
+          <p key={parra} className="px-5 py-2 text-md">{parra}</p>
         ))}
       </div>
 

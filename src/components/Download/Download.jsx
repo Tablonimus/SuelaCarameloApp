@@ -5,6 +5,8 @@ import PWAPrompt from "react-ios-pwa-prompt";
 import { usePWAInstall } from "react-use-pwa-install";
 import Push from "push.js";
 import "./Download.css";
+import NavBar from "../NavBar/NavBar";
+import FooterComp from "../FooterComp/FooterComp";
 
 export default function Download() {
   const install = usePWAInstall();
@@ -24,7 +26,8 @@ export default function Download() {
   }
 
   return (
-    <div className="flex flex-col justify-between h-screen w-full items-center fixed top-80 ">
+    <div className="flex flex-col justify-between h-screen w-screen items-centerfixed top-80 ">
+      <NavBar />
       <PWAPrompt
         promptOnVisit={1}
         timesToShow={3}
@@ -36,33 +39,32 @@ export default function Download() {
         permanentlyHideOnDismiss={false}
       />
 
-      <div className=" justify-between rounded-lg flex flex-col items-center">
-        {/* <button
-          className=" p-5 font-bold bg-[#F6D50E] m-5 rounded-lg shadow-lg"
-          onClick={(e) => handlerNotification(e)}
-        >
-          🔔MENSAJE ESPECIAL🔔
-        </button> */}
+      <div className=" mt-20 justify-between rounded-lg flex flex-col items-center">
         <div className="flex flex-col items-center rounded-lg bg-gray-300 w-96 h-56 m-5 p-5 border justify-center opacity-90 shadow-lg">
           {install ? (
             <button
-              className="p-5 font-bold bg-green-400 rounded-lg shadow-lg"
+              className="p-5 font-bold bg-green-500 rounded-lg shadow-lg"
               onClick={install}
             >
               Descargar Aplicación
             </button>
           ) : (
-            <Link to="/" className="mt-5">
+       <div className="flex flex-col items-center justify-center ">
+          <p className="font-semibold text-md text-center">  La aplicación ya está descargada en este dispositivo.</p>
+            <Link to="/" className="m-5">
               <button
-                className="p-5 font-bold bg-blue-400 rounded-lg shadow-lg"
+                className="p-5 font-bold bg-amber-600 text-white rounded-lg shadow-lg"
                 onClick={install}
               >
                 Ir al inicio
               </button>
             </Link>
+          <p className="font-semibold text-md text-center">  Si tienes iPhone descarga siguiendo las instrucciones.</p>
+       </div>
           )}
         </div>
       </div>
+      <FooterComp />
     </div>
   );
 }

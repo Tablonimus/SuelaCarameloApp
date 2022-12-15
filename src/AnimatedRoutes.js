@@ -9,6 +9,8 @@ import NoticeDetail from "./components/Notice/NoticeDetail";
 import CreateNotice from "./components/Admin/CreateNotice";
 import { getAllNotices, getAllTeams } from "./redux/actions";
 import { useDispatch } from "react-redux";
+import AboutUs from "./components/AboutUs/AboutUs";
+import ContactUs from "./components/ContactUs/ContactUs";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -24,6 +26,9 @@ function AnimatedRoutes() {
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Landing />} />
+          <Route path="/sobrenosotros" element={<AboutUs />} />
+          <Route path="/contacto" element={<ContactUs />} />
+
           <Route path="/home" element={<Home />} />
           <Route path="/notices/:id" element={<NoticeDetail />} />
           <Route path="/descargar" element={<Download />} />

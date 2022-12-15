@@ -30,10 +30,21 @@ export default function FooterComp() {
         <Footer.Divider />
         <section>
           <Footer.LinkGroup className="flex items-center justify-center gap-3">
-            <Footer.Link href="#">Sobre Nosotros</Footer.Link>
-            <Footer.Link href="#">Politica de Privacidad</Footer.Link>
-            <Footer.Link href="#">Licencia</Footer.Link>
-            <Footer.Link href="#">Contacto</Footer.Link>
+            <Footer.Link href="/sobrenosotros">Sobre Nosotros</Footer.Link>
+            <Footer.Link href="/descargar">Descargar App</Footer.Link>
+            <Footer.Link href="https://www.facebook.com/SuelaCarameloOk/">
+              Facebook
+            </Footer.Link>
+            <Footer.Link href="https://www.instagram.com/suelacaramelo/">
+              Instagram
+            </Footer.Link>
+            <Footer.Link href="https://www.tiktok.com/@suelacaramelo">
+              Tik Tok{" "}
+            </Footer.Link>
+            <Footer.Link href="https://www.youtube.com/@suelacaramelo">
+              Youtube
+            </Footer.Link>
+            <Footer.Link href="/contacto">Contacto</Footer.Link>
           </Footer.LinkGroup>
           <section className="flex items-center justify-center">
             <Footer.Brand href="#" src={suela} alt="Flowbite Logo" name="" />

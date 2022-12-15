@@ -159,7 +159,7 @@ export function createNotice(payload) {
         title: payload.title,
         subtitle: payload.subtitle,
         images: payload.images,
-        videos: payload.videos,
+        videos: [payload.videos],
         content: payload.content,
         category: payload.category,
         teams: [payload.team1, payload.team2],

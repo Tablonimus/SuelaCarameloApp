@@ -1,14 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import zulueta from "../../assets/images/zulueta.gif";
 import hache from "../../assets/images/hache.gif";
 import electricidad from "../../assets/images/electricidad.gif";
 import sqadra from "../../assets/images/sqadra.gif";
+import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 
 export default function OtherNotices() {
-  const allNotices = useSelector((state) => state.copyAllNotices);
+  const dispatch = useDispatch();
+  const allNotices = useSelector((state) => state.allNotices);
+  // useEffect(()=>{
+  //   dispatch(getAllN)
+  // })
   console.log(allNotices);
 
   let randomBig = allNotices[Math.floor(Math.random() * allNotices.length)];
@@ -19,22 +24,27 @@ export default function OtherNotices() {
 
   return (
     <div className="rounded-lg border-t border-white drop-shadow-2xl  bg-black flex flex-col items-center justify-center my-5 p-2">
-      <span className="text-white text-md lg:text-3xl lg:p-2">Mirá tambien:</span>
+      <span className="text-white text-md lg:text-3xl lg:p-2">
+        Mirá tambien:
+      </span>
       <div className="rounded-lg grid grid-cols-2 drop-shadow-2xl  border-t border-[#E96F22] bg-black gap-5 py-5">
         <div className="flex flex-col gap-3 items-center justify-between">
           <Link to={`/notices/${randomBig?.id}`}>
             <div className="flex flex-col items-center border-y border-[#E96F22] ">
-              {randomBig?.videos?.length ? (
-                <video
-                  src={randomBig?.videos[0]}
-                  className="object-cover w-96 h-24 lg:w-96 lg:h-56"
-                />
-              ) : (
+              {randomBig?.images?.length ? (
                 <img
                   src={randomBig?.images[0]}
                   alt=""
                   className="object-cover w-96 h-32 lg:w-96 lg:h-56"
                 />
+              ) : (
+                <section className="overflow-hidden h-32">
+
+                  <YoutubeEmbed
+                    embedId={randomBig?.videos[0] || randomBig?.videos}
+                  />
+
+                </section>
               )}
 
               <span className="text-md text-white px-2">
@@ -65,20 +75,21 @@ export default function OtherNotices() {
         <div className="flex flex-col gap-3 items-center justify-between">
           <Link to={`/notices/${random1?.id}`}>
             <div className="flex flex-row items-center gap-3  border-y border-[#E96F22]">
-              <section className="w-1/3">
-                {random1?.videos?.length ? (
-                  <video
-                    src={random1?.videos[0]}
-                    className="w-24 h-14 object-cover lg:w-56 lg:h-32"
-                  />
-                ) : (
+              {random1?.images?.length ? (
+                <section className="overflow-hidden w-1/3 h-14  ">
                   <img
                     src={random1?.images[0]}
                     alt=""
-                    className="w-24 h-14 object-cover lg:w-56 lg:h-32"
+                    className="object-cover w-24 h-14 lg:w-56 lg:h-32"
                   />
-                )}
-              </section>
+                </section>
+              ) : (
+                <section className="overflow-hidden w-1/3 h-14  ">
+                  <YoutubeEmbed
+                    embedId={random1?.videos[0] || random1?.videos}
+                  />
+                </section>
+              )}
               <section className="flex flex-col justify-center">
                 <span className="text-[10px] text-white">
                   {random1?.title?.length > 20
@@ -102,20 +113,21 @@ export default function OtherNotices() {
 
           <Link to={`/notices/${random2?.id}`}>
             <div className=" flex flex-row items-center gap-3 border-y border-[#E96F22]">
-              <section className="w-1/3">
-                {random2?.videos?.length ? (
-                  <video
-                    src={random2?.videos[0]}
-                    className="object-cover w-24 h-14 lg:w-56 lg:h-32"
-                  />
-                ) : (
+              {random2?.images?.length ? (
+                <section className="overflow-hidden w-1/3 h-14  ">
                   <img
                     src={random2?.images[0]}
                     alt=""
                     className="object-cover w-24 h-14 lg:w-56 lg:h-32"
                   />
-                )}
-              </section>
+                </section>
+              ) : (
+                <section className="overflow-hidden w-1/3 h-14  ">
+                  <YoutubeEmbed
+                    embedId={random2?.videos[0] || random2?.videos}
+                  />
+                </section>
+              )}
               <section className="flex flex-col justify-center">
                 <span className="text-[10px] text-white">
                   {random2?.title?.length > 20
@@ -133,20 +145,23 @@ export default function OtherNotices() {
 
           <Link to={`/notices/${random3?.id}`}>
             <div className=" flex flex-row items-center gap-3 border-y border-[#E96F22]">
-              <section className="w-1/3">
-                {random3?.videos?.length ? (
-                  <video
-                    src={random3?.videos[0]}
-                    className="object-cover w-24 h-14 lg:w-56 lg:h-32"
-                  />
-                ) : (
+            
+              {random3?.images?.length ? (
+                <section className="overflow-hidden w-1/3 h-14  ">
                   <img
                     src={random3?.images[0]}
                     alt=""
                     className="object-cover w-24 h-14 lg:w-56 lg:h-32"
                   />
-                )}
-              </section>
+                </section>
+              ) : (
+                <section className="overflow-hidden w-1/3 h-14  ">
+                  <YoutubeEmbed
+                    embedId={random3?.videos[0] || random3?.videos}
+                  />
+                </section>
+              )}
+          
               <section className="flex flex-col justify-center">
                 <span className="text-[10px] text-white">
                   {random3?.title?.length > 20

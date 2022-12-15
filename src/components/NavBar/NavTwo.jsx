@@ -4,7 +4,7 @@ import aleman from "../../assets/images/aleman.png";
 import godoy from "../../assets/images/godoy.png";
 import gye from "../../assets/images/gye.png";
 import calendario from "../../assets/images/calendario.png";
-import { Navbar } from "flowbite-react";
+import { Navbar, Spinner } from "flowbite-react";
 import CategoryHome from "../Buttons/CategoryHome";
 import { useSelector } from "react-redux";
 import NavResults from "./NavResults";
@@ -25,19 +25,43 @@ export default function NavTwo() {
 
       <NavResults />
 
-      <section className="flex items-center justify-center gap-2  rounded-b-lg border-b pb-2 mb-5 border-[#E96F22] w-full h-full">
-        {teams?.length
-          ? teams?.map((team) => (
-              <Link key={team.id} to={`/teams/${team.id}`}>
-                <img
-                  src={team.logo}
-                  className="bg-white object-cover w-8 h-8 shadow-lg shadow-white rounded-full"
-                />
-              </Link>
-            ))
-          : false}
+      <section className="flex items-center justify-center gap-2  rounded-b-lg border-b pb-2 mb-5 border-white w-full h-full">
+        {teams?.length ? (
+          teams?.map((team) => (
+            // <Link key={team.id} to={`/teams/${team.id}`}>
+            <img
+              key={team.id}
+              src={team.logo}
+              className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
+            />
+            // </Link>
+          ))
+        ) : (
+          <div className="ml-10 flex items-center justify-center gap-5">
+            <Spinner
+              color="warning"
+              aria-label="Warning spinner example"
+              size="md"
+            />
+            <Spinner
+              color="warning"
+              aria-label="Warning spinner example"
+              size="md"
+            />
+            <Spinner
+              color="warning"
+              aria-label="Warning spinner example"
+              size="md"
+            />
+            <Spinner
+              color="warning"
+              aria-label="Warning spinner example"
+              size="md"
+            />
+          </div>
+        )}
       </section>
-      
+
       <CategoryHome />
     </div>
   );
