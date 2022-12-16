@@ -102,13 +102,12 @@ export default function CreateNotice() {
     team2: "",
   });
 
-
-console.log(input);
+  console.log(input);
   function handleChange(e) {
     if (e.target.name === "videos") {
       setInput({
         ...input,
-        [e.target.name]: [e.target.value],
+        [e.target.name]: [...input.videos, e.target.value],
       });
     }
 
@@ -155,11 +154,11 @@ console.log(input);
       "https://api.cloudinary.com/v1_1/tablonimus/video/upload",
       data
     );
-    console.log(res);
+  
     setVideo(res.data.secure_url);
     setInput({
       ...input,
-      videos: [res.data.secure_url],
+      videos: [...input.videos, res.data.secure_url],
     });
 
     setLoadingVideo(false);
@@ -167,7 +166,7 @@ console.log(input);
   function onSubmitHandler(e) {
     e.preventDefault();
     dispatch(createNotice(input)).then(
-      navigate("/home"),
+      // navigate("/home"),
       alert("Noticia Creada Correctamente")
     );
   }

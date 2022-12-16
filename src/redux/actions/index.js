@@ -159,12 +159,12 @@ export function createNotice(payload) {
         title: payload.title,
         subtitle: payload.subtitle,
         images: payload.images,
-        videos: payload.videos,
+        videos:[payload.videos],
         content: payload.content,
         category: payload.category,
         teams: [payload.team1, payload.team2],
       };
-      
+   console.log("DATATATATAT",data);    
       let json = await axios.post(`${url}/notices`, data);
       dispatch({
         type: action.CREATE_NOTICE,
