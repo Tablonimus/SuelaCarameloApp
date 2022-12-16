@@ -164,7 +164,7 @@ export function createNotice(payload) {
         category: payload.category,
         teams: [payload.team1, payload.team2],
       };
-      console.log("DATA", data);
+      
       let json = await axios.post(`${url}/notices`, data);
       dispatch({
         type: action.CREATE_NOTICE,
