@@ -103,7 +103,7 @@ export default function CreateNotice() {
   });
 
 
-
+console.log(input);
   function handleChange(e) {
     if (e.target.name === "videos") {
       setInput({

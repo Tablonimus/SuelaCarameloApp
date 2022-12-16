@@ -37,7 +37,6 @@ export default function NoticeDetail() {
       <div className="w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
         {notice?.images?.length > 0 ? (
           <div className="flex flex-col">
-           
             {notice?.images[0] ? (
               <div className=" h-56 sm:h-64 xl:h-80 2xl:h-[530px]">
                 <Carousel>
