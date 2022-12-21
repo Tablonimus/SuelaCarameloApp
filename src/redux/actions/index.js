@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const url = "https://suelacarameloapp-backend-production.up.railway.app";
-// const url = "http://localhost:3001";
+//const url = "http://localhost:3001";
 
 export function clearPage() {
   return async function (dispatch) {
@@ -159,12 +159,12 @@ export function createNotice(payload) {
         title: payload.title,
         subtitle: payload.subtitle,
         images: payload.images,
-        videos:[payload.videos],
+        videos: payload.videos,
         content: payload.content,
         category: payload.category,
         teams: [payload.team1, payload.team2],
       };
-   console.log("DATATATATAT",data);    
+      console.log("DATATATATAT", data);
       let json = await axios.post(`${url}/notices`, data);
       dispatch({
         type: action.CREATE_NOTICE,

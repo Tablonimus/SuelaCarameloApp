@@ -154,7 +154,7 @@ export default function CreateNotice() {
       "https://api.cloudinary.com/v1_1/tablonimus/video/upload",
       data
     );
-  
+
     setVideo(res.data.secure_url);
     setInput({
       ...input,
