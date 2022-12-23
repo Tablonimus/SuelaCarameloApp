@@ -31,9 +31,9 @@ export default function Notices({
           }
           class="bg-[#F98958] rounded-lg shadow-inner border border-[#E96F22] shadow-white"
         >
-          {videos.length >= 1 ? (
-            <YoutubeEmbed embedId={videos[0] || videos} />
-          ) : videos.length ? (
+          {videos?.length >= 1 ? (
+            <YoutubeEmbed embedId={ videos} />
+          ) : videos?.length ? (
             <Spinner
               color="warning"
               aria-label="Warning spinner example"

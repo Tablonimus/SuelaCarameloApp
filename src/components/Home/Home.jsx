@@ -24,10 +24,14 @@ export default function Home() {
     dispatch(getAllMatches(categoryState));
   }, []);
 
-  const allNotices = useSelector((state) => state.allNotices);
-  
-  const orden = allNotices.sort((a,b)=>{return a-b})
-  console.log(orden);
+  const allNotices = useSelector((state) =>
+    state.allNotices
+      .sort((a, b) => {
+        return a.id - b.id;
+      })
+      .reverse()
+  );
+
   return (
     <div className=" bg-black justify-between flex flex-col items-center">
       <NavBar />

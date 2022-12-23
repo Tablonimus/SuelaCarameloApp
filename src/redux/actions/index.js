@@ -63,7 +63,13 @@ export function getAllTeams(category) {
           type: action.GET_ALL_TEAMS,
           payload: {
             filtered:
-              filters.length > 0 ? filters.reverse() : json.data.reverse(),
+              filters.length > 0
+                ? filters.sort((a, b) => {
+                    return a.id - b.id;
+                  })
+                : json.data.sort((a, b) => {
+                    return a.id - b.id;
+                  }),
             copy: json.data,
           },
         });
@@ -73,7 +79,13 @@ export function getAllTeams(category) {
           type: action.GET_ALL_TEAMS,
           payload: {
             filtered:
-              filters.length > 0 ? filters.reverse() : json.data.reverse(),
+              filters.length > 0
+                ? filters.sort((a, b) => {
+                    return a.id - b.id;
+                  })
+                : json.data.sort((a, b) => {
+                    return a.id - b.id;
+                  }),
             copy: json.data,
           },
         });
