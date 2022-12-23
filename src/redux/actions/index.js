@@ -2,7 +2,8 @@ import * as action from "../actions/actionTypes";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const url = "https://suelacarameloapp-backend-production.up.railway.app";
+// const url = "https://suelacarameloapp-backend-production.up.railway.app";
+const url = "https://suelacaramelobackend-production.up.railway.app";
 //const url = "http://localhost:3001";
 
 export function clearPage() {

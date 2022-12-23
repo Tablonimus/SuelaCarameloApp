@@ -95,7 +95,7 @@ export default function CreateNotice() {
     title: "",
     subtitle: "",
     images: [],
-    videos: [],
+    videos: "",
     content: "",
     category: "",
     team1: "",
@@ -107,7 +107,7 @@ export default function CreateNotice() {
     if (e.target.name === "videos") {
       setInput({
         ...input,
-        [e.target.name]: [...input.videos, e.target.value],
+        [e.target.name]: e.target.value,
       });
     }
 
