@@ -37,7 +37,7 @@ export default function Home() {
       <NavBar />
 
       <NavTwo />
-      <section className="mt-5 h-full">
+      <section className="h-full">
         {allNotices?.length > 0 ? (
           allNotices.map((notice) => (
             <Notices
