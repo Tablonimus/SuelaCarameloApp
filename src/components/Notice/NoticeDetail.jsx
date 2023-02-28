@@ -34,9 +34,7 @@ export default function NoticeDetail() {
         </h2>
       </div>
 
-
-
-      <div className="w-11/12 lg:w-1/2 flex-flex-col items-center justify-center z-30">
+      <div className="w-11/12 lg:w-1/2 flex-flex-col items-center justify-center ">
         {notice?.images?.length > 0 ? (
           <div className="flex flex-col opacity-100">
             {notice?.images[0] ? (
@@ -55,19 +53,15 @@ export default function NoticeDetail() {
           <YoutubeEmbed embedId={notice?.videos} />
         )}
       </div>
-<div className="flex flex-col  items-center justify-center p-5 border m-2 rounded-lg bg-gray-100 opacity-80 z-10">
-      <div className="w-11/12 lg:w-1/2 flex flex-col items-center justify-center">
-        {parrafo?.map((parra) => (
-          <p key={parra} className="px-5 py-2 text-md">
-            {parra}
-          </p>
-        ))}
+      <div className="flex flex-col  w-11/12 lg:w-1/2 items-center justify-center  m-2 rounded-lg bg-gray-100 opacity-80 shadow-xl">
+        <div className="w-11/12 lg:w-1/2 flex flex-col items-center justify-center">
+          {parrafo?.map((parra) => (
+            <p key={parra} className="px-5 py-2 text-md font-semibold">
+              {parra}
+            </p>
+          ))}
+        </div>
       </div>
-
-</div>
-
-
-
 
       <OtherNotices />
 

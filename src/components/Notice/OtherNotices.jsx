@@ -7,27 +7,33 @@ import hache from "../../assets/images/hache.gif";
 import electricidad from "../../assets/images/electricidad.gif";
 import sqadra from "../../assets/images/sqadra.gif";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
+import { getAllNotices } from "../../redux/actions";
 
 export default function OtherNotices() {
   const dispatch = useDispatch();
   const allNotices = useSelector((state) => state.allNotices);
-  // useEffect(()=>{
-  //   dispatch(getAllN)
-  // })
+  
+  useEffect(()=>{
+    dispatch(getAllNotices())
+  })
+  let randomBig = allNotices[allNotices.length-1];
 
+  let random1 = allNotices[allNotices.length-2];
+  let random2 = allNotices[allNotices.length-3];
+  let random3 = allNotices[allNotices.length-4];
 
-  let randomBig = allNotices[Math.floor(Math.random() * allNotices.length)];
+  // let randomBig = allNotices[Math.floor(Math.random() * allNotices.length)];
 
-  let random1 = allNotices[Math.floor(Math.random() * allNotices.length)];
-  let random2 = allNotices[Math.floor(Math.random() * allNotices.length)];
-  let random3 = allNotices[Math.floor(Math.random() * allNotices.length)];
+  // let random1 = allNotices[Math.floor(Math.random() * allNotices.length)];
+  // let random2 = allNotices[Math.floor(Math.random() * allNotices.length)];
+  // let random3 = allNotices[Math.floor(Math.random() * allNotices.length)];
 
   return (
-    <div className="rounded-lg border-t border-white drop-shadow-2xl  bg-black flex flex-col items-center justify-center my-5 p-2">
+    <div className=" w-11/12 lg:w-1/2  rounded-lg border-t border-white drop-shadow-2xl  bg-black flex flex-col items-center justify-center my-5 p-2">
       <span className="text-white text-md lg:text-3xl lg:p-2">
         Mirá tambien:
       </span>
-      <div className="rounded-lg grid grid-cols-2 drop-shadow-2xl  border-t border-[#E96F22] bg-black gap-5 py-5">
+      <div className="w-full rounded-lg rounded-t-none grid grid-cols-2 drop-shadow-2xl  border-t border-[#E96F22] bg-black gap-5 py-5">
         <div className="flex flex-col gap-3 items-center justify-between">
           <Link to={`/notices/${randomBig?.id}`}>
             <div className="flex flex-col items-center border-y border-[#E96F22] ">
@@ -64,11 +70,11 @@ export default function OtherNotices() {
               "https://www.google.com/maps/place/Granja+Zulueta/@-32.9088319,-68.8389289,15z/data=!4m5!3m4!1s0x0:0x7bc9f6cc51b1d57e!8m2!3d-32.9087853!4d-68.8389242"
             }
           >
-            <img src={zulueta} alt="" />
+            <img src={zulueta} className="lg:w-80" />
           </a>
 
           <a href="https://www.instagram.com/squadraindumentaria/?hl=es">
-            <img src={sqadra} alt="" className="" />
+            <img src={sqadra} alt=""  className="lg:w-80 rounded-lg" />
           </a>
         </div>
 
@@ -107,7 +113,7 @@ export default function OtherNotices() {
 
           <div className="flex flex-row items-center justify-center">
             <a href="https://www.google.com/maps/place/Electricidad+San+Luis/@-32.8856233,-68.8357053,16.5z/data=!4m5!3m4!1s0x0:0xe1d67ca3ac640c37!8m2!3d-32.8845727!4d-68.8358074">
-              <img src={electricidad} alt="" className="" />
+              <img src={electricidad} alt=""  className="lg:w-80"/>
             </a>
           </div>
 
@@ -177,7 +183,7 @@ export default function OtherNotices() {
             </div>
           </Link>
           <a href="https://www.instagram.com/hache_market/">
-            <img src={hache} alt="" className="" />
+            <img src={hache} alt=""  className="lg:w-80" />
           </a>
         </div>
       </div>
