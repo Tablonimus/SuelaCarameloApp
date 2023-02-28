@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createMatch,
   createNotice,
   createTeam,
+  getAllTeams,
   postImage,
 } from "../../redux/actions/index";
 import axios from "axios";
@@ -29,6 +30,11 @@ export default function CreateNotice() {
     visitor: "",
     category: "",
   });
+
+  useEffect(() => {
+    dispatch(getAllTeams(match.category));
+  }, [match.category]);
+
   function handleMatch(e) {
     setMatch({
       ...match,
@@ -102,7 +108,6 @@ export default function CreateNotice() {
     team2: "",
   });
 
-  console.log(input);
   function handleChange(e) {
     if (e.target.name === "videos") {
       setInput({
@@ -211,28 +216,75 @@ export default function CreateNotice() {
                     <label htmlFor="local" className="text-white">
                       Local
                     </label>
-                    <input
+
+                    <select
+                      name="local"
+                      id="local"
+                      className="rounded-lg w-24"
+                      onChange={(e) => handleMatch(e)}
+                    >
+                      <option value="">Local</option>
+                      {teams.length > 0 ? (
+                        teams.map((team) => (
+                          <option
+                            key={team.id}
+                            id={team.short_name}
+                            value={team.short_name}
+                          >
+                            {team.short_name}
+                          </option>
+                        ))
+                      ) : (
+                        <option>Selecciona una categoria</option>
+                      )}
+                    </select>
+
+                    {/* <input
                       type="text"
                       name="local"
                       id="local"
                       placeholder="Local"
                       className="rounded-lg w-24"
                       onChange={(e) => handleMatch(e)}
-                    />
+                    /> */}
                   </section>
+
                   <span className="text-white">vs</span>
                   <section className="flex flex-col items-center">
                     <label htmlFor="visitor" className="text-white">
                       Visitante
                     </label>
-                    <input
+
+                    <select
+                      name="visitor"
+                      id="visitor"
+                      className="rounded-lg w-24"
+                      onChange={(e) => handleMatch(e)}
+                    >
+                      <option value="">Visitante</option>
+                      {teams.length > 0 ? (
+                        teams.map((team) => (
+                          <option
+                            key={team.id}
+                            id={team.short_name}
+                            value={team.short_name}
+                          >
+                            {team.short_name}
+                          </option>
+                        ))
+                      ) : (
+                        <option>Selecciona una categoria</option>
+                      )}
+                    </select>
+
+                    {/* <input
                       type="text"
                       name="visitor"
                       id="visitor"
                       placeholder="Visitante"
                       className="rounded-lg w-24"
                       onChange={(e) => handleMatch(e)}
-                    />
+                    /> */}
                   </section>
                 </section>
 
@@ -390,7 +442,7 @@ export default function CreateNotice() {
                 <div className="grid grid-cols-2 gap-3">
                   <section className="flex flex-col items-center justify-center">
                     <label
-                      htmlFor="team2"
+                      htmlFor="team1"
                       className="font-light text-white text-xl"
                     >
                       Equipo 1

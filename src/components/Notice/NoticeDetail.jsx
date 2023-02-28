@@ -34,14 +34,16 @@ export default function NoticeDetail() {
         </h2>
       </div>
 
-      <div className="w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
+
+
+      <div className="w-11/12 lg:w-1/2 flex-flex-col items-center justify-center z-30">
         {notice?.images?.length > 0 ? (
-          <div className="flex flex-col">
+          <div className="flex flex-col opacity-100">
             {notice?.images[0] ? (
-              <div className=" h-56 sm:h-64 xl:h-80 2xl:h-[530px]">
+              <div className="opacity-100 h-56 sm:h-64 xl:h-80 2xl:h-[530px]">
                 <Carousel>
                   {notice?.images?.map((img) => (
-                    <img src={img} alt="" />
+                    <img src={img} alt="" className="opacity-100" />
                   ))}
                 </Carousel>
               </div>
@@ -53,6 +55,7 @@ export default function NoticeDetail() {
           <YoutubeEmbed embedId={notice?.videos} />
         )}
       </div>
+<div className="flex flex-col  items-center justify-center p-5 border m-2 rounded-lg bg-gray-100 opacity-80 z-10">
       <div className="w-11/12 lg:w-1/2 flex flex-col items-center justify-center">
         {parrafo?.map((parra) => (
           <p key={parra} className="px-5 py-2 text-md">
@@ -60,6 +63,11 @@ export default function NoticeDetail() {
           </p>
         ))}
       </div>
+
+</div>
+
+
+
 
       <OtherNotices />
 
