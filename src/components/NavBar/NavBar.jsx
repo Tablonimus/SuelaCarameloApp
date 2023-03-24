@@ -23,12 +23,6 @@ export default function NavBar() {
           </span>{" "}
         </Navbar.Link>
 
-        {/* <Navbar.Link href="/home">
-          {" "}
-          <span className="text-white hover:text-orange-600">
-            Sponsors
-          </span>{" "}
-        </Navbar.Link> */}
         <Navbar.Link href="/contacto">
           {" "}
           <span className="text-white hover:text-orange-600">

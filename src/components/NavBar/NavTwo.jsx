@@ -50,83 +50,101 @@ export default function NavTwo() {
 
       <NavResults />
 
-      <span className="text-sm text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">Zona A</span>
-      <section className="flex items-center justify-center gap-1.5  mb-2  border-white w-full h-full">
-        {zonaA?.length ? (
-          zonaA?.map((team) => (
-            // <Link key={team.id} to={`/teams/${team.id}`}>
+      {category === "A1" ? (
+        <>
+          <span className="text-sm text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">
+            Zona A
+          </span>
+          <section className="flex items-center justify-center gap-1.5  mb-2  border-white w-full h-full">
+            {zonaA?.length ? (
+              zonaA?.map((team) => (
+                // <Link key={team.id} to={`/teams/${team.id}`}>
 
-            <img
-              key={team.id}
-              src={team.logo}
-              className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
-            />
-            // </Link>
-          ))
-        ) : (
-          <div className="ml-10 flex items-center justify-center gap-5">
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="md"
-            />
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="md"
-            />
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="md"
-            />
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="md"
-            />
-          </div>
-        )}
-      </section>
-   
-      <span className="text-sm text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">Zona B</span>
-      <section className="flex items-center justify-center gap-1.5   rounded- border-b pb-2 mb-5 border-white w-full h-full">
-        {zonaB?.length ? (
-          zonaB?.map((team) => (
-            // <Link key={team.id} to={`/teams/${team.id}`}>
+                <img
+                  key={team.id}
+                  src={team.logo}
+                  className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
+                />
+                // </Link>
+              ))
+            ) : (
+              <div className="ml-10 flex items-center justify-center gap-5">
+                <Spinner
+                  color="warning"
+                  aria-label="Warning spinner example"
+                  size="md"
+                />
+                <Spinner
+                  color="warning"
+                  aria-label="Warning spinner example"
+                  size="md"
+                />
+                <Spinner
+                  color="warning"
+                  aria-label="Warning spinner example"
+                  size="md"
+                />
+                <Spinner
+                  color="warning"
+                  aria-label="Warning spinner example"
+                  size="md"
+                />
+              </div>
+            )}
+          </section>
 
-            <img
-              key={team.id}
-              src={team.logo}
-              className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
-            />
-            // </Link>
-          ))
-        ) : (
-          <div className="ml-10 flex items-center justify-center gap-5">
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="md"
-            />
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="md"
-            />
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="md"
-            />
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="md"
-            />
-          </div>
-        )}
-      </section>
+          <span className="text-sm text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">
+            Zona B
+          </span>
+          <section className="flex items-center justify-center gap-1.5   rounded- border-b pb-2 mb-5 border-white w-full h-full">
+            {zonaB?.length ? (
+              zonaB?.map((team) => (
+                // <Link key={team.id} to={`/teams/${team.id}`}>
+
+                <img
+                  key={team.id}
+                  src={team.logo}
+                  className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
+                />
+                // </Link>
+              ))
+            ) : (
+              <div className="ml-10 flex items-center justify-center gap-5">
+                <Spinner
+                  color="warning"
+                  aria-label="Warning spinner example"
+                  size="md"
+                />
+                <Spinner
+                  color="warning"
+                  aria-label="Warning spinner example"
+                  size="md"
+                />
+                <Spinner
+                  color="warning"
+                  aria-label="Warning spinner example"
+                  size="md"
+                />
+                <Spinner
+                  color="warning"
+                  aria-label="Warning spinner example"
+                  size="md"
+                />
+              </div>
+            )}
+          </section>
+        </>
+      ) : (
+        <section className="flex items-center justify-center gap-1.5   rounded- border-b pb-2 mb-5 border-white w-full h-full">
+         { teams.map((team) => (
+          <img
+            key={team.id}
+            src={team.logo}
+            className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
+          />
+          ) )}
+        </section>
+      )}
 
       <CategoryHome />
     </div>

@@ -9,9 +9,9 @@ export default function NavResults() {
 
   return (
     <div className=" m-2 flex flex-row w-full border-t border-b border-white rounded-t-lg h-full">
-      <div className="flex items-center overflow-x-auto  lg:justify-center  w-full">
+      <div className="flex items-center overflow-x-auto gap-2 p-1  w-full lg:justify-center">
         {matches.length > 0 ? (
-          matches.map((match) => (
+          matches.slice(0,10).map((match) => (
             <MatchResult
               key={match.id}
               id={match.id}
