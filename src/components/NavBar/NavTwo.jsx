@@ -135,7 +135,7 @@ export default function NavTwo() {
           </section>
         </>
       ) : (
-        <section className="flex items-center justify-center gap-1.5  overflow-x-auto  rounded- border-b pb-2 mb-5 border-white w-full h-full">
+        <section className="flex items-center  gap-1.5  overflow-x-auto  rounded- border-b pb-2 mb-5 border-white w-full h-full">
          { teams.map((team) => (
           <img
             key={team.id}
