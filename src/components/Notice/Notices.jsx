@@ -13,42 +13,29 @@ export default function Notices({
   category,
 }) {
   return (
-    <div className="max-w-sm my-3 flex flex-col text-center items-center justify-center">
-      <Link to={`/notices/${id}`}>
-        <Card
-          // imgAlt="image"
-          imgSrc={
-            images[0] ? (
-              images[0]
-            ) : (
-              <Spinner
-                color="warning"
-                aria-label="Warning spinner example"
-                size="xl"
-              />
-            )
-          }
-          class="bg-[#F98958] rounded-lg shadow-inner border border-[#E96F22] shadow-white"
-        >
-          {videos?.length >= 1 ? (
-            <YoutubeEmbed embedId={videos} />
-          ) : videos?.length ? (
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="xl"
-            />
-          ) : (
-            false
-          )}
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {title}
-          </h5>
-          <p className="font-normal text-black dark:text-gray-400">
-            {subtitle}
-          </p>
-        </Card>
-      </Link>
-    </div>
+    <Link
+      to={`/notices/${id}`}//bg-[#F98958]
+      class="max-w-sm  bg-black bg-opacity-80 p-1 rounded-lg shadow-inner shadow-white  w-11/12"
+    >
+      {images[0] ? <img src={images[0]} className="w-96  lg:h-64 object-cover rounded-t-lg " /> : <></>}
+      {videos?.length >= 1 ? (
+        <YoutubeEmbed embedId={videos} />
+      ) : videos?.length ? (
+        <Spinner
+          color="warning"
+          aria-label="Warning spinner example"
+          size="xl"
+        />
+      ) : (
+        false
+      )}
+      <div className="flex flex-col px-5 pt-3 pb-5 gap-2">
+        
+      <h5 className="text-2xl font-bold tracking-tight text-gray-300">
+        {title}
+      </h5>
+      <p className="font-normal lg:text-lg text-gray-200">{subtitle}</p>
+      </div>
+    </Link>
   );
 }

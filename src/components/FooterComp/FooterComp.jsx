@@ -8,7 +8,7 @@ import { Footer } from "flowbite-react";
 
 export default function FooterComp() {
   return (
-    <div className="bg-black rounded-t-lg w-full">
+    <div className="bg-black rounded-t-lg w-full sticky">
       <div className="w-full text-center bg-black">
         <Footer.Divider />
         <div className="w-full flex justify-around items-center">

@@ -41,7 +41,7 @@ export default function OtherNotices() {
                 <img
                   src={randomBig?.images[0]}
                   alt=""
-                  className="object-cover w-96 h-32 lg:w-96 lg:h-56"
+                  className="object-cover w-96 h-28 lg:w-96 lg:h-56"
                 />
               ) : (
                 <section className="overflow-hidden h-32">

@@ -41,18 +41,17 @@ export default function NavTwo() {
   }
 
   return (
-    <div className="bg-black w-full  flex flex-col items-center mt-14 m-2">
-      {category === "A1" || !category ? (
-        <h1 className="font-bold text-[#E96F22]">#A1xSuela</h1>
-      ) : (
-        <h1 className="font-bold text-[#E96F22]">#FemxSuela</h1>
-      )}
+    <div className="bg-black  w-full  flex flex-col items-center mt-24 py-5 m-2">
+      <h1 className="font-bold text-[#E96F22] lg:text-3xl mb-5">
+     
+        {category === "A1" || !category ? "  #A1xSuela" : " #FemxSuela"}
+      </h1>
 
       <NavResults />
 
       {category === "A1" ? (
         <>
-          <span className="text-sm text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">
+          <span className="text-sm lg:text-lg text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">
             Zona A
           </span>
           <section className="flex items-center  justify-center gap-1.5  mb-2  border-white w-full h-full">
@@ -93,7 +92,7 @@ export default function NavTwo() {
             )}
           </section>
 
-          <span className="text-sm text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">
+          <span className="text-sm lg:text-lg text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">
             Zona B
           </span>
           <section className="flex items-center justify-center gap-1.5   rounded- border-b pb-2 mb-5 border-white w-full h-full">
@@ -135,14 +134,14 @@ export default function NavTwo() {
           </section>
         </>
       ) : (
-        <section className="flex items-center  gap-1.5  overflow-x-auto  rounded- border-b pb-2 mb-5 border-white w-full h-full">
-         { teams.map((team) => (
-          <img
-            key={team.id}
-            src={team.logo}
-            className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
-          />
-          ) )}
+        <section className="flex items-center gap-1.5  overflow-x-auto p-2  border-b  border-white">
+          {teams.map((team) => (
+            <img
+              key={team.id}
+              src={team.logo}
+              className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
+            />
+          ))}
         </section>
       )}
 

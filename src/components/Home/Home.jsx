@@ -1,18 +1,11 @@
 import React, { useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
-import { Carousel, Spinner } from "flowbite-react";
-import suela1 from "../../assets/images/suela1.jpeg";
-import suela2 from "../../assets/images/suela2.jpeg";
-import suela3 from "../../assets/images/suela3.jpeg";
+import { Spinner } from "flowbite-react";
 import FooterComp from "../FooterComp/FooterComp.jsx";
-import { Card } from "flowbite-react";
 import NavTwo from "../NavBar/NavTwo";
-import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMatches, getAllNotices, getAllTeams } from "../../redux/actions";
 import Notices from "../Notice/Notices";
-import CategoryHome from "../Buttons/CategoryHome";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -33,11 +26,10 @@ export default function Home() {
   );
 
   return (
-    <div className=" bg-black justify-between flex flex-col items-center">
+    <div className="flex flex-col justify-between items-center">
       <NavBar />
-
       <NavTwo />
-      <section className="h-full">
+      <section className="py-5 w-full h-full flex flex-col items-center justify-center gap-10">
         {allNotices?.length > 0 ? (
           allNotices.map((notice) => (
             <Notices
@@ -52,13 +44,17 @@ export default function Home() {
             />
           ))
         ) : (
-          <div className="flex flex-col items-center justify-center gap-5">
-            <Spinner
-              color="warning"
-              aria-label="Warning spinner example"
-              size="xl"
-            />
-            <span className="text-white"> Cargando Noticias</span>
+          <div className="flex flex-col">
+            <div className=" max-w-sm  bg-black bg-opacity-80 p-1 rounded-lg shadow-inner shadow-white  w-11/12">
+              <div className="animate-pulse h-64 object-cover  bg-gray-600 rounded-t-lg ">
+                {" "}
+              </div>
+
+              <div className="animate-pulse flex flex-col px-5 pt-3 pb-5 gap-2">
+                <div className="rounded-full w-1/2 h-6  text-2xl font-bold tracking-tight bg-gray-600"></div>
+                <div className="rounded-full w-11/12 h-5 font-normal lg:text-lg bg-gray-600"></div>
+              </div>
+            </div>
           </div>
         )}
       </section>

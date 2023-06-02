@@ -22,10 +22,9 @@ export default function NoticeDetail() {
   }, [dispatch, params.id]);
 
   return (
-    <div className="bg-[#F98958] flex flex-col justify-between items-center">
-      <NavBar />
-
-      <div className="mt-20 w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
+    <div className="flex flex-col justify-between items-center">
+  
+      <div className="mt-32 w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
         <h1 className="px-5 text-center font-bold text-black text-black text-3xl lg:text-4xl">
           {notice?.title}
         </h1>
@@ -38,10 +37,10 @@ export default function NoticeDetail() {
         {notice?.images?.length > 0 ? (
           <div className="flex flex-col opacity-100">
             {notice?.images[0] ? (
-              <div className="opacity-100 h-56 sm:h-64 xl:h-80 2xl:h-[530px]">
+              <div className="opacity-100 h-96  xl:h-80 2xl:h-[530px]">
                 <Carousel>
                   {notice?.images?.map((img) => (
-                    <img src={img} alt="" className="opacity-100" />
+                    <img src={img} alt="" className="opacity-100 rounded-lg" />
                   ))}
                 </Carousel>
               </div>
@@ -54,18 +53,23 @@ export default function NoticeDetail() {
         )}
       </div>
       <div className="flex flex-col  w-11/12 lg:w-1/2 items-center justify-center  m-2 rounded-lg bg-gray-100 opacity-80 shadow-xl">
-        <div className="w-11/12 lg:w-1/2 flex flex-col items-center justify-center">
-          {parrafo?.map((parra) => (
-            <p key={parra} className="px-5 py-2 text-md font-semibold">
-              {parra}
-            </p>
-          ))}
+        <div className="w-11/12 flex flex-col items-center justify-center">
+          {notice?.content?.length > 0 && notice?.content[0] !== "<" ? (
+            parrafo?.map((parra) => (
+              <p key={parra} className="px-5 py-2 text-md font-semibold">
+                {parra}
+              </p>
+            ))
+          ) : (
+            <p dangerouslySetInnerHTML={{ __html: notice?.content }} />
+          )}
         </div>
+        <div id="content"></div>
       </div>
 
       <OtherNotices />
 
-      <FooterComp />
+    
     </div>
   );
 }

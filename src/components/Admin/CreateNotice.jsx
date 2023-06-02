@@ -11,6 +11,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import { Accordion } from "flowbite-react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import youtube from "../../assets/images/youtube.png"
+
 
 export default function CreateNotice() {
   const dispatch = useDispatch();
@@ -94,6 +98,7 @@ export default function CreateNotice() {
   }
   //----------------------NOTICE HANDLERS------------------------
   const [image, setImage] = useState("");
+  const [value, setValue] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
   const [video, setVideo] = useState("");
   const [loadingVideo, setLoadingVideo] = useState(false);
@@ -114,14 +119,12 @@ export default function CreateNotice() {
         ...input,
         [e.target.name]: e.target.value,
       });
-    }
-
-    if (e.target.name === "teams") {
+    } else if (e.target.name === "teams") {
       setInput({
         ...input,
         [e.target.name]: e.target.value,
       });
-    } else {
+    } else if (e.target.name) {
       setInput({
         ...input,
         [e.target.name]: e.target.value,
@@ -170,7 +173,18 @@ export default function CreateNotice() {
   }
   function onSubmitHandler(e) {
     e.preventDefault();
-    dispatch(createNotice(input)).then(
+    dispatch(
+      createNotice({
+        title: input.title,
+        subtitle: input.subtitle,
+        images: input.images,
+        videos: input.videos,
+        content: value,
+        category: input.category,
+        team1: input.team1,
+        team2: input.team2,
+      })
+    ).then(
       // navigate("/home"),
       alert("Noticia Creada Correctamente")
     );
@@ -187,10 +201,10 @@ export default function CreateNotice() {
     <div className="flex flex-col items-center justify-between bg-black ">
       <NavBar />
       <section className="mt-20 flex items-center justify-center w-screen">
-        <Accordion alwaysOpen={true} className="w-96">
+        <Accordion alwaysOpen={false} className="w-96 lg:w-1/2 bg-slate-500 ">
           <Accordion.Panel>
             <Accordion.Title>
-              <span className="text-white">Generar Partido</span>
+              <span className="text-black font-bold">Generar Partido</span>
             </Accordion.Title>
             <Accordion.Content className="bg-amber-600">
               <form
@@ -335,7 +349,7 @@ export default function CreateNotice() {
           <Accordion.Panel>
             <Accordion.Title>
               {" "}
-              <span className="text-white">Crear Equipo</span>
+              <span  className="text-black font-bold">Crear Equipo</span>
             </Accordion.Title>
             <Accordion.Content>
               <form
@@ -423,7 +437,7 @@ export default function CreateNotice() {
           <Accordion.Panel>
             <Accordion.Title>
               {" "}
-              <span className="text-white">Redactar Nota</span>
+              <span  className="text-black font-bold">Redactar Nota</span>
             </Accordion.Title>
             <Accordion.Content className="bg-amber-600">
               <form
@@ -439,7 +453,7 @@ export default function CreateNotice() {
                   <option value="A1">A1</option>
                   <option value="FEM">FEM</option>
                 </select>
-                <div className="grid grid-cols-2 gap-3">
+                {/* <div className="grid grid-cols-2 gap-3">
                   <section className="flex flex-col items-center justify-center">
                     <label
                       htmlFor="team1"
@@ -468,7 +482,7 @@ export default function CreateNotice() {
                       onChange={(e) => handleChange(e)}
                     />
                   </section>
-                </div>
+                </div> */}
 
                 <input
                   className="rounded-lg"
@@ -481,18 +495,25 @@ export default function CreateNotice() {
                   className="rounded-lg w-11/12"
                   type="text"
                   name="subtitle"
-                  placeholder="Subtitulo de la noticia"
+                  placeholder="Bajada"
                   onChange={(e) => handleChange(e)}
                 />
-                <textarea
+                {/* <textarea
                   className="rounded-lg w-11/12 h-96"
                   name="content"
                   placeholder="Contenido de la noticia"
                   height={50}
                   onChange={(e) => handleChange(e)}
+                /> */}
+                <h3 className="text-white font-semibold">Contenido de la noticia</h3>
+                <ReactQuill
+                  className="bg-white w-11/12 "
+                  theme="snow"
+                  name="content"
+                  value={value}
+                  onChange={setValue}
                 />
-
-                <div className="flex flex-col items-center ">
+                <div className="flex flex-col items-center gap-5 ">
                   <label className="font-light text-white text-xl">
                     Imagen de la noticia
                   </label>
@@ -521,16 +542,22 @@ export default function CreateNotice() {
                     ))
                   )}
                   <label className="font-light text-white text-xl">
-                    Video de la noticia
+                    Link a video de la noticia
                   </label>
+                  <section className="relative " >
+                        <img src={youtube} alt="youtubeLogo" className="absolute h-9  " />
                   <input
-                    className="rounded-lg"
+                    className="rounded-lg pl-24 h-9 border border-red-600"
                     type="text"
                     name="videos"
                     id="videos"
                     placeholder="ID YOUTUBE..."
                     onChange={(e) => handleChange(e)}
                   />
+                  </section>
+                  <label className="font-light text-white text-xl">
+                   Subir video
+                  </label>
                   <input
                     type="file"
                     name="video"

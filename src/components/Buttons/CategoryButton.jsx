@@ -38,7 +38,7 @@ export default function CategoryButton() {
     <div className="flex flex-row">
       <button
         onClick={(e) => handleClickA1(e)}
-        className="opacity-80 hover:bg-white active:bg-violet-700 z-30 m-2 flex  bg-gray-500 flex-col w-16 h-16  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-white"
+        className="hover:bg-white active:bg-white z-30 m-2 flex  bg-gray-500 flex-col w-16 h-16  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-white"
         value={"A1"}
       >
         <img src={negra} alt="" className="drop-shadow-2xl " />
@@ -46,10 +46,10 @@ export default function CategoryButton() {
 
       <button
         onClick={(e) => handleClickFem(e)}
-        className="opacity-80 hover:bg-white active:bg-violet-700 z-30 m-2 flex bg-gray-500 flex-col w-16 h-16  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-white"
+        className="hover:bg-white active:bg-white z-30 m-2 flex bg-gray-500 flex-col w-16 h-16  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-white"
         value={"FEM"}
       >
-        <img src={naranja} alt="" className="drop-shadow-2xl " />
+        <img src={naranja} alt="" className="drop-shadow-2xl" />
       </button>
     </div>
   );
