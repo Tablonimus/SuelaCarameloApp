@@ -1,8 +1,6 @@
 import React from "react";
-import FooterComp from "../FooterComp/FooterComp";
-import NavBar from "../NavBar/NavBar";
 import mail from "../../assets/images/mail.png";
-import { Carousel } from "flowbite-react";
+
 export default function ContactUs() {
   return (
     <div className=" h-screen flex flex-col justify-between items-center">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Landing from "./components/Home/Landing";
@@ -7,8 +7,6 @@ import Download from "./components/Download/Download";
 import NoticeDetail from "./components/Notice/NoticeDetail";
 import "./App.css";
 import CreateNotice from "./components/Admin/CreateNotice";
-import { getAllNotices, getAllTeams } from "./redux/actions";
-import { useDispatch } from "react-redux";
 import AboutUs from "./components/AboutUs/AboutUs";
 import ContactUs from "./components/ContactUs/ContactUs";
 import RichTextEditor from "./components/RichTextEditor/RichTextEditor";
@@ -17,12 +15,6 @@ import FooterComp from "./components/FooterComp/FooterComp";
 
 function AnimatedRoutes() {
   const location = useLocation();
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getAllNotices());
-  //   dispatch(getAllTeams());
-  // }, [dispatch]);
 
   return (
     <section id="general" className="">

@@ -1,12 +1,9 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 import PWAPrompt from "react-ios-pwa-prompt";
 import { usePWAInstall } from "react-use-pwa-install";
-import Push from "push.js";
 import "./Download.css";
-import NavBar from "../NavBar/NavBar";
-import FooterComp from "../FooterComp/FooterComp";
+
 
 export default function Download() {
   const install = usePWAInstall();

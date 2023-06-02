@@ -3,9 +3,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearPage, getNoticeDetail } from "../../redux/actions";
-
-import FooterComp from "../FooterComp/FooterComp";
-import NavBar from "../NavBar/NavBar";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import OtherNotices from "./OtherNotices";
 
