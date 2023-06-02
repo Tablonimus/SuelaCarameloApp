@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import NavBar from "../NavBar/NavBar";
-import FooterComp from "../FooterComp/FooterComp.jsx";
+
 import NavTwo from "../NavBar/NavTwo";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMatches, getAllNotices, getAllTeams } from "../../redux/actions";
 import Notices from "../Notice/Notices";
+import { useState } from "react";
+import { Pagination } from "flowbite-react";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -24,13 +25,26 @@ export default function Home() {
       .reverse()
   );
 
+  //PAGINATION---
+  const [currentPage, setCurrentPage] = useState(1);
+  const [noticesPerPage, setNoticesPerPage] = useState(4);
+  const indexOfLastNotice = currentPage * noticesPerPage;
+  const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
+  const currentNotices = allNotices?.slice(
+    indexOfFirstNotice,
+    indexOfLastNotice
+  );
+  const pagination = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  const totalPages = Math.ceil(allNotices.length / noticesPerPage);
+
   return (
     <div className="flex flex-col justify-between items-center">
-      <NavBar />
       <NavTwo />
-      <section className="py-5 w-full h-full flex flex-col items-center justify-center gap-10">
-        {allNotices?.length > 0 ? (
-          allNotices.map((notice) => (
+      <section id="nSection" className="py-5 w-full h-full flex flex-col items-center justify-center gap-10">
+        {currentNotices?.length > 0 ? (
+          currentNotices.map((notice) => (
             <Notices
               key={notice.id}
               id={notice.id}
@@ -86,9 +100,23 @@ export default function Home() {
             </div>
           </div>
         )}
-      </section>
 
-      <FooterComp />
+        <div className="flex items-center justify-center text-center">
+          <a href="#nSection">
+
+          <Pagination
+            currentPage={currentPage}
+            layout="pagination"
+            nextLabel="Siguiente"
+            onPageChange={pagination}
+            previousLabel="Atras"
+            showIcons
+            totalPages={totalPages}
+           
+          />
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

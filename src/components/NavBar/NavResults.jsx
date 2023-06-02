@@ -50,15 +50,12 @@ export default function NavResults() {
       ) : (
         <div className="flex w-10/12 flex-col items-center justify-center gap-3 pt-5 pb-14">
           <div className="flex flex-col h-24  w-full h-full justify-center  bg-black bg-opacity-80 border border-[#ED7020] shadow-inner shadow-white rounded-lg">
-            {/* <div className="animate-pulse w-11/12 h-32 object-cover  bg-gray-600 rounded-t-lg "></div> */}
             <div className="animate-pulse flex flex-col px-5 pt-3 pb-5 gap-2">
               <div className="rounded-full w-1/2 h-6  text-2xl font-bold tracking-tight bg-gray-600"></div>
               <div className="rounded-full w-11/12 h-5 font-normal lg:text-lg bg-gray-600"></div>
             </div>
           </div>
           <div className="flex flex-col h-24  w-full h-full justify-around bg-black bg-opacity-80 border border-[#ED7020] shadow-inner shadow-white rounded-lg">
-            <div className="animate-pulse w-11/12 h-32 object-cover  bg-gray-600 rounded-t-lg "></div>
-
             <div className="animate-pulse flex flex-col px-5 pt-3 pb-5 gap-2">
               <div className="rounded-full w-1/2 h-6  text-2xl font-bold tracking-tight bg-gray-600"></div>
               <div className="rounded-full w-11/12 h-5 font-normal lg:text-lg bg-gray-600"></div>

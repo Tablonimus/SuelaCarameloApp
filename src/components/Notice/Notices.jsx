@@ -15,7 +15,7 @@ export default function Notices({
   return (
     <Link
       to={`/notices/${id}`}//bg-[#F98958]
-      class="max-w-sm  bg-black bg-opacity-80 p-1 rounded-lg shadow-inner shadow-white  w-11/12"
+      class="max-w-sm  bg-black bg-opacity-90 p-1 rounded-lg shadow-inner shadow-white  w-11/12"
     >
       {images[0] ? <img src={images[0]} className="w-96  lg:h-64 object-cover rounded-t-lg " /> : <></>}
       {videos?.length >= 1 ? (
