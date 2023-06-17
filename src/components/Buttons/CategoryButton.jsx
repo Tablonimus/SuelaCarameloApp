@@ -9,6 +9,7 @@ import {
 } from "../../redux/actions";
 import naranja from "../../assets/images/f1.png";
 import negra from "../../assets/images/a1.png";
+import dh from "../../assets/images/dh.png";
 
 export default function CategoryButton() {
   const navigate = useNavigate();
@@ -33,6 +34,15 @@ export default function CategoryButton() {
     dispatch(getAllMatches(category));
     navigate("/home");
   }
+  function handleClickHonor(e) {
+    e.preventDefault();
+    const category = "DH";
+    dispatch(getAllNotices(category));
+    dispatch(changeCategory(category));
+    dispatch(getAllTeams(category));
+    dispatch(getAllMatches(category));
+    navigate("/home");
+  }
 
   return (
     <div className="flex flex-row">
@@ -50,6 +60,13 @@ export default function CategoryButton() {
         value={"FEM"}
       >
         <img src={naranja} alt="" className="drop-shadow-2xl" />
+      </button>
+      <button
+        onClick={(e) => handleClickHonor(e)}
+        className="hover:bg-white active:bg-white z-30 m-2 flex bg-gray-500 flex-col w-16 h-16  drop-shadow-2xl rounded-full border border-slate-700 items-center justify-center text-white"
+        value={"DH"}
+      >
+        <img src={dh} alt="" className="drop-shadow-2xl p-[3px]" />
       </button>
     </div>
   );

@@ -13,7 +13,6 @@ export default function MatchResult({
   finished,
   teams,
 }) {
-  console.log(date);
   const localLogo =
     local === teams[0]?.short_name
       ? teams[0]?.logo || escudoVacio

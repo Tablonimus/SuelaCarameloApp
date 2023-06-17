@@ -58,7 +58,7 @@ export function getAllTeams(category) {
     try {
       let json = await axios.get(`${url}/teams`);
 
-      if (!category) {
+      if (!category || category === "DH") {
         const filters = json.data.filter((cat) => cat.category === "A1");
         dispatch({
           type: action.GET_ALL_TEAMS,
@@ -103,7 +103,7 @@ export function getAllMatches(category) {
     try {
       let json = await axios.get(`${url}/matchs`);
 
-      if (!category) {
+      if (!category || category === "DH") {
         const filters = json.data.filter((cat) => cat.category === "A1");
         dispatch({
           type: action.GET_ALL_MATCHES,

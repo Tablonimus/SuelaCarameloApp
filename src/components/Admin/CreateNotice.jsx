@@ -13,8 +13,7 @@ import NavBar from "../NavBar/NavBar";
 import { Accordion } from "flowbite-react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import youtube from "../../assets/images/youtube.png"
-
+import youtube from "../../assets/images/youtube.png";
 
 export default function CreateNotice() {
   const dispatch = useDispatch();
@@ -223,6 +222,7 @@ export default function CreateNotice() {
                     <option value="A1">Seleccione una categoria</option>
                     <option value="A1">A1</option>
                     <option value="FEM">FEM</option>
+                    <option value="DH">DH</option>
                   </select>
                 </section>
                 <section className="flex gap-3">
@@ -349,7 +349,7 @@ export default function CreateNotice() {
           <Accordion.Panel>
             <Accordion.Title>
               {" "}
-              <span  className="text-black font-bold">Crear Equipo</span>
+              <span className="text-black font-bold">Crear Equipo</span>
             </Accordion.Title>
             <Accordion.Content>
               <form
@@ -394,6 +394,7 @@ export default function CreateNotice() {
                     <option value="A1">Seleccione una categoria</option>
                     <option value="A1">A1</option>
                     <option value="FEM">FEM</option>
+                    <option value="DH">DH</option>
                   </select>
                 </section>
                 <section className="flex gap-6 items-center justify-center">
@@ -437,7 +438,7 @@ export default function CreateNotice() {
           <Accordion.Panel>
             <Accordion.Title>
               {" "}
-              <span  className="text-black font-bold">Redactar Nota</span>
+              <span className="text-black font-bold">Redactar Nota</span>
             </Accordion.Title>
             <Accordion.Content className="bg-amber-600">
               <form
@@ -452,6 +453,7 @@ export default function CreateNotice() {
                   <option value="A1">Seleccione una categoria</option>
                   <option value="A1">A1</option>
                   <option value="FEM">FEM</option>
+                  <option value="DH">DH</option>
                 </select>
                 {/* <div className="grid grid-cols-2 gap-3">
                   <section className="flex flex-col items-center justify-center">
@@ -505,7 +507,9 @@ export default function CreateNotice() {
                   height={50}
                   onChange={(e) => handleChange(e)}
                 /> */}
-                <h3 className="text-white font-semibold">Contenido de la noticia</h3>
+                <h3 className="text-white font-semibold">
+                  Contenido de la noticia
+                </h3>
                 <ReactQuill
                   className="bg-white w-11/12 "
                   theme="snow"
@@ -544,19 +548,23 @@ export default function CreateNotice() {
                   <label className="font-light text-white text-xl">
                     Link a video de la noticia
                   </label>
-                  <section className="relative " >
-                        <img src={youtube} alt="youtubeLogo" className="absolute h-9  " />
-                  <input
-                    className="rounded-lg pl-24 h-9 border border-red-600"
-                    type="text"
-                    name="videos"
-                    id="videos"
-                    placeholder="ID YOUTUBE..."
-                    onChange={(e) => handleChange(e)}
-                  />
+                  <section className="relative ">
+                    <img
+                      src={youtube}
+                      alt="youtubeLogo"
+                      className="absolute h-9  "
+                    />
+                    <input
+                      className="rounded-lg pl-24 h-9 border border-red-600"
+                      type="text"
+                      name="videos"
+                      id="videos"
+                      placeholder="ID YOUTUBE..."
+                      onChange={(e) => handleChange(e)}
+                    />
                   </section>
                   <label className="font-light text-white text-xl">
-                   Subir video
+                    Subir video
                   </label>
                   <input
                     type="file"
