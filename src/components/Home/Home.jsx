@@ -25,7 +25,7 @@ export default function Home() {
       .reverse()
   );
 
-  console.log("debuggin", allNotices);
+
   //PAGINATION---
   const [currentPage, setCurrentPage] = useState(1);
   const [noticesPerPage, setNoticesPerPage] = useState(4);

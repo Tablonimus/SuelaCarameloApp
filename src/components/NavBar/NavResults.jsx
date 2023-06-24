@@ -6,6 +6,8 @@ import MatchResult from "./MatchResult";
 export default function NavResults() {
   const matches = useSelector((state) => state.allMatches);
 
+console.log(matches);
+  
   function dividirArray(array, elementosPorSubarray) {
     var subarrays = [];
     for (var i = 0; i < array.length; i += elementosPorSubarray) {

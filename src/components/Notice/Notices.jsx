@@ -12,7 +12,7 @@ export default function Notices({
   videos,
   category,
 }) {
-  console.log(id);
+
   return (
     <Link
       to={`/notices/${id}`} //bg-[#F98958]

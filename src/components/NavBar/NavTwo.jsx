@@ -15,7 +15,6 @@ export default function NavTwo() {
   const category = useSelector((state) => state.category);
   const teams = useSelector((state) => state.allTeams);
 
-  console.log(teams);
 
   const zonaA = [];
   const zonaB = [];
@@ -46,7 +45,7 @@ export default function NavTwo() {
      
         {category === "A1" || !category ? "  #A1xSuela" :category === "F1"?
          " #FemxSuela":
-         "#LigaDeHonor"}
+         "#DHxSuela"}
       </h1>
 
       <NavResults />
@@ -56,7 +55,7 @@ export default function NavTwo() {
           <span className="text-sm lg:text-lg text-[#E96F22] font-semibold border-b border-[#E96F22] mb-2">
             Zona A
           </span>
-          <section className="flex items-center  justify-center gap-1.5  mb-2  border-white w-full h-full">
+          <section className="  flex items-center  justify-center gap-1.5  mb-2  border-white w-full h-full">
             {zonaA?.length ? (
               zonaA?.map((team) => (
                 // <Link key={team.id} to={`/teams/${team.id}`}>
@@ -64,7 +63,7 @@ export default function NavTwo() {
                 <img
                   key={team.id}
                   src={team.logo}
-                  className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
+                  className=" bg-[#E96F22] object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
                 />
                 // </Link>
               ))
@@ -105,7 +104,7 @@ export default function NavTwo() {
                 <img
                   key={team.id}
                   src={team.logo}
-                  className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
+                  className="bg-[#E96F22] object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
                 />
                 // </Link>
               ))
@@ -141,7 +140,7 @@ export default function NavTwo() {
             <img
               key={team.id}
               src={team.logo}
-              className="bg-white object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
+              className="bg-[#E96F22] object-cover border border-[#E96F22]  w-8 h-8  rounded-full"
             />
           ))}
         </section>

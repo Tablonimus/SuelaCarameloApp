@@ -33,7 +33,7 @@ export default function MatchResult({
           <img
             src={localLogo || escudoVacio}
             alt="local"
-            className="w-10 h-10 md:w-20 md:h-20 rounded-full bg-white"
+            className="w-10 h-10 md:w-20 md:h-20  object-contain"
           />
           <h5 className="  text-white font-bold text-[11px] lg:text-3xl ">
             {local_name}
@@ -53,7 +53,7 @@ export default function MatchResult({
           <img
             src={visitorLogo || escudoVacio}
             alt="visitor"
-            className="w-10 h-10 md:w-20 md:h-20 rounded-full bg-white"
+            className="w-10 h-10 md:w-20 md:h-20  object-contain"
           />
         </div>
       </div>
