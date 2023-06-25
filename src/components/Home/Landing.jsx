@@ -19,7 +19,7 @@ export default function Landing() {
           className="h-screen w-screen"
           poster=""
         /> */}
-        <img src={landingImg} className="h-screen object-cover w-screen"/>
+        <img src={landingImg} className="h-screen object-contain w-screen"/>
       </div>
     </div>
   );

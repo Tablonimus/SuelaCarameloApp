@@ -6,6 +6,7 @@ import { getAllMatches, getAllNotices, getAllTeams } from "../../redux/actions";
 import Notices from "../Notice/Notices";
 import { useState } from "react";
 import { Pagination } from "flowbite-react";
+import NoticeLoaderComponent from "./NoticeLoaderComponent";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -13,7 +14,11 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getAllNotices(categoryState));
+  }, []);
+  useEffect(() => {
     dispatch(getAllTeams(categoryState));
+  }, []);
+  useEffect(() => {
     dispatch(getAllMatches(categoryState));
   }, []);
 
@@ -24,7 +29,6 @@ export default function Home() {
       })
       .reverse()
   );
-
 
   //PAGINATION---
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,7 +47,10 @@ export default function Home() {
   return (
     <div className="flex flex-col justify-between items-center">
       <NavTwo />
-      <section id="nSection" className="py-5 w-full h-full flex flex-col items-center justify-center gap-10">
+      <section
+        id="nSection"
+        className="py-5 w-full h-full flex flex-col items-center justify-center gap-10"
+      >
         {currentNotices?.length > 0 ? (
           currentNotices.map((notice) => (
             <Notices
@@ -58,63 +65,20 @@ export default function Home() {
             />
           ))
         ) : (
-          <div className="flex flex-col justify-center items-center w-10/12 gap-5">
-            <div className="bg-black bg-opacity-80 p-1 rounded-lg shadow-inner shadow-white  w-11/12">
-              <div className="animate-pulse h-64 object-cover  bg-gray-600 rounded-t-lg ">
-                {" "}
-              </div>
-
-              <div className="animate-pulse flex flex-col px-5 pt-3 pb-5 gap-2">
-                <div className="rounded-full w-1/2 h-6  text-2xl font-bold tracking-tight bg-gray-600"></div>
-                <div className="rounded-full w-11/12 h-5 font-normal lg:text-lg bg-gray-600"></div>
-              </div>
-            </div>
-            <div className="bg-black bg-opacity-80 p-1 rounded-lg shadow-inner shadow-white  w-11/12">
-              <div className="animate-pulse h-64 object-cover  bg-gray-600 rounded-t-lg ">
-                {" "}
-              </div>
-
-              <div className="animate-pulse flex flex-col px-5 pt-3 pb-5 gap-2">
-                <div className="rounded-full w-1/2 h-6  text-2xl font-bold tracking-tight bg-gray-600"></div>
-                <div className="rounded-full w-11/12 h-5 font-normal lg:text-lg bg-gray-600"></div>
-              </div>
-            </div>
-            <div className="bg-black bg-opacity-80 p-1 rounded-lg shadow-inner shadow-white  w-11/12">
-              <div className="animate-pulse h-64 object-cover  bg-gray-600 rounded-t-lg ">
-                {" "}
-              </div>
-
-              <div className="animate-pulse flex flex-col px-5 pt-3 pb-5 gap-2">
-                <div className="rounded-full w-1/2 h-6  text-2xl font-bold tracking-tight bg-gray-600"></div>
-                <div className="rounded-full w-11/12 h-5 font-normal lg:text-lg bg-gray-600"></div>
-              </div>
-            </div>
-            <div className="bg-black bg-opacity-80 p-1 rounded-lg shadow-inner shadow-white  w-11/12">
-              <div className="animate-pulse h-64 object-cover  bg-gray-600 rounded-t-lg ">
-                {" "}
-              </div>
-
-              <div className="animate-pulse flex flex-col px-5 pt-3 pb-5 gap-2">
-                <div className="rounded-full w-1/2 h-6  text-2xl font-bold tracking-tight bg-gray-600"></div>
-                <div className="rounded-full w-11/12 h-5 font-normal lg:text-lg bg-gray-600"></div>
-              </div>
-            </div>
-          </div>
+          <NoticeLoaderComponent />
         )}
 
         <div className="flex items-center justify-center text-center">
           <a href="#nSection">
-
-          <Pagination
-            currentPage={currentPage}
-            layout="pagination"
-            nextLabel="Siguiente"
-            onPageChange={pagination}
-            previousLabel="Atras"
-            showIcons
-            totalPages={totalPages}
-           
-          />
+            <Pagination
+              currentPage={currentPage}
+              layout="pagination"
+              nextLabel="Siguiente"
+              onPageChange={pagination}
+              previousLabel="Atras"
+              showIcons
+              totalPages={totalPages}
+            />
           </a>
         </div>
       </section>

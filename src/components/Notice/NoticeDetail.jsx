@@ -19,9 +19,9 @@ export default function NoticeDetail() {
   }, [dispatch, params.id]);
 
   return (
-    <div className="flex flex-col justify-between items-center">
+    <div id="noticia" className="pt-32 min-w-screen flex flex-col items-center">
   
-      <div className="mt-32 w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
+      <div className=" w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
         <h1 className="px-5 text-center font-bold text-black text-black text-3xl lg:text-4xl">
           {notice?.title}
         </h1>
@@ -49,7 +49,7 @@ export default function NoticeDetail() {
           <YoutubeEmbed embedId={notice?.videos} />
         )}
       </div>
-      <div className="flex flex-col  w-11/12 lg:w-1/2 items-center justify-center  m-2 rounded-lg bg-gray-100 opacity-80 shadow-xl">
+      <div className="flex flex-col  w-11/12 lg:w-1/2 items-center justify-center py-8 m-2 rounded-lg bg-gray-100 opacity-80 shadow-xl">
         <div className="w-11/12 flex flex-col items-center justify-center">
           {notice?.content?.length > 0 && notice?.content[0] !== "<" ? (
             parrafo?.map((parra) => (
