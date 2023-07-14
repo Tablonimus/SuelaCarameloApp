@@ -43,7 +43,7 @@ export default function NavTwo() {
     <div className="bg-black  w-full  flex flex-col items-center mt-24 py-5 m-2">
       <h1 className="font-bold text-[#E96F22] lg:text-3xl mb-5">
      
-        {category === "A1" || !category ? "#A1xSuela" :category === "F1"?
+        {category === "A1" || !category ? "#A1xSuela" :category === "FEM"?
          "#FemxSuela":
          "#DHxSuela"}
       </h1>
