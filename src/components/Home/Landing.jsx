@@ -1,6 +1,6 @@
 import React from "react";
 import landing1 from "../../assets/videos/landing1.mp4";
-import landingImg from "../../assets/images/landing.jpg"
+import landingImg from "../../assets/images/portadaAgosto.jpg"
 import CategoryButton from "../Buttons/CategoryButton";
 import "../../App.css";
 export default function Landing() {
