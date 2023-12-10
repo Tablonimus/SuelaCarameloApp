@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 // const url = "https://suelacarameloapp-backend-production.up.railway.app";
 
-const url = "https://suelacaramelobackend-production.up.railway.app";
+const url = "https://suela-caramelo-app-back-end.vercel.app";
 // const url = "http://localhost:3001";
 
 export function clearPage() {
