@@ -113,7 +113,7 @@ export default function ClubDetail() {
                       {name.split(" ")[0]} <span> {name.split(" ")[1]}</span>{" "}
                       {/* <i> {number}</i> */}
                     </h2>
-                    <span></span>
+
                     <p className="flex flex-col">
                       <span>NUMERO: {number}</span>
                       <span>POSICIÓN: {position}</span>
