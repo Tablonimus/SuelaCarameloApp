@@ -67,7 +67,7 @@ export default function Home() {
         ) : (
           <NoticeLoaderComponent />
         )}
-
+        {/* PAGINADOR */}
         <div className="flex items-center justify-center text-center">
           <a href="#nSection">
             <Pagination

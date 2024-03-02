@@ -12,6 +12,8 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import RichTextEditor from "./components/RichTextEditor/RichTextEditor";
 import NavBar from "./components/NavBar/NavBar";
 import FooterComp from "./components/FooterComp/FooterComp";
+import Clubs from "./components/Clubs/Clubs";
+import ClubDetail from "./components/Clubs/ClubDetail";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -25,12 +27,13 @@ function AnimatedRoutes() {
         <div className=" ">
           <NavBar />
           <Routes location={location} key={location.pathname}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/notices/:id" element={<NoticeDetail />} />
+            <Route path="/clubes" element={<Clubs />} />
+            <Route path="/clubes/:name" element={<ClubDetail />} />
             <Route path="/sobrenosotros" element={<AboutUs />} />
             <Route path="/contacto" element={<ContactUs />} />
             <Route path="/test" element={<RichTextEditor />} />
-
-            <Route path="/home" element={<Home />} />
-            <Route path="/notices/:id" element={<NoticeDetail />} />
             <Route path="/descargar" element={<Download />} />
             {/* Ruta en español para la gente */}
             <Route path="/createnotice" element={<CreateNotice />} />
