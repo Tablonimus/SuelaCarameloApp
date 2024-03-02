@@ -1,9 +1,8 @@
 [
   {
     "name": "U.N.Cuyo",
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhfLAOs_YsT-YY7CJi7i7F9bO8aBc2JvIckRSLJgKWFg&s",
+    "logo": "https://res.cloudinary.com/tablonimus/image/upload/v1709418741/Escudos%20A1/tqk2cakxj3semooewulb.png",
     "address": "Centro universitario- Mendoza",
-    "province": "Mendoza",
     "foundation": "1940",
     "stadium": "",
     "colors": ["#031020", "#ffffff"],
@@ -13,13 +12,13 @@
         "category": "A1",
         "players": [
           {
-            "name": " Juan Manuel Serra",
+            "name": "Juan Manuel Serra",
             "nickname": "Chino",
             "number": 9,
             "position": "Ala",
             "birth": "06/06/1994",
-            "foot": "2017",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2017",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Facundo Fornies",
@@ -27,8 +26,8 @@
             "number": 10,
             "position": "Ala",
             "birth": "24/08/1989",
-            "foot": "2019",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Tomas De Costa",
@@ -36,8 +35,8 @@
             "number": 7,
             "position": "Ala",
             "birth": "15/02/2000",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Julián Bazán",
@@ -45,8 +44,8 @@
             "number": 1,
             "position": "Arquero",
             "birth": "15/10/2004",
-            "foot": "2009",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2009",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Facundo Galeazzi",
@@ -54,8 +53,8 @@
             "number": 11,
             "position": "Ala",
             "birth": "06/07/1998",
-            "foot": "2012",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Francisco Bazán",
@@ -63,53 +62,53 @@
             "number": 17,
             "position": "Ala",
             "birth": "29/10/2000",
-            "foot": "2009",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2009",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Geronimo Crescitelli",
             "nickname": "Gero",
-            "number": "",
+            "number": "-",
             "position": "Poste",
             "birth": "21/01/2000",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Elias Córdoba",
             "nickname": "Pachi",
-            "number": "",
+            "number": "-",
             "position": "Poste",
             "birth": "01/09/2002",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Sihuel Rossello",
             "nickname": "Pollo",
-            "number": "",
+            "number": "-",
             "position": "Ala",
             "birth": "19/03/2001",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Tomás Ponce",
             "nickname": "",
-            "number": "",
+            "number": "-",
             "position": "Poste",
             "birth": "28/02/2009",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Joaquín Romero",
             "nickname": "",
-            "number": "",
+            "number": "-",
             "position": "Poste",
             "birth": "20/10/2001",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Bruno Valpreda",
@@ -117,8 +116,8 @@
             "number": 8,
             "position": "Poste",
             "birth": "03/05/2001",
-            "foot": "2012",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Mauro Salinas",
@@ -126,8 +125,8 @@
             "number": 15,
             "position": "Poste",
             "birth": "29/01/2001",
-            "foot": "2014",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2014",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Dalmino Checere",
@@ -135,8 +134,8 @@
             "number": 18,
             "position": "Poste",
             "birth": "22/12/2003",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Facundo León",
@@ -144,26 +143,26 @@
             "number": 20,
             "position": "Arquero",
             "birth": "27/10/1993",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Axel Arijón",
             "nickname": "Axel",
-            "number": "",
+            "number": "-",
             "position": "Ala",
             "birth": "19/04/2001",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Sebastián Giacchi",
             "nickname": "Manguera",
-            "number": "",
+            "number": "-",
             "position": "DT",
             "birth": "",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           }
         ]
       }
@@ -171,9 +170,8 @@
   },
   {
     "name": "Jockey Club",
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhfLAOs_YsT-YY7CJi7i7F9bO8aBc2JvIckRSLJgKWFg&s",
+    "logo": "https://res.cloudinary.com/tablonimus/image/upload/v1709418740/Escudos%20A1/vcvbcvebjqgkwjtrwyji.png",
     "address": "Montes de Oca 889- Godoy Cruz",
-    "province": "Mendoza",
     "foundation": "",
     "stadium": "",
     "colors": ["#031020", "#ffffff"],
@@ -188,8 +186,8 @@
             "number": 8,
             "position": "Ala",
             "birth": "27/11/1994",
-            "foot": "2015",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2015",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Fabián Lauletta",
@@ -197,8 +195,8 @@
             "number": 2,
             "position": "Poste",
             "birth": "24/03/1999",
-            "foot": "2018",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Jesús Sánchez",
@@ -206,8 +204,8 @@
             "number": 7,
             "position": "Pivote",
             "birth": "07/07/1998",
-            "foot": "2003",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2003",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Enzo Lillo",
@@ -215,8 +213,8 @@
             "number": 16,
             "position": "Ala",
             "birth": "01/12/2004",
-            "foot": "2009",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2009",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Facundo Torres",
@@ -224,8 +222,8 @@
             "number": 9,
             "position": "Ala",
             "birth": "26/03/2005",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Mariano Mingo",
@@ -233,8 +231,8 @@
             "number": 18,
             "position": "Arquero",
             "birth": "15/11/2006",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Lucas Lucero",
@@ -242,8 +240,8 @@
             "number": 20,
             "position": "Ala",
             "birth": "06/06/2004",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Ignacio Lencinas",
@@ -251,8 +249,8 @@
             "number": 6,
             "position": "Ala",
             "birth": "02/10/1991",
-            "foot": "2014",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2014",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Gonzalo Montalto",
@@ -260,8 +258,8 @@
             "number": 12,
             "position": "Arquero",
             "birth": "06/01/1996",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Matías Bernardelli",
@@ -269,8 +267,8 @@
             "number": 1,
             "position": "Arquero",
             "birth": "30/09/1997",
-            "foot": "2010",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2010",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Facundo Miranda",
@@ -278,8 +276,8 @@
             "number": 15,
             "position": "Pivote",
             "birth": "03/05/1986",
-            "foot": "2015",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2015",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Nicolás Páez",
@@ -287,8 +285,8 @@
             "number": 10,
             "position": "Ala",
             "birth": "26/09/1985",
-            "foot": "2002",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2002",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Martín Cusa",
@@ -296,8 +294,8 @@
             "number": 5,
             "position": "Poste",
             "birth": "07/11/1985",
-            "foot": "2002",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2002",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Diego Koltes",
@@ -305,230 +303,53 @@
             "number": 13,
             "position": "Ala",
             "birth": "21/07/1989",
-            "foot": "1994",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "1994",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Fernando Cepulveda",
             "nickname": "Fercho",
-            "number": "",
+            "number": "-",
             "position": "CT",
             "birth": "10/12/1985",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Nicolás de Merolis",
             "nickname": "Demi",
-            "number": "",
+            "number": "-",
             "position": "DT",
             "birth": "18/06/1984",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Leandro Geroli",
             "nickname": "Leo",
-            "number": "",
+            "number": "-",
             "position": "AT",
             "birth": "15/10/1993",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Facundo Gonzales",
             "nickname": "Pato",
-            "number": "",
+            "number": "-",
             "position": "PF",
             "birth": "17/09/1997",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Emilio Miranda",
             "nickname": "Negro",
-            "number": "",
+            "number": "-",
             "position": "CT",
             "birth": "21/11/1987",
-            "foot": "2000",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          }
-        ]
-      },
-      {
-        "name": "Jockey Club B",
-        "category": "A1",
-        "players": [
-          {
-            "name": "Facundo Colombi",
-            "nickname": "Tetu",
-            "number": 8,
-            "position": "Ala",
-            "birth": "27/11/1994",
-            "foot": "2015",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Fabián Lauletta",
-            "nickname": "Laule",
-            "number": 2,
-            "position": "Poste",
-            "birth": "24/03/1999",
-            "foot": "2018",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Jesús Sánchez",
-            "nickname": "Negro",
-            "number": 7,
-            "position": "Pivote",
-            "birth": "07/07/1998",
-            "foot": "2003",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Enzo Lillo",
-            "nickname": "Menzi",
-            "number": 16,
-            "position": "Ala",
-            "birth": "01/12/2004",
-            "foot": "2009",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Facundo Torres",
-            "nickname": "Pelado",
-            "number": 9,
-            "position": "Ala",
-            "birth": "26/03/2005",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Mariano Mingo",
-            "nickname": "Mingo",
-            "number": 18,
-            "position": "Arquero",
-            "birth": "15/11/2006",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Lucas Lucero",
-            "nickname": "Chimba",
-            "number": 20,
-            "position": "Ala",
-            "birth": "06/06/2004",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Ignacio Lencinas",
-            "nickname": "Nacho",
-            "number": 6,
-            "position": "Ala",
-            "birth": "02/10/1991",
-            "foot": "2014",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Gonzalo Montalto",
-            "nickname": "",
-            "number": 12,
-            "position": "Arquero",
-            "birth": "06/01/1996",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Matías Bernardelli",
-            "nickname": "Berna",
-            "number": 1,
-            "position": "Arquero",
-            "birth": "30/09/1997",
-            "foot": "2010",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Facundo Miranda",
-            "nickname": "Palmera",
-            "number": 15,
-            "position": "Pivote",
-            "birth": "03/05/1986",
-            "foot": "2015",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Nicolás Páez",
-            "nickname": "Narigón",
-            "number": 10,
-            "position": "Ala",
-            "birth": "26/09/1985",
-            "foot": "2002",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Martín Cusa",
-            "nickname": "Cusa",
-            "number": 5,
-            "position": "Poste",
-            "birth": "07/11/1985",
-            "foot": "2002",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Diego Koltes",
-            "nickname": "Diego",
-            "number": 13,
-            "position": "Ala",
-            "birth": "21/07/1989",
-            "foot": "1994",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Fernando Cepulveda",
-            "nickname": "Fercho",
-            "number": "",
-            "position": "CT",
-            "birth": "10/12/1985",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Nicolás de Merolis",
-            "nickname": "Demi",
-            "number": "",
-            "position": "DT",
-            "birth": "18/06/1984",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Leandro Geroli",
-            "nickname": "Leo",
-            "number": "",
-            "position": "AT",
-            "birth": "15/10/1993",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Facundo Gonzales",
-            "nickname": "Pato",
-            "number": "",
-            "position": "PF",
-            "birth": "17/09/1997",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Emilio Miranda",
-            "nickname": "Negro",
-            "number": "",
-            "position": "CT",
-            "birth": "21/11/1987",
-            "foot": "2000",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2000",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           }
         ]
       }
@@ -536,9 +357,8 @@
   },
   {
     "name": "Club Vistalba - La Colonia",
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhfLAOs_YsT-YY7CJi7i7F9bO8aBc2JvIckRSLJgKWFg&s",
+    "logo": "https://res.cloudinary.com/tablonimus/image/upload/v1709418740/Escudos%20A1/jr4hkgmbxtokuntgkpqm.png",
     "address": "Guardia Vieja 1482- Luján",
-    "province": "Mendoza",
     "foundation": "",
     "stadium": "",
     "colors": ["#031020", "#ffffff"],
@@ -553,17 +373,17 @@
             "number": 2,
             "position": "Poste",
             "birth": "09/05/1992",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Agustín Balldassarre",
             "nickname": "Pescado",
-            "number": "",
+            "number": "-",
             "position": "Ala",
             "birth": "23/10/2004",
-            "foot": "2019",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Ariel Azzaro",
@@ -571,8 +391,8 @@
             "number": 1,
             "position": "Arquero",
             "birth": "29/05/1981",
-            "foot": "2022",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Santiago Arnez",
@@ -580,17 +400,17 @@
             "number": 4,
             "position": "Poste",
             "birth": "21/05/2005",
-            "foot": "2018",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Guido Piantini",
             "nickname": "Cabezón",
-            "number": "",
+            "number": "-",
             "position": "Ala",
             "birth": "07/07/2000",
-            "foot": "2022",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Franco Perez",
@@ -598,8 +418,8 @@
             "number": 14,
             "position": "Ala",
             "birth": "23/11/1998",
-            "foot": "2022",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Andrés Perez",
@@ -607,8 +427,8 @@
             "number": 13,
             "position": "Ala",
             "birth": "13/04/1991",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Joaquín Ofcese",
@@ -616,8 +436,8 @@
             "number": 8,
             "position": "Ala",
             "birth": "10/12/1998",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Ramiro Araya",
@@ -625,17 +445,17 @@
             "number": 5,
             "position": "Ala",
             "birth": "06/05/2000",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Ivo Ferreira",
             "nickname": "",
-            "number": "",
+            "number": "-",
             "position": "Poste",
             "birth": "15/11/1994",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Ignacio Costantini",
@@ -643,26 +463,26 @@
             "number": 6,
             "position": "Ala",
             "birth": "15/04/1999",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Cesar Castillo",
             "nickname": "Pollo",
-            "number": "",
+            "number": "-",
             "position": "PF",
             "birth": "23/05/1970",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "José Enrique Oropel",
             "nickname": "Kike",
-            "number": "",
+            "number": "-",
             "position": "AT",
             "birth": "05/04/1974",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Nicolás Díaz",
@@ -670,8 +490,8 @@
             "number": 10,
             "position": "Ala",
             "birth": "05/06/1994",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           }
         ]
       }
@@ -679,9 +499,8 @@
   },
   {
     "name": "Club Aleman",
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhfLAOs_YsT-YY7CJi7i7F9bO8aBc2JvIckRSLJgKWFg&s",
+    "logo": "https://res.cloudinary.com/tablonimus/image/upload/v1709418735/Escudos%20A1/j7lcg6ywpxmvyuax7ldh.png",
     "address": "J M Gutiérrez 2588 - Guaymallén",
-    "province": "Mendoza",
     "foundation": "27/05/1898",
     "stadium": "",
     "colors": ["#031020", "#ffffff"],
@@ -696,8 +515,8 @@
             "number": 7,
             "position": "Ala",
             "birth": "28/02/2000",
-            "foot": "2004",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2004",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415968/Club%20Aleman/Recortes%20listos/z5y9i54lqj5b3w7gzjqs.png"
           },
           {
             "name": "Maximiliano Pelleritti",
@@ -705,8 +524,8 @@
             "number": 9,
             "position": "Pivote",
             "birth": "26/08/1992",
-            "foot": "2018",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415987/Club%20Aleman/Recortes%20listos/glwctg8dlpazofk8dwio.png"
           },
           {
             "name": "Franco Manchado",
@@ -714,8 +533,8 @@
             "number": 1,
             "position": "Delantero",
             "birth": "06/10/2002",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415997/Club%20Aleman/Recortes%20listos/ydx7qa4iclacrb16nmxa.png"
           },
           {
             "name": "Nicolás Diaz",
@@ -723,8 +542,8 @@
             "number": 8,
             "position": "Ala",
             "birth": "24/08/1997",
-            "foot": "2005",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2005",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416000/Club%20Aleman/Recortes%20listos/kf20tuu3zfv8qogy1unt.png"
           },
           {
             "name": "Gabriel Lucero",
@@ -732,8 +551,8 @@
             "number": 10,
             "position": "Ala",
             "birth": "05/03/1993",
-            "foot": "2000",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2000",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416005/Club%20Aleman/Recortes%20listos/stxmxubn7ju8z0yfck5v.png"
           },
           {
             "name": "Dario Carranzani",
@@ -741,8 +560,17 @@
             "number": 11,
             "position": "Pivote",
             "birth": "08/09/1994",
-            "foot": "2018",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416009/Club%20Aleman/Recortes%20listos/z3opf9j7tgsptsi37far.png"
+          },
+          {
+            "name": "Tomás Segura",
+            "nickname": "Tomi",
+            "number": 20,
+            "position": "Pivote",
+            "birth": "27/11/2002",
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416007/Club%20Aleman/Recortes%20listos/spegymupbsoopumvkdyx.png"
           },
           {
             "name": "Julián Diaz",
@@ -750,8 +578,8 @@
             "number": 19,
             "position": "Pivote",
             "birth": "10/01/2004",
-            "foot": "2010",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2010",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416014/Club%20Aleman/Recortes%20listos/etv4trezckqefagjs7bn.png"
           },
           {
             "name": "Juan Pablo Haudet",
@@ -759,8 +587,8 @@
             "number": 4,
             "position": "Pivote",
             "birth": "01/12/2004",
-            "foot": "2008",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2008",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416014/Club%20Aleman/Recortes%20listos/ggh62xxm8i2aygjvvsgs.png"
           },
           {
             "name": "Tomás Bandiera",
@@ -768,8 +596,8 @@
             "number": 6,
             "position": "Poste",
             "birth": "25/06/2004",
-            "foot": "2012",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415959/Club%20Aleman/Recortes%20listos/yjatanoxeacbtak3bges.png"
           },
           {
             "name": "Mateo Bandiera",
@@ -777,8 +605,8 @@
             "number": 3,
             "position": "Arquero",
             "birth": "25/06/2004",
-            "foot": "2012",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415958/Club%20Aleman/Recortes%20listos/kgevuus7ozgcqwyei2oy.png"
           },
           {
             "name": "Gregorio Martinez",
@@ -786,8 +614,8 @@
             "number": 2,
             "position": "Ala",
             "birth": "09/05/2006",
-            "foot": "2010",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2010",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415963/Club%20Aleman/Recortes%20listos/dhcf5s3l8krqfjvh8s1d.png"
           },
           {
             "name": "Álvaro Adi",
@@ -795,8 +623,8 @@
             "number": 15,
             "position": "Ala",
             "birth": "20/11/2002",
-            "foot": "2015",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2015",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415975/Club%20Aleman/Recortes%20listos/yt4aui1imiivexplbuag.png"
           },
           {
             "name": "Juan Ignacio Mugneco",
@@ -804,8 +632,8 @@
             "number": 5,
             "position": "Ala",
             "birth": "13/04/2003",
-            "foot": "2006",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2006",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415971/Club%20Aleman/Recortes%20listos/bmlgjz6nwu5wg2sisqvi.png"
           },
           {
             "name": "Lautaro Conejo",
@@ -813,8 +641,8 @@
             "number": 16,
             "position": "Ala",
             "birth": "29/05/1993",
-            "foot": "2018",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415971/Club%20Aleman/Recortes%20listos/jrimxigrfd8a6qwzn8kz.png"
           },
           {
             "name": "Agustín Rodríguez",
@@ -822,8 +650,8 @@
             "number": 18,
             "position": "Pivote",
             "birth": "07/05/2007",
-            "foot": "2022",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415959/Club%20Aleman/Recortes%20listos/yz3djm8hqcsuvydgds6p.png"
           },
           {
             "name": "Matías García",
@@ -831,8 +659,8 @@
             "number": 13,
             "position": "Ala",
             "birth": "23/02/1998",
-            "foot": "2016",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2016",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415972/Club%20Aleman/Recortes%20listos/e5xygmxgh867gdoxolhv.png"
           },
           {
             "name": "Agustín Bajda",
@@ -840,8 +668,8 @@
             "number": 12,
             "position": "Arquero",
             "birth": "04/01/1999",
-            "foot": "2015",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2015",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415979/Club%20Aleman/Recortes%20listos/us7nomto34wykzx5tmcb.png"
           },
           {
             "name": "Emiliano Gonzalez",
@@ -849,35 +677,35 @@
             "number": 14,
             "position": "Ala",
             "birth": "03/09/2002",
-            "foot": "2002",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2002",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415992/Club%20Aleman/Recortes%20listos/hhsijrsusdjjuwnrp4xh.png"
           },
           {
             "name": "Martín Páez",
             "nickname": "Gordo",
-            "number": "",
+            "number": "-",
             "position": "DT",
             "birth": "18/01/1986",
-            "foot": "2019",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415993/Club%20Aleman/Recortes%20listos/gtwyi1whfhe6vazrm2oj.png"
           },
           {
             "name": "Juan Manuel Dávila",
             "nickname": "Juanma",
-            "number": "",
+            "number": "-",
             "position": "PF",
             "birth": "06/02/1991",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415991/Club%20Aleman/Recortes%20listos/n73iqzgkzilloyqarhou.png"
           },
           {
             "name": "Diego Yebra",
             "nickname": "Diegote",
-            "number": "",
+            "number": "-",
             "position": "Poste",
             "birth": "17/11/1997",
-            "foot": "2004",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2004",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709415999/Club%20Aleman/Recortes%20listos/yitmoiaisbkkz107jzts.png"
           }
         ]
       },
@@ -891,8 +719,8 @@
             "number": 1,
             "position": "Arquero",
             "birth": "01/11/1994",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Matías Correas",
@@ -900,8 +728,8 @@
             "number": 12,
             "position": "Poste",
             "birth": "01/04/1994",
-            "foot": "1999",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "1999",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Federico Scaravilli",
@@ -909,8 +737,8 @@
             "number": 9,
             "position": "Ala",
             "birth": "06/03/1994",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Agustín Burán",
@@ -918,8 +746,8 @@
             "number": 20,
             "position": "Arquero",
             "birth": "24/10/1999",
-            "foot": "2023",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Juan Manuel Moreno",
@@ -927,8 +755,8 @@
             "number": 9,
             "position": "Pivote",
             "birth": "09/05/1999",
-            "foot": "2000",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2000",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Lucas Bazan",
@@ -936,8 +764,8 @@
             "number": 6,
             "position": "Ala",
             "birth": "08/05/1998",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Valentino De Blas",
@@ -945,8 +773,8 @@
             "number": 13,
             "position": "Arquero",
             "birth": "02/05/2002",
-            "foot": "2011",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2011",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Juan Cruz March",
@@ -954,8 +782,8 @@
             "number": 2,
             "position": "Ala",
             "birth": "21/03/1999",
-            "foot": "2000",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2000",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Imanol Carmona",
@@ -963,8 +791,8 @@
             "number": 18,
             "position": "Pivote",
             "birth": "29/09/2000",
-            "foot": "2018",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Enzo Belbruno",
@@ -972,26 +800,26 @@
             "number": 17,
             "position": "Pivote",
             "birth": "22/07/2005",
-            "foot": "2015",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2015",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Nahuel Parada",
             "nickname": "Pepe",
-            "number": "",
+            "number": "-",
             "position": "CT",
             "birth": "10/10/1985",
-            "foot": "2024",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Gabriel Robledo",
             "nickname": "Negro",
-            "number": "",
+            "number": "-",
             "position": "DT",
             "birth": "19/02/1969",
-            "foot": "2019",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Luciano Rossi",
@@ -999,8 +827,8 @@
             "number": 7,
             "position": "Ala",
             "birth": "18/01/2004",
-            "foot": "2016",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2016",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Bruno Guzman",
@@ -1008,8 +836,8 @@
             "number": 14,
             "position": "Ala",
             "birth": "25/02/2004",
-            "foot": "2016",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2016",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
             "name": "Martín Páez",
@@ -1017,8 +845,8 @@
             "number": 8,
             "position": "Pivote",
             "birth": "18/01/1986",
-            "foot": "2019",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           }
         ]
       }
@@ -1026,9 +854,8 @@
   },
   {
     "name": "Club Social Villa Hipódromo",
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhfLAOs_YsT-YY7CJi7i7F9bO8aBc2JvIckRSLJgKWFg&s",
+    "logo": "https://res.cloudinary.com/tablonimus/image/upload/v1709418741/Escudos%20A1/v5sqwv64kmwo5pqimedr.png",
     "address": "Paso de Los Andes 1508",
-    "province": "Mendoza",
     "foundation": "",
     "stadium": "",
     "colors": ["#031020", "#ffffff"],
@@ -1043,184 +870,601 @@
             "number": 9,
             "position": "Ala",
             "birth": "07/08/2000",
-            "foot": "2021",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Lionel Messi",
-            "nickname": "La Pulga",
-            "number": 10,
-            "position": "Delantero",
-            "birth": "24/06/1987",
-            "foot": "L",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "name": "Andrés Tognon",
+            "nickname": "Andi",
+            "number": "-",
+            "position": "Pivote",
+            "birth": "17/12/1990",
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Cristiano Ronaldo",
-            "nickname": "CR7",
-            "number": 7,
-            "position": "Delantero",
-            "birth": "05/02/1985",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "name": "Federico Koch",
+            "nickname": "Fede",
+            "number": "-",
+            "position": "Ala",
+            "birth": "12/02/1997",
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Neymar Jr.",
-            "nickname": "Ney",
-            "number": 10,
-            "position": "Delantero",
-            "birth": "05/02/1992",
-            "foot": "D",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "name": "Emiliano Ontiveros",
+            "nickname": "Emi",
+            "number": 6,
+            "position": "Poste",
+            "birth": "21/12/2006",
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Kylian Mbappé",
-            "nickname": "Donatello",
-            "number": 7,
-            "position": "Delantero",
-            "birth": "20/12/1998",
-            "foot": "D",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "name": "Mauricio Orozco",
+            "nickname": "Negro",
+            "number": 12,
+            "position": "Arquero",
+            "birth": "07/06/2005",
+            "arrival": "2010",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Robert Lewandowski",
-            "nickname": "Lewy",
-            "number": 9,
-            "position": "Delantero",
-            "birth": "21/08/1988",
-            "foot": "D",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "name": "Luciano Romano",
+            "nickname": "Lucho",
+            "number": 18,
+            "position": "Ala",
+            "birth": "07/06/2006",
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Kevin De Bruyne",
-            "nickname": "KDB",
-            "number": 17,
-            "position": "Centrocampista",
-            "birth": "28/06/1991",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "name": "Bruno Amaya",
+            "nickname": "Gato",
+            "number": 4,
+            "position": "Pivote",
+            "birth": "30/03/2002",
+            "arrival": "2014",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Luka Modrić",
-            "nickname": "El Mago",
-            "number": 10,
-            "position": "Centrocampista",
-            "birth": "09/09/1985",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "name": "Francisco Dieguez",
+            "nickname": "Pachi",
+            "number": 15,
+            "position": "Ala",
+            "birth": "14/01/2003",
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Toni Kroos",
-            "nickname": "El Maestro",
-            "number": 8,
-            "position": "Centrocampista",
-            "birth": "04/01/1990",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Mohamed Salah",
-            "nickname": "El Faraón",
-            "number": 11,
-            "position": "Delantero",
-            "birth": "15/06/1992",
-            "foot": "I",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Agustin Morro",
-            "nickname": "The kiler",
+            "name": "Juan Cruz Dieguez",
+            "nickname": "Zurdo",
             "number": 10,
             "position": "Ala",
-            "birth": "28/08/94",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "birth": "20/12/1996",
+            "arrival": "2020",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Lionel Messi",
-            "nickname": "La Pulga",
-            "number": 10,
-            "position": "Delantero",
-            "birth": "24/06/1987",
-            "foot": "L",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Cristiano Ronaldo",
-            "nickname": "CR7",
-            "number": 7,
-            "position": "Delantero",
-            "birth": "05/02/1985",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Neymar Jr.",
-            "nickname": "Ney",
-            "number": 10,
-            "position": "Delantero",
-            "birth": "05/02/1992",
-            "foot": "D",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Kylian Mbappé",
-            "nickname": "Donatello",
-            "number": 7,
-            "position": "Delantero",
-            "birth": "20/12/1998",
-            "foot": "D",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Robert Lewandowski",
-            "nickname": "Lewy",
-            "number": 9,
-            "position": "Delantero",
-            "birth": "21/08/1988",
-            "foot": "D",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Kevin De Bruyne",
-            "nickname": "KDB",
-            "number": 17,
-            "position": "Centrocampista",
-            "birth": "28/06/1991",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Luka Modrić",
-            "nickname": "El Mago",
-            "number": 10,
-            "position": "Centrocampista",
-            "birth": "09/09/1985",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
-          },
-          {
-            "name": "Toni Kroos",
-            "nickname": "El Maestro",
+            "name": "Luciano Perucho",
+            "nickname": "Lucho",
             "number": 8,
-            "position": "Centrocampista",
-            "birth": "04/01/1990",
-            "foot": "R",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "position": "Ala",
+            "birth": "11/02/1995",
+            "arrival": "2020",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           },
           {
-            "name": "Mohamed Salah",
-            "nickname": "El Faraón",
+            "name": "Matías Zárate",
+            "nickname": "Mati",
+            "number": "-",
+            "position": "Poste",
+            "birth": "02/08/2006",
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Santino Valenzuela",
+            "nickname": "Tino",
+            "number": "-",
+            "position": "Pivote",
+            "birth": "01/07/2004",
+            "arrival": "2010",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Bruno Zarate",
+            "nickname": "Pinta",
+            "number": 17,
+            "position": "Ala",
+            "birth": "12/05/2004",
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Lucas Selada",
+            "nickname": "Cachorro",
+            "number": 16,
+            "position": "Poste",
+            "birth": "20/04/2006",
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Joaquín Malla",
+            "nickname": "Pico",
+            "number": "-",
+            "position": "Ala",
+            "birth": "04/12/2004",
+            "arrival": "2017",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Gerónimo Antich",
+            "nickname": "Jorgito",
+            "number": "-",
+            "position": "Arquero",
+            "birth": "09/01/2008",
+            "arrival": "2011",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Alejo Canales",
+            "nickname": "Negro",
+            "number": 3,
+            "position": "Ala",
+            "birth": "27/03/2007",
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Alejandro Codes",
+            "nickname": "Ale",
+            "number": 5,
+            "position": "Poste",
+            "birth": "17/11/1990",
+            "arrival": "2020",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Augusto Barrera",
+            "nickname": "Gustó",
             "number": 11,
-            "position": "Delantero",
-            "birth": "15/06/1992",
-            "foot": "I",
-            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709247960/suelApp/mjso60o1ttaqnvmu8bee.jpg"
+            "position": "Ala",
+            "birth": "06/03/2003",
+            "arrival": "2021",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Juan Millán",
+            "nickname": "Chino",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "25/10/2000",
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Andes Talleres",
+    "logo": "https://res.cloudinary.com/tablonimus/image/upload/v1709418740/Escudos%20A1/assbbr9sjguv18z5odcj.png",
+    "address": "Belgrano 1547 - Godoy Cruz",
+    "foundation": "09/07/1933",
+    "stadium": "Salvador Bonanno",
+    "colors": ["#031020", "#ffffff"],
+    "teams": [
+      {
+        "name": "Talleres",
+        "category": "A1",
+        "players": [
+          {
+            "name": "Lautaro García",
+            "nickname": "Tito ",
+            "number": 20,
+            "position": "Arquero",
+            "birth": "07/01/2000",
+            "arrival": "2007",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Federico Perez",
+            "nickname": "Mono",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "01/02/1989",
+            "arrival": "2008",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Luciano Soldati",
+            "nickname": "Lucho",
+            "number": 10,
+            "position": "Ala",
+            "birth": "15/12/1999",
+            "arrival": "2008",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Juan Ignacio Busso",
+            "nickname": "Juani",
+            "number": 6,
+            "position": "Poste",
+            "birth": "04/08/1999",
+            "arrival": "2006",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Facundo Gomez",
+            "nickname": "Goma",
+            "number": 15,
+            "position": "Pivote",
+            "birth": "15/12/2001",
+            "arrival": "2017",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Octavio Civelli",
+            "nickname": "Loquillo",
+            "number": 14,
+            "position": "Ala",
+            "birth": "01/07/2003",
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Santino Muscianisi",
+            "nickname": "Tino",
+            "number": 19,
+            "position": "Ala",
+            "birth": "01/03/2002",
+            "arrival": "2009",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Román Zuñiga",
+            "nickname": "Negro",
+            "number": 10,
+            "position": "Centrocampista",
+            "birth": "01/03/2002",
+            "arrival": "2009",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Santiago Martinez",
+            "nickname": "",
+            "number": 11,
+            "position": "Ala",
+            "birth": "13/01/1998",
+            "arrival": "2007",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Gastón Fernández",
+            "nickname": "Gata",
+            "number": 8,
+            "position": "Pivote",
+            "birth": "26/03/1996",
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Pedro Candiotto",
+            "nickname": "Peter",
+            "number": 2,
+            "position": "Poste",
+            "birth": "16/12/2001",
+            "arrival": "2001",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Rodrigo Tejeda",
+            "nickname": "Rodri",
+            "number": "-",
+            "position": "Poste",
+            "birth": "22/07/2000",
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Lucas Rodriguez",
+            "nickname": "Brasil",
+            "number": 10,
+            "position": "Ala",
+            "birth": "05/02/2000",
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Facundo Tejada",
+            "nickname": "Facu",
+            "number": 7,
+            "position": "Ala",
+            "birth": "12/09/2001",
+            "arrival": "2008",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Pablo Stahringer",
+            "nickname": "Mister",
+            "number": "-",
+            "position": "DT",
+            "birth": "23/08/1979",
+            "arrival": "2020",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "David Arena",
+            "nickname": "",
+            "number": "-",
+            "position": "PF",
+            "birth": "31/03/1980",
+            "arrival": "2020",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Lautaro Palacios",
+            "nickname": "Negro",
+            "number": "-",
+            "position": "Arquero",
+            "birth": "19/02/2006",
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Gonzalo Aveiro",
+            "nickname": "Mudo",
+            "number": 18,
+            "position": "Ala",
+            "birth": "15/12/1995",
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Municipalidad de San Martín",
+    "logo": "https://res.cloudinary.com/tablonimus/image/upload/v1709418740/Escudos%20A1/dgfvw7wffehxysynosmx.png",
+    "address": "Av. Eva Duarte de Perón SN - San Martín",
+    "foundation": "",
+    "stadium": "Torito Rodríguez",
+    "colors": ["#031020", "#ffffff"],
+    "teams": [
+      {
+        "name": "San Martín",
+        "category": "A1",
+        "players": [
+          {
+            "name": "Franco Rosales",
+            "nickname": "Negro",
+            "number": 11,
+            "position": "Ala",
+            "birth": "08/02/2005",
+            "arrival": "2017",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Lautaro Sosa",
+            "nickname": "Bigote",
+            "number": 18,
+            "position": "Pivote",
+            "birth": "15/10/2004",
+            "arrival": "2008",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Gastón Ortiz",
+            "nickname": "Tonga",
+            "number": 7,
+            "position": "Ala",
+            "birth": "10/07/2004",
+            "arrival": "2008",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Fausto Negri",
+            "nickname": "Negri",
+            "number": 19,
+            "position": "Ala",
+            "birth": "25/07/2004",
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Lautaro Arce",
+            "nickname": "Lautarito",
+            "number": 15,
+            "position": "Ala",
+            "birth": "13/10/2005",
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Joaquín Marín",
+            "nickname": "Carita",
+            "number": 14,
+            "position": "Ala",
+            "birth": "05/07/2004",
+            "arrival": "2008",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Juan Cruz Ortubia",
+            "nickname": "Ortubia",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "27/02/2005",
+            "arrival": "2011",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Matías Fernández",
+            "nickname": "Teta",
+            "number": 14,
+            "position": "Arquero",
+            "birth": "27/04/2006",
+            "arrival": "2011",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Eduardo Peregrino",
+            "nickname": "Edu",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "31/07/2006",
+            "arrival": "2017",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Sebastián Rosales",
+            "nickname": "Seba",
+            "number": 12,
+            "position": "Arquero",
+            "birth": "10/12/2005",
+            "arrival": "2009",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Santiago Arquero",
+            "nickname": "Arquero",
+            "number": 19,
+            "position": "Poste",
+            "birth": "24/01/2006",
+            "arrival": "2019",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Benicio Escudero",
+            "nickname": "Beni",
+            "number": 16,
+            "position": "Poste",
+            "birth": "20/01/2006",
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Nadir Tupalle",
+            "nickname": "Turco",
+            "number": 17,
+            "position": "Ala",
+            "birth": "13/03/2006",
+            "arrival": "2011",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Matías Tejeda",
+            "nickname": "Mati",
+            "number": 2,
+            "position": "Poste",
+            "birth": "29/08/2006",
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Santiago Gonzalez",
+            "nickname": "Paila",
+            "number": 8,
+            "position": "Pivote",
+            "birth": "17/06/2006",
+            "arrival": "2011",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Renzo Hure",
+            "nickname": "",
+            "number": 15,
+            "position": "Poste",
+            "birth": "14/03/2003",
+            "arrival": "2023",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Román Mazzocca",
+            "nickname": "",
+            "number": 7,
+            "position": "Pivote",
+            "birth": "29/01/2004",
+            "arrival": "2017",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Matías Varas",
+            "nickname": "Mati",
+            "number": 6,
+            "position": "Ala",
+            "birth": "27/09/1990",
+            "arrival": "2010",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Gabriel Godoy ",
+            "nickname": "Tanque",
+            "number": 9,
+            "position": "Pivote",
+            "birth": "23/10/1991",
+            "arrival": "2014",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Sebastián Vasquez",
+            "nickname": "Chano",
+            "number": 10,
+            "position": "Poste",
+            "birth": "30/07/1993",
+            "arrival": "2014",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Federico Ortiz",
+            "nickname": "Narigón",
+            "number": 5,
+            "position": "Poste",
+            "birth": "08/03/2002",
+            "arrival": "2012",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Gonzalo Curello",
+            "nickname": "Arquero",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "10/11/1992",
+            "arrival": "2010",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Mario Castro",
+            "nickname": "DT",
+            "number": "-",
+            "position": "DT",
+            "birth": "09/05/1981",
+            "arrival": "2018",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Rolando Alliana",
+            "nickname": "Roly",
+            "number": "-",
+            "position": "AT",
+            "birth": "12/05/1978",
+            "arrival": "2024",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
+          },
+          {
+            "name": "Darío Videla",
+            "nickname": "Cachi",
+            "number": "-",
+            "position": "PF",
+            "birth": "29/07/1977",
+            "arrival": "2022",
+            "image": "https://res.cloudinary.com/tablonimus/image/upload/v1709416177/s7gyav9lggfj3uvgbt9i.png"
           }
         ]
       }
     ]
   }
- 
- 
 ]

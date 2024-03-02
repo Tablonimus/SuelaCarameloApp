@@ -48,7 +48,7 @@ export default function FooterComp() {
           </Footer.LinkGroup>
           <section className="flex items-center justify-center">
             <Footer.Brand href="#" src={suela} alt="Flowbite Logo" name="" />
-            <Footer.Copyright href="#" by="Suela Caramelo™" year={2022} />
+            <Footer.Copyright href="#" by="Suela Caramelo™" year={2016} />
           </section>
         </section>
       </div>

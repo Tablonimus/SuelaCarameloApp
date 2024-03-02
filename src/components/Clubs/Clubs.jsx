@@ -16,25 +16,31 @@ export default function Clubs() {
   console.log(clubs);
 
   return (
-    <div className="h-screen flex justify-center items-center">
-      <ul>
-        {clubs?.length
-          ? clubs.map((club) => (
-              <Link to={`/clubes/${club.name}`}>
-                <li className="text-white text-xl underline p-4">
-                  <div className="flex gap-4 items-center">
+    <>
+      <section className="flex flex-wrap p-4 gap-6">
+        {clubs.length
+          ? clubs.map((club, index) => (
+              <Link key={index} to={`/clubes/${club.name}`}>
+                <div
+                  key={club.name}
+                  className=" bg-red-500 w-96 flex flex-col gap-2 items-center p-4 rounded-md bg-[#0a1b21]/50"
+                >
+                  <section>
                     <img
                       src={club.logo}
+                      className="h-56 w-56 object-contain rounded-lg"
                       alt=""
-                      className="w-10 h-10 rounded-full"
-                    />{" "}
-                    - {club.name}
-                  </div>
-                </li>
+                    />
+                  </section>
+
+                  <section>
+                    <p className="text-white font-bold">{club.name}</p>
+                  </section>
+                </div>
               </Link>
             ))
-          : "no hay clubes"}
-      </ul>
-    </div>
+          : null}
+      </section>
+    </>
   );
 }

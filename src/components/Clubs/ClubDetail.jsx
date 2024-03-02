@@ -40,11 +40,6 @@ export default function ClubDetail() {
         </Link>
         {/* Club */}
         <section className="team-box">
-          <Link to={"/clubes"}>
-            <button className="btn-back">
-              <i className="bx bx-left-arrow-circle"></i>
-            </button>
-          </Link>
           <div className="team-name">
             <h2>{club?.name}</h2>
           </div>
@@ -107,7 +102,7 @@ export default function ClubDetail() {
               ({ image, name, position, number }, index) => (
                 <figure key={index} class="effect-marley">
                   {/* o honey */}
-                  <img src={image} alt="img11" className="w-1/2 h-1/2" />
+                  <img src={image} alt="img11" className="w-96 h-96 object-cover" />
                   <figcaption>
                     <h2 className="">
                       {name.split(" ")[0]} <span> {name.split(" ")[1]}</span>{" "}
@@ -115,9 +110,9 @@ export default function ClubDetail() {
                     </h2>
 
                     <p className="flex flex-col">
-                      <span>NUMERO: {number}</span>
-                      <span>POSICIÓN: {position}</span>
-                      <span>POSICIÓN: {position}</span>
+                      <span>Número: {number}</span>
+                      <span>Posición: {position}</span>
+            
                     </p>
                     <a>View more</a>
                   </figcaption>

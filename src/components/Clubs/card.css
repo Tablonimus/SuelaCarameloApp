@@ -24,9 +24,10 @@
   max-width: 480px;
   max-height: 360px;
   width: 48%;
-  background: rgb(10, 27, 33);
+  background:rgb(10, 27, 33);
   text-align: center;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .grid figure img {
@@ -108,10 +109,14 @@ figure.effect-marley p {
 
 figure.effect-marley p {
   padding-left: 50%;
+  text-align: end;
+  color: rgb(139, 139, 139);
+  font-weight: 500;
   bottom: 30px;
   line-height: 1.5;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
+ 
 }
 
 figure.effect-marley h2 {
@@ -130,8 +135,8 @@ figure.effect-marley:hover h2 {
 figure.effect-marley h2::after {
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 60%;
   height: 4px;
   background: #fff;
   content: "";
