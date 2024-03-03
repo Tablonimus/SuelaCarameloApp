@@ -12,15 +12,15 @@ import { getAllNotices } from "../../redux/actions";
 export default function OtherNotices() {
   const dispatch = useDispatch();
   const allNotices = useSelector((state) => state.allNotices);
-  
-  useEffect(()=>{
-    dispatch(getAllNotices())
-  })
-  let randomBig = allNotices[allNotices.length-1];
 
-  let random1 = allNotices[allNotices.length-2];
-  let random2 = allNotices[allNotices.length-3];
-  let random3 = allNotices[allNotices.length-4];
+  useEffect(() => {
+    dispatch(getAllNotices());
+  });
+  let randomBig = allNotices[allNotices.length - 1];
+
+  let random1 = allNotices[allNotices.length - 2];
+  let random2 = allNotices[allNotices.length - 3];
+  let random3 = allNotices[allNotices.length - 4];
 
   // let randomBig = allNotices[Math.floor(Math.random() * allNotices.length)];
 
@@ -45,11 +45,9 @@ export default function OtherNotices() {
                 />
               ) : (
                 <section className="overflow-hidden h-32">
-
                   <YoutubeEmbed
                     embedId={randomBig?.videos[0] || randomBig?.videos}
                   />
-
                 </section>
               )}
 
@@ -74,7 +72,7 @@ export default function OtherNotices() {
           </a>
 
           <a href="https://www.instagram.com/squadraindumentaria/?hl=es">
-            <img src={sqadra} alt=""  className="lg:w-80 rounded-lg" />
+            <img src={sqadra} alt="" className="lg:w-80 rounded-lg" />
           </a>
         </div>
 
@@ -113,7 +111,7 @@ export default function OtherNotices() {
 
           <div className="flex flex-row items-center justify-center">
             <a href="https://www.google.com/maps/place/Electricidad+San+Luis/@-32.8856233,-68.8357053,16.5z/data=!4m5!3m4!1s0x0:0xe1d67ca3ac640c37!8m2!3d-32.8845727!4d-68.8358074">
-              <img src={electricidad} alt=""  className="lg:w-80"/>
+              <img src={electricidad} alt="" className="lg:w-80" />
             </a>
           </div>
 
@@ -151,7 +149,6 @@ export default function OtherNotices() {
 
           <Link to={`/notices/${random3?.id}`}>
             <div className=" flex flex-row items-center gap-3 border-y border-[#E96F22]">
-            
               {random3?.images?.length ? (
                 <section className="overflow-hidden w-1/3 h-14  ">
                   <img
@@ -167,7 +164,7 @@ export default function OtherNotices() {
                   />
                 </section>
               )}
-          
+
               <section className="flex flex-col justify-center">
                 <span className="text-[10px] text-white">
                   {random3?.title?.length > 20
@@ -183,7 +180,7 @@ export default function OtherNotices() {
             </div>
           </Link>
           <a href="https://www.instagram.com/hache_market/">
-            <img src={hache} alt=""  className="lg:w-80" />
+            <img src={hache} alt="" className="lg:w-80" />
           </a>
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function NoticeDetail() {
     <div id="noticia" className="pt-32 min-w-screen flex flex-col items-center">
   
       <div className=" w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
-        <h1 className="px-5 text-center font-bold text-black text-black text-3xl lg:text-4xl">
+        <h1 className="px-5 text-center font-bold text-black text-3xl lg:text-4xl">
           {notice?.title}
         </h1>
         <h2 className="px-5 py-2 text-md text-center lg:text-lg text-black font-semibold">

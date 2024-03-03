@@ -9,7 +9,7 @@ export default function NavBar() {
       fluid={true}
       rounded={true}
     >
-      <Navbar.Brand href="/home">
+      <Navbar.Brand href="/">
         <span className="flex items-center ml-2 self-center whitespace-nowrap text-xl font-semibold text-white">
           <img
             src={suela}

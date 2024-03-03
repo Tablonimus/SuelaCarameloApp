@@ -21,25 +21,20 @@ function AnimatedRoutes() {
   return (
     <section id="general" className="">
       <AnimatePresence>
+        <NavBar />
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/notices/:id" element={<NoticeDetail />} />
+          <Route path="/clubes" element={<Clubs />} />
+          <Route path="/clubes/:name" element={<ClubDetail />} />
+          <Route path="/sobrenosotros" element={<AboutUs />} />
+          <Route path="/contacto" element={<ContactUs />} />
+          <Route path="/test" element={<RichTextEditor />} />
+          <Route path="/descargar" element={<Download />} />
+          {/* Ruta en español para la gente */}
+          <Route path="/createnotice" element={<CreateNotice />} />
         </Routes>
-        <div className=" ">
-          <NavBar />
-          <Routes location={location} key={location.pathname}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/notices/:id" element={<NoticeDetail />} />
-            <Route path="/clubes" element={<Clubs />} />
-            <Route path="/clubes/:name" element={<ClubDetail />} />
-            <Route path="/sobrenosotros" element={<AboutUs />} />
-            <Route path="/contacto" element={<ContactUs />} />
-            <Route path="/test" element={<RichTextEditor />} />
-            <Route path="/descargar" element={<Download />} />
-            {/* Ruta en español para la gente */}
-            <Route path="/createnotice" element={<CreateNotice />} />
-          </Routes>
-          <FooterComp />
-        </div>
+        <FooterComp />
       </AnimatePresence>
     </section>
   );
