@@ -110,7 +110,7 @@ export default function ClubDetail() {
             <h3 className="text-center font-bold text-white text-4xl">
               {position.toUpperCase()}
             </h3>
-            <div class="grid">
+            <div class="gridC">
               {teamSelected?.players?.map((player, index) =>
                 player?.position === position ? (
                   <PlayerCard player={player} key={index} />

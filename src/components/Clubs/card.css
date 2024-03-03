@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.grid {
+.gridC {
   position: relative;
   margin: auto;
   padding: 1em 0 4em;
@@ -16,7 +16,7 @@
 }
 
 /* Common style */
-.grid figure {
+.gridC figure {
   position: relative;
   float: left;
   overflow: hidden;
@@ -31,7 +31,7 @@
   border-radius: 10px;
 }
 
-.grid figure img {
+.gridC figure img {
   position: relative;
   display: block;
   min-height: 100%;
@@ -39,7 +39,7 @@
   opacity: 0.8;
 }
 
-.grid figure figcaption {
+.gridC figure figcaption {
   padding: 2em;
   color: #fff;
   text-transform: uppercase;
@@ -48,13 +48,13 @@
   backface-visibility: hidden;
 }
 
-.grid figure figcaption::before,
-.grid figure figcaption::after {
+.gridC figure figcaption::before,
+.gridC figure figcaption::after {
   pointer-events: none;
 }
 
-.grid figure figcaption,
-.grid figure figcaption > a {
+.gridC figure figcaption,
+.gridC figure figcaption > a {
   position: absolute;
   top: 0;
   left: 0;
@@ -63,7 +63,7 @@
 }
 
 /* Anchor will cover the whole item by default */
-.grid figure figcaption > a {
+.gridC figure figcaption > a {
   z-index: 1000;
   text-indent: 200%;
   white-space: nowrap;
@@ -71,22 +71,22 @@
   opacity: 0;
 }
 
-.grid figure h2 {
+.gridC figure h2 {
   word-spacing: -0.15em;
   font-weight: 300;
 }
 
-.grid figure h2 span {
+.gridC figure h2 span {
   font-weight: 800;
 }
 
-.grid figure h2,
-.grid figure p {
+.gridC figure h2,
+.gridC figure p {
   margin: 0;
   
 }
 
-.grid figure p {
+.gridC figure p {
   letter-spacing: 1px;
   font-size: 68.5%;
 }
