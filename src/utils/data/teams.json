@@ -357,7 +357,7 @@
   },
   {
     "name": "Club Vistalba - La Colonia",
-    "logo": "https://res.cloudinary.com/tablonimus/image/upload/v1709418740/Escudos%20A1/jr4hkgmbxtokuntgkpqm.png",
+    "logo": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/la%20colonia.png?alt=media&token=801f699f-9ff1-401d-8249-13d83881f1e5",
     "address": "Guardia Vieja 1482- Luján",
     "foundation": "",
     "stadium": "",
@@ -701,7 +701,7 @@
           {
             "name": "Diego Yebra",
             "nickname": "Diegote",
-            "number": 77,
+            "number": 17,
             "position": "Poste",
             "birth": "17/11/1997",
             "arrival": "2004",

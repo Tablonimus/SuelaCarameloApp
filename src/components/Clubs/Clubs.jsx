@@ -23,7 +23,7 @@ export default function Clubs() {
               <Link key={index} to={`/clubes/${club.name}`}>
                 <div
                   key={club.name}
-                  className=" bg-red-500 w-96 flex flex-col gap-2 items-center p-4 rounded-md bg-[#0a1b21]/50"
+                  className="  w-96 flex flex-col gap-2 items-center p-8 rounded-lg bg-[#0a1b21]/80 "
                 >
                   <section>
                     <img
