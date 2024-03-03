@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import clubs from "../../utils/data/teams.json";
-import silueta from "../../assets/images/silueta.jpg";
 import "./card.css";
 import "./club.css";
-// import "./honey.css";
 import { Button } from "flowbite-react";
+import PlayerCard from "./PlayerCard";
+
+const positions = [
+  "Arquero",
+  "Poste",
+  "Ala",
+  "Pivote",
+  "Director Técnico",
+  "Preparador Físico",
+];
+
 export default function ClubDetail() {
   const { name } = useParams();
-
-  const [plantilla, setPlantilla] = useState(false);
   const [club, setClub] = useState(null);
   const [teamSelected, setTeamSelected] = useState(null);
 
@@ -46,6 +53,7 @@ export default function ClubDetail() {
           <picture className="img-escudo">
             <img src={club?.logo} alt="" />
           </picture>
+          {/* Datos del club */}
           <article className="team-info">
             <h4>DATOS DEL CLUB</h4>
             <ul className="club-details">
@@ -71,8 +79,8 @@ export default function ClubDetail() {
         </section>
         {/* Equipos: Grupo de botones */}
         <section className="flex flex-col justify-center items-center gap-4">
-          <h4 className="text-white font-bold text-4xl">EQUIPOS</h4>
-          <Button.Group>
+          {/* <h4 className="text-white font-bold text-4xl">EQUIPOS</h4> */}
+          <Button.Group className="">
             {club?.teams?.length ? (
               club?.teams?.map((team, index) => (
                 <Button
@@ -82,8 +90,8 @@ export default function ClubDetail() {
                   color=""
                   className={
                     teamSelected?.name === team?.name
-                      ? "border bg-white text-orange-500"
-                      : "border bg-[#0A1B21] text-whitebg-black text-white"
+                      ? " border bg-white text-orange-500 w-96 h-96"
+                      : " border bg-[#0A1B21] text-whitebg-black text-white"
                   }
                 >
                   {team.name}
@@ -95,32 +103,25 @@ export default function ClubDetail() {
           </Button.Group>
         </section>
       </main>
-
-      <div class="grid">
-        {teamSelected?.players?.length
-          ? teamSelected?.players?.map(
-              ({ image, name, position, number }, index) => (
-                <figure key={index} class="effect-marley">
-                  {/* o honey */}
-                  <img src={image} alt="img11" className="w-96 h-96 object-cover" />
-                  <figcaption>
-                    <h2 className="">
-                      {name.split(" ")[0]} <span> {name.split(" ")[1]}</span>{" "}
-                      {/* <i> {number}</i> */}
-                    </h2>
-
-                    <p className="flex flex-col">
-                      <span>Número: {number}</span>
-                      <span>Posición: {position}</span>
-            
-                    </p>
-                    <a>View more</a>
-                  </figcaption>
-                </figure>
-              )
-            )
-          : "no hay nada"}
-      </div>
+      {/* EQUIPOS */}
+      <section className="mt-10">
+        {positions?.map((position) => (
+          <section>
+            <h3 className="text-center font-bold text-white text-4xl">
+              {position.toUpperCase()}
+            </h3>
+            <div class="grid">
+              {teamSelected?.players?.map((player, index) =>
+                player?.position === position ? (
+                  <PlayerCard player={player} key={index} />
+                ) : (
+                  false
+                )
+              )}
+            </div>
+          </section>
+        ))}
+      </section>
     </>
   );
 }

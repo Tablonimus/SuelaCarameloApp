@@ -12,6 +12,7 @@
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Common style */
@@ -112,7 +113,7 @@ figure.effect-marley p {
   text-align: end;
   color: rgb(139, 139, 139);
   font-weight: 500;
-  bottom: 30px;
+  top: 10px;
   line-height: 1.5;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
@@ -120,7 +121,7 @@ figure.effect-marley p {
 }
 
 figure.effect-marley h2 {
-  top: 30px;
+  bottom: 30px;
   -webkit-transition: -webkit-transform 0.35s;
   transition: transform 0.35s;
   -webkit-transform: translate3d(0, 20px, 0);
