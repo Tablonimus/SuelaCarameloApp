@@ -78,29 +78,31 @@ export default function ClubDetail() {
           </article>
         </section>
         {/* Equipos: Grupo de botones */}
-        <section className="flex flex-col justify-center items-center gap-4">
+        <section className="flex flex-col my-14 justify-center items-center gap-4">
           {/* <h4 className="text-white font-bold text-4xl">EQUIPOS</h4> */}
-          <Button.Group className="">
-            {club?.teams?.length ? (
-              club?.teams?.map((team, index) => (
-                <Button
-                  onClick={(e) => onSelectTeam(e)}
-                  key={index}
-                  value={team.name}
-                  color=""
-                  className={
-                    teamSelected?.name === team?.name
-                      ? " border bg-white text-orange-500 w-96 h-96"
-                      : " border bg-[#0A1B21] text-whitebg-black text-white"
-                  }
-                >
-                  {team.name}
-                </Button>
-              ))
-            ) : (
-              <></>
-            )}
-          </Button.Group>
+          <div>
+            <Button.Group className="flex flex-col w-56 sm:flex-row">
+              {club?.teams?.length ? (
+                club?.teams?.map((team, index) => (
+                  <Button
+                    onClick={(e) => onSelectTeam(e)}
+                    key={index}
+                    value={team.name}
+                    color=""
+                    className={
+                      teamSelected?.name === team?.name
+                        ? " border bg-white text-orange-500 h-96"
+                        : " border bg-[#0A1B21] text-whitebg-black text-white"
+                    }
+                  >
+                    {team.name}
+                  </Button>
+                ))
+              ) : (
+                <></>
+              )}
+            </Button.Group>
+          </div>
         </section>
       </main>
       {/* EQUIPOS */}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./components/Home/Home";
-import Landing from "./components/Home/Landing";
+//import Landing from "./components/Home/Landing";
 import { AnimatePresence } from "framer-motion";
 import Download from "./components/Download/Download";
 import NoticeDetail from "./components/Notice/NoticeDetail";
