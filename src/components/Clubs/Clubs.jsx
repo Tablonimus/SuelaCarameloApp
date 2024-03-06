@@ -17,25 +17,25 @@ export default function Clubs() {
 
   return (
     <>
-      <section className="flex flex-wrap justify-center py-2 gap-6">
+      <section className="flex flex-wrap justify-center py-14 gap-2 sm:gap-8">
         {clubs.length
           ? clubs.map((club, index) => (
               <Link key={index} to={`/clubes/${club.name}`}>
                 <div
                   key={club.name}
-                  className="lg:w-96 flex flex-col gap-4 items-center p-8 rounded-lg  bg-[#0a1b21]/80  "
+                  className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-80 lg:p-8 rounded-lg  bg-[#0a1b21]/80  "
                 >
                   <section>
                     <img
                       src={club.logo}
-                      className="w-24 h-24 lg:h-56 lg:w-56 object-contain rounded-lg"
+                      className="w-full h-24 lg:h-56 lg:w-56 object-contain rounded-lg"
                       alt=""
                     />
                   </section>
 
-                  <section>
+                 {/*  <section>
                     <p className="text-white text-center font-bold w-56 lg:w-full ">{club.name}</p>
-                  </section>
+                  </section> */}
                 </div>
               </Link>
             ))

@@ -5,12 +5,12 @@ import { Navbar } from "flowbite-react";
 export default function NavBar() {
   return (
     <Navbar
-      class="bg-black flex flex-row justify-around items-center w-full p-5 sticky top-0 z-30 shadow-lg"
+      class="bg-black flex justify-between gap-8 items-center w-full p-5 sticky top-0 z-30 shadow-lg sm:justify-between lg:justify-evenly"
       fluid={true}
       rounded={true}
     >
       <Navbar.Brand href="/">
-        <span className="flex items-center ml-2 self-center whitespace-nowrap text-xl font-semibold text-white">
+        <span className="flex  items-center ml-2 whitespace-nowrap text-xl font-semibold text-white">
           <img
             src={suela}
             className="h-14 rounded-full flex"
@@ -28,7 +28,6 @@ export default function NavBar() {
             Descargar App
           </span>
         </Navbar.Link>
-
         <Navbar.Link href="/contacto">
           <span className="text-white hover:text-orange-400">Contacto</span>
         </Navbar.Link>

@@ -4,6 +4,7 @@ import b1 from "../../assets/images/b1.png";
 import b2 from "../../assets/images/b2.png";
 import b3 from "../../assets/images/b3.png";
 import b4 from "../../assets/images/b4.png";
+import b5 from "../../assets/images/zonafutsal.png"
 import { Footer } from "flowbite-react";
 
 export default function FooterComp() {
@@ -25,6 +26,9 @@ export default function FooterComp() {
 
           <a href="https://www.instagram.com/squadraindumentaria/?hl=es">
             <img src={b2} alt="" className="w-24" />
+          </a>
+          <a href="https://www.instagram.com/zonafutsal_mdz/">
+            <img src={b5} alt="" className="w-24" />
           </a>
         </div>
         <Footer.Divider />
