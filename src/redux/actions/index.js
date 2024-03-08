@@ -28,10 +28,14 @@ export function clearPage() {
 export function getNoticeDetail(id) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`${url}/notices/${id}`);
+
+      // let json = await axios.get(`${url}/notices/${id}`);
+      let notice =  notices.find(notice=> notice.id == id)
+
+     
       dispatch({
         type: action.GET_NOTICE_DETAIL,
-        payload: json.data,
+        payload: notice,
       });
 
       return "Success";

@@ -27,8 +27,8 @@ export default function PlayerCard({ player }) {
           )}
 
           {player.arrival && (
-            <span className="text-white">Arrivo al club: {player.arrival}</span>
-          )}
+            <span className="text-white">Llegada: {player.arrival}</span>
+          )} 
         </p>
 
         <a>View more</a>
