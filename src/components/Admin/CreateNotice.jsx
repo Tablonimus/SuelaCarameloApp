@@ -48,7 +48,7 @@ export default function CreateNotice() {
   function onSubmitMatch(e) {
     e.preventDefault();
     dispatch(createMatch(match)).then(
-      navigate("/home"),
+      navigate("/"),
       alert("Partido Creado Correctamente")
     );
   }
@@ -91,7 +91,7 @@ export default function CreateNotice() {
   function onSubmitTeam(e) {
     e.preventDefault();
     dispatch(createTeam(team)).then(
-      navigate("/home"),
+      navigate("/"),
       alert("Equipo Creado Correctamente")
     );
   }

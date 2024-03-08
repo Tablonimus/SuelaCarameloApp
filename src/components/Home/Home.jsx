@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import noticesJson from '../../utils/data/notices.json'
 import NavTwo from "../NavBar/NavTwo";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMatches, getAllNotices, getAllTeams } from "../../redux/actions";
@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   const allNotices = useSelector((state) =>
-    state.allNotices
+    noticesJson
       .sort((a, b) => {
         return a.id - b.id;
       })
@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-between items-center">
-      <NavTwo />
+      {/* <NavTwo /> */}
       <section
         id="nSection"
         className="py-5 w-full h-full flex flex-col items-center justify-center gap-10"

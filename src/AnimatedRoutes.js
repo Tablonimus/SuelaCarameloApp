@@ -23,7 +23,7 @@ function AnimatedRoutes() {
       <AnimatePresence>
         <NavBar />
         <Routes location={location} key={location.pathname}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/notices/:id" element={<NoticeDetail />} />
           <Route path="/clubes" element={<Clubs />} />
           <Route path="/clubes/:name" element={<ClubDetail />} />

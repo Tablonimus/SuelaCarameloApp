@@ -1,6 +1,7 @@
 import * as action from "../actions/actionTypes";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import notices from '../../utils/data/notices.json'
 
 // const url = "https://suelacarameloapp-backend-production.up.railway.app";
 
@@ -140,7 +141,7 @@ export function getAllNotices(category) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`${url}/notices`);
-
+      // let json = {data: notices}
       if (!category) {
         const filters = json.data.filter((cat) => cat.category === "A1");
         dispatch({
