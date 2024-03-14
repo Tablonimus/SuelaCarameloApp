@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PWAPrompt from "react-ios-pwa-prompt";
-import { usePWAInstall } from "react-use-pwa-install";
+
 import "./Download.css";
 
 
@@ -24,7 +23,7 @@ export default function Download() {
 
   return (
     <div className="h-screen flex flex-col justify-center w-screen items-center">
-      <div className="justify-between rounded-lg flex flex-col items-center">
+      {/* <div className="justify-between rounded-lg flex flex-col items-center">
         <div className="flex flex-col items-center rounded-lg bg-gray-300 w-96 h-56 m-5 p-5 border justify-center opacity-90 shadow-lg">
           {install ? (
             <button
@@ -65,7 +64,7 @@ export default function Download() {
         copyTitle="Descargar APP"
         copyBody="Agrega SuelaCaramelo al menú principal."
         permanentlyHideOnDismiss={false}
-      />
+      /> */}
     </div>
   );
 }

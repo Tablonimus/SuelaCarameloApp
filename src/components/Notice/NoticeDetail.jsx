@@ -19,7 +19,7 @@ export default function NoticeDetail() {
   }, [dispatch, params.id]);
 
   return (
-    <div id="noticia" className="pt-32 min-w-screen flex flex-col items-center">
+    <div id="noticia" className="pt-8 min-w-screen flex flex-col items-center">
   
       <div className=" w-11/12 lg:w-1/2 flex-flex-col items-center justify-center">
         <h1 className="px-5 text-center font-bold text-black text-3xl lg:text-4xl">

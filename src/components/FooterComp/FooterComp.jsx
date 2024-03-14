@@ -29,6 +29,21 @@ export default function FooterComp() {
             <div className="slide">
               <img src={b5} />
             </div>
+            <div className="slide">
+              <img src={b1} />
+            </div>
+            <div className="slide">
+              <img src={b2} />
+            </div>
+            <div className="slide">
+              <img src={b3} />
+            </div>
+            <div className="slide">
+              <img src={b4} />
+            </div>
+            <div className="slide">
+              <img src={b5} />
+            </div>
           </div>
         </section>
 

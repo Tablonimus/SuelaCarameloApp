@@ -22,7 +22,7 @@ export default function CategoryButton() {
     dispatch(changeCategory(category));
     dispatch(getAllTeams(category));
     dispatch(getAllMatches(category));
-    navigate("/home");
+    navigate("/");
   }
 
   function handleClickFem(e) {
@@ -32,7 +32,7 @@ export default function CategoryButton() {
     dispatch(changeCategory(category));
     dispatch(getAllTeams(category));
     dispatch(getAllMatches(category));
-    navigate("/home");
+    navigate("/");
   }
   function handleClickHonor(e) {
     e.preventDefault();
@@ -41,7 +41,7 @@ export default function CategoryButton() {
     dispatch(changeCategory(category));
     dispatch(getAllTeams(category));
     dispatch(getAllMatches(category));
-    navigate("/home");
+    navigate("/");
   }
 
   return (

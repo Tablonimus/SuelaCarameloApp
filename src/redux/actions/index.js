@@ -1,6 +1,7 @@
 import * as action from "../actions/actionTypes";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import notices from '../../utils/data/notices.json'
 
 // const url = "https://suelacarameloapp-backend-production.up.railway.app";
 
@@ -27,10 +28,14 @@ export function clearPage() {
 export function getNoticeDetail(id) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`${url}/notices/${id}`);
+
+      // let json = await axios.get(`${url}/notices/${id}`);
+      let notice =  notices.find(notice=> notice.id == id)
+
+     
       dispatch({
         type: action.GET_NOTICE_DETAIL,
-        payload: json.data,
+        payload: notice,
       });
 
       return "Success";
@@ -140,7 +145,7 @@ export function getAllNotices(category) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`${url}/notices`);
-
+      // let json = {data: notices}
       if (!category) {
         const filters = json.data.filter((cat) => cat.category === "A1");
         dispatch({

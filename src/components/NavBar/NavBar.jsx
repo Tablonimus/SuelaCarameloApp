@@ -5,7 +5,7 @@ import { Navbar } from "flowbite-react";
 export default function NavBar() {
   return (
     <Navbar
-      class="bg-black flex justify-between gap-8 items-center w-full p-5 sticky top-0 z-30 shadow-lg sm:justify-between lg:justify-evenly"
+      class="bg-black flex justify-between gap-8  items-center w-full p-5 sticky top-0 z-30 shadow-lg sm:justify-between lg:justify-evenly"
       fluid={true}
       rounded={true}
     >
@@ -23,11 +23,11 @@ export default function NavBar() {
         <Navbar.Link href="/clubes">
           <span className="text-white hover:text-orange-400">Clubes</span>
         </Navbar.Link>
-        <Navbar.Link href="/descargar">
+        {/* <Navbar.Link href="/descargar">
           <span className="text-white hover:text-orange-400">
             Descargar App
           </span>
-        </Navbar.Link>
+        </Navbar.Link> */}
         <Navbar.Link href="/contacto">
           <span className="text-white hover:text-orange-400">Contacto</span>
         </Navbar.Link>
