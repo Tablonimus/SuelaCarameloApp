@@ -1,5 +1,4 @@
 import * as action from "../redux/actions/actionTypes";
-import moment from "moment";
 
 const initialState = {
   allNotices: [],

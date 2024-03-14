@@ -23,11 +23,11 @@ export default function NavBar() {
         <Navbar.Link href="/clubes">
           <span className="text-white hover:text-orange-400">Clubes</span>
         </Navbar.Link>
-        <Navbar.Link href="/descargar">
+        {/* <Navbar.Link href="/descargar">
           <span className="text-white hover:text-orange-400">
             Descargar App
           </span>
-        </Navbar.Link>
+        </Navbar.Link> */}
         <Navbar.Link href="/contacto">
           <span className="text-white hover:text-orange-400">Contacto</span>
         </Navbar.Link>

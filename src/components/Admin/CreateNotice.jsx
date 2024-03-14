@@ -5,7 +5,7 @@ import {
   createNotice,
   createTeam,
   getAllTeams,
-  postImage,
+ 
 } from "../../redux/actions/index";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
