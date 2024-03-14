@@ -17,13 +17,14 @@ export default function Clubs() {
 
   return (
     <>
-      <section className="flex flex-wrap justify-center py-14 gap-2 sm:gap-8">
+    <h3 className="text-gray-500 font-semibold text-lg text-center self-center mt-24">CLUBES</h3>
+      <section className="flex flex-wrap justify-center py-14 gap-2 sm:gap-4 lg:gap-5 lg:px-10">
         {clubs.length
           ? clubs.map((club, index) => (
               <Link key={index} to={`/clubes/${club.name}`}>
                 <div
                   key={club.name}
-                  className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-80 lg:p-8 rounded-lg  bg-[#0a1b21]/80  "
+                  className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 lg:w-52  lg:h-60 lg:p-4 rounded-lg  bg-[#0a1b21]/80  "
                 >
                   <section>
                     <img

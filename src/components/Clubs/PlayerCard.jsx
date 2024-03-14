@@ -18,16 +18,16 @@ export default function PlayerCard({ player }) {
             <span className="text-white text-[6rem] mb-4">{player.number}</span>
           )}
           {player.nickname && (
-            <span className="text-white">Apodo: {player.nickname}</span>
+            <span className="text-white">{player.nickname}</span>
           )}
 
           {/* <span className="text-white">Posición: {player.position}</span> */}
           {player.birth && (
-            <span className="text-white">Nacimiento: {player.birth}</span>
+            <span className="text-white"><i className='bx bx-calendar'></i>{player.birth}</span>
           )}
 
           {player.arrival && (
-            <span className="text-white">Arrivo al club: {player.arrival}</span>
+            <span className="text-white"><i className='bx bx-pen'></i>{player.arrival}</span>
           )}
         </p>
 
