@@ -42,11 +42,7 @@ export default function Notices({
           {title}
         </h5>
         <p
-         style={{
-          
-          textOverflow:"ellipsis",
-          overflow:"hidden"
-        }}className="mt-2 font-normal lg:text-md lg:leading-tight text-gray-200">{subtitle.slice(0,70)} ...</p>
+        className="mt-2 overflow-hidden font-normal lg:text-md lg:leading-tight text-gray-200">{subtitle.split(" ").slice(0,15).join(" ")} ...</p>
       </div>
     </Link>
   );
