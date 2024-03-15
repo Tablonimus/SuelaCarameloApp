@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import noticesJson from '../../utils/data/notices.json'
+import noticesJson from "../../utils/data/notices.json";
 import NavTwo from "../NavBar/NavTwo";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMatches, getAllNotices, getAllTeams } from "../../redux/actions";
@@ -46,7 +46,15 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-between items-center">
-      {/* <NavTwo /> */}
+      <article className="my-8 px-5 w-full flex flex-col justify-center items-center text-center gap-2  md:w-4/5 lg:my-14 lg:w-[40%] lg:gap-6">
+        <h1 className="text-2xl font-bold text-black lg:text-4xl">Lorem Impsum</h1>
+        <p className="text-md text-gray-300 font-medium lg:text-lg">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, nobis.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+
+        </p>
+      </article>
       <section
         id="nSection"
         className="py-5 w-full h-full flex flex-wrap items-center justify-center gap-10"
@@ -67,10 +75,9 @@ export default function Home() {
         ) : (
           <NoticeLoaderComponent />
         )}
-        </section>
+      </section>
 
-
-        <section className="w-full m-4 pb-4 overflow-hidden">
+      <section className="w-full m-4 pb-4 overflow-hidden">
         {/* PAGINADOR */}
         <div className="flex items-center justify-center text-center">
           <a href="#nSection">
@@ -86,7 +93,6 @@ export default function Home() {
           </a>
         </div>
       </section>
-      
     </div>
   );
 }

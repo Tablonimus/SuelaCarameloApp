@@ -25,7 +25,7 @@ export default function Clubs() {
                 <Link key={index} to={`/clubes/${club.name}`}>
                   <div
                     key={club.name}
-                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-80 lg:p-8 rounded-lg  bg-[#0a1b21]/80  "
+                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg  bg-[#0a1b21]/80  "
                   >
                     <section>
                       <img
@@ -52,7 +52,7 @@ export default function Clubs() {
                 <Link key={index} to={`/clubes/${club.name}`}>
                   <div
                     key={club.name}
-                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-80 lg:p-8 rounded-lg  bg-[#0a1b21]/80  "
+                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-[#0a1b21]/80  "
                   >
                     <section>
                       <img
