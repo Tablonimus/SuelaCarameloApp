@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import clubs from "../../utils/data/teams.json";
 import "./card.css";
 import "./club.css";
-import { Button } from "flowbite-react";
+import { Button, Tooltip } from "flowbite-react";
 import PlayerCard from "./PlayerCard";
-
+import clubs from "../../utils/data/teamsMasc.json";
+import clubsFem from "../../utils/data/teamsFem.json";
 const positions = [
   "Arquero",
   "Poste",
@@ -16,7 +16,7 @@ const positions = [
 ];
 
 export default function ClubDetail() {
-  const { name } = useParams();
+  const { name, category } = useParams();
   const [club, setClub] = useState(null);
   const [teamSelected, setTeamSelected] = useState(null);
 
@@ -78,51 +78,79 @@ export default function ClubDetail() {
           </article>
         </section>
         {/* Equipos: Grupo de botones */}
-        <section className="flex flex-col my-14 justify-center items-center gap-4">
-          {/* <h4 className="text-white font-bold text-4xl">EQUIPOS</h4> */}
-          <div>
-            <Button.Group className="flex flex-col w-56 sm:flex-row">
+      </main>
+      {/* EQUIPOS */}
+      <section className="mt-24 w-full">
+        <section className="team-box">
+          <div className="team-name">
+            <h2>Plantel</h2>
+            <Button.Group className="flex flex-col  sm:flex-row">
               {club?.teams?.length ? (
                 club?.teams?.map((team, index) => (
-                  <Button
-                    onClick={(e) => onSelectTeam(e)}
-                    key={index}
-                    value={team.name}
-                    color=""
-                    className={
-                      teamSelected?.name === team?.name
-                        ? " border bg-white text-orange-500 h-96"
-                        : " border bg-[#0A1B21] text-whitebg-black text-white"
-                    }
-                  >
-                    {team.name}
-                  </Button>
+                  <Tooltip key={index} content="Ver equipo">
+                    <Button
+                      onClick={(e) => onSelectTeam(e)}
+                      key={index}
+                      value={team.name}
+                      color=""
+                      className={
+                        teamSelected?.name === team?.name
+                          ? " text-white   w-72 h-20 rounded-lg font-bold"
+                          : " text-[#0A1B21] h-20 w-52  rounded-lg font-bold"
+                      }
+                    >
+                      <span className="text-3xl">{team.name}</span>
+                    </Button>
+                  </Tooltip>
                 ))
               ) : (
                 <></>
               )}
             </Button.Group>
           </div>
-        </section>
-      </main>
-      {/* EQUIPOS */}
-      <section className="mt-10">
-        {positions?.map((position) => (
-          <section>
-            <h3 className="text-center font-bold text-white text-4xl">
-              {position.toUpperCase()}
-            </h3>
-            <div class="gridC">
-              {teamSelected?.players?.map((player, index) =>
-                player?.position === position ? (
-                  <PlayerCard player={player} key={index} />
-                ) : (
-                  false
-                )
+          <section className="flex flex-col mt-10 w-full justify-center items-center gap-4">
+            {/* <Button.Group className="flex flex-col  sm:flex-row">
+              {club?.teams?.length ? (
+                club?.teams?.map((team, index) => (
+                  <Tooltip key={index} content="Ver equipo">
+                    <Button
+                      onClick={(e) => onSelectTeam(e)}
+                      key={index}
+                      value={team.name}
+                      color=""
+                      className={
+                        teamSelected?.name === team?.name
+                          ? " border bg-white text-[#0A1B21]  w-72 h-20 rounded-lg font-bold"
+                          : " border bg-[#0A1B21] text-white   h-20 w-52  rounded-lg font-bold"
+                      }
+                    >
+                      <span className="text-3xl">{team.name}</span>
+                    </Button>
+                  </Tooltip>
+                ))
+              ) : (
+                <></>
               )}
-            </div>
+            </Button.Group> */}
+
+            {positions?.map((position, index) => (
+              <section key={index} className="w-full">
+                <h3 className="text-center font-bold text-white text-4xl">
+                  {position.toUpperCase()}
+                </h3>
+                <div class="gridC">
+                  {teamSelected?.players?.map((player, index) =>
+                    player?.position === position ? (
+                      <PlayerCard player={player} key={index} />
+                    ) : (
+                      false
+                    )
+                  )}
+                </div>
+              </section>
+            ))}
           </section>
-        ))}
+        </section>
       </section>
     </>
   );

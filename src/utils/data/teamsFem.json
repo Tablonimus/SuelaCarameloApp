@@ -1,0 +1,342 @@
+[
+  {
+    "name": "Club Alemán",
+    "logo": "https://firebasestorage.googleapis.com/v0/b/suelapp-837b5.appspot.com/o/LOGOS%2FClubAleman%2FAleman.png?alt=media&token=89969be8-6e95-4e35-87ca-69cadb48820d",
+    "address": "J. M. Gutiérrez 2588- Guaymallén-Mendoza",
+    "foundation": "27/05/1898",
+    "stadium": "",
+    "colors": ["#031020", "#ffffff"],
+    "category": "FEM",
+    "teams": [
+      {
+        "name": "Alemán Fem",
+        "category": "FEM",
+        "players": [
+          {
+            "name": "Fiama Scollo",
+            "nickname": "Fiama",
+            "number": 15,
+            "position": "Poste",
+            "birth": "04/07/2002",
+            "arrival": "2021",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Bianca Scollo",
+            "nickname": "Finca",
+            "number": 5,
+            "position": "Ala",
+            "birth": "26/03/2005",
+            "arrival": "2023",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Macarena Castillo",
+            "nickname": "Maca",
+            "number": 14,
+            "position": "Ala",
+            "birth": "16/11/1998",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Maía Emilia Barbier",
+            "nickname": "Memi",
+            "number": 3,
+            "position": "Ala",
+            "birth": "16/11/1998",
+            "arrival": "2024",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Candela Casado",
+            "nickname": "Cande",
+            "number": 6,
+            "position": "Ala",
+            "birth": "29/03/2004",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Camila Anfuso",
+            "nickname": "Anfu",
+            "number": 13,
+            "position": "Pivote",
+            "birth": "15/10/1997",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Ariadna Ruiz",
+            "nickname": "Ari",
+            "number": 4,
+            "position": "Ala",
+            "birth": "08/06/2003",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Constanza Fachirelli",
+            "nickname": "Coty",
+            "number": 2,
+            "position": "Pivote",
+            "birth": "22/04/2003",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Julieta Paso",
+            "nickname": "Juli",
+            "number": 11,
+            "position": "Ala",
+            "birth": "25/09/2004",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Josefina Salaberry",
+            "nickname": "Jose",
+            "number": 9,
+            "position": "Ala",
+            "birth": "23/02/2005",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Malena Elst",
+            "nickname": "Male",
+            "number": 20,
+            "position": "Poste",
+            "birth": "11/02/2005",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Luciana Goyeneche",
+            "nickname": "Lucha",
+            "number": 8,
+            "position": "Pivote",
+            "birth": "26/10/1994",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Aixa Prado",
+            "nickname": "",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "04/12/2000",
+            "arrival": "2024",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Camila Goyeneche",
+            "nickname": "Cami",
+            "number": 19,
+            "position": "Poste",
+            "birth": "26/03/1997",
+            "arrival": "2020",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Agostina Levatino",
+            "nickname": "",
+            "number": 7,
+            "position": "Ala",
+            "birth": "",
+            "arrival": "2023",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Martín Paez",
+            "nickname": "Gordo",
+            "number": "-",
+            "position": "Director Técnico",
+            "birth": "18/01/1986",
+            "arrival": "2019",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Municipalidad de San Martín",
+    "logo": "https://firebasestorage.googleapis.com/v0/b/suelapp-837b5.appspot.com/o/LOGOS%2FMunicipalidadSanMartin%2FMuniSanMartin.png?alt=media&token=bae04ded-2243-4eb6-a22c-c127e6b85d25",
+    "address": "Av. Eva Duarte de Perón SN - San Martín",
+    "foundation": "",
+    "stadium": "",
+    "colors": ["#031020", "#ffffff"],
+    "category": "FEM",
+    "teams": [
+      {
+        "name": "San Martín Fem",
+        "category": "FEM",
+        "players": [
+          {
+            "name": "Yanina Lorenzo",
+            "nickname": "Yani",
+            "number": 3,
+            "position": "Poste",
+            "birth": "18/10/1993",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Lucia Videla",
+            "nickname": "Luli",
+            "number": 11,
+            "position": "Pivote",
+            "birth": "07/06/1998",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Luisina Muscolini",
+            "nickname": "Luisi",
+            "number": 9,
+            "position": "Ala",
+            "birth": "16/04/2002",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Abril Guevara",
+            "nickname": "Abril",
+            "number": 8,
+            "position": "Pivote",
+            "birth": "25/01/2000",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Fernanda Martinez",
+            "nickname": "Fer",
+            "number": 2,
+            "position": "Poste",
+            "birth": "30/05/1995",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Brisa Gonzalez",
+            "nickname": "Bri",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "27/04/2000",
+            "arrival": "2023",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Magalí Calderón",
+            "nickname": "Magui",
+            "number": 10,
+            "position": "Ala",
+            "birth": "21/05/2000",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Josefina Cassino",
+            "nickname": "Jose",
+            "number": 7,
+            "position": "Ala",
+            "birth": "05/04/2002",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Luana Garay",
+            "nickname": "Luz",
+            "number": 15,
+            "position": "Poste",
+            "birth": "07/04/2006",
+            "arrival": "2015",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Juan Morganti",
+            "nickname": "Juani",
+            "number": "-",
+            "position": "Preparador Físico",
+            "birth": "22/02/1973",
+            "arrival": "1994",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Brenda Miranda",
+            "nickname": "Bren",
+            "number": 14,
+            "position": "Poste",
+            "birth": "24/11/2006",
+            "arrival": "2015",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Candela Gonzalez",
+            "nickname": "Cande",
+            "number": 12,
+            "position": "Arquero",
+            "birth": "30/07/2001",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Betsabé Rodriguez",
+            "nickname": "Betsi",
+            "number": 16,
+            "position": "Poste",
+            "birth": "13/08/1995",
+            "arrival": "2024",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Brisa Correa",
+            "nickname": "Peque",
+            "number": 13,
+            "position": "Poste",
+            "birth": "28/11/2003",
+            "arrival": "2024",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Aldana Gonzalez",
+            "nickname": "Negra",
+            "number": 4,
+            "position": "Ala",
+            "birth": "13/01/1997",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "María Camila Carrisi",
+            "nickname": "Cami",
+            "number": 17,
+            "position": "Poste",
+            "birth": "15/08/2002",
+            "arrival": "2024",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Martín Donadel",
+            "nickname": "FLaco",
+            "number": "-",
+            "position": "Ayudante Técnico",
+            "birth": "12/05/2000",
+            "arrival": "2023",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Flavia Sartori",
+            "nickname": "Fla",
+            "number": "-",
+            "position": "Preparador Físico",
+            "birth": "09/01/1997",
+            "arrival": "2024",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          }
+        ]
+      }
+    ]
+  }
+]

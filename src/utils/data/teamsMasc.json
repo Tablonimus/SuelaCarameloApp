@@ -499,7 +499,7 @@
   },
   {
     "name": "Club Aleman",
-    "logo": "/Aleman.png",
+    "logo": "https://firebasestorage.googleapis.com/v0/b/suelapp-837b5.appspot.com/o/LOGOS%2FClubAleman%2FAleman.png?alt=media&token=89969be8-6e95-4e35-87ca-69cadb48820d",
     "address": "J M Gutiérrez 2588 - Guaymallén",
     "foundation": "27/05/1898",
     "stadium": "",
@@ -1462,6 +1462,167 @@
             "birth": "29/07/1977",
             "arrival": "2022",
             "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F25-%20Dari%CC%81o%20Videla%20PF%20-%20CACHI%20-%20Nac%2029-7-77-%20Llego%CC%81%202022%20(1).webp?alt=media&token=f7f522bf-b83b-43df-a777-dc8d011b72f8"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "C.U.C.",
+    "logo": "https://firebasestorage.googleapis.com/v0/b/suelapp-837b5.appspot.com/o/LOGOS%2FCuc%2FCUC.png?alt=media&token=22e22e1a-50e4-4c8e-8282-5235008054fc",
+    "address": "Perito Moreno 2856- Godoy Cruz Mendoza",
+    "foundation": "2007",
+    "stadium": "Club Vialidad",
+    "colors": ["#031020", "#ffffff"],
+    "category": "A1",
+    "teams": [
+      {
+        "name": "C.U.C.",
+        "category": "A1",
+        "players": [
+          {
+            "name": "Oliver Ortega",
+            "nickname": "Gordo",
+            "number": 11,
+            "position": "Pivote",
+            "birth": "30/05/2000",
+            "arrival": "2024",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Gonzalo Luna",
+            "nickname": "Chalo",
+            "number": 18,
+            "position": "Pivote",
+            "birth": "24/09/2002",
+            "arrival": "2022",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Juan Manuel Quiroga",
+            "nickname": "Juanma",
+            "number": 8,
+            "position": "Poste",
+            "birth": "18/08/1992",
+            "arrival": "2016",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Lucas Dinatales",
+            "nickname": "Dina",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "29/10/2000",
+            "arrival": "2014",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Alejo Gimenez",
+            "nickname": "Mosquito",
+            "number": 7,
+            "position": "Ala",
+            "birth": "23/06/2003",
+            "arrival": "2016",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Gino Civelli",
+            "nickname": "Gino",
+            "number": 15,
+            "position": "Ala",
+            "birth": "10/09/1997",
+            "arrival": "2013",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Juan Pablo Cocola",
+            "nickname": "Chino",
+            "number": 17,
+            "position": "Ala",
+            "birth": "15/01/1999",
+            "arrival": "2023",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Franco Quiroga",
+            "nickname": "Quiqui",
+            "number": 12,
+            "position": "Arquero",
+            "birth": "16/12/1994",
+            "arrival": "2010",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": " Facundo Matilla",
+            "nickname": "Tatú",
+            "number": "-",
+            "position": "Director Técnico",
+            "birth": "15/07/1990",
+            "arrival": "2024",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Luciano Figuera",
+            "nickname": "Lucho",
+            "number": "20",
+            "position": "Ala",
+            "birth": "29/03/2005",
+            "arrival": "2018",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Juan Ignacio Battaglia",
+            "nickname": "Nacho",
+            "number": 13,
+            "position": "Ala",
+            "birth": "19/08/2004",
+            "arrival": "2023",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Gianluca Comandini",
+            "nickname": "Gianlu",
+            "number": 10,
+            "position": "Ala",
+            "birth": "16/07/2000",
+            "arrival": "2010",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Manuel Gomez",
+            "nickname": "Manu",
+            "number": 2,
+            "position": "Poste",
+            "birth": "18/01/2005",
+            "arrival": "2018",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Lautaro Maure",
+            "nickname": "Laucha",
+            "number": 14,
+            "position": "Poste",
+            "birth": "23/10/1994",
+            "arrival": "2009",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "Tomás Ruffolo",
+            "nickname": "Oso",
+            "number": 5,
+            "position": "Ala",
+            "birth": "15/11/2004",
+            "arrival": "2021",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
+          },
+          {
+            "name": "José Cerda",
+            "nickname": "Cabezón",
+            "number": "-",
+            "position": "Delegado",
+            "birth": "08/01/1995",
+            "arrival": "2011",
+            "image": "https://firebasestorage.googleapis.com/v0/b/cannapont.appspot.com/o/SANMARTIN%2F1%20-%20Franco%20Rosales%20-%20_11-%20NEGRO%20-%20Nac%208-2-05-%20Llego%CC%81%202017%20-ALA%20(1).webp?alt=media&token=d9be388d-582b-4ce7-a7fa-6b092ecf86c9"
           }
         ]
       }
