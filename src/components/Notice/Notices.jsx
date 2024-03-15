@@ -16,7 +16,7 @@ export default function Notices({
   return (
     <Link
       to={`/notices/${id}`} //bg-[#F98958]
-      class="max-w-sm  bg-black bg-opacity-90 p-1 rounded-lg shadow-inner shadow-white  w-11/12"
+      class="max-w-sm h-auto bg-black bg-opacity-90 p-1 rounded-lg shadow-inner shadow-white w-11/12 lg:max-w-xs md:h-[420px]"
     >
       {images && images[0] ? (
         <img
@@ -41,7 +41,12 @@ export default function Notices({
         <h5 className="text-2xl font-bold tracking-tight text-gray-300">
           {title}
         </h5>
-        <p className="font-normal lg:text-lg text-gray-200">{subtitle}</p>
+        <p
+         style={{
+          
+          textOverflow:"ellipsis",
+          overflow:"hidden"
+        }}className="mt-2 font-normal lg:text-md lg:leading-tight text-gray-200">{subtitle.slice(0,70)} ...</p>
       </div>
     </Link>
   );

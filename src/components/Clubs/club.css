@@ -14,21 +14,6 @@
   clear: both;
 }
 
-:root {
-  --orange: #ed7020;
-  --black: #040406;
-  --white: #eeedeb;
-  --gray: #4a4a4b;
-  --font1: "Raleway", sans-serif;
-  --font2: "Montserrat", sans-serif;
-  --cursive: "Dancing Script", cursive;
-}
-ul,
-li,
-a {
-  text-decoration: none;
-  list-style: none;
-}
 .teams-wrapper {
   width: 100%;
   
@@ -275,7 +260,7 @@ a:focus {
   font-variant: normal;
   font-family: "codropsicons";
   line-height: 1;
-  speak: none;
+   speak: none;
   -webkit-font-smoothing: antialiased;
 }
 

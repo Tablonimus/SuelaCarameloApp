@@ -49,7 +49,7 @@ export default function Home() {
       {/* <NavTwo /> */}
       <section
         id="nSection"
-        className="py-5 w-full h-full flex flex-col items-center justify-center gap-10"
+        className="py-5 w-full h-full flex flex-wrap items-center justify-center gap-10"
       >
         {currentNotices?.length > 0 ? (
           currentNotices.map((notice) => (
@@ -67,6 +67,10 @@ export default function Home() {
         ) : (
           <NoticeLoaderComponent />
         )}
+        </section>
+
+
+        <section className="w-full m-4 pb-4 overflow-hidden">
         {/* PAGINADOR */}
         <div className="flex items-center justify-center text-center">
           <a href="#nSection">
@@ -82,6 +86,7 @@ export default function Home() {
           </a>
         </div>
       </section>
+      
     </div>
   );
 }

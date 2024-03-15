@@ -11,11 +11,10 @@ import logo2 from "/logo2.png";
 import { useState } from "react";
 import clubs from "../../utils/data/teamsMasc.json";
 import clubsFem from "../../utils/data/teamsFem.json";
-
 import { Link } from "react-router-dom";
-export default function Clubs() {
-  console.log(clubs);
 
+export default function Clubs() {
+  
   return (
     <>
       <section className="flex flex-col gap-4 p-4">

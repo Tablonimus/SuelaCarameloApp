@@ -11,8 +11,12 @@ body,* {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-a{
+
+ul,
+li,
+a {
   text-decoration: none;
+  list-style: none;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

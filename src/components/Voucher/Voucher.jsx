@@ -1,5 +1,6 @@
 import "./voucher.css";
 import logovoucher from "/logovoucher.png";
+
 const Voucher = () => {
   return (
     <>

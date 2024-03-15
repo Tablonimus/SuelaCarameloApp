@@ -10,10 +10,11 @@ import CreateNotice from "./components/Admin/CreateNotice";
 import AboutUs from "./components/AboutUs/AboutUs";
 import ContactUs from "./components/ContactUs/ContactUs";
 import RichTextEditor from "./components/RichTextEditor/RichTextEditor";
-import NavBar from "./components/NavBar/NavBar";
+import NavbarPillin from "./components/NavBar/NavbarPillin";
 import FooterComp from "./components/FooterComp/FooterComp";
 import Clubs from "./components/Clubs/Clubs";
 import ClubDetail from "./components/Clubs/ClubDetail";
+import Descuentos from "./components/Voucher/Descuentos";
 
 function App() {
   const location = useLocation();
@@ -21,12 +22,13 @@ function App() {
   return (
     <section id="general" className="">
  
-        <NavBar />
+        <NavbarPillin />
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/notices/:id" element={<NoticeDetail />} />
           <Route path="/clubes" element={<Clubs />} />
           <Route path="/clubes/:name" element={<ClubDetail />} />
+          <Route path="/descuentos" element={<Descuentos />} />
           <Route path="/sobrenosotros" element={<AboutUs />} />
           <Route path="/contacto" element={<ContactUs />} />
           <Route path="/test" element={<RichTextEditor />} />
