@@ -46,14 +46,22 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-between items-center">
-      <article className="my-8 px-5 w-full flex flex-col justify-center items-center text-center gap-2  md:w-4/5 lg:my-14 lg:w-[40%] lg:gap-6">
-        <h1 className="text-2xl font-bold text-black lg:text-4xl">Lorem Impsum</h1>
-        <p className="text-md text-gray-300 font-medium lg:text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, nobis.
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-
+        <article className="my-5 flex flex-col justify-center items-center text-center md:my-12 ">
+        <h1 className="text-4xl font-extrabold text-zinc-800 leading-snug md:text-6xl">
+          Suela Caramelo
+          <br />
+          <span className="px-1 italic text-black">Noticias</span>
+        </h1>
+        <p className="text-md font-semibold text-zinc-900 mt-7 md:text-lg">
+          Lorem, ipsum dolor sit amet consectetur adipisicing. 
+          <br />
+          Lorem ipsum dolor sit amet.
         </p>
+        <button
+          className="bg-zinc-900 w-56 text-gray-300 py-2 rounded-md font-bold text-sm mt-4 hover:scale-105 hover:text-[#ED7020] duration-300 md:text-base md:mt-6"
+        >
+          Contact me
+        </button> 
       </article>
       <section
         id="nSection"

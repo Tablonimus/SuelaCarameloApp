@@ -14,16 +14,16 @@ const NavbarPillin = () => {
             className="hidden md:flex items-center gap-10 font-cabin text-lg font-semibold pt-4 tracking-wider"
           >
             <Link to={"/"}>
-              <li className="text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-200">Noticias</li>
+              <li className="text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-300">Noticias</li>
             </Link>
             <Link to={"/clubes"}>
-              <li className="text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-200">Clubes</li>
+              <li className="text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-300">Clubes</li>
             </Link>
             <Link to={"/descuentos"}>
-              <li className="text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-200">Descuentos</li>
+              <li className="text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-300">Descuentos</li>
             </Link>
             <Link to={"/contacto"}>
-              <li className="text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-200">Contacto</li>
+              <li className="text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-300">Contacto</li>
             </Link>
           </ul>
 
@@ -42,22 +42,22 @@ const NavbarPillin = () => {
                 <div className="w-6 h-1 -rotate-45 absolute bg-white"></div>
               </button>
               <Link to={"/"}>
-              <li className="flex justify-center text-lg font-semibold text-gray-400 w-full py-4 hover:text-[#ED7020] hover:scale-105 duration-200">
+              <li className="flex justify-center text-lg font-semibold text-gray-400 w-full py-4 hover:text-[#ED7020] hover:scale-105 duration-300">
                 Noticias
               </li>
               </Link>
               <Link to={"/contacto"}>
-              <li className="flex justify-center text-lg font-semibold w-full py-4 text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-200">
+              <li className="flex justify-center text-lg font-semibold w-full py-4 text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-300">
                 Contacto
               </li>
               </Link>
               <Link to={"/Clubes"}>
-              <li className="flex justify-center text-lg font-semibold w-full py-4 text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-200">
+              <li className="flex justify-center text-lg font-semibold w-full py-4 text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-300">
                 Clubes
               </li>
               </Link>
               <Link to={"/descuentos"}>
-              <li className="flex justify-center text-lg font-semibold w-full py-4 text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-200">
+              <li className="flex justify-center text-lg font-semibold w-full py-4 text-gray-400 hover:text-[#ED7020] hover:scale-105 duration-300">
                 Descuentos
               </li>
               </Link>
