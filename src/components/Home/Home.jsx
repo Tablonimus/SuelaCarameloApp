@@ -46,8 +46,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-between items-center">
-        <article className="my-5 flex flex-col justify-center items-center text-center md:my-12 ">
-        <h1 className="text-4xl font-extrabold text-zinc-800 leading-snug md:text-6xl">
+        <article className="mt-10 px-2 flex flex-col justify-center items-center text-center md:my-12 ">
+        <h1 className="text-4xl font-extrabold text-zinc-800 leading-9 md:text-6xl md:leading-12">
           Suela Caramelo
           <br />
           <span className="px-1 italic text-black">Noticias</span>
@@ -65,7 +65,7 @@ export default function Home() {
       </article>
       <section
         id="nSection"
-        className="py-5 w-full h-full flex flex-wrap items-center justify-center gap-10"
+        className="py-5 mt-8 w-full h-full flex flex-wrap items-center justify-center gap-10"
       >
         {currentNotices?.length > 0 ? (
           currentNotices.map((notice) => (
@@ -85,7 +85,7 @@ export default function Home() {
         )}
       </section>
 
-      <section className="w-full m-4 pb-4 overflow-hidden">
+      <section className="w-full m-4 py-6 overflow-hidden md:py-10">
         {/* PAGINADOR */}
         <div className="flex items-center justify-center text-center">
           <a href="#nSection">
