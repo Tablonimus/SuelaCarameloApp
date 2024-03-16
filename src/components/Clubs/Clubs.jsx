@@ -33,8 +33,8 @@ export default function Clubs() {
           Contact me
         </button> 
       </article>
-      <section className="flex flex-col gap-4 p-4">
-        <h1 className="text-center text-4xl text-white font-bold">Masculino</h1>
+      <section className="flex flex-col gap-4 p-4 md:pb-16">
+        <h1 className="text-center text-4xl text-white font-bold mb-6">Masculino</h1>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">
           {clubs.length
             ? clubs.map((club, index) => (
@@ -60,8 +60,8 @@ export default function Clubs() {
             : null}
         </div>
       </section>
-      <section className="flex flex-col gap-4 p-4">
-        <h1 className="text-center text-4xl text-white font-bold">Femenino</h1>
+      <section className="flex flex-col gap-4 p-4 md:pb-16">
+        <h1 className="text-center text-4xl text-white font-bold mb-6">Femenino</h1>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">
           {clubsFem.length
             ? clubsFem.map((club, index) => (
