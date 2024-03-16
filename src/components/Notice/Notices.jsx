@@ -16,7 +16,7 @@ export default function Notices({
   return (
     <Link
       to={`/notices/${id}`}
-      class="max-w-sm h-auto bg-black p-1 rounded-lg shadow-md w-11/12 lg:max-w-xs md:h-[420px]"
+      class="max-w-sm h-auto bg-black p-1 rounded-lg shadow-md w-11/12 lg:max-w-xs md:h-[420px] hover:scale-105 duration-300"
     >
       {images && images[0] ? (
         <img
