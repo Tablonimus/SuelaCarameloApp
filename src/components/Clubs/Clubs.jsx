@@ -16,8 +16,8 @@ import { Link } from "react-router-dom";
 export default function Clubs() {
   return (
     <>
-      <article className="my-5 flex flex-col justify-center items-center text-center md:my-12 ">
-        <h1 className="text-4xl font-extrabold text-zinc-800 leading-snug md:text-6xl">
+   <article className="mt-10 px-2 flex flex-col justify-center items-center text-center md:my-12 ">
+        <h1 className="text-4xl font-extrabold text-zinc-800 leading-9 md:text-6xl md:leading-12">
           Suela Caramelo
           <br />
           <span className="px-1 italic text-black">Clubes</span>
@@ -28,7 +28,7 @@ export default function Clubs() {
           Lorem ipsum dolor sit amet.
         </p>
         <button
-          className="bg-zinc-900 w-56 text-gray-300 py-2 rounded-md font-bold text-sm mt-4 hover:scale-105 hover:text-[#ED7020] duration-300 md:text-base md:mt-6"
+          className="bg-zinc-900 w-56 text-gray-300 py-2 mb-6 rounded-md font-bold text-sm mt-4 hover:scale-105 hover:text-[#ED7020] duration-300 md:text-base md:mt-6"
         >
           Contact me
         </button> 

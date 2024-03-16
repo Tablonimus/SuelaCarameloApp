@@ -34,7 +34,7 @@ const NavbarPillin = () => {
             <div className="w-8 h-1 bg-white"></div>
 
             {/* menu */}
-            <ul className="bg-black w-screen pb-10 absolute -top-full group-focus:top-0 right-0 duration-300 flex flex-col space-y-3 justify-end"
+            <ul className="bg-black w-full pb-10 absolute -top-full group-focus:top-0 right-0 duration-300 flex flex-col space-y-3 justify-start"
             style={{zIndex:"3000"}}
             >
               <button className="px-12 py-10 relative ml-auto">
