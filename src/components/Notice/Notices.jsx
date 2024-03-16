@@ -15,8 +15,8 @@ export default function Notices({
 
   return (
     <Link
-      to={`/notices/${id}`} //bg-[#F98958]
-      class="max-w-sm h-auto bg-black bg-opacity-90 p-1 rounded-lg shadow-inner shadow-white w-11/12 lg:max-w-xs md:h-[420px]"
+      to={`/notices/${id}`}
+      class="max-w-sm h-auto bg-black p-1 rounded-lg shadow-md w-11/12 lg:max-w-xs md:h-[420px]"
     >
       {images && images[0] ? (
         <img
@@ -37,12 +37,12 @@ export default function Notices({
       ) : (
         false
       )}
-      <div className="flex flex-col px-5 pt-3 pb-5 gap-2">
+      <div className="flex flex-col px-5 pt-4 pb-6 gap-2">
         <h5 className="text-2xl font-bold tracking-tight text-gray-300">
           {title}
         </h5>
         <p
-        className="mt-2 overflow-hidden font-normal lg:text-md lg:leading-tight text-gray-200">{subtitle.split(" ").slice(0,15).join(" ")} ...</p>
+        className="mt-2 overflow-hidden font-semibold lg:text-md lg:leading-tight text-zinc-500">{subtitle.split(" ").slice(0,15).join(" ")} ...</p>
       </div>
     </Link>
   );

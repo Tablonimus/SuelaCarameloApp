@@ -29,7 +29,7 @@ export default function OtherNotices() {
   // let random3 = allNotices[Math.floor(Math.random() * allNotices.length)];
 
   return (
-    <div className=" w-11/12 lg:w-1/2  rounded-lg border-t border-white drop-shadow-2xl  bg-black flex flex-col items-center justify-center my-5 p-2">
+    <div className=" w-11/12 lg:w-1/2  rounded-lg border-t border-white drop-shadow-2xl bg-black flex flex-col items-center justify-center my-5 p-2">
       <span className="text-white text-md lg:text-3xl lg:p-2">
         Mirá tambien:
       </span>
