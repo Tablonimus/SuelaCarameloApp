@@ -38,11 +38,11 @@ export default function Notices({
         false
       )}
       <div className="flex flex-col px-5 pt-4 pb-6 gap-2">
-        <h5 className="text-2xl font-bold tracking-tight text-gray-300">
+        <h5 className="text-2xl font-bold tracking-tight text-gray-300 md:leading-6">
           {title}
         </h5>
         <p
-        className="mt-2 overflow-hidden font-semibold lg:text-md lg:leading-tight text-zinc-500">{subtitle.split(" ").slice(0,15).join(" ")} ...</p>
+        className="mt-2 overflow-hidden font-semibold lg:text-md lg:leading-tight text-zinc-500">{subtitle.split(" ").slice(0,17).join(" ")} ...</p>
       </div>
     </Link>
   );
