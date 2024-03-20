@@ -6,6 +6,7 @@ import b3 from "../../assets/images/b3.png";
 import b4 from "../../assets/images/b4.png";
 import b5 from "../../assets/images/zonafutsal.png";
 import { Footer } from "flowbite-react";
+import { Link } from "react-router-dom"
 
 export default function FooterComp() {
   return (
@@ -48,11 +49,19 @@ export default function FooterComp() {
         </section>
 
         <section className="w-full flex flex-col justify-end items-center pr-1">
-            <ul className="w-4/5 flex justify-center items-center text-4xl ml-[70px] mt-3 gap-6">
+            <ul className="w-4/5 flex justify-center items-center text-4xl ml-[70px] mt-3 gap-6">            
+            <Link to={"https://www.facebook.com/SuelaCarameloOk"}>
               <li><i className='bx bxl-facebook text-orange-700'></i></li>
+              </Link>
+              <Link to={"https://www.instagram.com/suelacaramelo/"}>
               <li><i className='bx bxl-instagram text-orange-700' ></i></li>
+              </Link>
+              <Link to={"https://www.youtube.com/@suelacaramelo"}>
               <li><i className='bx bxl-youtube text-orange-700' ></i></li>
+              </Link>
+            <Link to={"https://www.tiktok.com/@suelacaramelo"}>
               <li><i className='bx bxl-tiktok text-orange-700' ></i></li>
+            </Link>
             </ul>
           <section className="w-4/5 font-semibold flex justify-center items-center ml-[70px] mt-4">
             <Footer.Copyright href="#" by="Suela Caramelo™" year={2016} />
