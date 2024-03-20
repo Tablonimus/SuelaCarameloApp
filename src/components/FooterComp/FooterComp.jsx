@@ -49,7 +49,7 @@ export default function FooterComp() {
         </section>
 
         <section className="w-full flex flex-col justify-end items-center pr-1">
-            <ul className="w-4/5 flex justify-center items-center text-4xl ml-[70px] mt-3 gap-6">            
+            <ul className="w-4/5 flex justify-center items-center text-4xl ml-[70px] mt-3 gap-6 lg:gap-10">            
             <Link to={"https://www.facebook.com/SuelaCarameloOk"}>
               <li><i className='bx bxl-facebook text-orange-700'></i></li>
               </Link>
