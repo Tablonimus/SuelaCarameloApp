@@ -37,10 +37,10 @@ export default function ClubDetail() {
 
   return (
     <>
-      <main className="teams-wrapper pt-16">
+      <main className="teams-wrapper pt-16 lg:pt-28">
         {/* Flecha atrás */}
         <Link to={"/clubes"}>
-          <button className="btn-back">
+          <button className="btn-back ml-[60px]">
             {" "}
             <i className="bx bx-left-arrow-circle"></i>
           </button>
@@ -58,17 +58,17 @@ export default function ClubDetail() {
             <h4>DATOS DEL CLUB</h4>
             <ul className="club-details">
               <li>
-                <i className="bx bx-copyright"></i>Nombre Completo: {club?.name}
+                <i className="bx bx-copyright"></i>   Nombre Completo: {club?.name}
               </li>
               <li>
-                <i className="bx bx-tag-alt"></i>Fecha de Fundación:
+                <i className="bx bx-tag-alt"></i>   Fecha de Fundación:
                 {club?.foundation}
               </li>
               <li>
-                <i className="bx bx-football"></i>Estadio: Bautista Gargantini
+                <i className="bx bx-football"></i>   Estadio: Bautista Gargantini
               </li>
               <li>
-                <i className="bx bx-current-location"></i>Dirección:{" "}
+                <i className="bx bx-current-location"></i>   Dirección:{" "}
                 {club?.address}
               </li>
             </ul>
@@ -80,10 +80,9 @@ export default function ClubDetail() {
         {/* Equipos: Grupo de botones */}
       </main>
       {/* EQUIPOS */}
-      <section className="mt-24 w-full">
-        <section className="team-box">
-          <div className="team-name">
-            <h2>Plantel</h2>
+      <section className="mt-24 w-full pl-2 md:w-11/12 lg:ml-[90px]">
+        <section className="team-box md:px-14">
+          <div className="team-name pl-2">
             <Button.Group className="flex flex-col  sm:flex-row">
               {club?.teams?.length ? (
                 club?.teams?.map((team, index) => (
@@ -95,8 +94,8 @@ export default function ClubDetail() {
                       color=""
                       className={
                         teamSelected?.name === team?.name
-                          ? " text-white   w-72 h-20 rounded-lg font-bold"
-                          : " text-[#0A1B21] h-20 w-52  rounded-lg font-bold"
+                          ? " text-white   w-64 h-20 rounded-lg font-semibold"
+                          : " text-[#0A1B21]  h-20 w-52  rounded-lg font-semibold"
                       }
                     >
                       <span className="text-3xl">{team.name}</span>
@@ -134,8 +133,8 @@ export default function ClubDetail() {
             </Button.Group> */}
 
             {positions?.map((position, index) => (
-              <section key={index} className="w-full">
-                <h3 className="text-center font-bold text-white text-4xl">
+              <section key={index} className="w-full ">
+                <h3 className="text-center font-bold text-zinc-900 text-2xl">
                   {position.toUpperCase()}
                 </h3>
                 <div class="gridC">

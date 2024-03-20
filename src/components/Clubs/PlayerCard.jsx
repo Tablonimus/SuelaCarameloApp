@@ -6,7 +6,7 @@ export default function PlayerCard({ player }) {
   return (
     <figure class="effect-marley">
       {/* o honey */}
-      <img src={player.image} alt="img11" className="max-w-xs h-96 object-cover" />
+      <img src={player.image} alt="img11" className="max-w-sm h-96 object-cover" />
       <figcaption>
         <h2 className="">
           {player.name.split(" ")[0]} <span> {player.name.split(" ")[1]}</span>

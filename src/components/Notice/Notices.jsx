@@ -16,12 +16,12 @@ export default function Notices({
   return (
     <Link
       to={`/notices/${id}`}
-      class="max-w-sm h-auto bg-black p-1 rounded-lg shadow-md w-11/12 lg:max-w-xs md:h-[420px] hover:scale-105 duration-300"
+      class="h-auto bg-zinc-800 rounded-lg shadow-md min-w-60 max-w-72 md:h-[410px] hover:scale-105 duration-300"
     >
       {images && images[0] ? (
         <img
           src={images[0] }
-          className="w-96  lg:h-64 object-cover rounded-t-lg "
+          className="w-full h-40 lg:h-64 object-cover rounded-t-lg "
         />
       ) : (
         <></>
@@ -37,12 +37,12 @@ export default function Notices({
       ) : (
         false
       )}
-      <div className="flex flex-col px-5 pt-4 pb-6 gap-2">
-        <h5 className="text-2xl font-bold tracking-tight text-gray-300 md:leading-6">
+      <div className="flex flex-col px-5 pt-4 pb-3 gap-2">
+        <h5 className="text-xl font-semibold tracking-tight text-gray-300 md:leading-6">
           {title}
         </h5>
         <p
-        className="mt-2 overflow-hidden font-semibold lg:text-md lg:leading-tight text-zinc-500">{subtitle.split(" ").slice(0,17).join(" ")} ...</p>
+        className=" overflow-hidden font-medium lg:text-md lg:leading-tight text-zinc-500">{subtitle.split(" ").slice(0,17).join(" ")} ...</p>
       </div>
     </Link>
   );

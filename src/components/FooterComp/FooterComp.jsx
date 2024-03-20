@@ -9,10 +9,10 @@ import { Footer } from "flowbite-react";
 
 export default function FooterComp() {
   return (
-    <div className="bg-black rounded-t-lg w-full sticky py-4">
-      <div className="w-full text-center bg-black">
+    <div className="bg-zinc-900 rounded-t-lg w-full sticky py-4">
+      <div className="w-full text-center bg-zinc-900">
        
-        <section className="slider">
+        <section className="slider lg:w-full">
           <div className="slide-track">
             <div className="slide">
               <img src={b1} />
@@ -47,26 +47,14 @@ export default function FooterComp() {
           </div>
         </section>
 
-        <section>
-          <Footer.LinkGroup className="text-gray-300 flex items-center justify-center gap-3">
-            <Footer.Link class="text-gray-300" href="/sobrenosotros">Sobre Nosotros</Footer.Link>
-            <Footer.Link class="text-gray-300" href="/descargar">Descargar App</Footer.Link>
-            <Footer.Link class="text-gray-300" href="https://www.facebook.com/SuelaCarameloOk/">
-              Facebook
-            </Footer.Link>
-            <Footer.Link href="https://www.instagram.com/suelacaramelo/">
-              Instagram
-            </Footer.Link>
-            <Footer.Link href="https://www.tiktok.com/@suelacaramelo">
-              Tik Tok{" "}
-            </Footer.Link>
-            <Footer.Link href="https://www.youtube.com/@suelacaramelo">
-              Youtube
-            </Footer.Link>
-            <Footer.Link href="/contacto">Contacto</Footer.Link>
-          </Footer.LinkGroup>
-          <section className="flex items-center justify-center">
-            <Footer.Brand href="#" src={suela} alt="Flowbite Logo" name="" />
+        <section className="w-full flex flex-col justify-end items-center pr-1">
+            <ul className="w-4/5 flex justify-center items-center text-4xl ml-[70px] mt-3 gap-6">
+              <li><i className='bx bxl-facebook text-orange-700'></i></li>
+              <li><i className='bx bxl-instagram text-orange-700' ></i></li>
+              <li><i className='bx bxl-youtube text-orange-700' ></i></li>
+              <li><i className='bx bxl-tiktok text-orange-700' ></i></li>
+            </ul>
+          <section className="w-4/5 font-semibold flex justify-center items-center ml-[70px] mt-4">
             <Footer.Copyright href="#" by="Suela Caramelo™" year={2016} />
           </section>
         </section>
