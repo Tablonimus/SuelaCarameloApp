@@ -24,7 +24,7 @@ export default function Clubs() {
                 <Link key={index} to={`/clubes/${club.name}`}>
                   <div
                     key={club.name}
-                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg  bg-[#0a1b21]/80 hover:scale-105 duration-300"
+                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-zinc-900 hover:scale-105 duration-300"
                   >
                     <section>
                       <img
@@ -51,7 +51,7 @@ export default function Clubs() {
                 <Link key={index} to={`/clubes/${club.name}`}>
                   <div
                     key={club.name}
-                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-[#0a1b21]/80 hover:scale-105 hover:text-[#ED7020] duration-300  "
+                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-zinc-900 hover:scale-105 hover:text-[#ED7020] duration-300  "
                   >
                     <section>
                       <img
