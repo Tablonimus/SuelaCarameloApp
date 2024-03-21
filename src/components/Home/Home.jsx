@@ -20,8 +20,8 @@ const Home = () => {
  
   return (
     <main className="w-full h-auto flex flex-col justify-start items-center py-5 pr-1 md:items-center overflow-hidden">
-      <img className="w-44 ml-[70px] mb-4" src={logoSC} alt="" />
-      <section className="w-11/12 mb-6 ml-[70px] bg-zinc-900 h-40 md:h-60">
+      <img className="w-44 ml-[70px] mb-4 lg:w-52" src={logoSC} alt="" />
+      <section className="w-11/12 mb-6 ml-[70px] bg-zinc-900 h-40 md:h-60 lg:w-[93.5vw]">
       </section>
       <section className="w-4/5 my-4 ml-[70px] md:w-3/5">
         <ImageGallery
