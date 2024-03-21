@@ -1,27 +1,71 @@
 import React from "react";
 import mail from "../../assets/images/mail.png";
-
+import logoSC from "../../assets/images/banner2.png"
+import { Link } from "react-router-dom";
 export default function ContactUs() {
   return (
-    <div className=" h-screen flex flex-col justify-between items-center">
-      <div className="w-11/12 lg:w-1/2 mt-32 my-10 p-10  flex flex-col bg-black rounded-lg bg-opacity-80 items-center justify-center gap-5 text-white">
-        <h1 className="font-semibold text-3xl">¡CONTÁCTANOS!</h1>
-        <p className="font-semibold  text-xl">
-          <span className="font-bold text-xl">Clubes: </span> Cobertura
-          especiales, filmaciones de partidos enteros y mucho más!!
-        </p>
-        <p className="font-semibold text-xl">
-          <span className="font-bold text-xl">Anunciantes: </span> ¿Querés ser
-          parte? Sumate como sponsor, contáctanos para enterarte cómo! ¿Qué
-          estás esperando?
-        </p>
-        <p className="font-bold text-xl">¿Qué estás esperando?</p>
-
-        <section className="flex items-center ">
-          <img src={mail} alt="" />
-          <span className="font-bold text-xl"> suelacaramelo@gmail.com</span>
-        </section>
+    <main className="w-full overflow-hidden py-12 pl-[70px] flex flex-col justify-center items-center md:flex-row md:gap-20 lg:pb-24">
+     <img className=" absolute top-0 mt-8 w-44 mb-4 lg:w-52" src={logoSC} alt="" />
+      <h4 className="absolute top-0 mt-28 max-w-56 font-semibold text-center leading-6 text-zinc-800 text-2xl lg:text-3xl lg:font-bold lg:max-w-64">Ponte en contacto con nosotros</h4>
+   
+    <section className="max-w-[300px] w-full mt-32 py-5 bg-zinc-900 rounded-lg shadow-md p-4 md:mt-40 md:max-w-[400px] md:-ml-64">
+    <form className="flex flex-col gap-6">
+      <div className="mb-4">
+        <input
+          placeholder="Nombre"
+          className="w-full p-2 text-semibold text-gray-300 border-b-2 rounded-md border-orange-500 bg-transparent outline-none focus:border-b-2 focus:border-orange-500"
+          type="text"
+        />
       </div>
-    </div>
+      <div className="mb-4">
+        <input
+          placeholder="Email"
+          className="w-full p-2 text-semibold text-gray-300 border-b-2 rounded-md border-orange-500 bg-transparent outline-none focus:border-b-2 focus:border-orange-500"
+          name="email"
+          id="email"
+          type="email"
+        />
+      </div>
+      <div className="mb-4">
+        
+        <textarea
+          placeholder="Mensaje"
+          class="w-full p-2 text-semibold text-gray-300 border-b-2 rounded-md border-orange-500 bg-transparent outline-none focus:border-b-2 focus:border-orange-500"
+          rows="4"
+          name="message"
+          id="message"
+        ></textarea>
+      </div>
+      <div class="mb-4">
+        <button
+          class="w-full bg-zinc-700 text-gray-300 font-semibold p-2 rounded transition-all hover:bg-gray-300 hover:text-zinc-900 -mt-3"
+          type="submit"
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section className="w-full flex flex-col justify-end items-center pr-1 mt-10 md:w-auto">
+            <ul className="w-4/5 flex justify-center items-center text-4xl gap-6 md:flex-col md:gap-4 md:mt-28">            
+            <Link to={"https://www.facebook.com/SuelaCarameloOk"}>
+              <li><i className='bx bxl-facebook text-gray-200'></i></li>
+              </Link>
+              <Link to={"https://www.instagram.com/suelacaramelo/"}>
+              <li><i className='bx bxl-instagram text-gray-200' ></i></li>
+              </Link>
+              <Link to={"https://www.youtube.com/@suelacaramelo"}>
+              <li><i className='bx bxl-youtube text-gray-200' ></i></li>
+              </Link>
+            <Link to={"https://www.tiktok.com/@suelacaramelo"}>
+              <li><i className='bx bxl-tiktok text-gray-200' ></i></li>
+            </Link>
+            <Link to={"https://www.tiktok.com/@suelacaramelo"}>
+              <li><i className='bx bxl-gmail text-gray-200' ></i></li>
+            </Link>
+            </ul>
+        </section>
+  </main>
   );
 }
