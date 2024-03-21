@@ -8,7 +8,7 @@ export default function ContactUs() {
      <img className=" absolute top-0 mt-8 w-44 mb-4 lg:w-52" src={logoSC} alt="" />
       <h4 className="absolute top-0 mt-28 max-w-56 font-semibold text-center leading-6 text-zinc-800 text-2xl lg:text-3xl lg:font-bold lg:max-w-64">Ponte en contacto con nosotros</h4>
    
-    <section className="max-w-[300px] w-full mt-32 py-5 bg-zinc-900 rounded-lg shadow-md p-4 md:mt-40 md:max-w-[400px]">
+    <section className="max-w-[300px] w-full mt-32 py-5 pt-7 bg-zinc-900 rounded-lg shadow-md p-4 md:mt-40 md:max-w-[400px] md:pt-8">
     <form className="flex flex-col gap-6">
       <div className="mb-4">
         <input
