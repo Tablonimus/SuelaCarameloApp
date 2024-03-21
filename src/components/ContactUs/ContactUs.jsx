@@ -8,7 +8,7 @@ export default function ContactUs() {
      <img className=" absolute top-0 mt-8 w-44 mb-4 lg:w-52" src={logoSC} alt="" />
       <h4 className="absolute top-0 mt-28 max-w-56 font-semibold text-center leading-6 text-zinc-800 text-2xl lg:text-3xl lg:font-bold lg:max-w-64">Ponte en contacto con nosotros</h4>
    
-    <section className="max-w-[300px] w-full mt-32 py-5 bg-zinc-900 rounded-lg shadow-md p-4 md:mt-40 md:max-w-[400px] md:-ml-64">
+    <section className="max-w-[300px] w-full mt-32 py-5 bg-zinc-900 rounded-lg shadow-md p-4 md:mt-40 md:max-w-[400px]">
     <form className="flex flex-col gap-6">
       <div className="mb-4">
         <input
@@ -26,8 +26,7 @@ export default function ContactUs() {
           type="email"
         />
       </div>
-      <div className="mb-4">
-        
+      <div className="mb-4">    
         <textarea
           placeholder="Mensaje"
           class="w-full p-2 text-semibold text-gray-300 border-b-2 rounded-md border-orange-500 bg-transparent outline-none focus:border-b-2 focus:border-orange-500"
@@ -66,6 +65,12 @@ export default function ContactUs() {
             </Link>
             </ul>
         </section>
+        
+        <article className="font-medium text-base text-center text-zinc-900 mt-8 max-w-72 md:text-lg md:-mt-4">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut quae aspernatur aliquid error 
+          ad quo eligendi, est cum quidem veniam delectus, quaerat unde quos voluptate consequuntur iusto 
+          illo incidunt iste!
+        </article>
   </main>
   );
 }
