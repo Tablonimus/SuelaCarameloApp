@@ -2,7 +2,7 @@ import { Card, Spinner } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
-
+import Sidebar from "../NavBar/Sidebar";
 export default function Notices({
   id,
   images,
@@ -14,6 +14,8 @@ export default function Notices({
 }) {
 
   return (
+  <>
+  <Sidebar />
     <Link
       to={`/notices/${id}`}
       class="h-auto bg-zinc-800 rounded-lg shadow-md min-w-60 max-w-72 md:h-[410px] hover:scale-105 duration-300"
@@ -45,5 +47,6 @@ export default function Notices({
         className=" overflow-hidden font-medium lg:text-md lg:leading-tight text-zinc-500">{subtitle.split(" ").slice(0,17).join(" ")} ...</p>
       </div>
     </Link>
+    </>
   );
 }

@@ -2,8 +2,10 @@ import React from "react";
 import mail from "../../assets/images/mail.png";
 import logoSC from "../../assets/images/banner2.png"
 import { Link } from "react-router-dom";
+import Sidebar from "../NavBar/Sidebar";
 export default function ContactUs() {
-  return (
+  return (<>
+  <Sidebar></Sidebar>
     <main className="w-full overflow-hidden py-12 pl-[70px] flex flex-col justify-center items-center md:flex-row md:gap-20 lg:pb-24">
      <img className=" absolute top-0 mt-8 w-44 mb-4 lg:w-52" src={logoSC} alt="" />
       <h4 className="absolute top-0 mt-28 max-w-56 font-semibold text-center leading-6 text-zinc-800 text-2xl lg:text-3xl lg:font-bold lg:max-w-64">Ponte en contacto con nosotros</h4>
@@ -72,5 +74,6 @@ export default function ContactUs() {
           illo incidunt iste!
         </article>
   </main>
+  </>
   );
 }

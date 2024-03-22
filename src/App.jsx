@@ -15,26 +15,29 @@ import Descuentos from "./components/Voucher/Descuentos";
 import NavFooter from "./components/NavBar/NavFooter";
 import Home from "./components/Home/Home";
 import Sidebar from "./components/NavBar/Sidebar";
+import Resultados from "./components/Fixture/Resultados";
+import Fixture from "./components/Fixture/Fixture";
 
 function App() {
   const location = useLocation();
 
   return (
     <section id="general" className="">
-      <Sidebar />
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/noticias" element={<Noticias />} />
         <Route path="/notices/:id" element={<NoticeDetail />} />
         <Route path="/clubes" element={<Clubs />} />
         <Route path="/clubes/:name" element={<ClubDetail />} />
+        <Route path="/resultados" element={<Resultados />} />
+        <Route path="/fixture" element={<Fixture/>} />
         <Route path="/descuentos" element={<Descuentos />} />
-        <Route path="/sobrenosotros" element={<AboutUs />} />
         <Route path="/contacto" element={<ContactUs />} />
         <Route path="/test" element={<RichTextEditor />} />
-        {/* <Route path="/descargar" element={<Download />} /> */}
-        {/* Ruta en español para la gente */}
         <Route path="/createnotice" element={<CreateNotice />} />
+        {/* <Route path="/descargar" element={<Download />} /> */}
+        {/* <Route path="/sobrenosotros" element={<AboutUs />} /> */}
+        {/* Ruta en español para la gente */}
       </Routes>
       {/* <NavFooter /> */}
       <FooterComp />

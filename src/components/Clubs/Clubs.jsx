@@ -12,10 +12,11 @@ import { useState } from "react";
 import clubs from "../../utils/data/teamsMasc.json";
 import clubsFem from "../../utils/data/teamsFem.json";
 import { Link } from "react-router-dom";
-
+import Sidebar from "../NavBar/Sidebar";
 export default function Clubs() {
   return (
     <>
+    <Sidebar></Sidebar>
       <section className="ml-[70px] flex flex-col gap-4 py-4 md:pb-16">
         <h1 className="text-center text-3xl italic text-white font-bold mb-4 lg:mt-8">Masculino</h1>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">

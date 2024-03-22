@@ -6,6 +6,7 @@ import { Button, Tooltip } from "flowbite-react";
 import PlayerCard from "./PlayerCard";
 import clubs from "../../utils/data/teamsMasc.json";
 import clubsFem from "../../utils/data/teamsFem.json";
+import Sidebar from "../NavBar/Sidebar";
 const positions = [
   "Arquero",
   "Poste",
@@ -37,6 +38,7 @@ export default function ClubDetail() {
 
   return (
     <>
+    <Sidebar />
       <main className="teams-wrapper pt-16 lg:pt-28">
         {/* Flecha atrás */}
         <Link to={"/clubes"}>

@@ -1,0 +1,150 @@
+/* Sidebar */
+.sidebar-home {
+  min-height: 100vh;
+  width: 70px;
+  padding: 6px 4px;
+  z-index: 99;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.sidebar-home ul {
+  margin-top: 3rem;
+}
+.sidebar-home.open {
+  width: 270px;
+  background-color: #20232b;
+}
+
+.sidebar-home .logo_details {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  & img {
+    max-width: 4rem;
+    margin-left: 1rem;
+    margin-top: 0.7rem;
+  }
+}
+
+.sidebar-home .logo_details .icon {
+  opacity: 0;
+  transition: all 0.7s ease;
+}
+
+.sidebar-home .logo_details .logo_name {
+  color: var(--color-white);
+  font-size: 26px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.sidebar-home.open .logo_details .icon,
+.sidebar-home.open .logo_details .logo_name {
+  opacity: 1;
+}
+
+.sidebar-home .logo_details #btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin-top: 0.1rem;
+  margin-right: 0.2rem;
+}
+
+.sidebar-home i {
+  color: var(--color-white);
+  height: 50px;
+  line-height: 50px;
+  min-width: 50px;
+  font-size: 100px;
+  text-align: center;
+  margin-top: 0.2rem;
+}
+
+.sidebar-home .nav-list {
+  margin-top: 4rem;
+  height: 100%;
+  visibility: hidden;
+}
+
+.sidebar-home li {
+  position: relative;
+  list-style: none;
+}
+
+.sidebar-home.open li .tooltip {
+  display: none;
+}
+
+.sidebar-home li a {
+  display: flex;
+  margin-bottom: 0.5rem;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--color-default);
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 12;
+}
+
+.sidebar-home li a::after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  border-radius: 5px;
+  transition: transform 0.4s ease-in-out;
+  transform-origin: left;
+  z-index: -2;
+  background-color: var(--color-light);
+}
+
+.sidebar-home li a:hover::after {
+  transform: scaleX(1);
+  color: var(--color-default);
+}
+
+.sidebar-home li a .link_name {
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sidebar-home li a:hover .link_name,
+.sidebar-home li a:hover i {
+  transition: all 0.3s ease;
+  color: var(--color-default);
+}
+
+.sidebar-home.open li a .link_name {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-home li i {
+  font-weight: 200;
+  font-size: 30px;
+  border-radius: 5px;
+  margin-left: 0.4rem;
+}
