@@ -27,10 +27,10 @@ export default function NoticeDetail() {
         className="pt-8 min-w-screen overflow-hidden flex flex-col items-center"
       >
         <div className=" w-11/12 lg:w-1/2 flex-flex-col items-center justify-center ml-[70px]">
-          <h1 className="px-5 text-center font-bold text-black text-3xl lg:text-4xl">
+          <h1 className="px-5 text-center font-bold text-zinc-900 text-3xl lg:text-4xl">
             {notice?.title}
           </h1>
-          <h2 className="px-5 py-2 text-md text-center lg:text-lg text-black font-semibold">
+          <h2 className="px-6 py-2 text-md text-center lg:text-lg text-gray-200 font-semibold">
             {notice?.subtitle}
           </h2>
         </div>
@@ -58,7 +58,7 @@ export default function NoticeDetail() {
             <YoutubeEmbed embedId={notice?.videos} />
           )}
         </div>
-        <div className="flex flex-col  w-11/12 lg:w-1/2 items-center justify-center py-4 m-2 rounded-lg bg-gray-100 opacity-80 shadow-xl ml-[70px]">
+        <div className="py-6 flex flex-col  w-11/12 lg:w-1/2 items-center justify-center m-2 rounded-lg bg-zinc-900 text-gray-200 shadow-xl ml-[70px]">
           <div className="w-3/4 flex flex-col items-center justify-center">
             {notice?.content?.length > 0 && notice?.content[0] !== "<" ? (
               parrafo?.map((parra) => (
