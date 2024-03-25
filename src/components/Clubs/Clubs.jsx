@@ -18,7 +18,7 @@ export default function Clubs() {
     <>
     <Sidebar></Sidebar>
       <section className="ml-[70px] flex flex-col gap-4 py-4 md:pb-16">
-        <h1 className="text-center text-3xl italic text-white font-bold mb-4 lg:mt-8">A1</h1>
+        <h1 className="text-center text-3xl italic text-white font-bold mb-4 lg:mt-8">A1xSUELA</h1>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">
           {clubs.length
             ? clubs.map((club, index) => (
@@ -45,7 +45,7 @@ export default function Clubs() {
         </div>
       </section>
       <section className="ml-[70px] flex flex-col gap-4 pt-4 pb-6 md:pb-16">
-        <h1 className="text-center text-3xl italic text-white font-bold mb-4">FemA</h1>
+        <h1 className="text-center text-3xl italic text-white font-bold mb-4">FemAxSUELA</h1>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">
           {clubsFem.length
             ? clubsFem.map((club, index) => (
