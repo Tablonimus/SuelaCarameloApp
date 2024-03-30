@@ -148,8 +148,9 @@ code {
 }
 
 .sidebar .nav-list {
-  margin-top: 2rem;
+  margin-top: 4rem;
   height: 100%;
+ 
 }
 
 .sidebar li {
