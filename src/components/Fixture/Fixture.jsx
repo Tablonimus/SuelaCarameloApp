@@ -9,7 +9,7 @@ import fixture8 from "../../assets/images/fixture-resultados/A1/fixture8.jpg";
 import fixture9 from "../../assets/images/fixture-resultados/A1/fixture9.jpg";
 import fixture10 from "../../assets/images/fixture-resultados/A1/fixture10.jpg";
 import Sidebar from "../NavBar/Sidebar";
-import logoSC from "../../assets/images/banner2.png";
+
 
 
 const Fixture = () => {
