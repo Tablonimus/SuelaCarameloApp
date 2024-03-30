@@ -1627,5 +1627,378 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Club Mendoza de Regatas",
+    "logo": "img--png",
+    "address": "Av. Prado Español s/n Mendoza",
+    "foundation": "17/11/1909",
+    "stadium": "",
+    "colors": ["#031020", "#ffffff"],
+    "teams": [
+      {
+        "name": "Regatas A",
+        "category": "A1",
+        "players": [
+          {
+            "name": "Santiago Del Olmo",
+            "nickname": "Vainilla",
+            "number": 9,
+            "position": "Ala",
+            "birth": "15/01/2001",
+            "arrival": "2007",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Ariel Alonso",
+            "nickname": "El Ari",
+            "number": "4",
+            "position": "Ala",
+            "birth": "28/06/2003",
+            "arrival": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Galo Marín",
+            "nickname": "El Mudo",
+            "number": 5,
+            "position": "Poste",
+            "birth": "21/07/2002",
+            "arrival": "2020",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Tomás Piñeiro",
+            "nickname": "Piñata",
+            "number": 14,
+            "position": "Ala",
+            "birth": "11/09/2003",
+            "arrival": "2017",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Matías Origaen",
+            "nickname": "Chueca",
+            "number": "2",
+            "position": "Pivote",
+            "birth": "12/04/2003",
+            "arrival": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Ignacio Romero",
+            "nickname": "Nacho",
+            "number": 11,
+            "position": "Ala",
+            "birth": "23/09/2002",
+            "arrival": "2019",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Mariano Garbin",
+            "nickname": "Borgas",
+            "number": 15,
+            "position": "Poste",
+            "birth": "14/10/1989",
+            "arrival": "1993",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Facundo Del Olmo",
+            "nickname": "Vainilla",
+            "number": 6,
+            "position": "Pivote",
+            "birth": "16/10/1995",
+            "arrival": "2005",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Santiago Zorrilla",
+            "nickname": "Peca",
+            "number": 3,
+            "position": "Poste",
+            "birth": "19/12/2005",
+            "arrival": "2009",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": " Marcos Basile",
+            "nickname": "Marquiños",
+            "number": "7",
+            "position": "Ala",
+            "birth": "07/10/1991",
+            "arrival": "1995",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Ignacio Vendrell",
+            "nickname": "Culebra",
+            "number": 10,
+            "position": "Ala",
+            "birth": "23/07/1996",
+            "arrival": "2003",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Paolo Giarrizzo",
+            "nickname": "Paorock",
+            "number": "8",
+            "position": "Poste",
+            "birth": "09/04/1993",
+            "arrival": "2004",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Alejo Tapia",
+            "nickname": "Tapita",
+            "number": "19",
+            "position": "Poste",
+            "birth": "01/08/2004",
+            "arrival": "2022",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Nicolás Delugan",
+            "nickname": "Emperador",
+            "number": 18,
+            "position": "Pivote",
+            "birth": "01/05/2000",
+            "arrival": "2014",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Adriano Stanziola",
+            "nickname": "Diablo",
+            "number": 6,
+            "position": "Ala",
+            "birth": "19/01/2006",
+            "arrival": "2011",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Mauro Albertini",
+            "nickname": "Mono",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "20/04/1988",
+            "arrival": "1998",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Bruno Sanchez",
+            "nickname": "Boldo",
+            "number": "12",
+            "position": "Arquero",
+            "birth": "20/07/1992",
+            "arrival": "1996",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Francisco Sendra",
+            "nickname": "Francis",
+            "number": "-",
+            "position": "CT",
+            "birth": "04/06/1978",
+            "arrival": "1995",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Ignacio Gonzalez",
+            "nickname": "Ig",
+            "number": "13",
+            "position": "Arquero",
+            "birth": "01/05/2000",
+            "arrival": "2019",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Javier Colla",
+            "nickname": "Javi",
+            "number": "-",
+            "position": "PF",
+            "birth": "03/07/1986",
+            "arrival": "2017",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Pablo Longo",
+            "nickname": "",
+            "number": "-",
+            "position": "DT",
+            "birth": "03/05/1986",
+            "arrival": "2016",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          }
+        ]
+      },
+      {
+        "name": "Regatas B",
+        "category": "A1",
+        "players": [
+          {
+            "name": "Ignacio Romero",
+            "nickname": "Igna",
+            "number": 15,
+            "position": "Poste",
+            "birth": "24/12/2002",
+            "arrival": "2012",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Franco Latín",
+            "nickname": "Chancho",
+            "number": 9,
+            "position": "Pivote",
+            "birth": "04/09/2005",
+            "arrival": "2021",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Tomás Bietti",
+            "nickname": "Tope",
+            "number": 19,
+            "position": "Ala",
+            "birth": "03/03/2004",
+            "arrival": "2009",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Joaquín Alvarez",
+            "nickname": "Joa",
+            "number": 8,
+            "position": "Poste",
+            "birth": "03/01/2002",
+            "arrival": "2007",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Tomás Guiñez",
+            "nickname": "Tomi",
+            "number": 1,
+            "position": "Arquero",
+            "birth": "01/02/1998",
+            "arrival": "2001",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Mauro Guiñez",
+            "nickname": "Maurito",
+            "number": 2,
+            "position": "Arquero",
+            "birth": "29/12/2005",
+            "arrival": "2009",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Mauricio Alfaro",
+            "nickname": "Mauro",
+            "number": 20,
+            "position": "Arquero",
+            "birth": "27/10/2004",
+            "arrival": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Agustín García",
+            "nickname": "Agus",
+            "number": 12,
+            "position": "Arquero",
+            "birth": "19/05/2000",
+            "arrival": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Facundo Balmaceda",
+            "nickname": "Facu",
+            "number": 3,
+            "position": "Poste",
+            "birth": "13/03/2005",
+            "arrival": "2022",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Alvaro Leal",
+            "nickname": "Alva",
+            "number": 7,
+            "position": "Poste",
+            "birth": "07/12/1999",
+            "arrival": "2016",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Agustín Corti",
+            "nickname": "Corti",
+            "number": 6,
+            "position": "Ala",
+            "birth": "24/05/1993",
+            "arrival": "2018",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Francisco Marcello",
+            "nickname": "Chelo",
+            "number": 16,
+            "position": "Ala",
+            "birth": "17/02/2005",
+            "arrival": "2017",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Iñaki Astesiano",
+            "nickname": "Iña",
+            "number": 4,
+            "position": "Ala",
+            "birth": "03/05/2002",
+            "arrival": "2017",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Federico García",
+            "nickname": "Fede",
+            "number": 18,
+            "position": "Pivote",
+            "birth": "28/02/2003",
+            "arrival": "2015",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Lisandro Leal",
+            "nickname": "Licha",
+            "number": 17,
+            "position": "Pivote",
+            "birth": "29/01/2002",
+            "arrival": "2018",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Bruno Ficarra",
+            "nickname": "Ficarra",
+            "number": 5,
+            "position": "Ala",
+            "birth": "20/06/1999",
+            "arrival": "2008",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Mauricio Duarte",
+            "nickname": "Mauri",
+            "number": "-",
+            "position": "DT",
+            "birth": "25/12/1985",
+            "arrival": "1991",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Fernando Denier",
+            "nickname": "Fer",
+            "number": "-",
+            "position": "PF",
+            "birth": "12/01/1977",
+            "arrival": "2017",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          }
+        ]
+      }
+    ]
   }
 ]

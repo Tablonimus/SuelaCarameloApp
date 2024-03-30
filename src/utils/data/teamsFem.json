@@ -338,5 +338,370 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Club Social y Deportivo General San Martín - Pacífico",
+    "logo": "img--png",
+    "address": "Av. Perú 2392 - Mendoza",
+    "foundation": "",
+    "stadium": "",
+    "colors": ["#031020", "#ffffff"],
+    "teams": [
+      {
+        "name": "Pacífico",
+        "category": "FemA",
+        "players": [
+          {
+            "name": "Camila Abellan",
+            "nickname": "Cami",
+            "number": 2,
+            "position": "Ala",
+            "birth": "12/05/1994",
+            "foot": "2012",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Sol Ferro",
+            "nickname": "Solcito",
+            "number": 8,
+            "position": "Poste",
+            "birth": "24/01/2003",
+            "foot": "2018",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Emilia Marín",
+            "nickname": "Emi",
+            "number": 1,
+            "position": "Arquera",
+            "birth": "22/06/2003",
+            "foot": "2016",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": " Sofía Gil",
+            "nickname": "Sofi",
+            "number": 19,
+            "position": "Arquero",
+            "birth": "11/12/2003",
+            "foot": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Greta Veliez",
+            "nickname": "Gretu",
+            "number": 15,
+            "position": "Pivote",
+            "birth": "06/05/1995",
+            "foot": "2015",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Luciana Olivares",
+            "nickname": "Luci",
+            "number": 14,
+            "position": "Ala",
+            "birth": "05/01/2007",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Morena Suarez",
+            "nickname": "Flaca",
+            "number": "7",
+            "position": "Pivote",
+            "birth": "14/01/2008",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Rebeca Perez",
+            "nickname": "Rebe",
+            "number": "3",
+            "position": "Ala",
+            "birth": "18/07/2003",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Valentina Álvarez",
+            "nickname": "Pitbull",
+            "number": "7",
+            "position": "Pivote",
+            "birth": "18/02/2005",
+            "foot": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": " María Lourdes Sosa",
+            "nickname": "Lulu",
+            "number": "11",
+            "position": "Poste",
+            "birth": "27/05/2004",
+            "foot": "2022",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Joaquín Romero",
+            "nickname": "",
+            "number": "-",
+            "position": "Poste",
+            "birth": "20/10/2001",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Keila Luna",
+            "nickname": "Kei",
+            "number": 16,
+            "position": "Pivote",
+            "birth": "21/12/2002",
+            "foot": "2012",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Mauro Salinas",
+            "nickname": "Negro",
+            "number": 15,
+            "position": "Poste",
+            "birth": "29/01/2001",
+            "foot": "2014",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Sofia Marin",
+            "nickname": "Sofi",
+            "number": 5,
+            "position": "Pivote",
+            "birth": "08/06/2000",
+            "foot": "2017",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Luz Ovalle",
+            "nickname": "Zurda",
+            "number": 13,
+            "position": "Ala",
+            "birth": "11/10/2005",
+            "foot": "2022",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Agostina Herrera",
+            "nickname": "Agos",
+            "number": "14",
+            "position": "Pivote",
+            "birth": "17/08/2001",
+            "foot": "2021",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Aylen Araujo",
+            "nickname": "Aylu",
+            "number": "3",
+            "position": "Ala",
+            "birth": "01/10/2007",
+            "foot": "2022",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Guadalupe García",
+            "nickname": "Guadita",
+            "number": "6",
+            "position": "Ala",
+            "birth": "29/10/2006",
+            "foot": "2021",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Yazmin García",
+            "nickname": "Yasu",
+            "number": "4",
+            "position": "Poste",
+            "birth": "23/08/1990",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Florencia Carmona",
+            "nickname": "Flor",
+            "number": "11",
+            "position": "Ala",
+            "birth": "-",
+            "foot": "-",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Florencia Azcurra",
+            "nickname": "Flor",
+            "number": "7",
+            "position": "Ala",
+            "birth": "",
+            "foot": "-",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": " Gisela Bazan",
+            "nickname": "Pichi",
+            "number": "10",
+            "position": "Poste",
+            "birth": "28/12/1990",
+            "foot": "2012",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Diego Manzur",
+            "nickname": "-",
+            "number": "-",
+            "position": "DT",
+            "birth": "02/05/1994",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Club de Fútbol Femenino Alianza Godoy Cruz",
+    "logo": "img--png",
+    "address": "Mogotes P. 899, Godoy Cruz - Mendoza",
+    "foundation": "1987",
+    "stadium": "Nicolino Locche | Poli. N° 7",
+    "colors": ["#031020", "#ffffff"],
+    "teams": [
+      {
+        "name": "Alianza Godoy Cruz",
+        "category": "Fem A",
+        "players": [
+          {
+            "name": "Estefania Yuma Barón",
+            "nickname": "Pini",
+            "number": 3,
+            "position": "Poste",
+            "birth": "26/05/1992",
+            "foot": "2002",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Carla Rico Ortiz",
+            "nickname": "Carlita",
+            "number": 9,
+            "position": "Poste",
+            "birth": "03/07/2004",
+            "foot": "2018",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Ailen Lagos Romero",
+            "nickname": "Ailu",
+            "number": 11,
+            "position": "Ala",
+            "birth": "02/02/2006",
+            "foot": "2017",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Graciela Benois",
+            "nickname": "Grace",
+            "number": 10,
+            "position": "Ala",
+            "birth": "06/05/1994",
+            "foot": "2014",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Alejandra Esperanza",
+            "nickname": "Ale",
+            "number": 4,
+            "position": "Ala",
+            "birth": "18/04/2005",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Florencia Esperanza",
+            "nickname": "Flor",
+            "number": 2,
+            "position": "Ala",
+            "birth": "15/10/2001",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Melisa Schulze",
+            "nickname": "Meli",
+            "number": 19,
+            "position": "Arquera",
+            "birth": "19/06/1996",
+            "foot": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Valentina Esperanza",
+            "nickname": "Valen",
+            "number": 1,
+            "position": "Arquera",
+            "birth": "15/11/2007",
+            "foot": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Eliana Galiano",
+            "nickname": "Cucu",
+            "number": 7,
+            "position": "Ala",
+            "birth": "21/06/1988",
+            "foot": "2024",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Rocío Rico Ortiz",
+            "nickname": "Rocha",
+            "number": 14,
+            "position": "Ala",
+            "birth": "07/05/2008",
+            "foot": "2019",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Morena Contrafatto",
+            "nickname": "More",
+            "number": 13,
+            "position": "Pivote",
+            "birth": "09/06/2008",
+            "foot": "2016",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Mónica Barón",
+            "nickname": "Moni",
+            "number": "-",
+            "position": "PF",
+            "birth": "08/11/1974",
+            "foot": "2002",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Marcela Quintero",
+            "nickname": "Marce",
+            "number": "-",
+            "position": "DT",
+            "birth": "10/11/1965",
+            "foot": "1988",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          },
+          {
+            "name": "Agostina Morales",
+            "nickname": "Agos",
+            "number": 8,
+            "position": "Ala",
+            "birth": "27/08/1999",
+            "foot": "2023",
+            "image": "https://res-console.cloudinary.com/tablonimus/media_explorer_thumbnails/8a0fb6090f243175891ebc2f185058c0/detailed."
+          }
+        ]
+      }
+    ]
   }
 ]
