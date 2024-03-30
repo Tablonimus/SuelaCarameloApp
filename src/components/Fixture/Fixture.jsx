@@ -8,12 +8,15 @@ import fixture7 from "../../assets/images/fixture-resultados/fixture7.jpg";
 import fixture8 from "../../assets/images/fixture-resultados/fixture8.jpg";
 import fixture9 from "../../assets/images/fixture-resultados/fixture9.jpg";
 import fixture10 from "../../assets/images/fixture-resultados/fixture10.jpg";
+import Sidebar from "../NavBar/Sidebar";
 
 const Fixture = () =>{
 
 const fixtures = [fixture1,fixture2,fixture3,fixture4,fixture5,fixture6,fixture7,fixture8,fixture9,fixture10]
 
     return(
+        <>
+        <Sidebar />
         <section className="w-full h-auto flex flex-col justify-center items-center overflow-hidden">
             {
                 fixtures.map((fixture,i) => (
@@ -21,6 +24,7 @@ const fixtures = [fixture1,fixture2,fixture3,fixture4,fixture5,fixture6,fixture7
                 ))
             }
         </section>
+        </>
     )
 }
 export default Fixture;
