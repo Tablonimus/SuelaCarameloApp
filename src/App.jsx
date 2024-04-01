@@ -17,6 +17,7 @@ import Home from "./components/Home/Home";
 import Sidebar from "./components/NavBar/Sidebar";
 import Resultados from "./components/Fixture/Resultados";
 import Fixture from "./components/Fixture/Fixture";
+import Posiciones from "./components/Fixture/Posiciones";
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
         <Route path="/clubes/:name" element={<ClubDetail />} />
         <Route path="/resultados" element={<Resultados />} />
         <Route path="/fixture" element={<Fixture/>} />
+        <Route path="/posiciones" element={<Posiciones/>} />
         <Route path="/descuentos" element={<Descuentos />} />
         <Route path="/contacto" element={<ContactUs />} />
         <Route path="/test" element={<RichTextEditor />} />

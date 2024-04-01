@@ -62,6 +62,14 @@ const SideHome = () => {
                 </a>
               </li>
             </Link>
+            <Link to={"/posiciones"}>
+            <li>
+              <a href="#">
+                <i class="bx bx-list-ol"></i>
+                <span className="link_name">Posiciones</span>
+              </a>
+            </li>
+          </Link>
             <Link to={"/descuentos"}>
               <li>
                 <a href="#">

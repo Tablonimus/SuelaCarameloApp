@@ -57,8 +57,16 @@ const Sidebar = () => {
           <Link to={"/resultados"}>
             <li>
               <a href="#">
-                <i className='bx bx-football'></i>
+                <i className="bx bx-football"></i>
                 <span className="link_name">Resultados</span>
+              </a>
+            </li>
+          </Link>
+          <Link to={"/posiciones"}>
+            <li>
+              <a href="#">
+                <i class="bx bx-list-ol"></i>
+                <span className="link_name">Posiciones</span>
               </a>
             </li>
           </Link>

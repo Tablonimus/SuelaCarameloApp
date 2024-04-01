@@ -2,7 +2,6 @@ import fixture1 from "../../assets/images/fixture-resultados/A1/fixture1.jpg";
 import fixture2 from "../../assets/images/fixture-resultados/A1/fixture2.jpg";
 import fixture3 from "../../assets/images/fixture-resultados/A1/fixture3.jpg";
 import fixture4 from "../../assets/images/fixture-resultados/A1/fixture4.jpg";
-import fixture5 from "../../assets/images/fixture-resultados/A1/fixture5.jpg";
 import fixture6 from "../../assets/images/fixture-resultados/A1/fixture6.jpg";
 import fixture7 from "../../assets/images/fixture-resultados/A1/fixture7.jpg";
 import fixture8 from "../../assets/images/fixture-resultados/A1/fixture8.jpg";
@@ -10,17 +9,13 @@ import fixture9 from "../../assets/images/fixture-resultados/A1/fixture9.jpg";
 import fixture10 from "../../assets/images/fixture-resultados/A1/fixture10.jpg";
 import Sidebar from "../NavBar/Sidebar";
 
-
-
-
 const Fixture = () => {
   const fixtures = [
-    fixture1,
     fixture2,
+    fixture4,   
     fixture3,
-    fixture4,
-    fixture5,
     fixture6,
+    fixture1,
     fixture7,
     fixture8,
     fixture9,
@@ -37,11 +32,11 @@ const Fixture = () => {
           </li>
         ))}
       </ul>
-      <section className="w-full h-auto flex flex-col justify-center items-center overflow-hidden">
+      <section className="w-full h-auto flex flex-wrap justify-center items-center overflow-hidden ">
         {fixtures.map((fixture, i) => (
           <img
             id={i + 1}
-            className="ml-[70px] w-4/5 max-w-2xl"
+            className="ml-[70px] w-4/5 max-w-xl"
             src={fixture}
           />
         ))}
