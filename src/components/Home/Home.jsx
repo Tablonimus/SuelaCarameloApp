@@ -29,7 +29,7 @@ const Home = () => {
       <main className="w-full h-auto flex flex-col justify-start items-center py-5 md:items-center overflow-hidden">
         <img className="w-44 mb-4 lg:w-52" src={logoSC} alt="" />
     
-        <section className="w-[95vw] my-8 md:w-4/5">
+        <section className="w-[95vw] my-8 md:w-4/5 md:my-12">
           <ImageGallery
             items={images}
             showPlayButton={false}
