@@ -68,10 +68,8 @@ export default function ContactUs() {
             </ul>
         </section>
         
-        <article className="font-medium text-base text-center text-zinc-900 mt-8 max-w-72 md:text-lg md:-mt-4">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut quae aspernatur aliquid error 
-          ad quo eligendi, est cum quidem veniam delectus, quaerat unde quos voluptate consequuntur iusto 
-          illo incidunt iste!
+        <article className="font-medium text-base text-center text-zinc-900 mt-8 max-w-72 md:text-lg md:mt-24">
+       Informando y celebrando el futsal en Mendoza. Somos un medio apasionado por este deporte, con coberturas, contenido audiovisual y una visión de influencia global. Además, somos Suela Producciones, una productora audiovisual y fotográfica enfocada en deportes. Si quieres sumarte a nuestra comunidad o tienes alguna consulta, ¡contáctanos! Estamos ansiosos por leerte y compartir juntos esta pasión.
         </article>
   </main>
   </>
