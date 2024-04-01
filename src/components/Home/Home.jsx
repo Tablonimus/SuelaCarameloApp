@@ -1,21 +1,25 @@
-import img1 from "/Aleman.png";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import logoSC from "../../assets/images/banner2.png";
 import SideHome from "../NavBar/SideHome";
+ import imgHome1 from "../../assets/images/home/home-img1.webp" 
+ import imgHome2 from "../../assets/images/home/home-img2.webp" 
+ import imgHome3 from "../../assets/images/home/home-img3.webp"
+
+
 const Home = () => {
   const images = [
     {
-      original: "https://picsum.photos/id/1018/1000/600/",
-      thumbnail: "https://picsum.photos/id/1018/250/150/",
+      original:imgHome1,
+      thumbnail:imgHome1,
     },
     {
-      original: "https://picsum.photos/id/1015/1000/600/",
-      thumbnail: "https://picsum.photos/id/1015/250/150/",
+      original: imgHome2,
+      thumbnail: imgHome2,
     },
     {
-      original: "https://picsum.photos/id/1019/1000/600/",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
+      original: imgHome3,
+      thumbnail: imgHome3,
     },
   ];
 
@@ -24,8 +28,8 @@ const Home = () => {
       <SideHome />
       <main className="w-full h-auto flex flex-col justify-start items-center py-5 md:items-center overflow-hidden">
         <img className="w-44 mb-4 lg:w-52" src={logoSC} alt="" />
-        <section className="w-full mb-6  bg-zinc-900 h-40 md:h-60"></section>
-        <section className="w-11/12 my-4 md:w-3/5">
+    
+        <section className="w-[95vw] my-8 md:w-4/5">
           <ImageGallery
             items={images}
             showPlayButton={false}
