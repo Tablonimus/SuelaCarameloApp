@@ -175,6 +175,9 @@
       padding-top: .5rem;
     }
   }
+  .voucher-boxL{
+    width: 50%;
+  }
   .voucher-boxR{
     width: 50%;
     border-radius: 100px;
