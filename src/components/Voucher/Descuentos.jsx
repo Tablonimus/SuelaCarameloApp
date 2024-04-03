@@ -10,26 +10,27 @@ const Descuentos = () => {
   const sponsors = [
     {
       name: "Squadra",
-      logo: b1,
+      logo:b2,
       terminos: `Acercate al local Squadra ubicado en Montes de Oca 889 | Godoy Cruz- Mendoza  
         25% en calzas deportivas cortas - IDEALES PARA JUGAR`,
       descuento: "25",
       telefono: "2616 59-5240",
       ubi: "Montes de Oca 889",
     },
-    {
-      name: "Zona Futsal",
-      logo: b5,
-      terminos: `Tus próximo botines los encontrás acá! Seguilos por Instagram y enterate de todos los modelos y facilidades de pago.
-    Descuento: 5% en un par de botines a elección!`,
-      descuento: "5",
-    },
+    
     {
       name: "Hache Market",
-      logo: b2,
+      logo:b4 ,
       terminos: `Seguí a Hache Market en instagram y conseguí Items Básicos y Clásicos`,
       descuento: "15",
     },
+    {
+        name: "Zona Futsal",
+        logo: b5,
+        terminos: `Tus próximo botines los encontrás acá! Seguilos por Instagram y enterate de todos los modelos y facilidades de pago.
+      Descuento: 5% en un par de botines a elección!`,
+        descuento: "5",
+      },
   ];
   return (
     <>
