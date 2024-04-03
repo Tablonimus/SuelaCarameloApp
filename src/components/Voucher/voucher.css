@@ -47,8 +47,8 @@
     font-weight: 800;
     font-size: 2.5rem;
     color: var(--orange);
-    margin-top: -2.5rem;
-    margin-left: 10rem;
+    margin-top: -2.6rem;
+    margin-left: 8rem;
   }
 }
 .voucher-info {
@@ -97,14 +97,14 @@
 }
 .voucher-logo {
     width:80%;
-    height: 150px;
+    height: 180px;
     border-top: 3px solid var(--orange);
     border-bottom: 3px solid var(--gray);
     display: flex;
     justify-content: center;
+    object-fit: contain;
     & img{
-        min-width: 100px;
-        max-width: 140px;
+        width: 100%;
     }
 }
 .voucher-discount{
@@ -185,6 +185,7 @@
     justify-content: flex-end;
     align-self: flex-end;
     margin-right: 2rem;
+  
    
   }
   .voucher-boxL{

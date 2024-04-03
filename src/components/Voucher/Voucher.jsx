@@ -1,7 +1,9 @@
 import "./voucher.css";
 import logovoucher from "/logovoucher.png";
 
-const Voucher = () => {
+
+const Voucher = (props) => {
+  const { sponsor } = props;
   return (
     <>
       <main className="vouchers-wrapper">
@@ -10,35 +12,33 @@ const Voucher = () => {
             <h6>
               <span>DES</span>CUENTO
             </h6>
-            <p>Voucher</p>
+            <p>SuelaApp</p>
           </article>
           <ul className="voucher-info">
             <li>Terminos y Condiciones</li>
             <li>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptatibus, velit!
+            {sponsor.name}
             </li>
             <li>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptatibus, velit!
+             {sponsor.terminos}
             </li>
           </ul>
           <ul className="voucher-contact">
             <li>
-              <i className="bx bxs-phone"></i>+54926165923
+              <i className="bx bxs-phone"></i>{sponsor.telefono}
             </li>
             <li>
-              <i className="bx bx-target-lock"></i>Av.Urquiza 129
+              <i className="bx bx-target-lock"></i>{sponsor.ubi}
             </li>
           </ul>
         </section>
 
         <section className="voucher-boxR">
           <picture className="voucher-logo">
-            <img src={logovoucher} alt="" />
+            <img src={sponsor.logo} alt="" />
           </picture>
           <article className="voucher-discount">
-            <span>50</span>
+            <span>{sponsor.descuento}</span>
             <div>
               <p>%</p>
               <p>OFF</p>
