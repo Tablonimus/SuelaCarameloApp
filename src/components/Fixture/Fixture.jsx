@@ -1,12 +1,17 @@
-import fixture1 from "../../assets/images/fixture-resultados/A1/fixture1.jpg";
-import fixture2 from "../../assets/images/fixture-resultados/A1/fixture2.jpg";
-import fixture3 from "../../assets/images/fixture-resultados/A1/fixture3.jpg";
-import fixture4 from "../../assets/images/fixture-resultados/A1/fixture4.jpg";
-import fixture6 from "../../assets/images/fixture-resultados/A1/fixture6.jpg";
-import fixture7 from "../../assets/images/fixture-resultados/A1/fixture7.jpg";
-import fixture8 from "../../assets/images/fixture-resultados/A1/fixture8.jpg";
-import fixture9 from "../../assets/images/fixture-resultados/A1/fixture9.jpg";
-import fixture10 from "../../assets/images/fixture-resultados/A1/fixture10.jpg";
+import fixture1 from "../../assets/images/fixture-resultados/A1/fixture1.webp";
+import fixture2 from "../../assets/images/fixture-resultados/A1/fixture2.webp";
+import fixture3 from "../../assets/images/fixture-resultados/A1/fixture3.webp";
+import fixture4 from "../../assets/images/fixture-resultados/A1/fixture4.webp";
+import fixture6 from "../../assets/images/fixture-resultados/A1/fixture6.webp";
+import fixture7 from "../../assets/images/fixture-resultados/A1/fixture7.webp";
+import fixture8 from "../../assets/images/fixture-resultados/A1/fixture8.webp";
+import fixture9 from "../../assets/images/fixture-resultados/A1/fixture9.webp";
+import fixture10 from "../../assets/images/fixture-resultados/A1/fixture10.webp";
+import fixture11 from "../../assets/images/fixture-resultados/A1/fixture11.webp";
+import fixture12 from "../../assets/images/fixture-resultados/A1/fixture12.webp";
+import fixture13 from "../../assets/images/fixture-resultados/A1/fixture13.webp";
+import fixture14 from "../../assets/images/fixture-resultados/A1/fixture14.webp";
+
 import Sidebar from "../NavBar/Sidebar";
 
 const Fixture = () => {
@@ -20,6 +25,11 @@ const Fixture = () => {
     fixture8,
     fixture9,
     fixture10,
+    fixture11,
+    fixture12,
+    fixture13,
+    fixture14,
+
   ];
 
   return (

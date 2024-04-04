@@ -2,9 +2,9 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import logoSC from "../../assets/images/banner2.png";
 import SideHome from "../NavBar/SideHome";
- import imgHome1 from "../../assets/images/home/home-img1.webp" 
- import imgHome2 from "../../assets/images/home/home-img2.webp" 
- import imgHome3 from "../../assets/images/home/home-img3.webp"
+ import imgHome1 from "../../assets/images/home/img-home1.webp" 
+ import imgHome2 from "../../assets/images/home/img-home2.webp" 
+ import imgHome3 from "../../assets/images/home/img-home3.webp"
 
 
 const Home = () => {
