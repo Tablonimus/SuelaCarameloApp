@@ -30,7 +30,6 @@ function App() {
         <Route path="/notices/:id" element={<NoticeDetail />} />
         <Route path="/clubes" element={<Clubs />} />
         <Route path="/clubes/:name" element={<ClubDetail />} />
-        <Route path="/resultados" element={<Resultados />} />
         <Route path="/fixture" element={<Fixture/>} />
         <Route path="/posiciones" element={<Posiciones/>} />
         <Route path="/descuentos" element={<Descuentos />} />

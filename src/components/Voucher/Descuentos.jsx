@@ -21,7 +21,7 @@ const Descuentos = () => {
     {
       name: "Hache Market",
       logo:b4 ,
-      terminos: `Seguí a Hache Market en instagram y conseguí Items Básicos y Clásicos`,
+      terminos: `Seguí a Hache Market en instagram y conseguí Items Básicos y Clásicos. Cupón válido ABONANDO EN EFECTIVO`,
       descuento: "15",
     },
     {

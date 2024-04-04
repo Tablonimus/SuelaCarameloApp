@@ -16,7 +16,7 @@ const Voucher = (props) => {
           </article>
           <ul className="voucher-info">
             <li>Terminos y Condiciones</li>
-            <li>
+            <li className="font-semibold text-zinc-900 text-xl">
             {sponsor.name}
             </li>
             <li>

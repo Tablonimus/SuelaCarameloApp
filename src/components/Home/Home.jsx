@@ -38,6 +38,9 @@ const Home = () => {
             showBullets={true}
           />
         </section>
+        <button className="w-40 h-9 bg-zinc-900 text-zinc-300 cursor-pointer hover:scale-105 hover:bg-slate-200 hover:text-slate-900 duration-500 font-semibold my-4 rounded-md lg:my-8 lg:w-52 lg:h-10 lg:text-lg">
+          Descargar App
+        </button>
       </main>
     </>
   );
