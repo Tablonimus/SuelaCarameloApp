@@ -1,9 +1,7 @@
 import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Noticias from "./components/Home/Noticias";
-//import Landing from "./components/Home/Landing";
 import NoticeDetail from "./components/Notice/NoticeDetail";
-import "./App.css";
 import CreateNotice from "./components/Admin/CreateNotice";
 import AboutUs from "./components/AboutUs/AboutUs";
 import ContactUs from "./components/ContactUs/ContactUs";
@@ -15,9 +13,9 @@ import Descuentos from "./components/Voucher/Descuentos";
 import NavFooter from "./components/NavBar/NavFooter";
 import Home from "./components/Home/Home";
 import Sidebar from "./components/NavBar/Sidebar";
-import Resultados from "./components/Fixture/Resultados";
 import Fixture from "./components/Fixture/Fixture";
 import Posiciones from "./components/Fixture/Posiciones";
+import "./App.css";
 
 function App() {
   const location = useLocation();
@@ -36,9 +34,6 @@ function App() {
         <Route path="/contacto" element={<ContactUs />} />
         <Route path="/test" element={<RichTextEditor />} />
         <Route path="/createnotice" element={<CreateNotice />} />
-        {/* <Route path="/descargar" element={<Download />} /> */}
-        {/* <Route path="/sobrenosotros" element={<AboutUs />} /> */}
-        {/* Ruta en español para la gente */}
       </Routes>
       {/* <NavFooter /> */}
       <FooterComp />

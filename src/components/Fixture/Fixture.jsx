@@ -73,17 +73,17 @@ const Fixture = () => {
       <Sidebar />
       <picture className="w-full flex justify-center items-center overflow-hidden py-6 gap-3 lg:gap-8 lg:py-10">
         <img src={logoA1} className="max-w-16 ml-[70px] cursor-pointer hover:scale-105 duration-300" alt="" />
-        <img src={logoF1} className="max-w-16 cursor-pointer hover:scale-105 duration-300" alt="" />
-        <img src={logoTI} className="max-w-16 cursor-pointer hover:scale-105 duration-300" alt="" />
-        <img src={logoTN} className="max-w-16 cursor-pointer hover:scale-105 duration-300" alt="" />
+        <img src={logoF1} className="max-w-16 cursor-pointer hover:scale-110 duration-300" alt="" />
+        <img src={logoTI} className="max-w-16 cursor-pointer hover:scale-110 duration-300" alt="" />
+        <img src={logoTN} className="max-w-16 cursor-pointer hover:scale-110 duration-300" alt="" />
       </picture>
 
-      <h2 className="ml-[70px] text-xl text-center py-2 pb-6 lg:py-6 lg:text-3xl font-bold text-zinc-800">
+      <h2 className="ml-[70px] text-xl text-center py-2 mb-6 lg:py-6 lg:text-3xl font-bold text-zinc-800">
         A1xSuela
       </h2>
       <section className="w-full h-auto flex flex-wrap gap-2 justify-center items-center overflow-hidden pl-[70px] lg:gap-8">
         {fixtureA1.map((fixture, i) => (
-          <img id={i + 1} className="w-[97%] max-w-xl rounded-md" src={fixture} />
+          <img id={i + 1} className="w-[97%] max-w-xl rounded-md lg:rounded-xl" src={fixture} />
         ))}
       </section>
 
@@ -92,7 +92,7 @@ const Fixture = () => {
       </h2>
       <section className="w-full h-auto flex flex-wrap justify-center items-center overflow-hidden pl-[70px] lg:gap-8 ">
         {fixtureF1.map((fixture,index) => (
-          <img key={index} className=" w-[97%] max-w-xl rounded-md" src={fixture} alt="" />
+          <img key={index} className=" w-[97%] max-w-xl lg:rounded-xl rounded-md" src={fixture} alt="" />
         ))}
       </section>
     </>
