@@ -71,14 +71,14 @@ const Fixture = () => {
   return (
     <>
       <Sidebar />
-      <picture className="w-full flex justify-center items-center overflow-hidden py-6 gap-3">
-        <img src={logoA1} className="max-w-16 ml-[70px]" alt="" />
-        <img src={logoF1} className="max-w-16" alt="" />
-        <img src={logoTI} className="max-w-16" alt="" />
-        <img src={logoTN} className="max-w-16" alt="" />
+      <picture className="w-full flex justify-center items-center overflow-hidden py-6 gap-3 lg:gap-8 lg:py-10">
+        <img src={logoA1} className="max-w-16 ml-[70px] cursor-pointer hover:scale-105 duration-300" alt="" />
+        <img src={logoF1} className="max-w-16 cursor-pointer hover:scale-105 duration-300" alt="" />
+        <img src={logoTI} className="max-w-16 cursor-pointer hover:scale-105 duration-300" alt="" />
+        <img src={logoTN} className="max-w-16 cursor-pointer hover:scale-105 duration-300" alt="" />
       </picture>
 
-      <h2 className="ml-[70px] text-xl text-center py-2 pb-6 lg:py-8 lg:text-3xl font-bold text-zinc-800">
+      <h2 className="ml-[70px] text-xl text-center py-2 pb-6 lg:py-6 lg:text-3xl font-bold text-zinc-800">
         A1xSuela
       </h2>
       <section className="w-full h-auto flex flex-wrap gap-2 justify-center items-center overflow-hidden pl-[70px] lg:gap-8">
