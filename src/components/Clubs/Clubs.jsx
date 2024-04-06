@@ -13,6 +13,7 @@ import clubs from "../../utils/data/teamsMasc.json";
 import clubsFem from "../../utils/data/teamsFem.json";
 import { Link } from "react-router-dom";
 import Sidebar from "../NavBar/Sidebar";
+import FooterComp from "../FooterComp/FooterComp";
 export default function Clubs() {
   return (
     <>
@@ -71,6 +72,7 @@ export default function Clubs() {
             : null}
         </div>
       </section>
+      <FooterComp/>
     </>
   );
 }

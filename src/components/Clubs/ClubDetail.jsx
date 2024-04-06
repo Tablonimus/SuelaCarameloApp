@@ -7,6 +7,7 @@ import PlayerCard from "./PlayerCard";
 import clubs from "../../utils/data/teamsMasc.json";
 import clubsFem from "../../utils/data/teamsFem.json";
 import Sidebar from "../NavBar/Sidebar";
+import FooterComp from "../FooterComp/FooterComp";
 const positions = [
   "Arquero",
   "Poste",
@@ -38,7 +39,7 @@ export default function ClubDetail() {
 
   return (
     <>
-    <Sidebar />
+      <Sidebar />
       <main className="teams-wrapper pt-16 lg:pt-28">
         {/* Flecha atrás */}
         <Link to={"/clubes"}>
@@ -60,17 +61,18 @@ export default function ClubDetail() {
             <h4>DATOS DEL CLUB</h4>
             <ul className="club-details">
               <li>
-                <i className="bx bx-copyright"></i>   Nombre Completo: {club?.name}
+                <i className="bx bx-copyright"></i> Nombre Completo:{" "}
+                {club?.name}
               </li>
               <li>
-                <i className="bx bx-tag-alt"></i>   Fecha de Fundación:
+                <i className="bx bx-tag-alt"></i> Fecha de Fundación:
                 {club?.foundation}
               </li>
               <li>
-                <i className="bx bx-football"></i>   Estadio: Bautista Gargantini
+                <i className="bx bx-football"></i> Estadio: Bautista Gargantini
               </li>
               <li>
-                <i className="bx bx-current-location"></i>   Dirección:{" "}
+                <i className="bx bx-current-location"></i> Dirección:{" "}
                 {club?.address}
               </li>
             </ul>
@@ -153,6 +155,7 @@ export default function ClubDetail() {
           </section>
         </section>
       </section>
+      <FooterComp />
     </>
   );
 }

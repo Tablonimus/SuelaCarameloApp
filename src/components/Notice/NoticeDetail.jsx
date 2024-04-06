@@ -6,6 +6,7 @@ import { clearPage, getNoticeDetail } from "../../redux/actions";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import OtherNotices from "./OtherNotices";
 import Sidebar from "../NavBar/Sidebar";
+import FooterComp from "../FooterComp/FooterComp";
 
 export default function NoticeDetail() {
   const dispatch = useDispatch();
@@ -72,8 +73,8 @@ export default function NoticeDetail() {
           </div>
           <div id="content"></div>
         </div>
-
-      {/*   <OtherNotices /> */}
+        <FooterComp />
+        {/*   <OtherNotices /> */}
       </div>
     </>
   );

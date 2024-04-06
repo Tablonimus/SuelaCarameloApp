@@ -24,8 +24,6 @@ import FEMfixture9 from "../../assets/images/fixture-resultados/FemA/fixture9.we
 import FEMfixture10 from "../../assets/images/fixture-resultados/FemA/fixture10.webp";
 import FEMfixture11 from "../../assets/images/fixture-resultados/FemA/fixture11.webp";
 
-
-
 import Sidebar from "../NavBar/Sidebar";
 
 import logoA1 from "../../assets/images/botones/A1.webp";
@@ -35,8 +33,11 @@ import logoTN from "../../assets/images/botones/TN.webp";
 
 import resultado1F from "../../assets/images/fixture-resultados/FemA/resultado1.jpg";
 import resultado2F from "../../assets/images/fixture-resultados/FemA/resultado2.jpg";
+import { useState } from "react";
 
 const Fixture = () => {
+  const [fixtureState, setFixtureState] = useState("A1");
+
   const fixtureA1 = [
     fixture2,
     fixture4,
@@ -71,30 +72,62 @@ const Fixture = () => {
   return (
     <>
       <Sidebar />
-      <picture className="w-full flex justify-center items-center overflow-hidden py-6 gap-3 lg:gap-8 lg:py-10">
-        <img src={logoA1} className="max-w-16 ml-[70px] cursor-pointer hover:scale-105 duration-300" alt="" />
-        <img src={logoF1} className="max-w-16 cursor-pointer hover:scale-110 duration-300" alt="" />
-        <img src={logoTI} className="max-w-16 cursor-pointer hover:scale-110 duration-300" alt="" />
-        <img src={logoTN} className="max-w-16 cursor-pointer hover:scale-110 duration-300" alt="" />
-      </picture>
-
-      <h2 className="ml-[70px] text-xl text-center py-2 mb-6 lg:py-6 lg:text-3xl font-bold text-zinc-800">
-        A1xSuela
-      </h2>
-      <section className="w-full h-auto flex flex-wrap gap-2 justify-center items-center overflow-hidden pl-[70px] lg:gap-8">
-        {fixtureA1.map((fixture, i) => (
-          <img id={i + 1} className="w-[97%] max-w-xl rounded-md lg:rounded-xl" src={fixture} />
-        ))}
+      <section className="pl-[70px] w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-6">
+        <h2 className="text-2xl text-white font-bold">FIXTURE</h2>
+        <picture className="flex justify-center items-center overflow-hidden gap-3 lg:px-8 lg:gap-8">
+          <img
+            src={logoA1}
+            name="A1"
+            className="w-16 h-16  cursor-pointer hover:scale-105 duration-300 object-cover"
+            alt=""
+            onClick={(e) => setFixtureState(e.target.name)}
+          />
+          <img
+            src={logoF1}
+            name="FEM"
+            className="w-16 h-16 cursor-pointer hover:scale-110 duration-300 object-cover"
+            alt=""
+            onClick={(e) => setFixtureState(e.target.name)}
+          />
+        </picture>
       </section>
 
-      <h2 className="ml-[70px] text-xl text-center py-6 lg:py-8 lg:text-3xl font-bold text-zinc-800">
-        FemAxSuela
-      </h2>
-      <section className="w-full h-auto flex flex-wrap justify-center items-center overflow-hidden pl-[70px] lg:gap-8 ">
-        {fixtureF1.map((fixture,index) => (
-          <img key={index} className=" w-[97%] max-w-xl lg:rounded-xl rounded-md" src={fixture} alt="" />
-        ))}
-      </section>
+      {fixtureState === "A1" ? (
+        <>
+          <h2 className="ml-[70px] text-xl text-center py-2 mb-6 lg:py-6 lg:text-3xl font-bold text-zinc-800">
+            A1xSuela
+          </h2>
+          <section className="w-full h-auto flex flex-wrap gap-2 justify-center items-center overflow-hidden pl-[70px] lg:gap-8">
+            {fixtureA1
+              .map((fixture, i) => (
+                <img
+                  id={i + 1}
+                  className="w-[97%] max-w-xl rounded-md lg:rounded-xl"
+                  src={fixture}
+                />
+              ))
+              .reverse()}
+          </section>
+        </>
+      ) : (
+        <>
+          <h2 className="ml-[70px] text-xl text-center py-2 mb-6 lg:py-6 lg:text-3xl font-bold text-zinc-800">
+            FemAxSuela
+          </h2>
+          <section className="w-full h-auto flex flex-wrap justify-center items-center overflow-hidden pl-[70px] lg:gap-8 ">
+            {fixtureF1
+              .map((fixture, index) => (
+                <img
+                  key={index}
+                  className=" w-[97%] max-w-xl lg:rounded-xl rounded-md"
+                  src={fixture}
+                  alt=""
+                />
+              ))
+              .reverse()}
+          </section>
+        </>
+      )}
     </>
   );
 };
