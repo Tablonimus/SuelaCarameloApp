@@ -31,6 +31,7 @@ const Posiciones = () => {
             className={`w-12 cursor-pointer ${positionState === "FEM" ? "scale-110" : null } hover:scale-110 duration-300 object-cover lg:w-16`}
             alt=""
             onClick={(e) => setPositionState(e.target.name)}
+            
           />
         </picture>
       </section>
@@ -42,6 +43,8 @@ const Posiciones = () => {
           className="ml-[70px] w-4/5 max-w-xl lg:rounded-xl"
           src={positionState === "A1" ? posicionesA1 : posicionesFemA}
           alt=""
+          loading="lazy"
+
         />
       </section>
 

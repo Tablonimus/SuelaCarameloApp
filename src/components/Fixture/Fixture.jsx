@@ -104,6 +104,7 @@ const Fixture = () => {
                   id={i + 1}
                   className="w-[97%] max-w-xl rounded-md lg:rounded-xl"
                   src={fixture}
+                  loading="lazy"
                 />
               ))
               .reverse()}
@@ -122,6 +123,7 @@ const Fixture = () => {
                   className=" w-[97%] max-w-xl lg:rounded-xl rounded-md"
                   src={fixture}
                   alt=""
+                  loading="lazy"
                 />
               ))
               .reverse()}
