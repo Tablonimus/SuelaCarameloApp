@@ -37,8 +37,8 @@ const Descuentos = () => {
     <>
       <Sidebar />
 
-      <section className="w-full h-auto py-10 flex flex-col justify-center items-center lg:pb-20">
-        <h2 className="text-2xl text-white font-bold">
+      <section className="w-full h-auto py-6 lg:py-10 flex flex-col justify-center items-center lg:pb-20">
+        <h2 className="pl-[70px] text-2xl text-center text-gray-200 font-bold">
           CUPONES DE DESCUENTOS EXCLUSIVOS
         </h2>
         {sponsors.map((sponsor, index) => (
