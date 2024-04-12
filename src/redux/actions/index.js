@@ -1,4 +1,4 @@
-import * as action from "../actions/actionTypes";
+import * as action from "./actionTypes";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import notices from '../../utils/data/notices.json'
