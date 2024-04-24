@@ -5,8 +5,7 @@ const initialState = {
   copyAllNotices: [],
   noticeDetail: [],
   allTeams: [],
-  allMatches:[],
-
+  allMatches: [],
   category: "",
 };
 
@@ -52,6 +51,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         allMatches: payload.filtered,
+      };
+    }
+    case action.CREATE_FIXTURE: {
+      return {
+        ...state,
       };
     }
     case action.CREATE_NOTICE: {

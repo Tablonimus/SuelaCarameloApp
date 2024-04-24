@@ -1,16 +1,15 @@
 import * as action from "./actionTypes";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import notices from '../../utils/data/notices.json'
+import notices from "../../utils/data/notices.json";
 
 // const url = "https://suelacarameloapp-backend-production.up.railway.app";
 
-
-const url = "https://suela-caramelo-app-back-end.vercel.app";
+// const url = "https://suela-caramelo-app-back-end.vercel.app";
 
 // const url = "https://suelacaramelobackend-production.up.railway.app";//USADA CON RAILWAY
 
-// const url = "http://localhost:3001";
+const url = "http://localhost:3000/sc";
 
 export function clearPage() {
   return async function (dispatch) {
@@ -28,11 +27,9 @@ export function clearPage() {
 export function getNoticeDetail(id) {
   return async function (dispatch) {
     try {
-
       // let json = await axios.get(`${url}/notices/${id}`);
-      let notice =  notices.find(notice=> notice.id == id)
+      let notice = notices.find((notice) => notice.id == id);
 
-     
       dispatch({
         type: action.GET_NOTICE_DETAIL,
         payload: notice,
@@ -124,7 +121,7 @@ export function getAllMatches(category) {
         });
       } else {
         const filters = json.data.filter((cat) => cat.category === category);
-        
+
         dispatch({
           type: action.GET_ALL_MATCHES,
           payload: {
@@ -186,10 +183,11 @@ export function createNotice(payload) {
         videos: payload.videos,
         content: payload.content,
         category: payload.category,
-        teams: [payload.team1, payload.team2],
+        // teams: [payload.team1, payload.team2],
       };
-      console.log("DATATATATAT", data);
+      // console.log("DATATATATAT", data);
       let json = await axios.post(`${url}/notices`, data);
+      console.log();
       dispatch({
         type: action.CREATE_NOTICE,
         payload: json.data,
@@ -231,6 +229,38 @@ export function createTeam(payload) {
       let json = await axios.post(`${url}/teams`, payload);
       dispatch({
         type: action.CREATE_TEAM,
+        payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function createFixture(payload) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.post(`${url}/fixtures`, payload);
+
+      dispatch({
+        type: action.CREATE_FIXTURE,
+        payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function createPosition(payload) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.post(`${url}/positions`, payload);
+
+      dispatch({
+        type: action.CREATE_FIXTURE,
         payload: json.data,
       });
 

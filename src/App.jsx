@@ -13,6 +13,7 @@ import Home from "./components/Home/Home";
 import Fixture from "./components/Fixture/Fixture";
 import Posiciones from "./components/Fixture/Posiciones";
 import "./App.css";
+import AdminHome from "./components/Admin/AdminHome";
 
 function App() {
   const location = useLocation();
@@ -30,7 +31,7 @@ function App() {
         <Route path="/descuentos" element={<Descuentos />} />
         <Route path="/contacto" element={<ContactUs />} />
         <Route path="/test" element={<RichTextEditor />} />
-        <Route path="/createnotice" element={<CreateNotice />} />
+        <Route path="/createnotice" element={<AdminHome />} />
       </Routes>
 
     

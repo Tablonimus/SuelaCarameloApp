@@ -15,3 +15,6 @@ export const POST_IMAGE = "POST_IMAGE";
 
 export const CLEAR_STATE = "CLEAR_STATE";
 export const COPY_ALL = "COPY_ALL";
+
+/* FIXTURES 2024 */
+export const CREATE_FIXTURE = "CREATE_FIXTURE";

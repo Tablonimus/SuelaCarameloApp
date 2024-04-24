@@ -2,6 +2,7 @@ import fixture1 from "../../assets/images/fixture-resultados/A1/fixture1.webp";
 import fixture2 from "../../assets/images/fixture-resultados/A1/fixture2.webp";
 import fixture3 from "../../assets/images/fixture-resultados/A1/fixture3.webp";
 import fixture4 from "../../assets/images/fixture-resultados/A1/fixture4.webp";
+import fixture5 from "../../assets/images/fixture-resultados/A1/fixture5.webp";
 import fixture6 from "../../assets/images/fixture-resultados/A1/fixture6.webp";
 import fixture7 from "../../assets/images/fixture-resultados/A1/fixture7.webp";
 import fixture8 from "../../assets/images/fixture-resultados/A1/fixture8.webp";
@@ -39,11 +40,12 @@ const Fixture = () => {
   const [fixtureState, setFixtureState] = useState("A1");
 
   const fixtureA1 = [
-    fixture2,
-    fixture4,
-    fixture3,
-    fixture6,
     fixture1,
+    fixture2,
+    fixture3,
+    fixture4,
+    fixture5,
+    fixture6,
     fixture7,
     fixture8,
     fixture9,
@@ -54,9 +56,7 @@ const Fixture = () => {
     fixture14,
   ];
   const fixtureF1 = [
-    resultado1F,
-    resultado2F,
-    FEMfixture1,
+     FEMfixture1,
     FEMfixture2,
     FEMfixture3,
     FEMfixture4,
