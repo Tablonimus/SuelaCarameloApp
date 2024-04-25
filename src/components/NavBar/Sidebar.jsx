@@ -3,7 +3,7 @@ import logoSC from "../../assets/images/banner2.png";
 import logoSC2 from "../../assets/images/suela.png";
 import { useState } from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ active }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -48,17 +48,29 @@ const Sidebar = () => {
           </Link>
           <Link to={"/fixture"}>
             <li>
-              <a href="#">
-                 <i className="bx bx-football"></i>
+              <a href="#" className="">
+                <i
+                  className={
+                    active === "fixture"
+                      ? "bx bx-football bg-white/30 "
+                      : "bx bx-football  "
+                  }
+                ></i>
                 <span className="link_name">Fixture</span>
               </a>
             </li>
           </Link>
-         
+
           <Link to={"/posiciones"}>
             <li>
               <a href="#">
-                <i class="bx bx-list-ol"></i>
+                <i
+                  className={
+                    active === "positions"
+                      ? "bx bx-list-ol bg-white/30 "
+                      : "bx bx-list-ol  "
+                  }
+                ></i>
                 <span className="link_name">Posiciones</span>
               </a>
             </li>

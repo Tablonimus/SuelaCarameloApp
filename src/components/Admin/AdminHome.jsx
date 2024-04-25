@@ -10,7 +10,7 @@ export default function AdminHome() {
   return (
     <div className="flex flex-col items-center h-screen text-white overflow-auto">
       <NavBar />
-      <section className="bg-black/70 my-4 p-1 rounded-md">
+      <section className="bg-black/80 my-4 p-1 rounded-md">
         <Tabs aria-label="Default tabs" style="default">
           <Tabs.Item active title="Noticias" icon={HiUserCircle}>
             <CreateNotice />

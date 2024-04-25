@@ -18,3 +18,5 @@ export const COPY_ALL = "COPY_ALL";
 
 /* FIXTURES 2024 */
 export const CREATE_FIXTURE = "CREATE_FIXTURE";
+export const GET_FIXTURES = "GET_FIXTURES";
+export const GET_POSITIONS = "GET_POSITIONS";

@@ -32,105 +32,71 @@ import logoF1 from "../../assets/images/botones/F1.png";
 import logoTI from "../../assets/images/botones/TI.webp";
 import logoTN from "../../assets/images/botones/TN.webp";
 
-import resultado1F from "../../assets/images/fixture-resultados/FemA/resultado1.jpg";
-import resultado2F from "../../assets/images/fixture-resultados/FemA/resultado2.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFixtures } from "../../redux/actions";
+import FixturePagination from "./FixturePagination";
+import FooterComp from "../FooterComp/FooterComp";
 
 const Fixture = () => {
+  const dispatch = useDispatch();
+  const allFixtures = useSelector((state) => state.fixtures);
+  const activeNumber = useSelector((state) => state.activeNumber);
   const [fixtureState, setFixtureState] = useState("A1");
-
-  const fixtureA1 = [
-    fixture1,
-    fixture2,
-    fixture3,
-    fixture4,
-    fixture5,
-    fixture6,
-    fixture7,
-    fixture8,
-    fixture9,
-    fixture10,
-    fixture11,
-    fixture12,
-    fixture13,
-    fixture14,
-  ];
-  const fixtureF1 = [
-     FEMfixture1,
-    FEMfixture2,
-    FEMfixture3,
-    FEMfixture4,
-    FEMfixture5,
-    FEMfixture6,
-    FEMfixture7,
-    FEMfixture8,
-    FEMfixture9,
-    FEMfixture10,
-    FEMfixture11,
-  ];
+  const [currentPageTitle, setCurrentPageTitle] = useState(activeNumber);
+console.log(activeNumber);
+  useEffect(() => {
+    dispatch(getFixtures(fixtureState));
+  }, [fixtureState]);
 
   return (
-    <>
-      <Sidebar />
-      <section className="pl-[70px] w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-6">
-        <h2 className="text-2xl text-white font-bold">FIXTURE</h2>
-        <picture className="flex justify-center items-center overflow-hidden gap-3 lg:px-8 lg:gap-8">
-          <img
-            src={logoA1}
-            name="A1"
-            className="w-16 h-16  cursor-pointer hover:scale-105 duration-300 object-cover"
-            alt=""
-            onClick={(e) => setFixtureState(e.target.name)}
-          />
-          <img
-            src={logoF1}
-            name="FEM"
-            className="w-16 h-16 cursor-pointer hover:scale-110 duration-300 object-cover"
-            alt=""
-            onClick={(e) => setFixtureState(e.target.name)}
-          />
-        </picture>
-      </section>
+    <div className="flex flex-col justify-between ">
+      <Sidebar active={"fixture"} />
+      <main>
+        <section className="pl-[70px] w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-4 lg:py-6">
+          <h2 className="text-xl text-center lg:py-2 lg:text-3xl font-bold text-white">
+            {`${
+              fixtureState === "F1" ? "Fem" : fixtureState
+            }xSuela - Fecha ${currentPageTitle}`}
+            {/* {`Fecha ${currentPageTitle}`} */}
+          </h2>
+          <picture className=" flex justify-center items-center overflow-hidden gap-3 lg:px-8 lg:gap-8">
+            <img
+              src={logoA1}
+              name="A1"
+              className={
+                fixtureState === "A1"
+                  ? "w-10 h-10 lg:w-16 lg:h-16 rounded-full border-4  border-[#F17023] cursor-pointer hover:scale-105 duration-300 object-cover"
+                  : "w-10 h-10 lg:w-16 lg:h-16 rounded-full  cursor-pointer hover:scale-105 duration-300 object-cover"
+              }
+              alt=""
+              onClick={(e) => setFixtureState(e.target.name)}
+            />
+            <img
+              src={logoF1}
+              name="F1"
+              className={
+                fixtureState === "F1"
+                  ? "w-10 h-10 lg:w-16 lg:h-16 rounded-full border-4  border-[#F17023] cursor-pointer hover:scale-105 duration-300 object-cover"
+                  : "w-10 h-10 lg:w-16 lg:h-16 rounded-full  cursor-pointer hover:scale-105 duration-300 object-cover"
+              }
+              alt=""
+              onClick={(e) => setFixtureState(e.target.name)}
+            />
+          </picture>
+        </section>
 
-      {fixtureState === "A1" ? (
-        <>
-          <h2 className="ml-[70px] text-xl text-center py-2 mb-6 lg:py-6 lg:text-3xl font-bold text-zinc-800">
-            A1xSuela
-          </h2>
-          <section className="w-full h-auto flex flex-wrap gap-2 justify-center items-center overflow-hidden pl-[70px] lg:gap-8">
-            {fixtureA1
-              .map((fixture, i) => (
-                <img
-                  id={i + 1}
-                  className="w-[97%] max-w-xl rounded-md lg:rounded-xl"
-                  src={fixture}
-                  loading="lazy"
-                />
-              ))
-              .reverse()}
-          </section>
-        </>
-      ) : (
-        <>
-          <h2 className="ml-[70px] text-xl text-center py-2 mb-6 lg:py-6 lg:text-3xl font-bold text-zinc-800">
-            FemAxSuela
-          </h2>
-          <section className="w-full h-auto flex flex-wrap justify-center items-center overflow-hidden pl-[70px] lg:gap-8 ">
-            {fixtureF1
-              .map((fixture, index) => (
-                <img
-                  key={index}
-                  className=" w-[97%] max-w-xl lg:rounded-xl rounded-md"
-                  src={fixture}
-                  alt=""
-                  loading="lazy"
-                />
-              ))
-              .reverse()}
-          </section>
-        </>
-      )}
-    </>
+        <section className="flex flex-col justify-center items-center ml-[70px] h-full">
+          <FixturePagination
+            fixtures={allFixtures}
+            activeNumber={activeNumber}
+            setCurrentPageTitle={setCurrentPageTitle}
+          />
+        </section>
+      </main>
+
+      <FooterComp />
+    </div>
   );
 };
 export default Fixture;

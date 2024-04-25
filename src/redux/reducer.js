@@ -1,10 +1,13 @@
+import { position } from "@cloudinary/transformation-builder-sdk/qualifiers/timeline";
 import * as action from "../redux/actions/actionTypes";
 
 const initialState = {
   allNotices: [],
+  activeNumber: 1,
+  positions: {},
   copyAllNotices: [],
   noticeDetail: [],
-  allTeams: [],
+  fixtures: [],
   allMatches: [],
   category: "",
 };
@@ -51,6 +54,19 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         allMatches: payload.filtered,
+      };
+    }
+    case action.GET_FIXTURES: {
+      return {
+        ...state,
+        fixtures: payload.fixtures,
+        activeNumber: payload.activeNumber,
+      };
+    }
+    case action.GET_POSITIONS: {
+      return {
+        ...state,
+        positions: payload,
       };
     }
     case action.CREATE_FIXTURE: {

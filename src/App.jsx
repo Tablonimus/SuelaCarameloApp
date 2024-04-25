@@ -28,7 +28,7 @@ function App() {
         <Route path="/clubes/:name" element={<ClubDetail />} />
         <Route path="/fixture" element={<Fixture />} />
         <Route path="/posiciones" element={<Posiciones />} />
-        <Route path="/descuentos" element={<Descuentos />} />
+        <Route path="/cupones" element={<Descuentos />} />
         <Route path="/contacto" element={<ContactUs />} />
         <Route path="/test" element={<RichTextEditor />} />
         <Route path="/createnotice" element={<AdminHome />} />

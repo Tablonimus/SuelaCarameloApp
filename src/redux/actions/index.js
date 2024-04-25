@@ -171,6 +171,41 @@ export function getAllNotices(category) {
     }
   };
 }
+export function getFixtures(category) {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.get(`${url}/fixtures?category=${category}`);
+      const { activeNumber, fixtures } = data;
+
+      dispatch({
+        type: action.GET_FIXTURES,
+        payload: { activeNumber, fixtures },
+      });
+
+      return "Success";
+    } catch (error) {
+      console.log(error);
+      return "Server Error, try again later";
+    }
+  };
+}
+export function getPositions(category) {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.get(`${url}/positions?category=${category}`);
+console.log(data);
+      dispatch({
+        type: action.GET_POSITIONS,
+        payload: data,
+      });
+
+      return "Success";
+    } catch (error) {
+      console.log(error);
+      return "Server Error, try again later";
+    }
+  };
+}
 
 //-----------CREATE------------------
 export function createNotice(payload) {

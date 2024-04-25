@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 
 export default function FooterComp() {
   return (
-    <div className="bg-zinc-900 rounded-t-lg w-full sticky py-4">
+    <div className="bg-zinc-900 rounded-t-lg w-full py-4">
       <div className="w-full text-center bg-zinc-900">
        
         <section className="slider lg:w-full">
