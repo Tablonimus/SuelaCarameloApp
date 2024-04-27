@@ -3,7 +3,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import notices from "../../utils/data/notices.json";
 
-
 const url = "https://suela-caramelo-app-back-end.vercel.app/sc";
 
 // const url = "http://localhost:3000/sc";
@@ -174,6 +173,7 @@ export function getFixtures(category) {
       const { data } = await axios.get(`${url}/fixtures?category=${category}`);
       const { activeNumber, fixtures } = data;
 
+       fixtures.sort((a, b) => (a.number > b.number ? 1 : -1));
       dispatch({
         type: action.GET_FIXTURES,
         payload: { activeNumber, fixtures },
@@ -190,7 +190,7 @@ export function getPositions(category) {
   return async function (dispatch) {
     try {
       const { data } = await axios.get(`${url}/positions?category=${category}`);
-console.log(data);
+      console.log(data);
       dispatch({
         type: action.GET_POSITIONS,
         payload: data,
