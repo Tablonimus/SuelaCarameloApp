@@ -31,8 +31,10 @@ export default function FixturePagination({
   return (
     <div id="" className="flex flex-col h-full justify-center py-8 px-2">
       <div className="flex flex-col  h-full items-center justify-center ">
+{        console.log(currentFixtures)}
         {currentFixtures?.length > 0
           ? currentFixtures?.map((fixture, i) => (
+          
               <img
                 key={i}
                 src={fixture.image}

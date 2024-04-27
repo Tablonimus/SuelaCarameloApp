@@ -61,7 +61,7 @@ export default function Fixtures() {
           alert("Fixture creado Correctamente");
           setImage(null);
           setInput(defaultInput);
-          document.getElementById("fixturesForm").reset();
+          window.location.reload();
         })
         .catch((err) => alert(err.message));
     } else {
@@ -103,6 +103,8 @@ export default function Fixtures() {
         <input
           className="rounded-lg"
           type="number"
+          min={1}
+          max={30}
           name="number"
           placeholder="Ej: 14 ..."
           onChange={(e) => handleChange(e)}
