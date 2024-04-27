@@ -3,13 +3,10 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import notices from "../../utils/data/notices.json";
 
-// const url = "https://suelacarameloapp-backend-production.up.railway.app";
 
-// const url = "https://suela-caramelo-app-back-end.vercel.app";
+const url = "https://suela-caramelo-app-back-end.vercel.app/sc";
 
-// const url = "https://suelacaramelobackend-production.up.railway.app";//USADA CON RAILWAY
-
-const url = "http://localhost:3000/sc";
+// const url = "http://localhost:3000/sc";
 
 export function clearPage() {
   return async function (dispatch) {

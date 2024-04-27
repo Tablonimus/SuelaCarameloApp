@@ -11,6 +11,8 @@ export default function FixturePagination({
   const activeNumber = useSelector((state) => state.activeNumber);
   const [currentPage, setCurrentPage] = useState(activeNumber);
   const [fixturesPerPage, setFixturesPerPage] = useState(1);
+
+  
   const indexOfLastFixture = currentPage * fixturesPerPage;
   const indexOfFirstFixture = indexOfLastFixture - fixturesPerPage;
   const currentFixtures = fixtures?.slice(

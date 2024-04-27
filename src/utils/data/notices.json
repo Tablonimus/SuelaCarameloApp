@@ -1,5 +1,35 @@
 [
   {
+    "id": 203,
+    "title": "EL CACIQUE SE ACERCA",
+    "subtitle": "Guaymallén venció a Don Orione por 6-4 en el adelanto de la Fecha 7. Las italianas llegaron a las 16 unidades y se ubican como escoltas de Cementista.",
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/suelapp-837b5.appspot.com/o/noticiasJson%2Fnoti2.jpg?alt=media&token=8696a1e8-cfc7-4885-994a-db5bdaa75fcd"
+    ],
+
+    "videos": "",
+    "content": "<p>El jueves por la noche 'Las Italianas' ganaron un partido bravo. Martina Napolitano, Micaela Colo, Rocío Alderete (2) y Luciana Napolitano (2) marcaron para el local.</p> <br/> <p>Costanza Giménez, Yamila Ollarce y Micaela Sabio (2) consiguieron marcar para el Santo.</p><br/> <p>Don Orione necesita levantarse. No ha sumado en lo que va del torneo y sus jugadoras darán todo para lograr eso en las fechas que quedan.</p><br/> <p>En la otra vereda, Guaymallen está segundo con 16 puntos sobre 21 disputados. Se encuentra a dos unidades del Poli quien deberá jugar su encuentro.</p><br/> <p> La fecha se completa el sábado con cinco partidos y duelos atractivos como Cementista - San José y Maipú - Las Heras B.</p> <br/><p>FOTO ARCHIVO</p> ",
+    "category": "FEM",
+    "createdAt": "2024-04-26T17:13:43.886Z",
+    "updatedAt": "2024-04-26T17:13:43.886Z",
+    "Teams": []
+  },
+  {
+    "id": 202,
+    "title": "GANÓ Y AHORA MANDA",
+    "subtitle": "Por el adelantado de la Fecha 9, Cementista superó a Alemán por 8-5 con los dobletes de Juan Gallina y Mauro Morales.",
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/suelapp-837b5.appspot.com/o/noticiasJson%2Fnoticia1.jpg?alt=media&token=8119c91c-be53-45f5-ad13-7594844fba8e"
+    ],
+
+    "videos": "",
+    "content": "<p>El Poli se hizo fuerte en su visita a Alemán. Maikel Zambuto, Tomás Granata, Lautaro Biondi, Matías Suárez, Morales (2) y Gallina (2) fueron los autores de los goles.</p> <br/> <p>Por su parte, para el local anotaron Diego Yebra, Franco Machado (2) y Emiliano González (2).</p><br/> <p>Alemán aún no ha podido sumar de a tres. Por el contrario, Cementista llegó a la cima momentáneamente. Comparte el primer puesto junto a Godoy Cruz, Andes Talleres y Alemán B.</p><br/> <p>La fecha continúa hoy viernes con los nueve encuentros restantes. Los destacados son Godoy Cruz - Alemán B y San Martín - Jockey Club.</p>",
+    "category": "A1",
+    "createdAt": "2024-04-26T17:13:43.886Z",
+    "updatedAt": "2024-04-26T17:13:43.886Z",
+    "Teams": []
+  },
+  {
     "id": 201,
     "title": "MUNDIAL EN PUERTA",
     "subtitle": "Este sábado 16 de marzo dará comienzo el Mundial de Futsal C20 organizado por FIFUSA y Argentina debuta contra Ecuador a las 21 hs en las instalaciones del Complejo Huergo.",
