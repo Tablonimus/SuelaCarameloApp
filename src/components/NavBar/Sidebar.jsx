@@ -26,7 +26,7 @@ const Sidebar = ({ active }) => {
             <li>
               <a href="#">
                 <i class="bx bxs-home-alt-2"></i>
-                <span className="link_name">Home</span>
+                <span className="link_name">Inicio</span>
               </a>
             </li>
           </Link>
@@ -38,14 +38,14 @@ const Sidebar = ({ active }) => {
               </a>
             </li>
           </Link>
-          <Link to={"/clubes"}>
+          {/* <Link to={"/clubes"}>
             <li>
               <a href="#">
                 <i class="bx bxs-shield"></i>
                 <span className="link_name">Clubes</span>
               </a>
             </li>
-          </Link>
+          </Link> */}
           <Link to={"/fixture"}>
             <li>
               <a href="#" className="">
@@ -75,7 +75,7 @@ const Sidebar = ({ active }) => {
               </a>
             </li>
           </Link>
-          <Link to={"/descuentos"}>
+          <Link to={"/cupones"}>
             <li>
               <a href="#">
                 <i class="bx bxs-purchase-tag-alt"></i>

@@ -8,17 +8,13 @@ export default function ContactUs() {
   return (
     <>
       <Sidebar></Sidebar>
-      <main className="w-full overflow-hidden py-12 pl-[70px] flex flex-col justify-center items-center md:flex-row md:gap-20 lg:pb-24">
-        <img
-          className=" absolute top-0 mt-8 w-44 mb-4 lg:w-52"
-          src={logoSC}
-          alt=""
-        />
-        <h4 className="absolute top-0 mt-28 max-w-56 font-semibold text-center leading-6 text-zinc-800 text-2xl lg:text-3xl lg:font-bold lg:max-w-64">
+      <main className="flex flex-col justify-start gap-10 items-center h-screen">
+        <img className="  mt-8 w-44 mb-4 lg:w-52" src={logoSC} alt="" />
+        <h4 className="  max-w-56 font-semibold text-center leading-6 text-zinc-800 text-2xl lg:text-3xl lg:font-bold lg:max-w-64">
           Ponte en contacto con nosotros
         </h4>
 
-        <section className="max-w-[300px] w-full mt-32 py-5 pt-7 bg-zinc-900 rounded-lg shadow-md p-4 md:mt-40 md:max-w-[400px] md:pt-8">
+        {/* <section className="max-w-[300px] w-full mt-32 py-5 pt-7 bg-zinc-900 rounded-lg shadow-md p-4 md:mt-40 md:max-w-[400px] md:pt-8">
           <form className="flex flex-col gap-6">
             <div className="mb-4">
               <input
@@ -54,48 +50,51 @@ export default function ContactUs() {
               </button>
             </div>
           </form>
-        </section>
+        </section> */}
 
-        <section className="w-full flex flex-col justify-end items-center pr-1 mt-10 md:w-auto">
-          <ul className="w-4/5 flex justify-center items-center text-4xl gap-6 md:flex-col md:gap-4 md:mt-28">
-            <Link to={"https://www.facebook.com/SuelaCarameloOk"}>
-              <li>
-                <i className="bx bxl-facebook text-gray-200"></i>
-              </li>
-            </Link>
-            <Link to={"https://www.instagram.com/suelacaramelo/"}>
-              <li>
-                <i className="bx bxl-instagram text-gray-200"></i>
-              </li>
-            </Link>
-            <Link to={"https://www.youtube.com/@suelacaramelo"}>
-              <li>
-                <i className="bx bxl-youtube text-gray-200"></i>
-              </li>
-            </Link>
-            <Link to={"https://www.tiktok.com/@suelacaramelo"}>
-              <li>
-                <i className="bx bxl-tiktok text-gray-200"></i>
-              </li>
-            </Link>
-            <Link to={"https://www.tiktok.com/@suelacaramelo"}>
-              <li>
-                <i className="bx bxl-gmail text-gray-200"></i>
-              </li>
-            </Link>
-          </ul>
-        </section>
+        <div className="flex items-center justify-center ">
+          <section className="w-full flex flex-col">
+            <ul className="flex justify-center items-center text-4xl gap-6 flex-col">
+              <Link to={"https://www.facebook.com/SuelaCarameloOk"}>
+                <li>
+                  <i className="bx bxl-facebook text-gray-200"></i>
+                </li>
+              </Link>
+              <Link to={"https://www.instagram.com/suelacaramelo/"}>
+                <li>
+                  <i className="bx bxl-instagram text-gray-200"></i>
+                </li>
+              </Link>
+              <Link to={"https://www.youtube.com/@suelacaramelo"}>
+                <li>
+                  <i className="bx bxl-youtube text-gray-200"></i>
+                </li>
+              </Link>
+              <Link to={"https://www.tiktok.com/@suelacaramelo"}>
+                <li>
+                  <i className="bx bxl-tiktok text-gray-200"></i>
+                </li>
+              </Link>
+              <Link to={"https://www.tiktok.com/@suelacaramelo"}>
+                <li>
+                  <i className="bx bxl-gmail text-gray-200"></i>
+                </li>
+              </Link>
+            </ul>
+          </section>
 
-        <article className="font-medium text-base text-center text-zinc-900 mt-8 max-w-72 md:text-lg md:mt-24">
-          Informando y celebrando el futsal en Mendoza. Somos un medio
-          apasionado por este deporte, con coberturas, contenido audiovisual y
-          una visión de influencia global. Además, somos Suela Producciones, una
-          productora audiovisual y fotográfica enfocada en deportes. Si quieres
-          sumarte a nuestra comunidad o tienes alguna consulta, ¡contáctanos!
-          Estamos ansiosos por leerte y compartir juntos esta pasión.
-        </article>
+          <article className="font-medium text-base text-center text-zinc-900  max-w-96">
+            Informando y celebrando el futsal en Mendoza. Somos un medio
+            apasionado por este deporte, con coberturas, contenido audiovisual y
+            una visión de influencia global. Además, somos Suela Producciones,
+            una productora audiovisual y fotográfica enfocada en deportes. Si
+            quieres sumarte a nuestra comunidad o tienes alguna consulta,
+            ¡contáctanos! Estamos ansiosos por leerte y compartir
+            juntos esta pasión.
+          </article>
+        </div>
       </main>
-      <FooterComp/>
+      <FooterComp />
     </>
   );
 }

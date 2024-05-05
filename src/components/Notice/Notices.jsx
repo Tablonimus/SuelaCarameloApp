@@ -8,10 +8,10 @@ export default function Notices({
   images,
   title,
   subtitle,
-  content,
   videos,
-  category,
 }) {
+
+ 
   return (
     <>
       <Sidebar />

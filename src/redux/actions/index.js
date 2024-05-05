@@ -3,9 +3,9 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import notices from "../../utils/data/notices.json";
 
-const url = "https://suela-caramelo-app-back-end.vercel.app/sc";
+// const url = "https://suela-caramelo-app-back-end.vercel.app/sc";
 
-// const url = "http://localhost:3000/sc";
+const url = "http://localhost:3000/sc";
 
 export function clearPage() {
   return async function (dispatch) {
@@ -23,12 +23,12 @@ export function clearPage() {
 export function getNoticeDetail(id) {
   return async function (dispatch) {
     try {
-      // let json = await axios.get(`${url}/notices/${id}`);
-      let notice = notices.find((notice) => notice.id == id);
+       let json = await axios.get(`${url}/notices/${id}`);
+      // let notice = notices.find((notice) => notice.id == id);
 
       dispatch({
         type: action.GET_NOTICE_DETAIL,
-        payload: notice,
+        payload: json.data,
       });
 
       return "Success";
@@ -137,30 +137,15 @@ export function getAllMatches(category) {
 export function getAllNotices(category) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`${url}/notices`);
+      let json = await axios.get(`${url}/notices?category=${category}`);
       // let json = {data: notices}
-      if (!category) {
-        const filters = json.data.filter((cat) => cat.category === "A1");
-        dispatch({
-          type: action.GET_ALL_NOTICES,
-          payload: {
-            filtered:
-              filters.length > 0 ? filters.reverse() : json.data.reverse(),
-            copy: json.data,
-          },
-        });
-      } else {
-        const filters = json.data.filter((cat) => cat.category === category);
-        dispatch({
-          type: action.GET_ALL_NOTICES,
-          payload: {
-            filtered:
-              filters.length > 0 ? filters.reverse() : json.data.reverse(),
-            copy: json.data,
-          },
-        });
-      }
-
+      dispatch({
+        type: action.GET_ALL_NOTICES,
+        payload: {
+          filtered: json.data,
+          copy: json.data,
+        },
+      });
       return "Success";
     } catch (error) {
       return "Server Error, try again later", console.log(error);
@@ -173,7 +158,7 @@ export function getFixtures(category) {
       const { data } = await axios.get(`${url}/fixtures?category=${category}`);
       const { activeNumber, fixtures } = data;
 
-       fixtures.sort((a, b) => (a.number > b.number ? 1 : -1));
+      fixtures.sort((a, b) => (a.number > b.number ? 1 : -1));
       dispatch({
         type: action.GET_FIXTURES,
         payload: { activeNumber, fixtures },
@@ -205,27 +190,17 @@ export function getPositions(category) {
 }
 
 //-----------CREATE------------------
-export function createNotice(payload) {
+export function createNotice(notice) {
   return async function (dispatch) {
     try {
-      const data = {
-        title: payload.title,
-        subtitle: payload.subtitle,
-        images: payload.images,
-        videos: payload.videos,
-        content: payload.content,
-        category: payload.category,
-        // teams: [payload.team1, payload.team2],
-      };
-      // console.log("DATATATATAT", data);
-      let json = await axios.post(`${url}/notices`, data);
+      let json = await axios.post(`${url}/notices`, notice);
       console.log();
       dispatch({
         type: action.CREATE_NOTICE,
         payload: json.data,
       });
 
-      return "Success";
+      return alert("Noticia creada correctamente")
     } catch (error) {
       return "Server Error, try again later", console.log(error);
     }

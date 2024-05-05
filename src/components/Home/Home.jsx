@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 
 const Home = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const images = [
     {
       original: imgHome1,
@@ -34,7 +34,7 @@ const Home = () => {
       <main className="w-full flex flex-col justify-start items-center py-5 md:items-center overflow-hidden lg:h-auto">
         <img className="w-44 mb-4 lg:w-52" src={logoSC} alt="" />
         {/* CARRUSEL */}
-        <div className="h-[18rem] w-full mb-1">
+        <div className="h-[18rem] md:h-[36rem] w-full mb-1">
           <Carousel slideInterval={5000}>
             {images.map((image, i) => (
               <img
@@ -46,88 +46,29 @@ const Home = () => {
             ))}
           </Carousel>
         </div>
-        {/* CUADROS */}
-
-        <div className="flex w-full h-[35rem] gap-1">
-          {/* Descuentos */}
-          <div
-            id="couponCard"
-            className="h-full w-1/2 flex items-end rounded-xl"
-          >
-            <div className="bg-black/50 flex flex-col justify-end w-full rounded-xl p-2">
-              <h5 className="text-2xl font-bold tracking-tight text-white">
-                Descuentos
-              </h5>
-              <p className="font-normal text-gray-300">
-                Aprovechá los descuentos que tenemos para vos.
-              </p>
-              <Link to={"/cupones"} className="w-full flex justify-end mt-2">
-                <button className="self-end w-40 h-9 bg-zinc-900 text-zinc-300 cursor-pointer hover:scale-105 hover:bg-slate-200 hover:text-slate-900 duration-500 font-semibold  rounded-md lg:my-8 lg:w-52 lg:h-10 lg:text-lg">
-                  Ver cupones ▶
-                </button>
-              </Link>
-            </div>
-          </div>
-          <div className=" flex flex-col gap-1 w-1/2">
-            {/* Resultados */}
-            <div
-              id="couponCard"
-              className="w-full h-1/2  flex items-end rounded-xl"
-            >
-              <div className="bg-black/50 flex flex-col w-full rounded-xl p-2">
-                <h5 className="text-2xl font-bold tracking-tight text-white">
-                  Resultados
-                </h5>
-                <p className="font-normal text-gray-300">
-                  Enterate de los últimos resultados.
-                </p>
-                <Link to={"/fixture"} className="w-full flex justify-end mt-2">
-                  <button className="self-end w-40 h-9 bg-zinc-900 text-zinc-300 cursor-pointer hover:scale-105 hover:bg-slate-200 hover:text-slate-900 duration-500 font-semibold  rounded-md lg:my-8 lg:w-52 lg:h-10 lg:text-lg">
-                    Ver fixture ▶
-                  </button>
-                </Link>
-              </div>
-            </div>
-            {/* Noticias */}
-            <div
-              id="couponCard"
-              className="bg-yellow-300 w-full h-1/2 flex items-end rounded-xl"
-            >
-              <div className="bg-black/50 flex   flex-col w-full rounded-xl p-2">
-                <h5 className="text-2xl font-bold tracking-tight text-white">
-                  Noticias
-                </h5>
-                <p className="font-normal text-gray-300">
-                  Conoce las últimas novedades.
-                </p>
-                <Link to={"/noticias"} className="w-full flex justify-end mt-2">
-                  <button className="self-end w-40 h-9 bg-zinc-900 text-zinc-300 cursor-pointer hover:scale-105 hover:bg-slate-200 hover:text-slate-900 duration-500 font-semibold  rounded-md lg:my-8 lg:w-52 lg:h-10 lg:text-lg">
-                    Ver noticias ▶
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Posiciones */}
-        <div
-          id="couponCard"
-          className="h-full w-full flex items-end rounded-xl mt-1"
-        >
-          <div className="bg-black/50 flex flex-col justify-end w-full rounded-xl p-2">
-            <h5 className="text-2xl font-bold tracking-tight text-white">
-              Posiciones
-            </h5>
-            <p className="font-normal text-gray-300">
-             Tabla de posiciones del fútbol de salón femenino y masculino.
-            </p>
-            {/* <Link to={"/posiciones"} className="w-full flex justify-end mt-2"> */}
-              <button onClick={()=>navigate("/posiciones")} className="self-end w-40 h-9 bg-zinc-900 text-zinc-300 cursor-pointer hover:scale-105 hover:bg-slate-200 hover:text-slate-900 duration-500 font-semibold  rounded-md lg:my-8 lg:w-52 lg:h-10 lg:text-lg">
-                Ver posiciones ▶
-              </button>
-            {/* </Link> */}
-          </div>
-        </div>
+        <section className="mt-6 w-full flex flex-col justify-center items-center gap-4 ">
+          <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
+            <Link to={"/noticias"} className="hover:text-orange-500">
+              CUPONES Y DESCUENTOS
+            </Link>
+          </button>
+          <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
+            <Link to={"/noticias"} className="hover:text-orange-500">
+              ÚLTIMAS NOTICIAS
+            </Link>
+          </button>
+          <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
+            <Link to={"/posiciones"} className="hover:text-orange-500">
+              {" "}
+              TABLA DE POSICIONES
+            </Link>
+          </button>
+          <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
+            <Link to={"/fixture"} className="hover:text-orange-500">
+              FIXTURE
+            </Link>
+          </button>
+        </section>
       </main>
       <FooterComp />
     </div>

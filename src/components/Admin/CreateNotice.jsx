@@ -8,28 +8,27 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import youtube from "../../assets/images/youtube.png";
 
+const defaultInput = {
+  title: "",
+  subtitle: "",
+  images: [],
+  videos: "",
+  content: "",
+  category: "",
+  date: "",
+};
+
 export default function CreateNotice() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   //----------------------NOTICE HANDLERS------------------------
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [value, setValue] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
   const [video, setVideo] = useState("");
   const [loadingVideo, setLoadingVideo] = useState(false);
-  const [input, setInput] = useState({
-    title: "",
-    subtitle: "",
-    images: [],
-    videos: "",
-    description: "",
-    author: "",
-    date: "",
-    category: "",
-    team1: "",
-    team2: "",
-  });
+  const [input, setInput] = useState(defaultInput);
 
   function handleChange(e) {
     if (e.target.name === "videos") {
@@ -91,23 +90,34 @@ export default function CreateNotice() {
   }
   function onSubmitHandler(e) {
     e.preventDefault();
-    dispatch(
-      createNotice({
-        title: input.title,
-        subtitle: input.subtitle,
-        description: value,
-        author: input.author,
-        date: input.date,
-        images: input.images,
-        videos: input.videos,
-        category: input.category,
-      })
-    ).then(
-      // navigate("/home"),
-      alert("Noticia Creada Correctamente")
-    );
+    if (
+      !input.category &&
+      !input.content &&
+      !input.date &&
+      !input.title &&
+      !input.subtitle
+    ) {
+      dispatch(
+        createNotice({
+          title: input.title,
+          subtitle: input.subtitle,
+          images: input.images,
+          videos: input.videos,
+          content: input.content,
+          category: input.category,
+          date: new Date(input.date),
+        })
+      ).then(() => {
+        setImage(null);
+        setValue("");
+        setVideo("");
+        setInput(defaultInput);
+        window.location.reload();
+      });
+    } else {
+      alert("Faltan datos importantes por completar.");
+    }
   }
-
   function handleDelete(event) {
     setInput({
       ...input,
@@ -123,19 +133,32 @@ export default function CreateNotice() {
         onSubmit={(e) => onSubmitHandler(e)}
         className=" flex flex-col  items-center justify-center gap-3 bg-gray-500 rounded-lg p-5"
       >
-        <h3 className="text-white font-semibold">Categoría</h3>
-        <select
-          className="rounded-lg"
-          name="category"
-          onChange={(e) => handleChange(e)}
-        >
-          <option value="A1">Seleccione una categoria</option>
-          <option value="A1">A1</option>
-          <option value="F1">F1</option>
-          <option value="DH">DH</option>
-          <option value="TI">TI</option>
-          <option value="TN">TN</option>
-        </select>
+        <div className="flex gap-2">
+          <div>
+            <h3 className="text-white font-semibold">Categoría</h3>
+            <select
+              className="rounded-lg"
+              name="category"
+              onChange={(e) => handleChange(e)}
+            >
+              <option value="A1">Seleccione categoria</option>
+              <option value="A1">A1</option>
+              <option value="F1">F1</option>
+              <option value="DH">DH</option>
+              <option value="TI">TI</option>
+              <option value="TN">TN</option>
+            </select>
+          </div>
+          <div>
+            <h3 className="text-white font-semibold">Fecha</h3>
+            <input
+              type="date"
+              className="rounded-lg"
+              name="date"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+        </div>
         <hr className="border w-full" />
         <h3 className="text-white font-semibold">Título</h3>
         <input
@@ -161,19 +184,17 @@ export default function CreateNotice() {
           value={value}
           onChange={setValue}
         />
-        <h3 className="text-white font-semibold">Autor</h3>
+        {/* <h3 className="text-white font-semibold">Autor</h3>
         <input
           className="rounded-lg"
           type="text"
           name="author"
           placeholder="Ingrese el autor..."
           onChange={(e) => handleChange(e)}
-        />
-           <hr className="border w-full" />
+        /> */}
+        <hr className="border w-full" />
         <div className="flex flex-col items-center gap-5 ">
-          <label className="font-light text-white text-xl">
-            Imagen de la noticia
-          </label>
+          <label className="font-light text-white text-xl">Imágenes</label>
           <input
             type="file"
             name="image"
@@ -198,7 +219,7 @@ export default function CreateNotice() {
               </div>
             ))
           )}
-             <hr className="border w-full" />
+          <hr className="border w-full" />
           <label className="font-light text-white text-xl">
             Link a video de la noticia
           </label>
@@ -213,6 +234,8 @@ export default function CreateNotice() {
               onChange={(e) => handleChange(e)}
             />
           </section>
+
+          <label className="font-light text-white text-xl">ó</label>
           <label className="font-light text-white text-xl">Subir video</label>
           <input
             type="file"
@@ -223,8 +246,10 @@ export default function CreateNotice() {
           />
           {loadingVideo ? (
             <h3 className="font-light text-white text-xl">Cargando video...</h3>
+          ) : video ? (
+            <video src={video} alt="" width="300px" />
           ) : (
-            video?<video src={video} alt="" width="300px" />:false
+            false
           )}
         </div>
         <hr className="border w-full" />

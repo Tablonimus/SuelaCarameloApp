@@ -8,7 +8,7 @@ const NavFooter = () => {
           <Link to={"/"}>
             <li className="flex flex-col items-center">
               <i className="bx bx-home-alt-2 text-orange-700 text-3xl font-medium"></i>
-              <span>Home</span>
+              <span>Inicio</span>
             </li>
           </Link>
           <Link to={"/clubes"}>
@@ -23,7 +23,7 @@ const NavFooter = () => {
               <span>Noticias</span>
             </li>
           </Link>
-          <Link to={"/descuentos"}>
+          <Link to={"/cupones"}>
             <li className="flex flex-col items-center">
               <i className="bx bx-purchase-tag-alt text-orange-700 text-3xl font-medium"></i>
               <span>Cupones</span>
