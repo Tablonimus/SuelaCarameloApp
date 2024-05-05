@@ -29,18 +29,13 @@ export default function FixturePagination({
     setCurrentPageTitle(pageNumber);
   };
   return (
-    <div id="" className="flex flex-col w-full h-full justify-center py-8 ">
+    <div id="" className="flex flex-col w-full h-full justify-center ">
       {currentFixtures?.length > 0 ? (
         currentFixtures?.map((fixture, i) => (
           <div
             className="flex flex-col w-full h-full items-center justify-center "
             key={i}
           >
-            <img
-              src={fixture.image}
-              alt="fixture futbol de salón"
-              className="rounded-t-xl object-cover lg:w-1/3 px-1"
-            />
             <div className="w-full lg:w-1/3 bg-zinc-900">
               <h3 className=" text-center font-bold text-white self-center underline">
                 Fechas
@@ -55,6 +50,11 @@ export default function FixturePagination({
                 />
               </div>
             </div>
+            <img
+              src={fixture.image}
+              alt="fixture futbol de salón"
+              className="rounded-t-xl object-cover lg:w-1/3 px-1"
+            />
           </div>
         ))
       ) : (
