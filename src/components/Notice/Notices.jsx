@@ -3,15 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import Sidebar from "../NavBar/Sidebar";
-export default function Notices({
-  id,
-  images,
-  title,
-  subtitle,
-  videos,
-}) {
-
- 
+export default function Notices({ id, images, title, subtitle, videos, date }) {
   return (
     <>
       <Sidebar />
@@ -43,8 +35,11 @@ export default function Notices({
             {title}
           </h5>
           <p className=" overflow-hidden font-medium lg:text-md lg:leading-tight text-zinc-500">
-            {subtitle.split(" ").slice(0, 17).join(" ")} ...
+            {subtitle.split(" ").slice(0, 15).join(" ")} ...
           </p>
+          <span className="text-zinc-500 text-end">
+            {date.split("T")[0].split("-").reverse().join("/")}
+          </span>
         </div>
       </Link>
     </>

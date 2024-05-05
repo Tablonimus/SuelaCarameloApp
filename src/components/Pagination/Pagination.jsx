@@ -15,9 +15,8 @@ export default function Pagination({
   }
 
   return (
-    <div className="p-2 flex flex-col gap-2 w-full bg-zinc-900 ">
-      <h3 className="font-bold text-white self-center underline">Fechas</h3>
-      <div className="overflow-auto flex justify-center">
+    <div className="p-2 flex flex-col gap-2 bg-zinc-900">
+      <div className="flex justify-center w-fit bg-zinc-900">
         {pageNumbers?.map((number) => (
           <button
             key={number}
@@ -28,11 +27,11 @@ export default function Pagination({
             }
             onClick={() => pagination(number)}
           >
-            <div className="">
+       
               <span className="text-white font-bold">
                 {number.toString().length === 1 ? `${number}` : number}{" "}
               </span>
-            </div>
+          
           </button>
         ))}
       </div>

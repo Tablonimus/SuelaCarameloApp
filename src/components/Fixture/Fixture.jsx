@@ -43,11 +43,12 @@ const Fixture = () => {
   const allFixtures = useSelector((state) => state.fixtures);
   const activeNumber = useSelector((state) => state.activeNumber);
   const [fixtureState, setFixtureState] = useState("A1");
-  const [currentPageTitle, setCurrentPageTitle] = useState(activeNumber);
-console.log(activeNumber);
+  const [currentPageTitle, setCurrentPageTitle] = useState(1);
+
   useEffect(() => {
     dispatch(getFixtures(fixtureState));
-  }, [fixtureState]);
+    setCurrentPageTitle(activeNumber);
+  }, [fixtureState, activeNumber]);
 
   return (
     <div className="flex flex-col justify-between ">

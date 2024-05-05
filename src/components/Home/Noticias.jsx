@@ -47,7 +47,6 @@ export default function Noticias() {
   };
   const totalPages = Math.ceil(allNotices.length / noticesPerPage);
 
-console.log(currentNotices);
 
   return (
     <div className="pl-[70px]  flex flex-col w-full justify-between items-center">
@@ -103,9 +102,9 @@ console.log(currentNotices);
         className="py-3  w-full h-full flex flex-wrap items-center justify-center gap-8 "
       >
         {currentNotices?.length > 0 ? (
-          currentNotices.map((notice) => (
+          currentNotices.map((notice, index) => (
             <Notices
-              key={notice.id}
+              key={notice._id}
               id={notice._id}
               title={notice.title}
               subtitle={notice.subtitle}
@@ -113,6 +112,7 @@ console.log(currentNotices);
               videos={notice.videos}
               content={notice.content}
               category={notice.category}
+              date={notice.date}
             />
           ))
         ) : (

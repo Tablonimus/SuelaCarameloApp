@@ -12,7 +12,7 @@ export default function NoticeDetail() {
   const dispatch = useDispatch();
   const params = useParams();
   const notice = useSelector((state) => state.noticeDetail);
-console.log(notice);
+
   const parrafo = notice?.content?.split("//");
 
   useEffect(() => {

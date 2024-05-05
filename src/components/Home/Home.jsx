@@ -54,13 +54,13 @@ const Home = () => {
           </button>
           <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
             <Link to={"/noticias"} className="hover:text-orange-500">
-              ÚLTIMAS NOTICIAS
+              NOTICIAS
             </Link>
           </button>
           <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
             <Link to={"/posiciones"} className="hover:text-orange-500">
               {" "}
-              TABLA DE POSICIONES
+              POSICIONES
             </Link>
           </button>
           <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">

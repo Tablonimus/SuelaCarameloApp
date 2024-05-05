@@ -1,11 +1,12 @@
 import * as action from "./actionTypes";
 import axios from "axios";
-import { useSelector } from "react-redux";
-import notices from "../../utils/data/notices.json";
 
-// const url = "https://suela-caramelo-app-back-end.vercel.app/sc";
 
-const url = "http://localhost:3000/sc";
+const url = "https://suela-caramelo-app-back-end.vercel.app/sc";
+// 
+
+
+// const url = "http://localhost:3000/sc";
 
 export function clearPage() {
   return async function (dispatch) {
@@ -137,8 +138,9 @@ export function getAllMatches(category) {
 export function getAllNotices(category) {
   return async function (dispatch) {
     try {
+  
       let json = await axios.get(`${url}/notices?category=${category}`);
-      // let json = {data: notices}
+
       dispatch({
         type: action.GET_ALL_NOTICES,
         payload: {
