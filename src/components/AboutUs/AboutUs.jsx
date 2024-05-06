@@ -7,8 +7,8 @@ export default function AboutUs() {
   return (
     <div className="bg-[#F98958]  flex flex-col justify-between items-center">
       <NavBar />
-      <div className="mt-20 flex flex-col   opacity-80 items-center justify-center w-1/2  h-full">
-        <p className="font-semibold text-center z-20 mb-2">
+      <div className="mt-20  flex flex-col  opacity-80 items-center justify-center w-1/2  h-full">
+        <p className="font-semibold px-[120px] text-base text-center z-20 mb-2">
           Somos un grupo periodistas de Mendoza que comenzaron a difundir el
           Futsal de Mendoza en 2016. A su vez, somos el primer medio audiovisual
           de todo el país, que se encargó de la cobertura de AMF (Asociación
