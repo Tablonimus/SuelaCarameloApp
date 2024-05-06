@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 :root {
   --orange: #ed7020;
   --black: #040406;
@@ -12,7 +11,7 @@
   width: 80%;
   margin-top: 2rem;
   display:flex;
-  flex-direction: column;
+  flex-direction:column;
   background-color: var(--black);
   margin-left: 70px;
 }
@@ -55,7 +54,7 @@
   padding: 1rem;
   font-weight: 500;
   color: var(--orange);
-  margin-top: .1rem;
+  margin-top: -1rem;
   & li {
     color: var(--gray);
   }

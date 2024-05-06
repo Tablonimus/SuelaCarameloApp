@@ -6,7 +6,14 @@ export default {
     "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'sm': '500px',
+      },
+      fontFamily:{
+        "cursive":["Dancing Script", "cursive"]
+      }
+    },
   },
   plugins: [require("flowbite/plugin")],
 };
