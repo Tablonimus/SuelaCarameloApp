@@ -90,13 +90,7 @@ export default function CreateNotice() {
   }
   function onSubmitHandler(e) {
     e.preventDefault();
-    if (
-      input.category &&
-      input.content &&
-      input.date &&
-      input.title &&
-      input.subtitle
-    ) {
+    if (input) {
       dispatch(
         createNotice({
           title: input.title,
