@@ -174,7 +174,7 @@ export default function CreateNotice() {
         <ReactQuill
           className="bg-white w-11/12 "
           theme="snow"
-          name="description"
+          name="content"
           value={value}
           onChange={setValue}
         />
