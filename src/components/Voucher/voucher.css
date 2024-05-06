@@ -79,13 +79,14 @@
     font-family: var(--font2);
     gap: .5rem;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     color:var(--gray);
   }
   & i {
     border-top: 3px solid var(--orange);
     font-size: 2rem;
     padding-top: .5rem;
+    
   }
 }
 .voucher-boxR { 
@@ -159,15 +160,35 @@
     margin-top: 3rem;
   }
   .voucher-title{
-    padding: 1.2rem;
+    padding: 1rem;
     border: none;
     width: 100%;
     align-items: flex-start;
-  
+ 
+      & h6 {
+        font-size: 3.4rem;
+        }
+        & span {
+          color: var(--orange);
+        }
+        & p {
+          font-size: 2.9rem;
+          margin-top: -3.2rem;
+          margin-left: 13rem;
+      }  
   }
   .voucher-info{
     text-align: start;
     margin-top: -1rem;
+    & li:first-child{
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    & li{
+      margin-top: .3rem;
+     
+    }
+    margin-bottom: .3rem;
   }
   .voucher-contact{
     gap:7rem;
@@ -194,7 +215,7 @@
     border-bottom-left-radius: 10px;
     padding-left: 1rem;
     padding-top: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
   }
   .voucher-discount{
     span{
