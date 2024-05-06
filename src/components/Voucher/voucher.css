@@ -21,8 +21,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 1.5rem;
-  padding-top: 1rem;
+  padding-bottom: .4rem;
+  padding-top: .4rem;
   background-color: rgb(223, 223, 223);
 
 }
@@ -45,7 +45,7 @@
   & p {
     font-family: var(--cursive);
     font-weight: 800;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     color: var(--orange);
     margin-top: -2.6rem;
     margin-left: 8rem;
@@ -55,7 +55,7 @@
   padding: 1rem;
   font-weight: 500;
   color: var(--orange);
-  margin-top: .5rem;
+  margin-top: .1rem;
   & li {
     color: var(--gray);
   }
@@ -63,13 +63,14 @@
 .voucher-info :first-child{
     font-weight: 600;
     color: var(--orange);
-    margin-bottom: .7rem;
+    margin-bottom: .2rem;
     font-size: 1.3rem;
 }
 .voucher-contact {
   display: flex;
     gap:2.5rem;
-    margin-top: 1rem;
+    margin-top: .5rem;
+    padding-bottom: .3rem;
   & li {
     display: flex;
     flex-direction: column;
@@ -92,12 +93,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 2rem;
-  padding-bottom: .5rem;
+  padding-top: 1.5rem;
 }
 .voucher-logo {
     width:80%;
-    height: 180px;
+    height: 150px;
     border-top: 3px solid var(--orange);
     border-bottom: 3px solid var(--gray);
     display: flex;
