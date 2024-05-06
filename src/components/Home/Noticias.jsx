@@ -47,7 +47,6 @@ export default function Noticias() {
   };
   const totalPages = Math.ceil(allNotices.length / noticesPerPage);
 
-
   return (
     <div className="pl-[70px]  flex flex-col w-full justify-between items-center">
       <section className="w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-4 lg:py-6">

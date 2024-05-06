@@ -56,6 +56,7 @@ export default function FixturePagination({
               className="rounded-t-xl object-cover lg:w-1/3 px-1"
             />
           </div>
+          // <NoticeLoaderComponent />
         ))
       ) : (
         <NoticeLoaderComponent />

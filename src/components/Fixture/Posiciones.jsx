@@ -8,6 +8,7 @@ import logoF1 from "../../assets/images/botones/F1.png";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPositions } from "../../redux/actions";
+import NoticeLoaderComponent from "../Home/NoticeLoaderComponent";
 
 const Posiciones = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Posiciones = () => {
   }, [positionState]);
 
   return (
-<div className="flex flex-col justify-between  ">
+    <div className="flex flex-col justify-between  ">
       <Sidebar active={"positions"} />
       <section className="pl-[70px] w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-4 lg:py-6">
         {/* <h2 className="text-xl mb-2 italic lg:mb-4 lg:text-2xl  text-gray-200 font-bold">
@@ -55,12 +56,16 @@ const Posiciones = () => {
         </picture>
       </section>
       <section className="py-6 w-full h-auto flex flex-col justify-center items-center overflow-hidden lg:py-12 ">
-        <img
-          className="ml-[70px] w-4/5 max-w-xl  rounded-xl"
-          src={positions.image}
-          alt="posiciones futbol de salón mendoza"
-          loading="lazy"
-        />
+        {positions?.image ? (
+          <img
+            className="ml-[70px] w-4/5 max-w-xl  rounded-xl"
+            src={positions.image}
+            alt="posiciones futbol de salón mendoza"
+            loading="lazy"
+          />
+        ) : (
+          <NoticeLoaderComponent />
+        )}
       </section>
 
       <FooterComp />
