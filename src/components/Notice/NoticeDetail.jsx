@@ -12,7 +12,7 @@ export default function NoticeDetail() {
   const dispatch = useDispatch();
   const params = useParams();
   const notice = useSelector((state) => state.noticeDetail);
-
+  console.log(notice);
   const parrafo = notice?.content?.split("//");
 
   useEffect(() => {
@@ -41,12 +41,16 @@ export default function NoticeDetail() {
             <div className="flex flex-col opacity-100">
               {notice?.images[0] ? (
                 <div className="opacity-100 h-96  xl:h-80 2xl:h-[530px] ">
-                  <Carousel>
+                  <Carousel
+                    indicators={true}
+                    leftControl={<></>}
+                    rightControl={<></>}
+                  >
                     {notice?.images?.map((img) => (
                       <img
                         src={img}
                         alt=""
-                        className="opacity-100 rounded-lg"
+                        className="opacity-100 rounded-lg object-cover"
                       />
                     ))}
                   </Carousel>

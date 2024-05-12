@@ -19,7 +19,7 @@ const Descuentos = () => {
       ubi: "Montes de Oca 889",
     },
 
-     {
+    {
       name: "Hache Market",
       logo: b4,
       terminos: `Seguí a Hache Market en instagram y conseguí Items Básicos y Clásicos. Cupón válido ABONANDO EN EFECTIVO`,
@@ -31,13 +31,13 @@ const Descuentos = () => {
       terminos: `Tus próximo botines los encontrás acá! Seguilos por Instagram y enterate de todos los modelos y facilidades de pago.
       Descuento: 5% en un par de botines a elección!`,
       descuento: "5",
-    }, 
+    },
   ];
   return (
     <>
       <Sidebar />
 
-      <section className="w-full h-auto py-4 lg:py-14 flex flex-col justify-center items-center lg:pb-20">
+      <section className="w-full h-auto py-4 lg:py-14 flex flex-col justify-center items-center lg:pb-20 ">
         <h2 className="pl-[70px] text-2xl text-center text-gray-100 font-bold">
           CUPONES DE DESCUENTOS EXCLUSIVOS
         </h2>

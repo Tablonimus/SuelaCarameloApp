@@ -4,9 +4,9 @@ import logovoucher from "/logovoucher.png";
 const Voucher = (props) => {
   const { sponsor } = props;
   return (
-    <>
+    <div className="px-1">
       <main id="vouchers-wrapper" className="w-full  flex pl-[72px] mt-6 md:w-[800px] lg:w-[950px] lg:mt-12">
-        <section id="voucher-boxL" className=" bg-white w-1/2 py-1 pl-1 sm:py-2 sm:pl-2 lg:py-4 lg:pl-4">
+        <section id="voucher-boxL" className=" bg-white w-1/2 py-1 pl-1 sm:py-2 sm:pl-2 lg:py-4 lg:pl-4 rounded-s-xl" >
           <article id="voucher-title">
             <h6 className="font-bold text-zinc-800 text-2xl sm:text-4xl lg:text-6xl">
               <span className="text-[#ed7020]">DES</span>CUENTO
@@ -33,7 +33,7 @@ const Voucher = (props) => {
           </ul>
         </section>
 
-        <section id="voucher-boxR" className="bg-zinc-900 w-1/2 flex flex-col items-center justify-between lg:py-4">
+        <section id="voucher-boxR" className="bg-zinc-900 w-1/2 flex flex-col items-center justify-between lg:py-4 rounded-e-xl">
           <picture className="voucher-logo w-[95%] flex justify-center">
             <img className="w-full border-y-2 border-[#ed7020] border-b-white mt-2 md:max-w-64 lg:max-w-72" src={sponsor.logo} alt="" />
           </picture>
@@ -46,7 +46,7 @@ const Voucher = (props) => {
           </article>
         </section>
       </main>
-    </>
+    </div>
   );
 };
 export default Voucher;
