@@ -7,7 +7,7 @@ import imgHome3 from "../../assets/images/heroSection/hero3.webp";
 import imgHome4 from "../../assets/images/heroSection/hero4.webp";
 import FooterComp from "../FooterComp/FooterComp";
 import { Carousel } from "flowbite-react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./home.css";
 
 const Home = () => {
@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <div className=" flex flex-col justify-between">
-      <SideHome active="home"/>
+      <SideHome active="home" />
       <main className="w-full flex flex-col justify-start items-center py-5 md:items-center overflow-hidden lg:h-auto">
         <img className="w-44 mb-4 lg:w-52" src={logoSC} alt="" />
         {/* CARRUSEL */}
@@ -49,27 +49,35 @@ const Home = () => {
           </Carousel>
         </div>
         <section className="mt-6 w-full flex flex-col justify-center items-center gap-4 ">
-          <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
-            <Link to={"/cupones/#inicio"} className="hover:text-orange-500">
+          <Link
+            to={"/cupones/#inicio"}
+            className="hover:scale-110 hover:text-orange-500 text-center py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold "
+          >
+            <button className="hover:text-orange-500 text-center">
               CUPONES Y DESCUENTOS
-            </Link>
-          </button>
-          <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
-            <Link to={"/noticias"} className="hover:text-orange-500">
+            </button>
+          </Link>
+
+          <Link
+            to={"/noticias"}
+            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold "
+          >
+            <button className="hover:text-orange-500 text-center">
               NOTICIAS
-            </Link>
-          </button>
-          <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
-            <Link to={"/posiciones"} className="hover:text-orange-500">
-              {" "}
-              POSICIONES
-            </Link>
-          </button>
-          <button className="hover:scale-110 hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold ">
-            <Link to={"/fixture"} className="hover:text-orange-500">
-              FIXTURE
-            </Link>
-          </button>
+            </button>
+          </Link>
+          <Link
+            to={"/posiciones"}
+            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold "
+          >
+            <button className="hover:text-orange-500"> POSICIONES</button>
+          </Link>
+          <Link
+            to={"/fixture"}
+            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold "
+          >
+            <button className="hover:text-orange-500">FIXTURE</button>
+          </Link>
         </section>
       </main>
       <FooterComp />

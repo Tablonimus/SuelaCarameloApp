@@ -33,8 +33,6 @@ function App() {
         <Route path="/test" element={<RichTextEditor />} />
         <Route path="/createnotice" element={<AdminHome />} />
       </Routes>
-
-    
     </section>
   );
 }
