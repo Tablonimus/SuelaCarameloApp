@@ -6,7 +6,7 @@ import Sidebar from "../NavBar/Sidebar";
 export default function Notices({ id, images, title, subtitle, videos, date }) {
   return (
     <>
-      <Sidebar />
+      <Sidebar active="noticias" />
       <Link
         to={`/notices/${id}`}
         class="h-auto bg-zinc-800 rounded-lg shadow-md min-w-60 max-w-72 md:h-[410px] hover:scale-105 duration-300"

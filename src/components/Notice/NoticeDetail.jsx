@@ -22,7 +22,7 @@ export default function NoticeDetail() {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar  active={"noticias"}/>
       <div
         id="noticia"
         className="pt-8 min-w-screen overflow-hidden flex flex-col items-center"

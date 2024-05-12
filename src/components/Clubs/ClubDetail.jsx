@@ -39,7 +39,7 @@ export default function ClubDetail() {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar active={"club"}/>
       <main className="teams-wrapper pt-16 lg:pt-28">
         {/* Flecha atrás */}
         <Link to={"/clubes"}>

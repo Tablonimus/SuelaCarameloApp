@@ -29,7 +29,7 @@ export default function CreateNotice() {
   const [video, setVideo] = useState("");
   const [loadingVideo, setLoadingVideo] = useState(false);
   const [input, setInput] = useState(defaultInput);
-
+  console.log(value);
   function handleChange(e) {
     if (e.target.name === "videos") {
       setInput({

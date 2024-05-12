@@ -10,10 +10,9 @@ import FooterComp from "../FooterComp/FooterComp";
 const Descuentos = () => {
   const sponsors = [
     {
-      name: "Squadra",
+      name: "Calzas deportivas cortas",
       logo: b2,
-      terminos: `Acercate al local Squadra ubicado en Montes de Oca 889 | Godoy Cruz- Mendoza  
-        25% en calzas deportivas cortas - IDEALES PARA JUGAR`,
+      terminos: `25% en calzas deportivas cortas mostrando tu cupón - IDEALES PARA JUGAR`,
       descuento: "25",
       telefono: "2616 59-5240",
       ubi: "Montes de Oca 889",
@@ -35,9 +34,9 @@ const Descuentos = () => {
   ];
   return (
     <>
-      <Sidebar />
+      <Sidebar active={"cupones"} />
 
-      <section className="w-full h-auto py-4 lg:py-14 flex flex-col justify-center items-center lg:pb-20 ">
+      <section id="inicio" className="w-full h-auto py-4 lg:py-14 flex flex-col justify-center items-center lg:pb-20 ">
         <h2 className="pl-[70px] text-2xl text-center text-gray-100 font-bold">
           CUPONES DE DESCUENTOS EXCLUSIVOS
         </h2>

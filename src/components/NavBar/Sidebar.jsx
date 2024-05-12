@@ -9,7 +9,7 @@ const Sidebar = ({ active }) => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-
+console.log(active);
   return (
     <>
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
@@ -25,7 +25,14 @@ const Sidebar = ({ active }) => {
           <Link to={"/"}>
             <li>
               <a href="#">
-                <i class="bx bxs-home-alt-2"></i>
+                <i
+                  className={
+                    active === "home"
+                      ? "bx bxs-home-alt-2 bg-white/50 text-white"
+                      : "bx bxs-home-alt-2  "
+                  }
+                  class="bx bxs-home-alt-2"
+                ></i>
                 <span className="link_name">Inicio</span>
               </a>
             </li>
@@ -33,7 +40,14 @@ const Sidebar = ({ active }) => {
           <Link to={"/noticias"}>
             <li>
               <a href="#">
-                <i class="bx bx-news"></i>
+                <i
+                  className={
+                    active === "noticias"
+                      ? "bx bx-news bg-white/50 text-white"
+                      : "bx bx-news  "
+                  }
+                  class="bx bx-news"
+                ></i>
                 <span className="link_name">Noticias</span>
               </a>
             </li>
@@ -52,7 +66,7 @@ const Sidebar = ({ active }) => {
                 <i
                   className={
                     active === "fixture"
-                      ? "bx bx-football bg-white/30 "
+                      ? "bx bx-football bg-white/50 text-white"
                       : "bx bx-football  "
                   }
                 ></i>
@@ -78,7 +92,13 @@ const Sidebar = ({ active }) => {
           <Link to={"/cupones"}>
             <li>
               <a href="#">
-                <i class="bx bxs-purchase-tag-alt"></i>
+                <i
+                  className={
+                    active === "cupones"
+                      ? "bx bxs-purchase-tag-alt bg-white/50 text-white"
+                      : "bx bxs-purchase-tag-alt  "
+                  }
+                ></i>
                 <span className="link_name">Descuentos</span>
               </a>
             </li>
@@ -86,7 +106,13 @@ const Sidebar = ({ active }) => {
           <Link to={"/contacto"}>
             <li>
               <a href="#">
-                <i class="bx bxs-contact"></i>
+                <i
+                  className={
+                    active === "contacto"
+                      ? "bx bxs-contact bg-white/50 text-white"
+                      : "bx bxs-contact  "
+                  }
+                ></i>
                 <span className="link_name">Contacto</span>
               </a>
             </li>

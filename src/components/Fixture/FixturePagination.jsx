@@ -36,12 +36,12 @@ export default function FixturePagination({
             className="flex flex-col w-full h-full items-center justify-center "
             key={i}
           >
-            <div className="w-full lg:w-1/3 bg-zinc-900">
+            <div className="w-full lg:w-1/3 bg-zinc-900 rounded-lg mt-1">
               <h3 className=" text-center font-bold text-white self-center underline">
                 Fechas
               </h3>
 
-              <div className="overflow-x-auto   lg:w-full">
+              <div className="overflow-x-scroll   lg:w-full">
                 <Pagination
                   fixturesPerPage={fixturesPerPage}
                   fixtures={fixtures?.length}
@@ -53,13 +53,15 @@ export default function FixturePagination({
             <img
               src={fixture.image}
               alt="fixture futbol de salón"
-              className="rounded-t-xl object-cover lg:w-1/3 px-1"
+              className="rounded-xl object-cover lg:w-1/3 px-1"
             />
           </div>
           // <NoticeLoaderComponent />
         ))
       ) : (
-        <NoticeLoaderComponent />
+        <div className="w-full h-full flex justify-center items-center">
+          <NoticeLoaderComponent />
+        </div>
       )}
     </div>
   );

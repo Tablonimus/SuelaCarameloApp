@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import noticesJson from "../../utils/data/notices.json";
+
 import { useDispatch, useSelector } from "react-redux";
-import { getAllMatches, getAllNotices, getAllTeams } from "../../redux/actions";
+import { getAllNotices } from "../../redux/actions";
 import Notices from "../Notice/Notices";
 import { useState } from "react";
 import { Pagination } from "flowbite-react";
@@ -11,6 +11,7 @@ import logoA1 from "../../assets/images/botones/A1.webp";
 import logoF1 from "../../assets/images/botones/F1.png";
 import logoTI from "../../assets/images/botones/TI.webp";
 import logoTN from "../../assets/images/botones/TN.webp";
+import Sidebar from "../NavBar/Sidebar";
 
 export default function Noticias() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ export default function Noticias() {
 
   return (
     <div className="pl-[70px]  flex flex-col w-full justify-between items-center">
+      <Sidebar active={"noticias"} />
       <section className="w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-4 lg:py-6">
         <h2 className="text-xl mb-2 italic lg:mb-4 lg:text-2xl  text-gray-200 font-bold">
           NOTICIAS

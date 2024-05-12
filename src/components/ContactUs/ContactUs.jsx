@@ -7,7 +7,7 @@ import FooterComp from "../FooterComp/FooterComp";
 export default function ContactUs() {
   return (
     <>
-      <Sidebar></Sidebar>
+      <Sidebar active={"contacto"}/>
       <main className="flex flex-col justify-start gap-6 items-center  pl-[70px] pb-10 lg:h-screen">
         <img className=" mt-8 w-44 mb-4 lg:w-52" src={logoSC} alt="" />
         <h4 className="  max-w-56 font-semibold text-center leading-6 text-zinc-800 text-2xl lg:text-4xl lg:max-w-96 lg:mt-4 lg:font-bold ">
@@ -35,7 +35,7 @@ export default function ContactUs() {
           </Link>
           <Link to={"mailto:suelacaramelo@gmail.com"}>
             <li>
-              <i className="bx bxl-gmail text-zinc-900"></i>
+              <i className="bx bxl-gmail text-zinc-900 "></i>
             </li>
           </Link>
           <Link to={"https://www.youtube.com/@suelacaramelo"}>
