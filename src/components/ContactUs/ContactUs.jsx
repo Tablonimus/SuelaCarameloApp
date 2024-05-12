@@ -14,42 +14,41 @@ export default function ContactUs() {
           Ponte en contacto con nosotros
         </h4>
 
-          <article className="font-medium text-base text-center text-gray-100 lg:max-w-[33rem] lg:mt-6 lg:text-xl">
-            Informando y celebrando el futsal en Mendoza. Somos un medio
-            apasionado por este deporte, con coberturas, contenido audiovisual y
-            una visión de influencia global. Además, somos Suela Producciones,
-            una productora audiovisual y fotográfica enfocada en deportes. Si
-            quieres sumarte a nuestra comunidad o tienes alguna consulta,
-            ¡contáctanos! Estamos ansiosos por leerte y compartir
-            juntos esta pasión.
-          </article>
-       <ul className="flex justify-center items-center text-4xl gap-6 mt-4 lg:text-5xl lg:gap-10 lg:mt-10">
-              <Link to={"https://www.facebook.com/SuelaCarameloOk"}>
-                <li>
-                  <i className="bx bxl-facebook text-zinc-900"></i>
-                </li>
-              </Link>
-              <Link to={"https://www.instagram.com/suelacaramelo/"}>
-                <li>
-                  <i className="bx bxl-instagram text-zinc-900"></i>
-                </li>
-              </Link>
-              <Link to={"https://www.youtube.com/@suelacaramelo"}>
-                <li>
-                  <i className="bx bxl-youtube text-zinc-900"></i>
-                </li>
-              </Link>
-              <Link to={"https://www.tiktok.com/@suelacaramelo"}>
-                <li>
-                  <i className="bx bxl-tiktok text-zinc-900"></i>
-                </li>
-              </Link>
-              <Link to={"https://www.tiktok.com/@suelacaramelo"}>
-                <li>
-                  <i className="bx bxl-gmail text-zinc-900"></i>
-                </li>
-              </Link>
-            </ul>
+        <article className=" px-1 font-medium text-base text-center text-gray-100 lg:max-w-[33rem] lg:mt-6 lg:text-xl">
+          Informando y celebrando el futsal en Mendoza. Somos un medio
+          apasionado por este deporte, con coberturas, contenido audiovisual y
+          una visión de influencia global. Además, somos Suela Producciones, una
+          productora audiovisual y fotográfica enfocada en deportes. Si quieres
+          sumarte a nuestra comunidad o tienes alguna consulta, ¡contáctanos!
+          Estamos ansiosos por leerte y compartir juntos esta pasión.
+        </article>
+        <ul className="flex justify-center items-center text-4xl gap-6 mt-4 lg:text-5xl lg:gap-10 lg:mt-10">
+          <Link to={"https://www.facebook.com/SuelaCarameloOk"}>
+            <li>
+              <i className="bx bxl-facebook text-zinc-900"></i>
+            </li>
+          </Link>
+          <Link to={"https://www.instagram.com/suelacaramelo/"}>
+            <li>
+              <i className="bx bxl-instagram text-zinc-900"></i>
+            </li>
+          </Link>
+          <Link to={"mailto:suelacaramelo@gmail.com"}>
+            <li>
+              <i className="bx bxl-gmail text-zinc-900"></i>
+            </li>
+          </Link>
+          <Link to={"https://www.youtube.com/@suelacaramelo"}>
+            <li>
+              <i className="bx bxl-youtube text-zinc-900"></i>
+            </li>
+          </Link>
+          <Link to={"https://www.tiktok.com/@suelacaramelo"}>
+            <li>
+              <i className="bx bxl-tiktok text-zinc-900"></i>
+            </li>
+          </Link>
+        </ul>
       </main>
       <FooterComp />
     </>

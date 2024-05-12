@@ -13,10 +13,10 @@ const defaultInput = {
   subtitle: "",
   images: [],
   videos: "",
-  content: "",
   category: "",
   date: "",
 };
+/* CONTENT OF NOTICE IS DEFINED AT AN INDEPENDIENT STATE */
 
 export default function CreateNotice() {
   const dispatch = useDispatch();
@@ -97,7 +97,7 @@ export default function CreateNotice() {
           subtitle: input.subtitle,
           images: input.images,
           videos: input.videos,
-          content: input.content,
+          content: value,
           category: input.category,
           date: new Date(input.date),
         })
