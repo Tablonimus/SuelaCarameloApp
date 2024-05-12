@@ -12,6 +12,25 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
       injectRegister: "auto",
+      includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
+      manifest: {
+        name: "Suela Caramelo",
+        short_name: "SuelApp",
+        description: "Noticias del fútbol de salón.",
+        theme_color: "#ed7020",
+        icons: [
+          {
+            src: "psuela.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "suela.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
     }),
   ],
 });
