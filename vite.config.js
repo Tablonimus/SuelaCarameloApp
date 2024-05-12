@@ -16,6 +16,7 @@ export default defineConfig({
       manifest: {
         name: "Suela Caramelo",
         short_name: "SuelApp",
+        background_color: "#ed7020",
         description: "Noticias del fútbol de salón.",
         theme_color: "#ed7020",
         icons: [
