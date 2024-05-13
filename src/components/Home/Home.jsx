@@ -37,7 +37,13 @@ const Home = () => {
         <img className="w-44 mb-4 lg:w-52" src={logoSC} alt="" />
         {/* CARRUSEL */}
         <div className="h-[18rem] md:h-[36rem] w-full mb-1">
-          <Carousel slideInterval={5000}>
+          <Carousel
+            leftControl={<></>}
+            rightControl={<></>}
+            draggable
+            slide
+            slideInterval={3000}
+          >
             {images.map((image, i) => (
               <img
                 key={i}

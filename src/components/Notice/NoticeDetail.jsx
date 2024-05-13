@@ -22,7 +22,7 @@ export default function NoticeDetail() {
 
   return (
     <>
-      <Sidebar  active={"noticias"}/>
+      <Sidebar active={"noticias"} />
       <div
         id="noticia"
         className="pt-8 min-w-screen overflow-hidden flex flex-col items-center"
@@ -42,9 +42,11 @@ export default function NoticeDetail() {
               {notice?.images[0] ? (
                 <div className="opacity-100 h-96  xl:h-80 2xl:h-[530px] ">
                   <Carousel
-                    indicators={true}
                     leftControl={<></>}
                     rightControl={<></>}
+                    draggable
+                    slide
+                    slideInterval={3000}
                   >
                     {notice?.images?.map((img) => (
                       <img

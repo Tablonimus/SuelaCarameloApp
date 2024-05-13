@@ -21,7 +21,13 @@ export default function NavResults() {
     <div className="flex flex-row w-full items-center justify-center border-t border-b border-white rounded-t-lg h-full">
       {matches.length > 0 ? (
         <div className="flex overflow-x-auto gap-2 p-1 h-full ">
-          <Carousel slideInterval={5000}>
+          <Carousel
+            leftControl={<></>}
+            rightControl={<></>}
+            draggable
+            slide
+            slideInterval={3000}
+          >
             {subarrays.length > 0
               ? subarrays.map((array) => (
                   <>
