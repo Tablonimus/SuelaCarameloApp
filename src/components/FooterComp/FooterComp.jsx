@@ -22,7 +22,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9"
               >
-                <img className="object-contain  " src={b1} />
+                <img className="object-contain h-16  " src={b1} />
               </a>
             </div>
             <div className="slide">
@@ -30,7 +30,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA=="
               >
-                <img className="object-contain  " src={b2} />
+                <img className="object-contain h-16  " src={b2} />
               </a>
             </div>
             <div className="slide">
@@ -38,7 +38,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://maps.app.goo.gl/aystKkyxwR3Qnkft6"
               >
-                <img className="object-contain  " src={b3} />
+                <img className="object-contain h-16  " src={b3} />
               </a>
             </div>
             <div className="slide">
@@ -46,7 +46,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh"
               >
-                <img className="object-contain  " src={b4} />
+                <img className="object-contain h-16  " src={b4} />
               </a>
             </div>
             <div className="slide">
@@ -54,7 +54,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/zonafutsal_mdz?igsh=YmYzNmh5OWJsbTRt"
               >
-                <img className="object-contain  " src={b5} />
+                <img className="object-contain h-16  " src={b5} />
               </a>
             </div>
             <div className="slide">
@@ -62,7 +62,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/eltanopiadineria?igsh=YmlydG02cGp4ZHlt"
               >
-                <img className="object-contain  " src={b6} />
+                <img className="object-contain h-16  " src={b6} />
               </a>
             </div>
             <div className="slide">
@@ -70,7 +70,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/nmtallerdecalzado.mza?igsh=MXcycHZ2ZjM4NXc3MQ=="
               >
-                <img className="object-contain  " src={b7} />
+                <img className="object-contain h-16  " src={b7} />
               </a>
             </div>
             <div className="slide">
@@ -78,7 +78,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/fefusamendoza?igsh=bXhva3V0ZXhwbTE0"
               >
-                <img className="object-contain  " src={b8} />
+                <img className="object-contain h-16  " src={b8} />
               </a>
             </div>
             <div className="slide">
@@ -86,7 +86,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9"
               >
-                <img className="object-contain  " src={b1} />
+                <img className="object-contain h-16  " src={b1} />
               </a>
             </div>
             <div className="slide">
@@ -94,7 +94,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA=="
               >
-                <img className="object-contain  " src={b2} />
+                <img className="object-contain h-16  " src={b2} />
               </a>
             </div>
             <div className="slide">
@@ -102,7 +102,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://maps.app.goo.gl/aystKkyxwR3Qnkft6"
               >
-                <img className="object-contain  " src={b3} />
+                <img className="object-contain h-16  " src={b3} />
               </a>
             </div>
             <div className="slide">
@@ -110,7 +110,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh"
               >
-                <img className="object-contain  " src={b4} />
+                <img className="object-contain h-16  " src={b4} />
               </a>
             </div>
             <div className="slide">
@@ -118,7 +118,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/zonafutsal_mdz?igsh=YmYzNmh5OWJsbTRt"
               >
-                <img className="object-contain  " src={b5} />
+                <img className="object-contain h-16  " src={b5} />
               </a>
             </div>
             <div className="slide">
@@ -126,7 +126,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/eltanopiadineria?igsh=YmlydG02cGp4ZHlt"
               >
-                <img className="object-contain  " src={b6} />
+                <img className="object-contain h-16  " src={b6} />
               </a>
             </div>
             <div className="slide">
@@ -134,7 +134,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/nmtallerdecalzado.mza?igsh=MXcycHZ2ZjM4NXc3MQ=="
               >
-                <img className="object-contain  " src={b7} />
+                <img className="object-contain h-16  " src={b7} />
               </a>
             </div>
             <div className="slide">
@@ -142,7 +142,7 @@ export default function FooterComp() {
                 target="_blank"
                 href="https://www.instagram.com/fefusamendoza?igsh=bXhva3V0ZXhwbTE0"
               >
-                <img className="object-contain  " src={b8} />
+                <img className="object-contain h-16  " src={b8} />
               </a>
             </div>
           </div>
