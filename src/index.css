@@ -37,7 +37,7 @@ code {
 }
 .slider {
   width: 100%;
-  height: 100px;
+  height: 70px;
   margin: auto;
   overflow: hidden;
 }
@@ -47,7 +47,8 @@ code {
   gap: 2rem;
   animation: scroll 30s linear infinite;
   -webkit-animation: scroll 30s linear infinite;
-  width: calc(200px * 14);
+  width: calc(250px * 14);
+  align-items: center;
 }
 
 .slider .slide {

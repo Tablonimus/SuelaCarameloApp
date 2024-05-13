@@ -1,10 +1,13 @@
 import React from "react";
-import suela from "../../assets/images/suela.png";
+
 import b1 from "../../assets/images/b1.png";
 import b2 from "../../assets/images/b2.png";
 import b3 from "../../assets/images/b3.png";
 import b4 from "../../assets/images/b4.png";
 import b5 from "../../assets/images/zonafutsal.png";
+import b6 from "../../assets/images/sponsors/tano.webp";
+import b7 from "../../assets/images/sponsors/taller.webp";
+import b8 from "../../assets/images/sponsors/fefusa.webp";
 import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
 
@@ -15,53 +18,131 @@ export default function FooterComp() {
         <section className="slider lg:w-full">
           <div className="slide-track">
             <div className="slide">
-              <a target="_blank"  href="https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9">
-                <img src={b1} />
+              <a
+                target="_blank"
+                href="https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9"
+              >
+                <img className="object-contain  " src={b1} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA==">
-                <img src={b2} />
+              <a
+                target="_blank"
+                href="https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA=="
+              >
+                <img className="object-contain  " src={b2} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://maps.app.goo.gl/aystKkyxwR3Qnkft6">
-                <img src={b3} />
+              <a
+                target="_blank"
+                href="https://maps.app.goo.gl/aystKkyxwR3Qnkft6"
+              >
+                <img className="object-contain  " src={b3} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh">
-                <img src={b4} />
+              <a
+                target="_blank"
+                href="https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh"
+              >
+                <img className="object-contain  " src={b4} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://www.instagram.com/zonafutsal_mdz?igsh=YmYzNmh5OWJsbTRt">
-                <img src={b5} />
+              <a
+                target="_blank"
+                href="https://www.instagram.com/zonafutsal_mdz?igsh=YmYzNmh5OWJsbTRt"
+              >
+                <img className="object-contain  " src={b5} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9">
-                <img src={b1} />
+              <a
+                target="_blank"
+                href="https://www.instagram.com/eltanopiadineria?igsh=YmlydG02cGp4ZHlt"
+              >
+                <img className="object-contain  " src={b6} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA==">
-                <img src={b2} />
+              <a
+                target="_blank"
+                href="https://www.instagram.com/nmtallerdecalzado.mza?igsh=MXcycHZ2ZjM4NXc3MQ=="
+              >
+                <img className="object-contain  " src={b7} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://maps.app.goo.gl/aystKkyxwR3Qnkft6">
-                <img src={b3} />
+              <a
+                target="_blank"
+                href="https://www.instagram.com/fefusamendoza?igsh=bXhva3V0ZXhwbTE0"
+              >
+                <img className="object-contain  " src={b8} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh">
-                <img src={b4} />
+              <a
+                target="_blank"
+                href="https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9"
+              >
+                <img className="object-contain  " src={b1} />
               </a>
             </div>
             <div className="slide">
-              <a target="_blank"  href="https://www.instagram.com/zonafutsal_mdz?igsh=YmYzNmh5OWJsbTRt">
-                <img src={b5} />
+              <a
+                target="_blank"
+                href="https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA=="
+              >
+                <img className="object-contain  " src={b2} />
+              </a>
+            </div>
+            <div className="slide">
+              <a
+                target="_blank"
+                href="https://maps.app.goo.gl/aystKkyxwR3Qnkft6"
+              >
+                <img className="object-contain  " src={b3} />
+              </a>
+            </div>
+            <div className="slide">
+              <a
+                target="_blank"
+                href="https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh"
+              >
+                <img className="object-contain  " src={b4} />
+              </a>
+            </div>
+            <div className="slide">
+              <a
+                target="_blank"
+                href="https://www.instagram.com/zonafutsal_mdz?igsh=YmYzNmh5OWJsbTRt"
+              >
+                <img className="object-contain  " src={b5} />
+              </a>
+            </div>
+            <div className="slide">
+              <a
+                target="_blank"
+                href="https://www.instagram.com/eltanopiadineria?igsh=YmlydG02cGp4ZHlt"
+              >
+                <img className="object-contain  " src={b6} />
+              </a>
+            </div>
+            <div className="slide">
+              <a
+                target="_blank"
+                href="https://www.instagram.com/nmtallerdecalzado.mza?igsh=MXcycHZ2ZjM4NXc3MQ=="
+              >
+                <img className="object-contain  " src={b7} />
+              </a>
+            </div>
+            <div className="slide">
+              <a
+                target="_blank"
+                href="https://www.instagram.com/fefusamendoza?igsh=bXhva3V0ZXhwbTE0"
+              >
+                <img className="object-contain  " src={b8} />
               </a>
             </div>
           </div>
