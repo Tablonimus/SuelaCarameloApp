@@ -21,8 +21,8 @@ const Voucher = (props) => {
               SuelaApp
             </p>
           </article>
-          <ul id="voucher-info" className="text-zinc-900">
-            <li className="mt-1 text-[.7rem] font-medium leading-4 sm:text-[.8rem] lg:text-[1rem] lg:leading-5 lg:pr-3 text-gray-800">
+          <ul id="voucher-info" className="text-zinc-800">
+            <li className="mt-3 text-[.7rem] font-medium leading-4 sm:text-[.8rem] lg:text-[1rem] lg:leading-5 lg:pr-3 text-zinc-800">
               {sponsor.terminos}
             </li>
           </ul>
@@ -54,7 +54,7 @@ const Voucher = (props) => {
           </picture>
           <article
             id="voucher-discount"
-            className="flex justify-center items-center mb-10 lg:mb-4"
+            className="flex justify-center items-center mt-3 mb-5 lg:mb-4"
           >
             <span className="text-7xl font-bold text-[#ed7020] lg:text-8xl">
               {sponsor.descuento}

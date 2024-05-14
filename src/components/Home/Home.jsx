@@ -54,19 +54,19 @@ const Home = () => {
             ))}
           </Carousel>
         </div>
-        <section className="mt-6 w-full flex flex-col justify-center items-center gap-4 ">
+        <section className="mt-6 w-full flex flex-col justify-center items-center gap-4 lg:my-10 lg:gap-6">
           <Link
             to={"/cupones/#inicio"}
-            className="hover:scale-110 hover:text-orange-500 text-center py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold "
+            className="hover:scale-110 hover:text-orange-500 text-center py-3 px-4 w-2/3 lg:w-1/4 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
           >
-            <button className="hover:text-orange-500 text-center">
+            <button className="hover:text-orange-500 text-center duration-300">
               CUPONES Y DESCUENTOS
             </button>
           </Link>
 
           <Link
             to={"/noticias"}
-            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold "
+            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300 "
           >
             <button className="hover:text-orange-500 text-center">
               NOTICIAS
@@ -74,13 +74,13 @@ const Home = () => {
           </Link>
           <Link
             to={"/posiciones"}
-            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold "
+            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
           >
             <button className="hover:text-orange-500"> POSICIONES</button>
           </Link>
           <Link
             to={"/fixture"}
-            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/3 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold "
+            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
           >
             <button className="hover:text-orange-500">FIXTURE</button>
           </Link>
