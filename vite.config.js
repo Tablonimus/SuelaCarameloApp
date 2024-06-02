@@ -21,7 +21,7 @@ export default defineConfig({
         theme_color: "#ed7020",
         icons: [
           {
-            src: "psuela.png",
+            src: "suela.png",
             sizes: "192x192",
             type: "image/png",
           },

@@ -1,9 +1,8 @@
 import Sidebar from "../NavBar/Sidebar";
-import posicionesA1 from "../../assets/images/fixture-resultados/A1/posiciones/posiciones1.jpg";
-import posicionesFemA from "../../assets/images/fixture-resultados/FemA/posiciones/posiciones1.jpg";
 import FooterComp from "../FooterComp/FooterComp";
 import logoA1 from "../../assets/images/botones/A1.webp";
 import logoF1 from "../../assets/images/botones/F1.png";
+import logoDH from "../../assets/images/botones/DH.png";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,6 +35,17 @@ const Posiciones = () => {
             name="A1"
             className={
               positionState === "A1"
+                ? "w-10 h-10 lg:w-16 lg:h-16 rounded-full border-4  border-[#F17023] cursor-pointer hover:scale-105 duration-300 object-cover"
+                : "w-10 h-10 lg:w-16 lg:h-16 rounded-full  cursor-pointer hover:scale-105 duration-300 object-cover"
+            }
+            alt="suela caramelo"
+            onClick={(e) => setPositionState(e.target.name)}
+          />
+          <img
+            src={logoDH}
+            name="DH"
+            className={
+              positionState === "DH"
                 ? "w-10 h-10 lg:w-16 lg:h-16 rounded-full border-4  border-[#F17023] cursor-pointer hover:scale-105 duration-300 object-cover"
                 : "w-10 h-10 lg:w-16 lg:h-16 rounded-full  cursor-pointer hover:scale-105 duration-300 object-cover"
             }

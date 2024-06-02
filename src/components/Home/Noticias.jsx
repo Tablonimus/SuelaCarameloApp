@@ -9,6 +9,7 @@ import NoticeLoaderComponent from "./NoticeLoaderComponent";
 import FooterComp from "../FooterComp/FooterComp";
 import logoA1 from "../../assets/images/botones/A1.webp";
 import logoF1 from "../../assets/images/botones/F1.png";
+import logoDH from "../../assets/images/botones/DH.png";
 import logoTI from "../../assets/images/botones/TI.webp";
 import logoTN from "../../assets/images/botones/TN.webp";
 import Sidebar from "../NavBar/Sidebar";
@@ -29,6 +30,7 @@ export default function Noticias() {
 
     if (e.target.name === "A1") setNoticeState("A1xSuela");
     if (e.target.name === "F1") setNoticeState("F1xSuela");
+    if (e.target.name === "DH") setNoticeState("Liga de Honor");
     if (e.target.name === "TI") setNoticeState("Torneos Internacionales");
     if (e.target.name === "TN") setNoticeState("Torneos Nacionales");
   };
@@ -71,6 +73,15 @@ export default function Noticias() {
             name="F1"
             className={`w-12 lg:w-16 ${
               noticeState === "F1xSuela" ? "scale-110" : null
+            }  cursor-pointer hover:scale-105 duration-300 object-cover`}
+            alt=""
+            onClick={(e) => categoryHandler(e)}
+          />
+          <img
+            src={logoDH}
+            name="DH"
+            className={`w-[45px] lg:w-14 ${
+              noticeState === "Liga de Honor" ? "scale-110" : null
             }  cursor-pointer hover:scale-105 duration-300 object-cover`}
             alt=""
             onClick={(e) => categoryHandler(e)}
