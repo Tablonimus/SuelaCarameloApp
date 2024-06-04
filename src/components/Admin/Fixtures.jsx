@@ -97,6 +97,7 @@ export default function Fixtures() {
           <option value="DH">DH</option>
           <option value="TI">TI</option>
           <option value="TN">TN</option>
+          <option value="CM">CM</option>
         </select>
         <hr className="border w-full" />
         <h3 className="text-white font-semibold">Número de Fecha</h3>

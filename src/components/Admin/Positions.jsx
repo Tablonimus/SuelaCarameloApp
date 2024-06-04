@@ -42,13 +42,12 @@ export default function Positions() {
       image: res.data.secure_url,
     });
 
-
     setLoadingImage(false);
   }
 
   function onSubmitHandler(e) {
     e.preventDefault();
-     if (input.image && input.category) {
+    if (input.image && input.category) {
       dispatch(
         createPosition({
           image: input.image,
@@ -97,6 +96,7 @@ export default function Positions() {
           <option value="DH">DH</option>
           <option value="TI">TI</option>
           <option value="TN">TN</option>
+          <option value="CM">CM</option>
         </select>
         <hr className="border w-full" />
 

@@ -1,9 +1,8 @@
 import Sidebar from "../NavBar/Sidebar";
-
 import logoA1 from "../../assets/images/botones/A1.webp";
 import logoF1 from "../../assets/images/botones/F1.png";
 import logoDH from "../../assets/images/botones/DH.png";
-
+import logoCM from "../../assets/images/botones/CM.png";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFixtures } from "../../redux/actions";
@@ -57,6 +56,17 @@ const Fixture = () => {
               onClick={(e) => setFixtureState(e.target.name)}
             />
             <img
+              src={logoCM}
+              name="CM"
+              className={
+                fixtureState === "CM"
+                  ? "w-10 h-10 lg:w-16 lg:h-16 rounded-full border-4  border-[#F17023] cursor-pointer hover:scale-105 duration-300 object-cover"
+                  : "w-10 h-10 lg:w-16 lg:h-16 rounded-full  cursor-pointer hover:scale-105 duration-300 object-cover"
+              }
+              alt=""
+              onClick={(e) => setFixtureState(e.target.name)}
+            />
+            <img
               src={logoF1}
               name="F1"
               className={
@@ -83,4 +93,5 @@ const Fixture = () => {
     </div>
   );
 };
+
 export default Fixture;

@@ -141,6 +141,7 @@ export default function CreateNotice() {
               <option value="DH">DH</option>
               <option value="TI">TI</option>
               <option value="TN">TN</option>
+              <option value="CM">CM</option>
             </select>
           </div>
           <div>
