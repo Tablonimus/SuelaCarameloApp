@@ -2,13 +2,21 @@ import Voucher from "./Voucher";
 import Sidebar from "../NavBar/Sidebar";
 import b1 from "../../assets/images/b1.png";
 import b2 from "../../assets/images/b2.png";
-import b3 from "../../assets/images/b3.png";
+import b3 from "../../assets/images/sponsors/taller.webp";
 import b4 from "../../assets/images/b4.png";
 import b5 from "../../assets/images/zonafutsal.png";
 import FooterComp from "../FooterComp/FooterComp";
 
 const Descuentos = () => {
   const sponsors = [
+    {
+      name: "Taller de calzado",
+      logo: b3,
+      terminos: `10% descuento en reparación pago efectivo/transferencia`,
+      descuento: "10",
+      // telefono: "2616 59-5240",
+      // ubi: "Montes de Oca 889",
+    },
     {
       name: "Calzas deportivas cortas",
       logo: b2,
