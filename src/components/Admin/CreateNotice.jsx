@@ -23,13 +23,13 @@ export default function CreateNotice() {
   const navigate = useNavigate();
 
   //----------------------NOTICE HANDLERS------------------------
-  const [image, setImage] = useState(null);
+
   const [value, setValue] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
   const [video, setVideo] = useState("");
   const [loadingVideo, setLoadingVideo] = useState(false);
   const [input, setInput] = useState(defaultInput);
-  console.log(value);
+
   function handleChange(e) {
     if (e.target.name === "videos") {
       setInput({
@@ -48,26 +48,32 @@ export default function CreateNotice() {
       });
     }
   }
+
   async function handleImage(e) {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "suelApp");
     data.append("folder", "suelApp");
-    setLoadingImage(true);
-    const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
-      data
-    );
 
-    setImage(res.data.secure_url);
-    setInput({
-      ...input,
-      images: [...input.images, res.data.secure_url],
-    });
-
-    setLoadingImage(false);
+    try {
+      setLoadingImage(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
+        data
+      );
+      setInput({
+        ...input,
+        images: [...input.images, res.data.secure_url],
+      });
+    } catch (error) {
+      // alert("No seleccionaste ninguna imagen")
+      console.log(error);
+    } finally {
+      setLoadingImage(false);
+    }
   }
+
   async function handleVideo(e) {
     const files = e.target.files;
     const data = new FormData();
@@ -102,7 +108,6 @@ export default function CreateNotice() {
           date: new Date(input.date),
         })
       ).then(() => {
-        setImage(null);
         setValue("");
         setVideo("");
         setInput(defaultInput);
@@ -179,14 +184,7 @@ export default function CreateNotice() {
           value={value}
           onChange={setValue}
         />
-        {/* <h3 className="text-white font-semibold">Autor</h3>
-        <input
-          className="rounded-lg"
-          type="text"
-          name="author"
-          placeholder="Ingrese el autor..."
-          onChange={(e) => handleChange(e)}
-        /> */}
+
         <hr className="border w-full" />
         <div className="flex flex-col items-center gap-5 ">
           <label className="font-light text-white text-xl">Imágenes</label>
@@ -195,20 +193,20 @@ export default function CreateNotice() {
             name="image"
             accept=".jpg, .png, .jpeg"
             onChange={(e) => handleImage(e)}
-            className="rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
+            className=" rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
           />
           {loadingImage ? (
             <h3>Cargando imagen...</h3>
           ) : (
             input.images.map((el) => (
-              <div key={el}>
+              <div key={el} className="relative">
                 <button
                   key={el}
                   type="button"
                   onClick={() => handleDelete(el)}
-                  className="px-2 border-4 rounded-lg font-bold text-yellow-900 border-yellow-900"
+                  className="absolute right-0 px-2 border-2 border-black flex items-center rounded-sm font-bold text-white bg-red-500"
                 >
-                  x
+                  X
                 </button>
                 <img src={el} alt="" width="300px" />
               </div>

@@ -14,8 +14,8 @@ const Descuentos = () => {
       logo: b3,
       terminos: `10% descuento en reparación pago efectivo/transferencia`,
       descuento: "10",
-      // telefono: "2616 59-5240",
-      // ubi: "Montes de Oca 889",
+      telefono: "+261 699 2640",
+      ubi: "América 2813, Godoy Cruz"
     },
     {
       name: "Calzas deportivas cortas",
@@ -23,7 +23,7 @@ const Descuentos = () => {
       terminos: `25% en calzas deportivas cortas mostrando tu cupón - IDEALES PARA JUGAR`,
       descuento: "25",
       telefono: "2616 59-5240",
-      ubi: "Montes de Oca 889",
+      ubi: "Montes de Oca 889, Godoy Cruz",
     },
 
     {
