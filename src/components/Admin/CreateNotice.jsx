@@ -13,6 +13,8 @@ const defaultInput = {
   subtitle: "",
   images: [],
   videos: "",
+  authorName: "",
+  authorImage: "",
   category: "",
   date: "",
 };
@@ -26,6 +28,7 @@ export default function CreateNotice() {
 
   const [value, setValue] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
+  const [loadingAuthorImage, setLoadingAuthorImage] = useState(false);
   const [video, setVideo] = useState("");
   const [loadingVideo, setLoadingVideo] = useState(false);
   const [input, setInput] = useState(defaultInput);
@@ -49,6 +52,30 @@ export default function CreateNotice() {
     }
   }
 
+  async function handleAuthorImage(e) {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "suelApp");
+    data.append("folder", "suelApp");
+
+    try {
+      setLoadingAuthorImage(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
+        data
+      );
+      setInput({
+        ...input,
+        authorImage: res.data.secure_url,
+      });
+    } catch (error) {
+      // alert("No seleccionaste ninguna imagen")
+      console.log(error);
+    } finally {
+      setLoadingAuthorImage(false);
+    }
+  }
   async function handleImage(e) {
     const files = e.target.files;
     const data = new FormData();
@@ -105,6 +132,7 @@ export default function CreateNotice() {
           videos: input.videos,
           content: value,
           category: input.category,
+          author: { name: input.authorName, img: input.authorImage },
           date: new Date(input.date),
         })
       ).then(() => {
@@ -121,6 +149,12 @@ export default function CreateNotice() {
     setInput({
       ...input,
       images: input.images.filter((e) => e !== event),
+    });
+  }
+  function handleDeleteAuthor() {
+    setInput({
+      ...input,
+      authorImage: "",
     });
   }
 
@@ -198,7 +232,7 @@ export default function CreateNotice() {
           {loadingImage ? (
             <h3>Cargando imagen...</h3>
           ) : (
-            input.images.map((el) => (
+            input?.images?.map((el) => (
               <div key={el} className="relative">
                 <button
                   key={el}
@@ -245,6 +279,44 @@ export default function CreateNotice() {
             false
           )}
         </div>
+        <hr className="border w-full" />
+        <label className="font-light text-white text-xl">
+          Autor de la noticia
+        </label>
+        <h3 className="text-white font-semibold">Nombre</h3>
+        <input
+          className="rounded-lg"
+          type="text"
+          name="authorName"
+          placeholder="Nombre del periodista..."
+          onChange={(e) => handleChange(e)}
+        />
+        <h3 className="text-white font-semibold">Foto</h3>
+        <input
+          type="file"
+          name="image"
+          accept=".jpg, .png, .jpeg"
+          onChange={(e) => handleAuthorImage(e)}
+          className=" rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
+        />
+        {loadingAuthorImage ? (
+          <h3>Cargando imagen...</h3>
+        ) : (input.authorImage &&
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => handleDeleteAuthor()}
+              className="absolute right-0 px-2 border-2 border-black flex items-center rounded-sm font-bold text-white bg-red-500 text-[15px]"
+            >
+              X
+            </button>
+            <img
+              src={input.authorImage}
+              alt=""
+              className="w-14 h-14 rounded-full object-cover"
+            />
+          </div>
+        )}
         <hr className="border w-full" />
         <button className="shadow-lg text-white font-bold bg-green-600 rounded-lg w-full h-14 border border-white">
           SUBIR NOTICIA

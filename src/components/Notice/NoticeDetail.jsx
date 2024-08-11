@@ -12,7 +12,7 @@ export default function NoticeDetail() {
   const dispatch = useDispatch();
   const params = useParams();
   const notice = useSelector((state) => state.noticeDetail);
-  
+
   const parrafo = notice?.content?.split("//");
 
   useEffect(() => {
@@ -48,8 +48,9 @@ export default function NoticeDetail() {
                     slide
                     slideInterval={3000}
                   >
-                    {notice?.images?.map((img) => (
+                    {notice?.images?.map((img, index) => (
                       <img
+                        key={index}
                         src={img}
                         alt=""
                         className="opacity-100 rounded-lg object-cover"
@@ -77,8 +78,22 @@ export default function NoticeDetail() {
             ) : (
               <p dangerouslySetInnerHTML={{ __html: notice?.content }} />
             )}
+            <div
+              id="author"
+              className="flex items-center justify-start w-full gap-3 mt-5"
+            >
+              <div className="flex gap-3 items-center justify-start  bg-zinc-300 rounded-lg p-2">
+                <img
+                  src={notice?.author?.img}
+                  alt="suela caramelo"
+                  className="rounded-full w-16 h-16 object-cover"
+                />
+                <span className="font-bold italic underline text-black">
+                  {notice?.author?.name}
+                </span>
+              </div>
+            </div>
           </div>
-          <div id="content"></div>
         </div>
         <FooterComp />
         {/*   <OtherNotices /> */}
