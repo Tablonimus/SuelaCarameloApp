@@ -14,6 +14,11 @@ const initialState = {
 
 export default function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
+    case action.DELETE_NOTICE: {
+      return {
+        ...state,
+      };
+    }
     case action.COPY_ALL: {
       return {
         ...state,

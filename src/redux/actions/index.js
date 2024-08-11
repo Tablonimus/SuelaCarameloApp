@@ -134,8 +134,6 @@ export function getAllMatches(category) {
 export function getAllNotices(category) {
   return async function (dispatch) {
     try {
-   
-      
       let json = await axios.get(`${url}/notices?category=${category}`);
       console.log(json.data);
       dispatch({
@@ -190,7 +188,9 @@ export function getPositions(category) {
 export function getGeneralPositions(category) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${url}/positions/general?category=${category}`);
+      const { data } = await axios.get(
+        `${url}/positions/general?category=${category}`
+      );
       console.log(data);
       dispatch({
         type: action.GET_GENERAL_POSITIONS,
@@ -301,6 +301,21 @@ export function createPosition(payload) {
       dispatch({
         type: action.CREATE_FIXTURE,
         payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function deleteNotice(id) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.delete(`${url}/notices/${id}`);
+
+      dispatch({
+        type: action.DELETE_NOTICE,
       });
 
       return "Success";
