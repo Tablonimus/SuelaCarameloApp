@@ -1,11 +1,7 @@
 import * as action from "./actionTypes";
 import axios from "axios";
 
-
 const url = "https://suela-caramelo-app-back-end.vercel.app/sc";
-// 
-
-
 // const url = "http://localhost:3000/sc";
 
 export function clearPage() {
@@ -24,7 +20,7 @@ export function clearPage() {
 export function getNoticeDetail(id) {
   return async function (dispatch) {
     try {
-       let json = await axios.get(`${url}/notices/${id}`);
+      let json = await axios.get(`${url}/notices/${id}`);
       // let notice = notices.find((notice) => notice.id == id);
 
       dispatch({
@@ -138,9 +134,10 @@ export function getAllMatches(category) {
 export function getAllNotices(category) {
   return async function (dispatch) {
     try {
-  
+   
+      
       let json = await axios.get(`${url}/notices?category=${category}`);
-
+      console.log(json.data);
       dispatch({
         type: action.GET_ALL_NOTICES,
         payload: {
@@ -202,7 +199,7 @@ export function createNotice(notice) {
         payload: json.data,
       });
 
-      return alert("Noticia creada correctamente")
+      return alert("Noticia creada correctamente");
     } catch (error) {
       return "Server Error, try again later", console.log(error);
     }
