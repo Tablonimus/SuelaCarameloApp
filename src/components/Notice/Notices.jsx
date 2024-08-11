@@ -35,7 +35,7 @@ export default function Notices({ id, images, title, subtitle, videos, date }) {
             {title}
           </h5>
           <p className=" overflow-hidden font-medium lg:text-md lg:leading-tight text-zinc-500">
-            {subtitle.split(" ").slice(0, 12).join(" ")}...
+            {subtitle.split(" ").slice(0, 9).join(" ")}...
           </p>
           <span className="text-zinc-500 text-end">
             {date.split("T")[0].split("-").reverse().join("/")}
