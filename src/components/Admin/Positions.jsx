@@ -79,11 +79,25 @@ export default function Positions() {
       <h2 className="text-2xl text-white font-bold">
         Cargar tabla de posiciones
       </h2>
+
       <form
         id="positionsForm"
         onSubmit={(e) => onSubmitHandler(e)}
         className=" flex flex-col  items-center justify-center gap-3 bg-gray-500 rounded-lg p-5"
       >
+        {/* <h3 className="text-white font-semibold">Instancia</h3>
+        <select
+          className="rounded-lg"
+          name="category"
+          onChange={(e) => handleChange(e)}
+        >
+          <option disabled value="">Seleccione una categoria</option>
+          <option value="Apertura">Apertura</option>
+          <option value="Clausura">Clausura</option>
+          <option value="Playoffs">Playoffs</option>
+
+        </select> */}
+        <hr className="border w-full" />
         <h3 className="text-white font-semibold">Categoría</h3>
         <select
           className="rounded-lg"
@@ -134,7 +148,6 @@ export default function Positions() {
           CARGAR TABLA
         </button>
       </form>
-      <h2 className="text-2xl text-white font-bold">Fecha Activa</h2>
     </section>
   );
 }

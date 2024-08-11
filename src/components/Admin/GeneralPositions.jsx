@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createFixture } from "../../redux/actions/index";
+import {
+  createGeneralPosition,
+  createPosition,
+} from "../../redux/actions/index";
 import axios from "axios";
 import "react-quill/dist/quill.snow.css";
 
 const defaultInput = {
-  number: null,
   image: null,
   category: "",
-  is_Active: false,
 };
-export default function Fixtures() {
+export default function GeneralPositions() {
   const dispatch = useDispatch();
 
   const [image, setImage] = useState(null);
@@ -27,6 +28,7 @@ export default function Fixtures() {
   }
   async function handleImage(e) {
     const files = e.target.files;
+    console.log(e.target.files);
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "suelApp");
@@ -45,23 +47,22 @@ export default function Fixtures() {
 
     setLoadingImage(false);
   }
+console.log(input);
 
   function onSubmitHandler(e) {
     e.preventDefault();
-    if (input.image && input.number) {
+    if (input.image && input.category) {
       dispatch(
-        createFixture({
-          number: input.number,
+        createGeneralPosition({
           image: input.image,
           category: input.category,
-          is_Active: input.is_Active,
         })
       )
         .then(() => {
-          alert("Fixture creado Correctamente");
+          alert("Tabla cargada correctamente");
           setImage(null);
           setInput(defaultInput);
-          window.location.reload();
+          document.getElementById("positionsForm").reset();
         })
         .catch((err) => alert(err.message));
     } else {
@@ -79,19 +80,35 @@ export default function Fixtures() {
 
   return (
     <section className="flex flex-col items-center justify-center text-black">
-      <h2 className="text-2xl text-white font-bold">Cargar Fixture</h2>
+      <h2 className="text-2xl text-white font-bold">
+        Cargar tabla general de posiciones
+      </h2>
+
       <form
-        id="fixturesForm"
+        id="positionsForm"
         onSubmit={(e) => onSubmitHandler(e)}
         className=" flex flex-col  items-center justify-center gap-3 bg-gray-500 rounded-lg p-5"
       >
+        {/* <h3 className="text-white font-semibold">Instancia</h3>
+        <select
+          className="rounded-lg"
+          name="category"
+          onChange={(e) => handleChange(e)}
+        >
+          <option disabled value="">Seleccione una categoria</option>
+          <option value="Apertura">Apertura</option>
+          <option value="Clausura">Clausura</option>
+          <option value="Playoffs">Playoffs</option>
+
+        </select> */}
+        <hr className="border w-full" />
         <h3 className="text-white font-semibold">Categoría</h3>
         <select
           className="rounded-lg"
           name="category"
           onChange={(e) => handleChange(e)}
         >
-          <option value="A1">Seleccione una categoria</option>
+          <option value="">Seleccione una categoria</option>
           <option value="A1">A1</option>
           <option value="F1">F1</option>
           <option value="DH">DH</option>
@@ -100,21 +117,10 @@ export default function Fixtures() {
           <option value="CM">CM</option>
         </select>
         <hr className="border w-full" />
-        <h3 className="text-white font-semibold">Número de Fecha</h3>
-        <input
-          className="rounded-lg"
-          type="number"
-          min={1}
-          max={30}
-          name="number"
-          placeholder="Ej: 14 ..."
-          onChange={(e) => handleChange(e)}
-        />
 
-        <hr className="border w-full" />
         <div className="flex flex-col items-center gap-5 ">
           <label className="font-light text-white text-xl">
-            Imagen del fixture
+            Imagen de la tabla
           </label>
           <input
             type="file"
@@ -142,21 +148,10 @@ export default function Fixtures() {
           )}
         </div>
         <hr className="border w-full" />
-        <h3 className="text-white font-semibold">Fecha actual</h3>
-        <select
-          className="rounded-lg"
-          name="is_Active"
-          onChange={(e) => handleChange(e)}
-        >
-          <option value={false}>No</option>
-          <option value={true}>Si</option>
-        </select>
-        <hr className="border w-full" />
         <button className="shadow-lg text-white font-bold bg-green-600 rounded-lg w-full h-14 border border-white">
-          CARGAR FIXTURE
+          CARGAR TABLA
         </button>
       </form>
-  
     </section>
   );
 }

@@ -7,7 +7,7 @@ import logoCM from "../../assets/images/botones/CM.png";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPositions } from "../../redux/actions";
+import { getGeneralPositions, getPositions } from "../../redux/actions";
 import NoticeLoaderComponent from "../Home/NoticeLoaderComponent";
 
 const Posiciones = () => {
@@ -15,9 +15,12 @@ const Posiciones = () => {
 
   const [positionState, setPositionState] = useState("A1");
   const positions = useSelector((state) => state.positions);
-  console.log(positions);
+  const generalPositions = useSelector((state) => state.generalPositions);
+  console.log(generalPositions);
+
   useEffect(() => {
     dispatch(getPositions(positionState));
+    dispatch(getGeneralPositions(positionState));
   }, [positionState]);
 
   return (
@@ -53,7 +56,7 @@ const Posiciones = () => {
             alt="suela caramelo"
             onClick={(e) => setPositionState(e.target.name)}
           />
-    
+
           <img
             src={logoCM}
             name="CM"
@@ -65,7 +68,7 @@ const Posiciones = () => {
             alt="suela caramelo"
             onClick={(e) => setPositionState(e.target.name)}
           />
-    
+
           <img
             src={logoF1}
             name="F1"
@@ -81,12 +84,32 @@ const Posiciones = () => {
       </section>
       <section className="py-6 w-full h-auto flex flex-col justify-center items-center overflow-hidden lg:py-12 ">
         {positions?.image ? (
-          <img
-            className="ml-[70px] w-4/5 max-w-xl  rounded-xl"
-            src={positions.image}
-            alt="posiciones futbol de salón mendoza"
-            loading="lazy"
-          />
+          <>
+            <img
+              className="ml-[70px] w-4/5 max-w-xl  rounded-xl"
+              src={positions.image}
+              alt="posiciones futbol de salón mendoza"
+              loading="lazy"
+            />
+            <hr />
+            {generalPositions ? (
+              <>
+                <div className=" w-full text-center pl-14 my-2">
+                  <h3 className="text-xl text-center lg:text-3xl font-bold text-white">
+                    General
+                  </h3>
+                </div>
+                <img
+                  className="ml-[70px] w-4/5 max-w-xl  rounded-xl"
+                  src={generalPositions.image}
+                  alt="posiciones futbol de salón mendoza"
+                  loading="lazy"
+                />
+              </>
+            ) : (
+              false
+            )}
+          </>
         ) : (
           <NoticeLoaderComponent />
         )}

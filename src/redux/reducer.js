@@ -1,10 +1,10 @@
-import { position } from "@cloudinary/transformation-builder-sdk/qualifiers/timeline";
 import * as action from "../redux/actions/actionTypes";
 
 const initialState = {
   allNotices: [],
   activeNumber: 1,
   positions: {},
+  generalPositions: {},
   copyAllNotices: [],
   noticeDetail: [],
   fixtures: [],
@@ -61,6 +61,12 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         fixtures: payload.fixtures,
         activeNumber: payload.activeNumber,
+      };
+    }
+    case action.GET_GENERAL_POSITIONS: {
+      return {
+        ...state,
+        generalPositions: payload,
       };
     }
     case action.GET_POSITIONS: {

@@ -187,6 +187,23 @@ export function getPositions(category) {
     }
   };
 }
+export function getGeneralPositions(category) {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.get(`${url}/positions/general?category=${category}`);
+      console.log(data);
+      dispatch({
+        type: action.GET_GENERAL_POSITIONS,
+        payload: data,
+      });
+
+      return "Success";
+    } catch (error) {
+      console.log(error);
+      return "Server Error, try again later";
+    }
+  };
+}
 
 //-----------CREATE------------------
 export function createNotice(notice) {
@@ -248,6 +265,22 @@ export function createFixture(payload) {
   return async function (dispatch) {
     try {
       let json = await axios.post(`${url}/fixtures`, payload);
+
+      dispatch({
+        type: action.CREATE_FIXTURE,
+        payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function createGeneralPosition(payload) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.post(`${url}/positions/general`, payload);
 
       dispatch({
         type: action.CREATE_FIXTURE,
