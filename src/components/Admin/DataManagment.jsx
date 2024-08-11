@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createGeneralPosition,
   createPosition,
+  deleteNotice,
 } from "../../redux/actions/index";
 import axios from "axios";
 import "react-quill/dist/quill.snow.css";
@@ -58,7 +59,7 @@ export default function DataManagment() {
 
         <hr className="border w-full" />
         <button className="shadow-lg text-white font-bold bg-green-600 rounded-lg w-full h-14 border border-white">
-          CARGAR TABLA
+          ELIMINAR NOTICIA
         </button>
       </form>
     </section>

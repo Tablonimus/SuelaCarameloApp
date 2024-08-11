@@ -47,7 +47,7 @@ export default function Notices({
           </p>
 
           <div className="flex items-center justify-end gap-1">
-            <img src={author.img} alt="" className="w-6 h-6 object-cover" />
+            <img src={author.img} alt="" className="rounded-full w-6 h-6 object-cover" />
 
             <span className="text-zinc-500 font-bold text-start">
               {author.name}
