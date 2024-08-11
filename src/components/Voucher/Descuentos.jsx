@@ -1,22 +1,14 @@
 import Voucher from "./Voucher";
 import Sidebar from "../NavBar/Sidebar";
-import b1 from "../../assets/images/b1.png";
+
 import b2 from "../../assets/images/b2.png";
-import b3 from "../../assets/images/sponsors/taller.webp";
+
 import b4 from "../../assets/images/b4.png";
 import b5 from "../../assets/images/zonafutsal.png";
 import FooterComp from "../FooterComp/FooterComp";
 
 const Descuentos = () => {
   const sponsors = [
-    {
-      name: "Taller de calzado",
-      logo: b3,
-      terminos: `10% descuento en reparación pago efectivo/transferencia`,
-      descuento: "10",
-      telefono: "+261 699 2640",
-      ubi: "América 2813, Godoy Cruz"
-    },
     {
       name: "Calzas deportivas cortas",
       logo: b2,
@@ -44,7 +36,10 @@ const Descuentos = () => {
     <>
       <Sidebar active={"cupones"} />
 
-      <section id="inicio" className="w-full h-auto py-4 lg:py-14 flex flex-col justify-center items-center lg:pb-20 ">
+      <section
+        id="inicio"
+        className="w-full h-auto py-4 lg:py-14 flex flex-col justify-center items-center lg:pb-20 "
+      >
         <h2 className="pl-[70px] text-2xl text-center text-gray-100 font-bold">
           CUPONES DE DESCUENTOS EXCLUSIVOS
         </h2>

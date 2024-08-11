@@ -6,6 +6,7 @@ import { MdDashboard } from "react-icons/md";
 import CreateNotice from "./CreateNotice";
 import Fixtures from "./Fixtures";
 import Positions from "./Positions";
+import TeamsConverter from "./TeamsConverter";
 export default function AdminHome() {
   return (
     <div className="flex flex-col items-center h-screen text-white overflow-auto">
@@ -20,6 +21,9 @@ export default function AdminHome() {
           </Tabs.Item>
           <Tabs.Item title="Posiciones" icon={HiAdjustments}>
             <Positions />
+          </Tabs.Item>
+          <Tabs.Item title="Equipos" icon={HiAdjustments}>
+            <TeamsConverter />
           </Tabs.Item>
         </Tabs>
       </section>

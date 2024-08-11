@@ -6,7 +6,6 @@ import b3 from "../../assets/images/b3.png";
 import b4 from "../../assets/images/b4.png";
 import b5 from "../../assets/images/zonafutsal.png";
 import b6 from "../../assets/images/sponsors/tano.webp";
-import b7 from "../../assets/images/sponsors/taller.webp";
 import b8 from "../../assets/images/sponsors/fefusa.webp";
 import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
@@ -68,14 +67,6 @@ export default function FooterComp() {
             <div className="slide">
               <a
                 target="_blank"
-                href="https://www.instagram.com/nmtallerdecalzado.mza?igsh=MXcycHZ2ZjM4NXc3MQ=="
-              >
-                <img className="object-contain h-16  " src={b7} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
                 href="https://www.instagram.com/fefusamendoza?igsh=bXhva3V0ZXhwbTE0"
               >
                 <img className="object-contain h-16  " src={b8} />
@@ -127,14 +118,6 @@ export default function FooterComp() {
                 href="https://www.instagram.com/eltanopiadineria?igsh=YmlydG02cGp4ZHlt"
               >
                 <img className="object-contain h-16  " src={b6} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/nmtallerdecalzado.mza?igsh=MXcycHZ2ZjM4NXc3MQ=="
-              >
-                <img className="object-contain h-16  " src={b7} />
               </a>
             </div>
             <div className="slide">
