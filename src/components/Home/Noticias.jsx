@@ -139,7 +139,7 @@ export default function Noticias() {
         {currentNotices?.length > 0 ? (
           currentNotices.map((notice, index) => (
             <Notices
-              key={notice._id}
+              key={index}
               id={notice._id}
               title={notice.title}
               subtitle={notice.subtitle}
@@ -147,6 +147,7 @@ export default function Noticias() {
               videos={notice.videos}
               content={notice.content}
               category={notice.category}
+              author={notice.author}
               date={notice.date}
             />
           ))

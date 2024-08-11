@@ -3,13 +3,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import Sidebar from "../NavBar/Sidebar";
-export default function Notices({ id, images, title, subtitle, videos, date }) {
+export default function Notices({
+  id,
+  images,
+  title,
+  subtitle,
+  videos,
+  date,
+  author,
+}) {
   return (
     <>
       <Sidebar active="noticias" />
       <Link
         to={`/notices/${id}`}
-        class="h-auto bg-zinc-800 rounded-lg shadow-md min-w-60 max-w-72 md:h-[410px] hover:scale-105 duration-300"
+        class=" relative h-auto bg-zinc-800 rounded-lg shadow-md min-w-60 max-w-72 md:h-[410px] hover:scale-105 duration-300"
       >
         {images && images[0] ? (
           <img
@@ -30,16 +38,21 @@ export default function Notices({ id, images, title, subtitle, videos, date }) {
         ) : (
           false
         )}
-        <div className="flex flex-col px-5 pt-4 pb-3 gap-2">
+        <div className="flex flex-col justify-between px-5 py-3 gap-2">
           <h5 className="text-xl font-semibold tracking-tight text-gray-300 md:leading-6">
             {title}
           </h5>
-          <p className=" overflow-hidden font-medium lg:text-md lg:leading-tight text-zinc-500">
-            {subtitle.split(" ").slice(0, 9).join(" ")}...
+          <p className="overflow-hidden font-medium lg:text-md lg:leading-tight text-zinc-500">
+            {subtitle.split(" ").slice(0, 8).join(" ")}...
           </p>
-          <span className="text-zinc-500 text-end">
-            {date.split("T")[0].split("-").reverse().join("/")}
-          </span>
+
+          <div className="flex items-center justify-end gap-1">
+            <img src={author.img} alt="" className="w-6 h-6 object-cover" />
+
+            <span className="text-zinc-500 font-bold text-start">
+              {author.name}
+            </span>
+          </div>
         </div>
       </Link>
     </>
