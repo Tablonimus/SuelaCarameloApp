@@ -9,6 +9,7 @@ import Positions from "./Positions";
 import TeamsConverter from "./TeamsConverter";
 import GeneralPositions from "./GeneralPositions";
 import DataManagment from "./DataManagment";
+import PlayersConverter from "./PlayersConverter";
 export default function AdminHome() {
   return (
     <div className="flex flex-col items-center h-screen text-white overflow-auto">
@@ -30,9 +31,12 @@ export default function AdminHome() {
           <Tabs.Item title="Gestión de Datos" icon={HiAdjustments}>
             <DataManagment />
           </Tabs.Item>
-          {/* <Tabs.Item title="Equipos" icon={HiAdjustments}>
+          <Tabs.Item title="Jugadores" icon={HiAdjustments}>
+            <PlayersConverter />
+          </Tabs.Item>
+          <Tabs.Item title="Equipos" icon={HiAdjustments}>
             <TeamsConverter />
-          </Tabs.Item> */}
+          </Tabs.Item>
         </Tabs>
       </section>
     </div>

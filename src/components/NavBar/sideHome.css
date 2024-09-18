@@ -6,7 +6,7 @@
   z-index: 99;
   background-color: transparent;
   transition: all 0.3s ease;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
 }

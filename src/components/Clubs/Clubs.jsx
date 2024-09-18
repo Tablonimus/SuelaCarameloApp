@@ -8,71 +8,103 @@ import logo2 from "/logo2.png";
 
 // import Voucher from "./Voucher/Voucher"
 
-import { useState } from "react";
-import clubs from "../../utils/data/teamsMasc.json";
-import clubsFem from "../../utils/data/teamsFem.json";
+import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { Spinner } from "flowbite-react";
 export default function Clubs() {
+  const dispatch = useDispatch();
+  const [teamsState, setTeamsState] = useState({ FEM: [], A1: [] });
+
+  async function getTeams() {
+    const teams = (
+      await axios.get("https://suela-caramelo-app-back-end.vercel.app/sc/teams")
+    ).data;
+    console.log(teams);
+
+    const femTeams = teams.filter((team) => team.category === "FEM");
+    const a1Teams = teams.filter((team) => team.category === "A1");
+
+    setTeamsState({ ...teamsState, A1: a1Teams, FEM: femTeams });
+  }
+  console.log(teamsState);
+
+  useEffect(() => {
+    getTeams();
+  }, []);
+
   return (
     <>
-    <Sidebar active={"clubes"}/>
+      <Sidebar active={"clubes"} />
       <section className="ml-[70px] flex flex-col gap-4 py-4 md:pb-16">
-        <h1 className="text-center text-3xl italic text-white font-bold mb-4 lg:mt-8">A1xSUELA</h1>
+        <h1 className="text-center text-3xl italic text-white font-bold mb-4 lg:mt-8">
+          A1xSUELA
+        </h1>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">
-          {clubs.length
-            ? clubs.map((club, index) => (
-                <Link key={index} to={`/clubes/${club.name}`}>
-                  <div
-                    key={club.name}
-                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-zinc-900 hover:scale-105 duration-300"
-                  >
-                    <section>
-                      <img
-                        src={club.logo}
-                        className="w-full h-24 lg:h-56 lg:w-56 object-contain rounded-lg"
-                        alt=""
-                      />
-                    </section>
+          {teamsState?.A1?.length ? (
+            teamsState?.A1?.map((club, index) => (
+              <Link key={index} to={`/clubes/A1/${club.name}`}>
+                <div
+                  key={index}
+                  className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-gradient-to-t from-zinc-900 via-zinc-600 to-gray-900 hover:scale-105 text-white font-bold duration-300  "
+                >
+                  <section>
+                    <img
+                      src={club.logo}
+                      className="w-full h-24 lg:h-56 lg:w-56 object-contain rounded-lg"
+                      alt=""
+                    />
+                    {club.name}
+                  </section>
 
-                    {/*  <section>
-                    <p className="text-white text-center font-bold w-56 lg:w-full ">{club.name}</p>
-                  </section> */}
-                  </div>
-                </Link>
-              ))
-            : null}
+                  {/*  <section>
+                  <p className="text-white text-center font-bold w-56 lg:w-full ">{club.name}</p>
+                </section> */}
+                </div>
+              </Link>
+            ))
+          ) : (
+            <Spinner color="warning" aria-label="Suelapp" size="xl" />
+          )}
         </div>
       </section>
       <section className="ml-[70px] flex flex-col gap-4 pt-4 pb-6 md:pb-16">
-        <h1 className="text-center text-3xl italic text-white font-bold mb-4">FemAxSUELA</h1>
+        <h1 className="text-center text-3xl italic text-white font-bold mb-4">
+          FemAxSUELA
+        </h1>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">
-          {clubsFem.length
-            ? clubsFem.map((club, index) => (
-                <Link key={index} to={`/clubes/${club.name}`}>
-                  <div
-                    key={club.name}
-                    className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-zinc-900 hover:scale-105 hover:text-[#ED7020] duration-300  "
-                  >
-                    <section>
-                      <img
-                        src={club.logo}
-                        className="w-full h-24 lg:h-56 lg:w-56 object-contain rounded-lg"
-                        alt=""
-                      />
-                    </section>
+          {teamsState?.FEM?.length ? (
+            teamsState?.FEM?.map((club, index) => (
+              <Link key={index} to={`/clubes/FEM/${club.name}`}>
+                <div
+                  key={index}
+                  className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-gradient-to-t from-zinc-900 via-zinc-600 to-gray-900 hover:scale-105 text-white font-bold duration-300  "
+                >
+                  <section>
+                    <img
+                      src={club.logo}
+                      className="w-full h-24 lg:h-56 lg:w-56 object-contain rounded-lg"
+                      alt=""
+                    />
+                    {club.name}
+                  </section>
 
-                    {/*  <section>
-                    <p className="text-white text-center font-bold w-56 lg:w-full ">{club.name}</p>
-                  </section> */}
-                  </div>
-                </Link>
-              ))
-            : null}
+                  {/*  <section>
+                  <p className="text-white text-center font-bold w-56 lg:w-full ">{club.name}</p>
+                </section> */}
+                </div>
+              </Link>
+            ))
+          ) : (
+            <Spinner color="warning" aria-label="Suelapp" size="xl" />
+          )}
         </div>
       </section>
-      <FooterComp/>
+      <FooterComp />
     </>
   );
 }

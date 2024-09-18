@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import * as XLSX from "xlsx";
 import ssf from "ssf";
 import { useDispatch } from "react-redux";
-import {
-  createManyTeamsByExcel,
-  createPlayersByExcel,
-} from "../../redux/actions";
-export default function TeamsConverter() {
+import { createPlayersByExcel } from "../../redux/actions";
+export default function PlayersConverter() {
   const dispatch = useDispatch();
-  const [jsonData, setJsonData] = useState("");
+  const [category, setCategory] = useState("");
+  console.log(category);
 
   const handleConvert = (e) => {
     const file = e.target.files[0];
+
+    if (!category) {
+      const inputFile = document.getElementById("file-converter");
+      inputFile.value = "";
+      return alert(
+        "Debes seleccionar una categoría y luego cargar el archivo."
+      );
+    }
 
     if (file) {
       const reader = new FileReader();
@@ -37,7 +43,7 @@ export default function TeamsConverter() {
                 ssf.format("DD/MM/YYYY", player["FECHA DE NACIMIENTO"]) || "-",
               club_arrival: player["LLEGADA AL CLUB"] || "-",
               current_club_name: sheetName,
-              category: "FEM",
+              category: category,
               position: player["PUESTO"] || "-",
               instagram: player["INSTAGRAM -CELULAR"] || "-",
               image: player["FOTO"] || "-",
@@ -47,9 +53,9 @@ export default function TeamsConverter() {
           teamsObject[sheetName] = formattedPlayers;
         }
 
-        // action(json);
-        dispatch(createManyTeamsByExcel(teamsObject));
-       
+        console.log(teamsObject);
+
+        dispatch(createPlayersByExcel(teamsObject));
       };
       reader.readAsArrayBuffer(file);
     } else {
@@ -60,7 +66,21 @@ export default function TeamsConverter() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-3">
+      <select
+        name="category"
+        id=""
+        defaultValue={""}
+        className="text-black rounded-lg "
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        <option disabled value="">
+          Seleccione categoría
+        </option>
+        <option value="A1">A1</option>
+        <option value="FEM">FEM</option>
+      </select>
+
       <label
         className={`align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-2 px-4 rounded-lg hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] flex items-center text-[--primary] gap-3 border-2 border-[--primary]`}
       >

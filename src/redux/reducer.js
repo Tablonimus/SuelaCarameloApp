@@ -14,6 +14,11 @@ const initialState = {
 
 export default function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
+    case action.CREATE_MANY_TEAMS_BY_EXCEL: {
+      return {
+        ...state,
+      };
+    }
     case action.DELETE_NOTICE: {
       return {
         ...state,
