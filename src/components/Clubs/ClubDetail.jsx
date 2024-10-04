@@ -57,7 +57,7 @@ export default function ClubDetail() {
       <Sidebar active={"club"} />
       <main className="ml-[70px] px-2 flex flex-col items-center pt-16 lg:pt-28 ">
         {/* Flecha atrás */}
-        <Link to={"/clubes"}>
+        <Link to={"/equipos"}>
           <button className=" btn-back ml-[60px]">
             {" "}
             <i className="bx bx-left-arrow-circle"></i>

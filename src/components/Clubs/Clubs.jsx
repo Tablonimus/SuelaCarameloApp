@@ -39,7 +39,7 @@ export default function Clubs() {
 
   return (
     <>
-      <Sidebar active={"clubes"} />
+      <Sidebar active={"equipos"} />
       <section className="ml-[70px] flex flex-col gap-4 py-4 md:pb-16">
         <h1 className="text-center text-3xl italic text-white font-bold mb-4 lg:mt-8">
           A1xSUELA
@@ -47,7 +47,7 @@ export default function Clubs() {
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">
           {teamsState?.A1?.length ? (
             teamsState?.A1?.map((club, index) => (
-              <Link key={index} to={`/clubes/A1/${club.name}`}>
+              <Link key={index} to={`/equipos/A1/${club.name}`}>
                 <div
                   key={index}
                   className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-gradient-to-t from-zinc-900 via-zinc-600 to-gray-900 hover:scale-105 text-white font-bold duration-300  "
@@ -79,7 +79,7 @@ export default function Clubs() {
         <div className="flex flex-wrap justify-center gap-2 sm:gap-8">
           {teamsState?.FEM?.length ? (
             teamsState?.FEM?.map((club, index) => (
-              <Link key={index} to={`/clubes/FEM/${club.name}`}>
+              <Link key={index} to={`/equipos/FEM/${club.name}`}>
                 <div
                   key={index}
                   className="flex text-center items-center justify-center overflow-hidden w-32 px-0 py-3 sm:w-64 lg:p-6 rounded-lg bg-gradient-to-t from-zinc-900 via-zinc-600 to-gray-900 hover:scale-105 text-white font-bold duration-300  "

@@ -20,8 +20,8 @@ export default function NavBar() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link href="/clubes">
-          <span className="text-white hover:text-orange-400">Clubes</span>
+        <Navbar.Link href="/equipos">
+          <span className="text-white hover:text-orange-400">Equipos</span>
         </Navbar.Link>
         {/* <Navbar.Link href="/descargar">
           <span className="text-white hover:text-orange-400">

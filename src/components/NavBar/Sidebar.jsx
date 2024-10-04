@@ -52,14 +52,14 @@ console.log(active);
               </a>
             </li>
           </Link>
-          {/* <Link to={"/clubes"}>
+          <Link to={"/equipos"}>
             <li>
               <a href="#">
                 <i class="bx bxs-shield"></i>
-                <span className="link_name">Clubes</span>
+                <span className="link_name">Equipos</span>
               </a>
             </li>
-          </Link> */}
+          </Link>
           <Link to={"/fixture"}>
             <li>
               <a href="#" className="">

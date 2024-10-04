@@ -1,8 +1,8 @@
 import * as action from "./actionTypes";
 import axios from "axios";
 
-// const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
-const BASE_URL = "http://localhost:3000/sc";
+const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
+// const BASE_URL = "http://localhost:3000/sc";
 
 export function clearPage() {
   return async function (dispatch) {

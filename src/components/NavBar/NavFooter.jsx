@@ -11,10 +11,10 @@ const NavFooter = () => {
               <span>Inicio</span>
             </li>
           </Link>
-          <Link to={"/clubes"}>
+          <Link to={"/equipos"}>
             <li className="flex flex-col items-center ">
               <i className="bx bx-shield text-3xl text-orange-700 font-medium"></i>
-              <span>Clubes</span>
+              <span>Equipos</span>
             </li>
           </Link>
           <Link to={"/noticias"}>
