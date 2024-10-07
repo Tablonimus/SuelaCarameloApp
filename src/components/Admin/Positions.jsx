@@ -25,7 +25,7 @@ export default function Positions() {
   }
   async function handleImage(e) {
     const files = e.target.files;
-    console.log(e.target.files);
+
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "suelApp");

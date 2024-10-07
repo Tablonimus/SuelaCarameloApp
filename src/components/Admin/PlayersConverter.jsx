@@ -6,7 +6,7 @@ import { createPlayersByExcel } from "../../redux/actions";
 export default function PlayersConverter() {
   const dispatch = useDispatch();
   const [category, setCategory] = useState("");
-  console.log(category);
+
 
   const handleConvert = (e) => {
     const file = e.target.files[0];
@@ -53,7 +53,7 @@ export default function PlayersConverter() {
           teamsObject[sheetName] = formattedPlayers;
         }
 
-        console.log(teamsObject);
+      
 
         dispatch(createPlayersByExcel(teamsObject));
       };

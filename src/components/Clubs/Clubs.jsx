@@ -24,14 +24,14 @@ export default function Clubs() {
     const teams = (
       await axios.get("https://suela-caramelo-app-back-end.vercel.app/sc/teams")
     ).data;
-    console.log(teams);
+
 
     const femTeams = teams.filter((team) => team.category === "FEM");
     const a1Teams = teams.filter((team) => team.category === "A1");
 
     setTeamsState({ ...teamsState, A1: a1Teams, FEM: femTeams });
   }
-  console.log(teamsState);
+
 
   useEffect(() => {
     getTeams();
@@ -40,7 +40,7 @@ export default function Clubs() {
   return (
     <>
       <Sidebar active={"equipos"} />
-      <section className="ml-[70px] flex flex-col gap-4 py-4 md:pb-16">
+      <section className="ml-[70px] flex flex-col gap-4 py-4 md:pb-16 min-h-screen">
         <h1 className="text-center text-3xl italic text-white font-bold mb-4 lg:mt-8">
           A1xSUELA
         </h1>

@@ -9,7 +9,7 @@ const Sidebar = ({ active }) => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-console.log(active);
+
   return (
     <>
       <div className={`sidebar ${isOpen ? "open" : ""}`}>

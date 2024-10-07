@@ -26,19 +26,22 @@ export default function PlayerCard({ player }) {
           {player.alias && player.alias !== "-" ? (
             <span className="text-white">{player.alias}</span>
           ) : (
-            <span className="text-white"> {player.name.split(" ")[0]}</span>
+            <span className="text-white flex items-center justify-end gap-1">
+              <i className="pt-1 bx bx-book"></i>
+              {player.name.split(" ")[0]}
+            </span>
           )}
 
           {/* <span className="text-white">Posición: {player.position}</span> */}
           {player.birthdate && player.birthdate !== "-" && (
-            <span className="text-white">
-              <i className="bx bx-cake"></i> {player.birthdate}
+            <span className="text-white flex items-center justify-end gap-1">
+              <i className="pt-1 bx bx-cake"></i> {player.birthdate}
             </span>
           )}
 
           {player.club_arrival && (
-            <span className="text-white flex items-center justify-end gap-2">
-              <i className="bx bx-pen"></i>
+            <span className="text-white flex items-center justify-end gap-1">
+              <i className="pt-1 bx bx-pen"></i>
               {player.club_arrival}
             </span>
           )}

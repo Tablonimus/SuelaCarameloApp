@@ -16,7 +16,7 @@ const Posiciones = () => {
   const [positionState, setPositionState] = useState("A1");
   const positions = useSelector((state) => state.positions);
   const generalPositions = useSelector((state) => state.generalPositions);
-  console.log(generalPositions);
+
 
   useEffect(() => {
     dispatch(getPositions(positionState));

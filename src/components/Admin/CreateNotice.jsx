@@ -301,21 +301,23 @@ export default function CreateNotice() {
         />
         {loadingAuthorImage ? (
           <h3>Cargando imagen...</h3>
-        ) : (input.authorImage &&
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => handleDeleteAuthor()}
-              className="absolute right-0 px-2 border-2 border-black flex items-center rounded-sm font-bold text-white bg-red-500 text-[15px]"
-            >
-              X
-            </button>
-            <img
-              src={input.authorImage}
-              alt=""
-              className="w-14 h-14 rounded-full object-cover"
-            />
-          </div>
+        ) : (
+          input.authorImage && (
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => handleDeleteAuthor()}
+                className="absolute right-0 px-2 border-2 border-black flex items-center rounded-sm font-bold text-white bg-red-500 text-[15px]"
+              >
+                X
+              </button>
+              <img
+                src={input.authorImage}
+                alt=""
+                className="w-14 h-14 rounded-full object-cover"
+              />
+            </div>
+          )
         )}
         <hr className="border w-full" />
         <button className="shadow-lg text-white font-bold bg-green-600 rounded-lg w-full h-14 border border-white">

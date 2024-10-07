@@ -16,7 +16,7 @@ export default function CategoryHome() {
   const dispatch = useDispatch();
 
   const categoryState = useSelector((state) => state.category);
-  console.log(categoryState);
+
 
   function handleClickA1(e) {
     e.preventDefault();

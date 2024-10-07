@@ -28,8 +28,9 @@ function App() {
         <Route path="/posiciones" element={<Posiciones />} />
         <Route path="/cupones" element={<Descuentos />} />
         <Route path="/contacto" element={<ContactUs />} />
-        <Route path="/test" element={<RichTextEditor />} />
+        {/* <Route path="/test" element={<RichTextEditor />} /> */}
         <Route path="/createnotice" element={<AdminHome />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </section>
   );

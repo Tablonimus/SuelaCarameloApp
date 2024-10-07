@@ -6,6 +6,7 @@ import PlayerCard from "./PlayerCard";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 import axios from "axios";
+import { Spinner } from "flowbite-react";
 
 const positions = [
   "Arquero",
@@ -39,23 +40,18 @@ export default function ClubDetail() {
       )
     ).data;
 
-    console.log(data);
-
     setTeamState(data[0]);
   }
-
-  console.log(urlName);
 
   useEffect(() => {
     getTeam(urlName);
     getPlayers(urlName);
   }, []);
-  console.log(teamState);
 
   return (
     <>
       <Sidebar active={"club"} />
-      <main className="ml-[70px] px-2 flex flex-col items-center pt-16 lg:pt-28 ">
+      <main className="ml-[70px] min-h-screen px-2 flex flex-col items-center pt-16 lg:pt-28 ">
         {/* Flecha atrás */}
         <Link to={"/equipos"}>
           <button className=" btn-back ml-[60px]">
