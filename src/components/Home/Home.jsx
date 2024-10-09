@@ -1,6 +1,6 @@
 import "react-image-gallery/styles/css/image-gallery.css";
 import logoSC from "../../assets/images/banner2.png";
-import SideHome from "../NavBar/SideHome";
+// import SideHome from "../NavBar/SideHome";
 import imgHome1 from "../../assets/images/heroSection/hero1.webp";
 import imgHome2 from "../../assets/images/heroSection/hero2.webp";
 import imgHome3 from "../../assets/images/heroSection/hero3.webp";
@@ -9,6 +9,7 @@ import FooterComp from "../FooterComp/FooterComp";
 import { Carousel } from "flowbite-react";
 import { Link } from "react-router-dom";
 import "./home.css";
+import Sidebar from "../NavBar/Sidebar";
 
 const Home = () => {
   const images = [
@@ -31,8 +32,8 @@ const Home = () => {
   ];
 
   return (
-    <div className=" flex flex-col justify-between">
-      <SideHome active="home" />
+    <div className="flex flex-col justify-start  ">
+      <Sidebar active="home" />
       <main className="w-full flex flex-col justify-start items-center py-5 md:items-center overflow-hidden lg:h-auto">
         <img className="w-44 mb-4 lg:w-52" src={logoSC} alt="" />
         {/* CARRUSEL */}

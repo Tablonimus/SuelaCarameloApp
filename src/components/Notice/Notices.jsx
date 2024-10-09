@@ -16,7 +16,7 @@ export default function Notices({
     <>
       <Sidebar active="noticias" />
       <Link
-        to={`/notices/${id}`}
+        to={`/noticias/${id}`}
         class=" relative h-auto bg-zinc-800 rounded-lg shadow-md min-w-60 max-w-72 md:h-[410px] hover:scale-105 duration-300"
       >
         {images && images[0] ? (

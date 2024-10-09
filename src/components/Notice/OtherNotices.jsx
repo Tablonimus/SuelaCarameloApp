@@ -35,7 +35,7 @@ export default function OtherNotices() {
       </span>
       <div className="w-full rounded-lg rounded-t-none grid grid-cols-2 drop-shadow-2xl  border-t border-[#E96F22] bg-black gap-5 py-5">
         <div className="flex flex-col gap-3 items-center justify-between">
-          <Link to={`/notices/${randomBig?.id}`}>
+          <Link to={`/noticias/${randomBig?.id}`}>
             <div className="flex flex-col items-center border-y border-[#E96F22] ">
               {randomBig?.images?.length ? (
                 <img
@@ -77,7 +77,7 @@ export default function OtherNotices() {
         </div>
 
         <div className="flex flex-col gap-3 items-center justify-between">
-          <Link to={`/notices/${random1?.id}`}>
+          <Link to={`/noticias/${random1?.id}`}>
             <div className="flex flex-row items-center gap-3  border-y border-[#E96F22]">
               {random1?.images?.length ? (
                 <section className="overflow-hidden w-1/3 h-14  ">
@@ -115,7 +115,7 @@ export default function OtherNotices() {
             </a>
           </div>
 
-          <Link to={`/notices/${random2?.id}`}>
+          <Link to={`/noticias/${random2?.id}`}>
             <div className=" flex flex-row items-center gap-3 border-y border-[#E96F22]">
               {random2?.images?.length ? (
                 <section className="overflow-hidden w-1/3 h-14  ">
@@ -147,7 +147,7 @@ export default function OtherNotices() {
             </div>
           </Link>
 
-          <Link to={`/notices/${random3?.id}`}>
+          <Link to={`/noticias/${random3?.id}`}>
             <div className=" flex flex-row items-center gap-3 border-y border-[#E96F22]">
               {random3?.images?.length ? (
                 <section className="overflow-hidden w-1/3 h-14  ">

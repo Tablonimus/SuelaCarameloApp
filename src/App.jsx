@@ -21,7 +21,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/noticias" element={<Noticias />} />
-        <Route path="/notices/:id" element={<NoticeDetail />} />
+        <Route path="/noticias/:id" element={<NoticeDetail />} />
         <Route path="/equipos" element={<Clubs />} />
         <Route path="/equipos/:category/:name" element={<ClubDetail />} />
         <Route path="/fixture" element={<Fixture />} />
