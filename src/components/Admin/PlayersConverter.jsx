@@ -7,7 +7,6 @@ export default function PlayersConverter() {
   const dispatch = useDispatch();
   const [category, setCategory] = useState("");
 
-
   const handleConvert = (e) => {
     const file = e.target.files[0];
 
@@ -52,8 +51,6 @@ export default function PlayersConverter() {
 
           teamsObject[sheetName] = formattedPlayers;
         }
-
-      
 
         dispatch(createPlayersByExcel(teamsObject));
       };

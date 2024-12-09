@@ -3,7 +3,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Noticias from "./components/Home/Noticias";
 import NoticeDetail from "./components/Notice/NoticeDetail";
 import ContactUs from "./components/ContactUs/ContactUs";
-import RichTextEditor from "./components/RichTextEditor/RichTextEditor";
 import Clubs from "./components/Clubs/Clubs";
 import ClubDetail from "./components/Clubs/ClubDetail";
 import Descuentos from "./components/Voucher/Descuentos";
@@ -28,7 +27,6 @@ function App() {
         <Route path="/posiciones" element={<Posiciones />} />
         <Route path="/cupones" element={<Descuentos />} />
         <Route path="/contacto" element={<ContactUs />} />
-        {/* <Route path="/test" element={<RichTextEditor />} /> */}
         <Route path="/createnotice" element={<AdminHome />} />
         <Route path="*" element={<Home />} />
       </Routes>

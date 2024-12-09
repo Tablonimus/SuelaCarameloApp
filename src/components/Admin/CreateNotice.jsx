@@ -7,6 +7,7 @@ import NavBar from "../NavBar/NavBar";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import youtube from "../../assets/images/youtube.png";
+import TinyTextEditor from "../RichTextEditor/TinyTextEditor";
 
 const defaultInput = {
   title: "",
@@ -159,14 +160,14 @@ export default function CreateNotice() {
   }
 
   return (
-    <section className="flex flex-col items-center justify-center text-black">
+    <section className="flex flex-col items-center justify-center text-black w-full">
       {/* REDACTAR NOTA */}{" "}
       <h2 className="text-2xl text-white font-bold">Redactar Nota</h2>
       <form
         onSubmit={(e) => onSubmitHandler(e)}
-        className=" flex flex-col  items-center justify-center gap-3 bg-gray-500 rounded-lg p-5"
+        className=" flex flex-col  items-center justify-center gap-3 bg-gray-500 rounded-lg p-5 w-11/12"
       >
-        <div className="flex gap-2">
+        <div className="flex flex-col lg:flex-row gap-2">
           <div>
             <h3 className="text-white font-semibold">Categoría</h3>
             <select
@@ -194,15 +195,16 @@ export default function CreateNotice() {
           </div>
         </div>
         <hr className="border w-full" />
-        <h3 className="text-white font-semibold">Título</h3>
+        <h3 className="text-white font-semibold">TÍTULO</h3>
         <input
-          className="rounded-lg"
+          className="rounded-lg w-11/12"
           type="text"
           name="title"
-          placeholder="Titulo de la noticia"
+          placeholder="Titulo de la noticia..."
           onChange={(e) => handleChange(e)}
         />
-        <h3 className="text-white font-semibold">Bajada</h3>
+
+        <h3 className="text-white font-semibold">BAJADA</h3>
         <textarea
           className="rounded-lg w-11/12"
           type="text"
@@ -210,115 +212,134 @@ export default function CreateNotice() {
           placeholder="Bajada"
           onChange={(e) => handleChange(e)}
         />
-        <h3 className="text-white font-semibold">Contenido de la noticia</h3>
-        <ReactQuill
-          className="bg-white w-11/12 "
-          theme="snow"
-          name="content"
-          value={value}
-          onChange={setValue}
-        />
-
         <hr className="border w-full" />
-        <div className="flex flex-col items-center gap-5 ">
-          <label className="font-light text-white text-xl">Imágenes</label>
-          <input
-            type="file"
-            name="image"
-            accept=".jpg, .png, .jpeg"
-            onChange={(e) => handleImage(e)}
-            className=" rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
-          />
-          {loadingImage ? (
-            <h3>Cargando imagen...</h3>
-          ) : (
-            input?.images?.map((el) => (
-              <div key={el} className="relative">
-                <button
-                  key={el}
-                  type="button"
-                  onClick={() => handleDelete(el)}
-                  className="absolute right-0 px-2 border-2 border-black flex items-center rounded-sm font-bold text-white bg-red-500"
-                >
-                  X
-                </button>
-                <img src={el} alt="" width="300px" />
-              </div>
-            ))
-          )}
-          <hr className="border w-full" />
-          <label className="font-light text-white text-xl">
-            Link a video de la noticia
-          </label>
-          <section className="relative ">
-            <img src={youtube} alt="youtubeLogo" className="absolute h-9  " />
+        <h3 className="text-white font-semibold">MULTIMEDIA DE ENCABEZADO</h3>
+        <div className="w-full flex flex-col lg:flex-row justify-center">
+          <div className="flex flex-col items-center gap-5 ">
+            <label className="font-light text-white text-xl">
+              Imágenes de encabezado
+            </label>
             <input
-              className="rounded-lg pl-24 h-9 border border-red-600"
-              type="text"
-              name="videos"
-              id="videos"
-              placeholder="ID YOUTUBE..."
-              onChange={(e) => handleChange(e)}
+              type="file"
+              name="image"
+              accept=".jpg, .png, .jpeg"
+              onChange={(e) => handleImage(e)}
+              className=" rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
             />
-          </section>
+            {loadingImage ? (
+              <h3>Cargando imagen...</h3>
+            ) : (
+              input?.images?.map((el) => (
+                <div key={el} className="relative">
+                  <button
+                    key={el}
+                    type="button"
+                    onClick={() => handleDelete(el)}
+                    className="absolute right-0 px-2 border-2 border-black flex items-center rounded-sm font-bold text-white bg-red-500"
+                  >
+                    X
+                  </button>
+                  <img src={el} alt="" width="300px" />
+                </div>
+              ))
+            )}
+          </div>
+          <label className="font-light text-white alig text-center text-xl">
+            ó
+          </label>
+          <div className="flex flex-col items-center lg:w-1/3">
+            <label className="font-light text-white text-xl">
+              ID video youtube
+            </label>
+            <section className="relative ">
+              <img src={youtube} alt="youtubeLogo" className="absolute h-9  " />
+              <input
+                className="rounded-lg pl-24 h-9 border border-red-600"
+                type="text"
+                name="videos"
+                id="videos"
+                placeholder="ID YOUTUBE..."
+                onChange={(e) => handleChange(e)}
+              />
+            </section>
+          </div>
 
-          <label className="font-light text-white text-xl">ó</label>
-          <label className="font-light text-white text-xl">Subir video</label>
-          <input
-            type="file"
-            name="video"
-            accept=".jpg, .png, .jpeg , .mp4"
-            onChange={(e) => handleVideo(e)}
-            className="rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
-          />
-          {loadingVideo ? (
-            <h3 className="font-light text-white text-xl">Cargando video...</h3>
-          ) : video ? (
-            <video src={video} alt="" width="300px" />
-          ) : (
-            false
-          )}
+          <label className="font-light text-white alig text-center text-xl">
+            ó
+          </label>
+
+          <div className="flex flex-col items-center lg:w-1/3">
+            <label className="font-light text-white text-xl">Subir video</label>
+            <input
+              type="file"
+              name="video"
+              accept=".jpg, .png, .jpeg , .mp4"
+              onChange={(e) => handleVideo(e)}
+              className="rounded-lg w-full flex-1 appearance-none py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
+            />
+            {loadingVideo ? (
+              <h3 className="font-light text-white text-xl">
+                Cargando video...
+              </h3>
+            ) : video ? (
+              <video src={video} alt="" width="300px" />
+            ) : (
+              false
+            )}
+          </div>
         </div>
         <hr className="border w-full" />
-        <label className="font-light text-white text-xl">
-          Autor de la noticia
-        </label>
-        <h3 className="text-white font-semibold">Nombre</h3>
-        <input
-          className="rounded-lg"
-          type="text"
-          name="authorName"
-          placeholder="Nombre del periodista..."
-          onChange={(e) => handleChange(e)}
-        />
-        <h3 className="text-white font-semibold">Foto</h3>
-        <input
-          type="file"
-          name="image"
-          accept=".jpg, .png, .jpeg"
-          onChange={(e) => handleAuthorImage(e)}
-          className=" rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
-        />
-        {loadingAuthorImage ? (
-          <h3>Cargando imagen...</h3>
-        ) : (
-          input.authorImage && (
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => handleDeleteAuthor()}
-                className="absolute right-0 px-2 border-2 border-black flex items-center rounded-sm font-bold text-white bg-red-500 text-[15px]"
-              >
-                X
-              </button>
-              <img
-                src={input.authorImage}
-                alt=""
-                className="w-14 h-14 rounded-full object-cover"
-              />
-            </div>
-          )
-        )}
+        <h3 className="text-white font-semibold">CUERPO</h3>
+        <div className="w-11/12">
+          <TinyTextEditor initialValue={value} setValue={setValue} />
+        </div>
+
+        <hr className="border w-full" />
+        <h3 className="text-white font-semibold">AUTOR</h3>
+        <div className="flex flex-col lg:flex-row justify-center w-full gap-4">
+          <div className="w-full lg:w-1/3">
+            <h3 className="text-white font-semibold">
+              Nombre completo del periodista
+            </h3>
+            <input
+              className="rounded-lg w-full"
+              type="text"
+              name="authorName"
+              placeholder="Nombre del periodista..."
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <div className="w-full lg:w-1/3">
+            <h3 className="text-white font-semibold">Foto del periodista</h3>
+            <input
+              type="file"
+              name="image"
+              accept=".jpg, .png, .jpeg"
+              onChange={(e) => handleAuthorImage(e)}
+              className=" rounded-lg flex-1 appearance-none w-full py-2 px-4 bg-amber-600  text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
+            />
+            {loadingAuthorImage ? (
+              <h3>Cargando imagen...</h3>
+            ) : (
+              input.authorImage && (
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteAuthor()}
+                    className="absolute right-0 px-2 border-2 border-black flex items-center rounded-sm font-bold text-white bg-red-500 text-[15px]"
+                  >
+                    X
+                  </button>
+                  <img
+                    src={input.authorImage}
+                    alt=""
+                    className="w-14 h-14 rounded-full object-cover"
+                  />
+                </div>
+              )
+            )}
+          </div>
+        </div>
         <hr className="border w-full" />
         <button className="shadow-lg text-white font-bold bg-green-600 rounded-lg w-full h-14 border border-white">
           SUBIR NOTICIA
