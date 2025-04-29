@@ -4,7 +4,6 @@ import b1 from "../../assets/images/b1.png";
 import b2 from "../../assets/images/b2.png";
 import b3 from "../../assets/images/b3.png";
 import b4 from "../../assets/images/b4.png";
-import b5 from "../../assets/images/zonafutsal.png";
 import b6 from "../../assets/images/sponsors/tano.webp";
 import b8 from "../../assets/images/sponsors/fefusa.webp";
 import { Footer } from "flowbite-react";
@@ -48,14 +47,7 @@ export default function FooterComp() {
                 <img className="object-contain h-16  " src={b4} />
               </a>
             </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/zonafutsal_mdz?igsh=YmYzNmh5OWJsbTRt"
-              >
-                <img className="object-contain h-16  " src={b5} />
-              </a>
-            </div>
+
             <div className="slide">
               <a
                 target="_blank"
@@ -104,14 +96,7 @@ export default function FooterComp() {
                 <img className="object-contain h-16  " src={b4} />
               </a>
             </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/zonafutsal_mdz?igsh=YmYzNmh5OWJsbTRt"
-              >
-                <img className="object-contain h-16  " src={b5} />
-              </a>
-            </div>
+        
             <div className="slide">
               <a
                 target="_blank"

@@ -232,7 +232,7 @@ export function createMatch(payload) {
         local: payload.local,
         visitor: payload.visitor,
         category: payload.category,
-        teams: [payload.local, payload.visitor],
+        // teams: [payload.local, payload.visitor],
       };
       let json = await axios.post(`${BASE_URL}/matchs`, data);
       dispatch({

@@ -1,10 +1,7 @@
 import Voucher from "./Voucher";
 import Sidebar from "../NavBar/Sidebar";
-
 import b2 from "../../assets/images/b2.png";
-
 import b4 from "../../assets/images/b4.png";
-import b5 from "../../assets/images/zonafutsal.png";
 import FooterComp from "../FooterComp/FooterComp";
 
 const Descuentos = () => {
@@ -23,13 +20,6 @@ const Descuentos = () => {
       logo: b4,
       terminos: `Seguí a Hache Market en instagram y conseguí Items Básicos y Clásicos. Cupón válido ABONANDO EN EFECTIVO`,
       descuento: "15",
-    },
-    {
-      name: "Zona Futsal",
-      logo: b5,
-      terminos: `Tus próximo botines los encontrás acá! Seguilos por Instagram y enterate de todos los modelos y facilidades de pago.
-      Descuento: 5% en un par de botines a elección!`,
-      descuento: "5",
     },
   ];
   return (

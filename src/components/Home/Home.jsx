@@ -10,6 +10,7 @@ import { Carousel } from "flowbite-react";
 import { Link } from "react-router-dom";
 import "./home.css";
 import Sidebar from "../NavBar/Sidebar";
+import LiveMatchesTicker from "../LiveMatchesTicker.jsx/LiveMatchesTicker";
 
 const Home = () => {
   const images = [
@@ -32,63 +33,68 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col justify-start  ">
-      <Sidebar active="home" />
-      <main className="w-full flex flex-col justify-start items-center py-5 md:items-center overflow-hidden lg:h-auto">
-        <img className="w-44 mb-4 lg:w-52" src={logoSC} alt="" />
-        {/* CARRUSEL */}
-        <div className="h-[18rem] md:h-[36rem] w-full mb-1">
-          <Carousel
-            leftControl={<></>}
-            rightControl={<></>}
-            draggable
-            slide
-            slideInterval={3000}
-          >
-            {images.map((image, i) => (
-              <img
-                key={i}
-                src={image.thumbnail}
-                alt="suela caramelo"
-                className=" h-full w-full object-cover"
-              />
-            ))}
-          </Carousel>
-        </div>
-        <section className="mt-6 w-full flex flex-col justify-center items-center gap-4 lg:my-10 lg:gap-6">
-          <Link
-            to={"/cupones/#inicio"}
-            className="hover:scale-110 hover:text-orange-500 text-center py-3 px-4 w-2/3 lg:w-1/4 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
-          >
-            <button className="hover:text-orange-500 text-center duration-300">
-              CUPONES Y DESCUENTOS
-            </button>
-          </Link>
+    <>
+      {/* <Sidebar active="home" /> */}
+      <div className="flex flex-col justify-start  ">
+        <main className="w-full flex flex-col justify-start items-center  md:items-center overflow-x-auto lg:h-auto">
+          <div className="w-[100vw]">
+            <LiveMatchesTicker />
+          </div>
+          <img className="w-44 mb-4 lg:w-52 py-5" src={logoSC} alt="" />
+          {/* CARRUSEL */}
+          <div className="h-[18rem] md:h-[36rem] w-full mb-1">
+            <Carousel
+              leftControl={<></>}
+              rightControl={<></>}
+              draggable
+              slide
+              slideInterval={3000}
+            >
+              {images.map((image, i) => (
+                <img
+                  key={i}
+                  src={image.thumbnail}
+                  alt="suela caramelo"
+                  className=" h-full w-full object-cover"
+                />
+              ))}
+            </Carousel>
+          </div>
+          <section className="mt-6 w-full flex flex-col justify-center items-center gap-4 lg:my-10 lg:gap-6">
+            <Link
+              to={"/cupones/#inicio"}
+              className="hover:scale-110 hover:text-orange-500 text-center py-3 px-4 w-2/3 lg:w-1/4 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
+            >
+              <button className="hover:text-orange-500 text-center duration-300">
+                CUPONES Y DESCUENTOS
+              </button>
+            </Link>
 
-          <Link
-            to={"/noticias"}
-            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300 "
-          >
-            <button className="hover:text-orange-500 text-center">
-              NOTICIAS
-            </button>
-          </Link>
-          <Link
-            to={"/fixture"}
-            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
-          >
-            <button className="hover:text-orange-500">FIXTURE</button>
-          </Link>
-          <Link
-            to={"/posiciones"}
-            className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
-          >
-            <button className="hover:text-orange-500"> POSICIONES</button>
-          </Link>
-        </section>
-      </main>
-      <FooterComp />
-    </div>
+            <Link
+              to={"/noticias"}
+              className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300 "
+            >
+              <button className="hover:text-orange-500 text-center">
+                NOTICIAS
+              </button>
+            </Link>
+            <Link
+              to={"/fixture"}
+              className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
+            >
+              <button className="hover:text-orange-500">FIXTURE</button>
+            </Link>
+            <Link
+              to={"/posiciones"}
+              className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
+            >
+              <button className="hover:text-orange-500"> POSICIONES</button>
+            </Link>
+          </section>
+        </main>
+        <FooterComp />
+      </div>
+    </>
   );
 };
 export default Home;
