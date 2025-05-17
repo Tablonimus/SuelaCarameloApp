@@ -31,7 +31,7 @@ export default function Noticias() {
 
     if (e.target.name === "A1") setNoticeState("A1xSuela");
     if (e.target.name === "F1") setNoticeState("F1xSuela");
-    if (e.target.name === "DH") setNoticeState("Liga de Honor");
+    if (e.target.name === "DH") setNoticeState("División de Honor");
     if (e.target.name === "TI") setNoticeState("Torneos Internacionales");
     if (e.target.name === "TN") setNoticeState("Torneos Nacionales");
     if (e.target.name === "CM") setNoticeState("Copa Mendoza");
@@ -87,7 +87,7 @@ export default function Noticias() {
             src={logoDH}
             name="DH"
             className={`w-[45px] lg:w-14 ${
-              noticeState === "Liga de Honor"
+              noticeState === "División de Honor"
                 ? "w-10 h-10 lg:w-16 lg:h-16 rounded-full border-4  border-[#F17023] cursor-pointer hover:scale-105 duration-300 object-cover"
                 : "w-10 h-10 lg:w-16 lg:h-16 rounded-full  cursor-pointer hover:scale-105 duration-300 object-cover"
             }  cursor-pointer hover:scale-105 duration-300 object-cover`}
@@ -127,7 +127,7 @@ export default function Noticias() {
             alt=""
             onClick={(e) => categoryHandler(e)}
           />
-        </picture>  
+        </picture>
       </section>
       <h2 className=" my-4 text-xl text-center lg:text-3xl font-bold text-zinc-800">
         {noticeState}

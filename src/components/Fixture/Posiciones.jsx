@@ -17,7 +17,6 @@ const Posiciones = () => {
   const positions = useSelector((state) => state.positions);
   const generalPositions = useSelector((state) => state.generalPositions);
 
-
   useEffect(() => {
     dispatch(getPositions(positionState));
     dispatch(getGeneralPositions(positionState));
@@ -31,7 +30,9 @@ const Posiciones = () => {
           POSICIONES
         </h2> */}
         <h2 className="text-xl text-center lg:text-3xl font-bold text-white">
-          {positionState === "A1" ? "A1xSuela" : "FemAxSuela"} - Posiciones
+          {`${
+            positionState === "F1" ? "Fem" : positionState
+          }xSuela - Posiciones`}
         </h2>
         <picture className=" flex justify-center items-center overflow-hidden gap-3 lg:px-8 lg:gap-8">
           <img
