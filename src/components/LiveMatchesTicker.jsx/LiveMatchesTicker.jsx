@@ -15,7 +15,6 @@ const LiveMatchesTicker = () => {
       try {
         const response = await fetch(BASE_URL + "/matches/live");
         const data = await response.json();
-        console.log("Matches data:", data); // Log the fetched data
         setMatches(data);
         setLoading(false);
 
@@ -137,7 +136,11 @@ const LiveMatchesTicker = () => {
                       ? "Finalizado"
                       : match.status === "pending"
                       ? "Próximo"
-                      : match.status}
+                      : match.status === "postponed"
+                      ? "Postergado"
+                      : match.status === "canceled"
+                      ? "Suspendido"
+                      : "-"}
                   </span>
                 </div>
 
