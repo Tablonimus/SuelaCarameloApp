@@ -104,9 +104,7 @@ const LiveMatchesTicker = () => {
               <div className="px-4 text-center">
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-2xl font-bold">
-                    {match.status === "pending" &&
-                    (match.score?.local === 0 ||
-                      match.score?.local === undefined)
+                    {match.status === "pending" || match.status === "postponed"
                       ? "-"
                       : match.score?.local ?? 0}
                   </span>
