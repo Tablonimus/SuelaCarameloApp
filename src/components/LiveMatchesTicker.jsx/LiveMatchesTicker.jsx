@@ -15,6 +15,7 @@ const LiveMatchesTicker = () => {
       try {
         const response = await fetch(BASE_URL + "/matches/live");
         const data = await response.json();
+        console.log("Matches data:", data); // Log the fetched data
         setMatches(data);
         setLoading(false);
 
