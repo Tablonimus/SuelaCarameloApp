@@ -21,8 +21,8 @@ const LiveResultsUpdater = () => {
   const [teams, setTeams] = useState([]);
   const [filterCategory, setFilterCategory] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
-  //   const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
-  const BASE_URL = "http://localhost:3000/sc";
+    const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
+  // const BASE_URL = "http://localhost:3000/sc";
 
   // Estados para nuevo partido
   const [newMatch, setNewMatch] = useState({
