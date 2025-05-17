@@ -10,13 +10,18 @@ import TeamsConverter from "./TeamsConverter";
 import GeneralPositions from "./GeneralPositions";
 import DataManagment from "./DataManagment";
 import PlayersConverter from "./PlayersConverter";
+import LiveResultsUpdater from "./LiveResultsUpdater";
+
 export default function AdminHome() {
   return (
     <div className="flex flex-col items-center h-screen text-white overflow-auto">
       <NavBar />
       <section className="bg-black/80 my-4 p-1 rounded-md w-11/12">
         <Tabs aria-label="Default tabs" style="default">
-          <Tabs.Item active title="Notas" icon={HiUserCircle}>
+          <Tabs.Item active title="Resultados en Vivo" icon={MdDashboard}>
+            <LiveResultsUpdater />
+          </Tabs.Item>
+          <Tabs.Item title="Notas" icon={HiUserCircle}>
             <CreateNotice />
           </Tabs.Item>
           <Tabs.Item title="Fixtures" icon={MdDashboard}>
