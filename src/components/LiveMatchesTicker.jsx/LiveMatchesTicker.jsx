@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FaFutbol, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
-// const BASE_URL = "http://localhost:3000/sc";
 
 const LiveMatchesTicker = () => {
   const [matches, setMatches] = useState([]);
@@ -18,7 +17,7 @@ const LiveMatchesTicker = () => {
         setMatches(data);
         setLoading(false);
 
-        // Refresh data every 30 seconds for live updates
+        // Refresh every 30s
         const interval = setInterval(async () => {
           const updatedResponse = await fetch(BASE_URL + "/matches/live");
           const updatedData = await updatedResponse.json();
@@ -37,20 +36,17 @@ const LiveMatchesTicker = () => {
 
   const scroll = (direction) => {
     const container = document.getElementById("matches-ticker");
-    const scrollAmount = 300; // Adjust scroll amount as needed
+    const scrollAmount = 300;
     if (container) {
-      if (direction === "left") {
-        container.scrollLeft -= scrollAmount;
-      } else {
-        container.scrollLeft += scrollAmount;
-      }
+      container.scrollLeft +=
+        direction === "left" ? -scrollAmount : scrollAmount;
       setScrollPosition(container.scrollLeft);
     }
   };
 
   if (loading) {
     return (
-      <div className="bg-gray-800 py-2 px-4 text-white text-center">
+      <div className="bg-zinc-900 py-2 px-4 text-white text-center text-sm">
         Cargando partidos...
       </div>
     );
@@ -58,104 +54,97 @@ const LiveMatchesTicker = () => {
 
   if (matches.length === 0) {
     return (
-      <div className="bg-gray-800 py-2 px-4 text-white text-center">
+      <div className="bg-zinc-900 py-2 px-4 text-white text-center text-sm">
         No hay partidos en este momento
       </div>
     );
   }
 
   return (
-    <div className="relative bg-gray-400 text-white py-2 ">
-      {/* Left scroll button (only visible when scrolled right) */}
+    <div className="relative bg-zinc-900 py-3 px-2 text-white overflow-hidden">
+      {/* Left scroll button */}
       {scrollPosition > 0 && (
         <button
           onClick={() => scroll("left")}
-          className="absolute left-0 top-0 bottom-0 z-10 bg-gray-900 bg-opacity-50 px-2 flex items-center justify-center"
+          className="absolute left-0 top-0 bottom-0 z-10 bg-black/30 hover:bg-black/50 px-2 flex items-center"
         >
-          <FaChevronLeft className="text-xl" />
+          <FaChevronLeft className="text-white text-xl" />
         </button>
       )}
 
-      {/* Matches ticker */}
+      {/* Match ticker */}
       <div
         id="matches-ticker"
-        className="flex overflow-x-auto scrollbar-   whitespace-nowrap px-2  "
+        className="flex overflow-x-auto space-x-4 px-4 scrollbar-none"
         onScroll={(e) => setScrollPosition(e.target.scrollLeft)}
       >
         {matches.map((match) => (
           <div
             key={match._id}
-            className="inline-block mx-4 px-4 py-2 bg-gray-700 rounded-lg border-l-4 border-orange-500"
+            className="inline-block px-4 py-3 bg-zinc-800 rounded-xl border border-zinc-700 min-w-[280px] max-w-[320px] shadow-sm"
           >
-            <div className="flex items-center justify-between min-w-[280px]">
+            <div className="flex items-center justify-between">
               {/* Local team */}
-              <div className="text-center w-24">
+              <div className="flex flex-col items-center w-24">
                 <img
-                  src={match?.local?.logo}
-                  alt={match?.local?.name}
-                  className="h-8 mx-auto mb-1"
+                  src={match.local.logo}
+                  alt={match.local.name}
+                  className="h-10 w-10 object-contain"
                 />
-                <span className="text-sm font-semibold">
-                  {match?.local?.name}
+                <span className="text-xs font-medium mt-1 text-center">
+                  {match.local.name}
                 </span>
               </div>
 
-              {/* Match score */}
-              <div className="px-4 text-center">
-                <div className="flex items-center justify-center space-x-2">
-                  <span className="text-2xl font-bold">
-                    {match.status === "pending" || match.status === "postponed"
+              {/* Score and status */}
+              <div className="flex flex-col items-center justify-center">
+                <div className="text-xl font-bold flex items-center gap-1">
+                  <span>
+                    {["pending", "postponed"].includes(match.status)
                       ? "-"
                       : match.score?.local ?? 0}
                   </span>
                   <span className="text-gray-400">-</span>
-                  <span className="text-2xl font-bold">
-                    {match.status === "pending" || match.status === "postponed"
+                  <span>
+                    {["pending", "postponed"].includes(match.status)
                       ? "-"
                       : match.score?.visitor ?? 0}
                   </span>
                 </div>
 
-                {/* Match status */}
-                <div className="flex items-center justify-center mt-1">
-                  <FaFutbol
-                    className={`mr-1 ${
-                      match.status === "playing"
-                        ? "text-green-500 animate-pulse"
-                        : "text-gray-400"
-                    }`}
-                  />
-                  <span className="text-xs uppercase">
-                    {match.status === "playing"
-                      ? "En vivo"
-                      : match.status === "finished"
-                      ? "Finalizado"
-                      : match.status === "pending"
-                      ? "Próximo"
-                      : match.status === "postponed"
-                      ? "Postergado"
-                      : match.status === "canceled"
-                      ? "Suspendido"
-                      : "-"}
+                <div className="flex items-center mt-1 text-xs text-gray-200">
+                  {match.status === "playing" && (
+                    <FaFutbol className="text-green-400 animate-pulse mr-1" />
+                  )}
+                  {match.status === "finished" && (
+                    <FaFutbol className="text-white mr-1" />
+                  )}
+                  <span className="uppercase">
+                    {{
+                      playing: "En vivo",
+                      finished: "Finalizado",
+                      pending: "Próximo",
+                      postponed: "Postergado",
+                      canceled: "Suspendido",
+                    }[match.status] ?? "-"}
                   </span>
                 </div>
 
-                {/* Match time */}
                 {match.status === "pending" && (
-                  <div className="text-xs mt-1">
+                  <div className="text-center text-[10px] text-gray-200 mt-1">
                     {new Date(match.date).toLocaleDateString()} {match.time}
                   </div>
                 )}
               </div>
 
               {/* Visitor team */}
-              <div className="text-center w-24">
+              <div className="flex flex-col items-center w-24">
                 <img
-                  src={match?.visitor?.logo}
+                  src={match.visitor.logo}
                   alt={match.visitor.name}
-                  className="h-8 mx-auto mb-1"
+                  className="h-10 w-10 object-contain"
                 />
-                <span className="text-sm font-semibold">
+                <span className="text-xs font-medium mt-1 text-center">
                   {match.visitor.name}
                 </span>
               </div>
@@ -164,12 +153,12 @@ const LiveMatchesTicker = () => {
         ))}
       </div>
 
-      {/* Right scroll button (only visible when there's more to scroll) */}
+      {/* Right scroll button */}
       <button
         onClick={() => scroll("right")}
-        className="absolute right-0 top-0 bottom-0 z-10 bg-gray-900 bg-opacity-50 px-2 flex items-center justify-center"
+        className="absolute right-0 top-0 bottom-0 z-10 bg-black/30 hover:bg-black/50 px-2 flex items-center"
       >
-        <FaChevronRight className="text-xl" />
+        <FaChevronRight className="text-white text-xl" />
       </button>
     </div>
   );

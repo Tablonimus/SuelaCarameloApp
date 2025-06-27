@@ -1,6 +1,4 @@
-import "react-image-gallery/styles/css/image-gallery.css";
 import logoSC from "../../assets/images/banner2.png";
-// import SideHome from "../NavBar/SideHome";
 import imgHome1 from "../../assets/images/heroSection/hero1.webp";
 import imgHome2 from "../../assets/images/heroSection/hero2.webp";
 import imgHome3 from "../../assets/images/heroSection/hero3.webp";
@@ -9,98 +7,71 @@ import FooterComp from "../FooterComp/FooterComp";
 import { Carousel } from "flowbite-react";
 import { Link } from "react-router-dom";
 import "./home.css";
-import Sidebar from "../NavBar/Sidebar";
 import LiveMatchesTicker from "../LiveMatchesTicker.jsx/LiveMatchesTicker";
 
 const Home = () => {
-  const images = [
-    {
-      original: imgHome1,
-      thumbnail: imgHome1,
-    },
-    {
-      original: imgHome2,
-      thumbnail: imgHome2,
-    },
-    {
-      original: imgHome3,
-      thumbnail: imgHome3,
-    },
-    {
-      original: imgHome4,
-      thumbnail: imgHome4,
-    },
-  ];
+  const images = [imgHome1, imgHome2, imgHome3, imgHome4];
 
   return (
-    <>
-      {/* <Sidebar active="home" /> */}
-      <div className="flex flex-col justify-start  ">
-        <main className="w-full flex flex-col justify-start items-center  md:items-center overflow-x-auto lg:h-auto">
-          <div className="w-[100vw]">
-            <LiveMatchesTicker />
-          </div>
-          <img className="w-44 mb-4 lg:w-52 py-5" src={logoSC} alt="" />
-          {/* CARRUSEL */}
-          <div className="h-[18rem] md:h-[36rem] w-full mb-1">
-            <Carousel
-              leftControl={<></>}
-              rightControl={<></>}
-              draggable
-              slide
-              slideInterval={3000}
-            >
-              {images.map((image, i) => (
-                <img
-                  key={i}
-                  src={image.thumbnail}
-                  alt="suela caramelo"
-                  className=" h-full w-full object-cover"
-                />
-              ))}
-            </Carousel>
-          </div>
-          <section className="mt-6 w-full flex flex-col justify-center items-center gap-4 lg:my-10 lg:gap-6">
-            <Link
-              to={"/cupones/#inicio"}
-              className="hover:scale-110 hover:text-orange-500 text-center py-3 px-4 w-2/3 lg:w-1/4 bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
-            >
-              <button className="hover:text-orange-500 text-center duration-300">
-                CUPONES Y DESCUENTOS
-              </button>
-            </Link>
-
-            <Link
-              to={"/noticias"}
-              className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300 "
-            >
-              <button className="hover:text-orange-500 text-center">
-                NOTICIAS
-              </button>
-            </Link>
-            <Link
-              to={"/fixture"}
-              className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
-            >
-              <button className="hover:text-orange-500">FIXTURE</button>
-            </Link>
-            <Link
-              to={"/posiciones"}
-              className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
-            >
-              <button className="hover:text-orange-500"> POSICIONES</button>
-            </Link>
-            <Link
-              to={"/equipos"}
-              className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
-            >
-              <button className="hover:text-orange-500">EQUIPOS</button>
-            </Link>
-          </section>
-        </main>
-        <FooterComp />
+    <div className="flex flex-col min-h-screen">
+      {/* Barra en vivo */}
+      <div className="w-full">
+        <LiveMatchesTicker />
       </div>
-    </>
+
+      {/* Contenido principal */}
+      <main className="flex flex-col items-center w-full px-4">
+        {/* Logo */}
+        <img
+          className="w-32 md:w-44 my-6"
+          src={logoSC}
+          alt="Logo Suela Caramelo"
+        />
+
+        {/* Carrusel */}
+        <div className="w-full h-64 sm:h-80 md:h-[28rem] mb-6">
+          <Carousel
+            leftControl={<></>}
+            rightControl={<></>}
+            draggable
+            slide
+            slideInterval={3000}
+          >
+            {images.map((image, i) => (
+              <img
+                key={i}
+                src={image}
+                alt={`Imagen ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
+            ))}
+          </Carousel>
+        </div>
+
+        {/* Botones */}
+        <section className="flex flex-col items-center gap-4 w-full max-w-lg mb-12">
+          {[
+            { to: "/cupones/#inicio", label: "Cupones y Descuentos" },
+            { to: "/noticias", label: "Noticias" },
+            { to: "/fixture", label: "Fixture" },
+            { to: "/posiciones", label: "Posiciones" },
+            { to: "/equipos", label: "Equipos" },
+          ].map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className="w-full text-center bg-zinc-900 text-white text-base md:text-lg font-medium rounded-xl py-3 transition hover:bg-black hover:text-white"
+            >
+              {label}
+            </Link>
+          ))}
+        </section>
+      </main>
+
+      {/* Footer */}
+      <FooterComp />
+    </div>
   );
 };
+
 export default Home;
