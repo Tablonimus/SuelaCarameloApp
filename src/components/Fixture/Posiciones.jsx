@@ -1,7 +1,7 @@
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
-import logoA1 from "../../assets/images/botones/A1.webp";
-import logoF1 from "../../assets/images/botones/F1.webp";
+import logoA1 from "../../assets/images/botones/A1.png";
+import logoF1 from "../../assets/images/botones/F1.png";
 import logoDH from "../../assets/images/botones/DH.png";
 import logoCM from "../../assets/images/botones/CM.png";
 
@@ -46,7 +46,7 @@ const Posiciones = () => {
             alt="suela caramelo"
             onClick={(e) => setPositionState(e.target.name)}
           />
-          <img
+          {/* <img
             src={logoDH}
             name="DH"
             className={
@@ -68,7 +68,7 @@ const Posiciones = () => {
             }
             alt="suela caramelo"
             onClick={(e) => setPositionState(e.target.name)}
-          />
+          /> */}
 
           <img
             src={logoF1}

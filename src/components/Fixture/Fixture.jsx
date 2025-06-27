@@ -1,6 +1,6 @@
 import Sidebar from "../NavBar/Sidebar";
-import logoA1 from "../../assets/images/botones/A1.webp";
-import logoF1 from "../../assets/images/botones/F1.webp";
+import logoA1 from "../../assets/images/botones/A1.png";
+import logoF1 from "../../assets/images/botones/F1.png";
 import logoDH from "../../assets/images/botones/DH.png";
 import logoCM from "../../assets/images/botones/CM.png";
 import { useEffect, useState } from "react";
@@ -28,8 +28,8 @@ const Fixture = () => {
         <section className="pl-[70px] w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-4 lg:py-6">
           <h2 className="text-xl text-center lg:py-2 lg:text-3xl font-bold text-white">
             {`${
-              fixtureState === "F1" ? "Fem" : fixtureState
-            }xSuela - Fecha ${currentPageTitle}`}
+              fixtureState === "F1" ? "FSP Femenino" : "FSP Masculino"
+            } - Fecha ${currentPageTitle}`}
             {/* {`Fecha ${currentPageTitle}`} */}
           </h2>
           <picture className=" flex justify-center items-center overflow-hidden gap-3 lg:px-8 lg:gap-8">
@@ -44,7 +44,7 @@ const Fixture = () => {
               alt=""
               onClick={(e) => setFixtureState(e.target.name)}
             />
-            <img
+            {/* <img
               src={logoDH}
               name="DH"
               className={
@@ -65,7 +65,7 @@ const Fixture = () => {
               }
               alt=""
               onClick={(e) => setFixtureState(e.target.name)}
-            />
+            /> */}
             <img
               src={logoF1}
               name="F1"
