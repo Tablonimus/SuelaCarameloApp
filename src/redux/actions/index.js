@@ -135,7 +135,7 @@ export function getAllNotices(category) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`${BASE_URL}/notices?category=${category}`);
-      console.log(json.data);
+
       dispatch({
         type: action.GET_ALL_NOTICES,
         payload: {
@@ -152,7 +152,9 @@ export function getAllNotices(category) {
 export function getFixtures(category) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${BASE_URL}/fixtures?category=${category}`);
+      const { data } = await axios.get(
+        `${BASE_URL}/fixtures?category=${category}`
+      );
       const { activeNumber, fixtures } = data;
 
       fixtures.sort((a, b) => (a.number > b.number ? 1 : -1));
@@ -171,7 +173,9 @@ export function getFixtures(category) {
 export function getPositions(category) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${BASE_URL}/positions?category=${category}`);
+      const { data } = await axios.get(
+        `${BASE_URL}/positions?category=${category}`
+      );
       console.log(data);
       dispatch({
         type: action.GET_POSITIONS,
@@ -343,7 +347,10 @@ export function createPlayersByExcel(teamsObject) {
 export function createManyTeamsByExcel(teamsObject) {
   return async function (dispatch) {
     try {
-      let json = await axios.post(`${BASE_URL}/teams/create-many`, teamsObject);
+      let json = await axios.post(
+        `${BASE_URL}/teams/create-many?category=A1`,
+        teamsObject
+      );
 
       dispatch({
         type: action.CREATE_MANY_TEAMS_BY_EXCEL,

@@ -27,47 +27,45 @@ export default function NoticeDetail() {
         id="noticia"
         className="pt-8 min-w-screen overflow-hidden flex flex-col items-center"
       >
-        <div className=" w-11/12 lg:w-1/2 flex-flex-col items-center justify-center ml-[70px]">
-          <h1 className="px-5 text-center font-bold text-zinc-900 text-3xl lg:text-4xl">
-            {notice?.title}
-          </h1>
-          <h2 className="px-6 py-2 text-md text-center lg:text-lg text-gray-200 font-semibold">
-            {notice?.subtitle}
-          </h2>
-        </div>
-
-        <div className="w-11/12 lg:w-1/2 flex-flex-col items-center justify-center  ml-[70px]">
-          {notice?.images?.length > 0 ? (
-            <div className="flex flex-col opacity-100">
-              {notice?.images[0] ? (
-                <div className="opacity-100 h-96  xl:h-80 2xl:h-[530px] ">
-                  <Carousel
-                    leftControl={<></>}
-                    rightControl={<></>}
-                    draggable
-                    slide
-                    slideInterval={3000}
-                  >
-                    {notice?.images?.map((img, index) => (
-                      <img
-                        key={index}
-                        src={img}
-                        alt=""
-                        className="opacity-100 rounded-lg object-cover"
-                      />
-                    ))}
-                  </Carousel>
-                </div>
-              ) : (
-                false
-              )}
-            </div>
-          ) : (
-            <YoutubeEmbed embedId={notice?.videos} />
-          )}
-        </div>
-
         <div className="py-6 flex flex-col  w-11/12 lg:w-1/2 items-center justify-center m-2 rounded-lg bg-zinc-900 text-gray-200 shadow-xl ml-[70px]">
+          <div className=" w-11/12 flex-flex-col items-center justify-center">
+            <h1 className="px-5 text-center font-bold text-3xl lg:text-4xl">
+              {notice?.title}
+            </h1>
+            <h2 className="px-6 py-2 text-md text-center lg:text-lg text-gray-200 font-semibold">
+              {notice?.subtitle}
+            </h2>
+          </div>
+          <div className="w-11/12 flex-flex-col items-center justify-center">
+            {notice?.images?.length > 0 ? (
+              <div className="flex flex-col opacity-100">
+                {notice?.images[0] ? (
+                  <div className="opacity-100 h-96  xl:h-80 2xl:h-[530px] ">
+                    <Carousel
+                      leftControl={<></>}
+                      rightControl={<></>}
+                      draggable
+                      slide
+                      slideInterval={3000}
+                    >
+                      {notice?.images?.map((img, index) => (
+                        <img
+                          key={index}
+                          src={img}
+                          alt=""
+                          className="opacity-100 rounded-lg object-cover"
+                        />
+                      ))}
+                    </Carousel>
+                  </div>
+                ) : (
+                  false
+                )}
+              </div>
+            ) : (
+              <YoutubeEmbed embedId={notice?.videos} />
+            )}
+          </div>
           <div className="w-3/4 flex flex-col items-center justify-center">
             {notice?.content?.length > 0 && notice?.content[0] !== "<" ? (
               parrafo?.map((parra) => (

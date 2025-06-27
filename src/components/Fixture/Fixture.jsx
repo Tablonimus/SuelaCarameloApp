@@ -1,6 +1,6 @@
 import Sidebar from "../NavBar/Sidebar";
 import logoA1 from "../../assets/images/botones/A1.webp";
-import logoF1 from "../../assets/images/botones/F1.png";
+import logoF1 from "../../assets/images/botones/F1.webp";
 import logoDH from "../../assets/images/botones/DH.png";
 import logoCM from "../../assets/images/botones/CM.png";
 import { useEffect, useState } from "react";

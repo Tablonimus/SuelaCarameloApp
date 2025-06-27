@@ -6,9 +6,27 @@ import {
   createManyTeamsByExcel,
   createPlayersByExcel,
 } from "../../redux/actions";
+
 export default function TeamsConverter() {
   const dispatch = useDispatch();
   const [jsonData, setJsonData] = useState("");
+
+  const splitObject = (obj, parts) => {
+    const keys = Object.keys(obj);
+    const chunkSize = Math.ceil(keys.length / parts);
+    const result = [];
+
+    for (let i = 0; i < keys.length; i += chunkSize) {
+      const chunkKeys = keys.slice(i, i + chunkSize);
+      const chunk = {};
+      chunkKeys.forEach((key) => {
+        chunk[key] = obj[key];
+      });
+      result.push(chunk);
+    }
+
+    return result;
+  };
 
   const handleConvert = (e) => {
     const file = e.target.files[0];
@@ -25,8 +43,6 @@ export default function TeamsConverter() {
           const sheetName = workbook.SheetNames[i];
           const worksheet = workbook.Sheets[sheetName];
           const json = XLSX.utils.sheet_to_json(worksheet);
-
-          // console.log(json);
 
           const formattedPlayers = json.map((player) => {
             return {
@@ -47,9 +63,13 @@ export default function TeamsConverter() {
           teamsObject[sheetName] = formattedPlayers;
         }
 
-        // action(json);
-        dispatch(createManyTeamsByExcel(teamsObject));
-       
+        // Dividir el objeto en 3 partes
+        const chunks = splitObject(teamsObject, 3);
+
+        // Enviar cada parte por separado
+        chunks.forEach((chunk) => {
+          dispatch(createManyTeamsByExcel(chunk));
+        });
       };
       reader.readAsArrayBuffer(file);
     } else {

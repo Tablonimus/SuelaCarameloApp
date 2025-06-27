@@ -91,12 +91,12 @@ const LiveMatchesTicker = () => {
               {/* Local team */}
               <div className="text-center w-24">
                 <img
-                  src={match.local.logo}
-                  alt={match.local.name}
+                  src={match?.local?.logo}
+                  alt={match?.local?.name}
                   className="h-8 mx-auto mb-1"
                 />
                 <span className="text-sm font-semibold">
-                  {match.local.name}
+                  {match?.local?.name}
                 </span>
               </div>
 
@@ -104,17 +104,13 @@ const LiveMatchesTicker = () => {
               <div className="px-4 text-center">
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-2xl font-bold">
-                    {match.status === "pending" &&
-                    (match.score?.local === 0 ||
-                      match.score?.local === undefined)
+                    {match.status === "pending" || match.status === "postponed"
                       ? "-"
                       : match.score?.local ?? 0}
                   </span>
                   <span className="text-gray-400">-</span>
                   <span className="text-2xl font-bold">
-                    {match.status === "pending" &&
-                    (match.score?.visitor === 0 ||
-                      match.score?.visitor === undefined)
+                    {match.status === "pending" || match.status === "postponed"
                       ? "-"
                       : match.score?.visitor ?? 0}
                   </span>
@@ -136,7 +132,11 @@ const LiveMatchesTicker = () => {
                       ? "Finalizado"
                       : match.status === "pending"
                       ? "Próximo"
-                      : match.status}
+                      : match.status === "postponed"
+                      ? "Postergado"
+                      : match.status === "canceled"
+                      ? "Suspendido"
+                      : "-"}
                   </span>
                 </div>
 
@@ -151,7 +151,7 @@ const LiveMatchesTicker = () => {
               {/* Visitor team */}
               <div className="text-center w-24">
                 <img
-                  src={match.visitor.logo}
+                  src={match?.visitor?.logo}
                   alt={match.visitor.name}
                   className="h-8 mx-auto mb-1"
                 />

@@ -8,7 +8,7 @@ import { Pagination } from "flowbite-react";
 import NoticeLoaderComponent from "./NoticeLoaderComponent";
 import FooterComp from "../FooterComp/FooterComp";
 import logoA1 from "../../assets/images/botones/A1.webp";
-import logoF1 from "../../assets/images/botones/F1.png";
+import logoF1 from "../../assets/images/botones/F1.webp";
 import logoDH from "../../assets/images/botones/DH.png";
 import logoTI from "../../assets/images/botones/TI.webp";
 import logoTN from "../../assets/images/botones/TN.webp";
@@ -25,13 +25,13 @@ export default function Noticias() {
   }, [category]);
 
   const allNotices = useSelector((state) => state.allNotices);
-
+  console.log(allNotices);
   const categoryHandler = (e) => {
     setCategory(e.target.name);
 
-    if (e.target.name === "A1") setNoticeState("A1xSuela");
-    if (e.target.name === "F1") setNoticeState("F1xSuela");
-    if (e.target.name === "DH") setNoticeState("Liga de Honor");
+    if (e.target.name === "A1") setNoticeState("FSP Masculino");
+    if (e.target.name === "F1") setNoticeState("FSP Femenino");
+    if (e.target.name === "DH") setNoticeState("División de Honor");
     if (e.target.name === "TI") setNoticeState("Torneos Internacionales");
     if (e.target.name === "TN") setNoticeState("Torneos Nacionales");
     if (e.target.name === "CM") setNoticeState("Copa Mendoza");
@@ -87,7 +87,7 @@ export default function Noticias() {
             src={logoDH}
             name="DH"
             className={`w-[45px] lg:w-14 ${
-              noticeState === "Liga de Honor"
+              noticeState === "División de Honor"
                 ? "w-10 h-10 lg:w-16 lg:h-16 rounded-full border-4  border-[#F17023] cursor-pointer hover:scale-105 duration-300 object-cover"
                 : "w-10 h-10 lg:w-16 lg:h-16 rounded-full  cursor-pointer hover:scale-105 duration-300 object-cover"
             }  cursor-pointer hover:scale-105 duration-300 object-cover`}
@@ -127,7 +127,7 @@ export default function Noticias() {
             alt=""
             onClick={(e) => categoryHandler(e)}
           />
-        </picture>  
+        </picture>
       </section>
       <h2 className=" my-4 text-xl text-center lg:text-3xl font-bold text-zinc-800">
         {noticeState}

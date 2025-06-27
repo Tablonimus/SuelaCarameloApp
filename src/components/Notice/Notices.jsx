@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import Sidebar from "../NavBar/Sidebar";
+
 export default function Notices({
   id,
   images,
@@ -17,41 +18,45 @@ export default function Notices({
       <Sidebar active="noticias" />
       <Link
         to={`/noticias/${id}`}
-        class=" relative h-auto bg-zinc-800 rounded-lg shadow-md min-w-60 max-w-72 md:h-[410px] hover:scale-105 duration-300"
+        className="block bg-zinc-900 rounded-lg border border-zinc-700 overflow-hidden max-w-sm transition-transform hover:scale-[1.01]"
       >
-        {images && images[0] ? (
+        {/* Imagen de portada */}
+        {images?.[0] && (
           <img
             src={images[0]}
-            className="w-full h-64 lg:h-64 object-cover rounded-t-lg "
+            alt="Imagen de la noticia"
+            className="w-full h-52 object-cover"
           />
-        ) : (
-          false
         )}
+
+        {/* Video embebido */}
         {videos?.length >= 1 ? (
-          <YoutubeEmbed embedId={videos} />
+          <div className="w-full aspect-video">
+            <YoutubeEmbed embedId={videos} />
+          </div>
         ) : videos?.length ? (
-          <Spinner
-            color="warning"
-            aria-label="Warning spinner example"
-            size="xl"
-          />
-        ) : (
-          false
-        )}
-        <div className="flex flex-col justify-between px-5 py-3 gap-2">
-          <h5 className="text-xl font-semibold tracking-tight text-gray-300 md:leading-6">
+          <div className="flex justify-center items-center h-52">
+            <Spinner color="gray" size="lg" />
+          </div>
+        ) : null}
+
+        {/* Contenido */}
+        <div className="p-4 space-y-2">
+          <h2 className="text-base font-semibold text-white leading-snug">
             {title}
-          </h5>
-          <p className="overflow-hidden font-medium lg:text-md lg:leading-tight text-zinc-500">
-            {subtitle.split(" ").slice(0, 8).join(" ")}...
+          </h2>
+
+          <p className="text-sm text-zinc-400 leading-tight">
+            {subtitle.split(" ").slice(0, 12).join(" ")}...
           </p>
 
-          <div className="flex items-center justify-end gap-1">
-            <img src={author.img} alt="" className="rounded-full w-6 h-6 object-cover" />
-
-            <span className="text-zinc-500 font-bold text-start">
-              {author.name}
-            </span>
+          <div className="flex items-center gap-2 pt-3 border-t border-zinc-800">
+            <img
+              src={author.img}
+              alt={author.name}
+              className="w-6 h-6 rounded-full object-cover"
+            />
+            <span className="text-sm text-zinc-100">{author.name}</span>
           </div>
         </div>
       </Link>
