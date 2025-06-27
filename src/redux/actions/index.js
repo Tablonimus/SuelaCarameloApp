@@ -343,7 +343,7 @@ export function createPlayersByExcel(teamsObject) {
 export function createManyTeamsByExcel(teamsObject) {
   return async function (dispatch) {
     try {
-      let json = await axios.post(`${BASE_URL}/teams/create-many`, teamsObject);
+      let json = await axios.post(`${BASE_URL}/teams/create-many?category=A1`, teamsObject);
 
       dispatch({
         type: action.CREATE_MANY_TEAMS_BY_EXCEL,

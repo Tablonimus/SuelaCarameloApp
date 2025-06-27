@@ -90,6 +90,12 @@ const Home = () => {
             >
               <button className="hover:text-orange-500"> POSICIONES</button>
             </Link>
+            <Link
+              to={"/equipos"}
+              className="hover:scale-110 text-center hover:text-orange-500 py-3 px-4 w-2/3 lg:w-1/4  bg-zinc-900 rounded-full text-white text-md lg:text-2xl font-bold duration-300"
+            >
+              <button className="hover:text-orange-500">EQUIPOS</button>
+            </Link>
           </section>
         </main>
         <FooterComp />
