@@ -91,12 +91,12 @@ const LiveMatchesTicker = () => {
               {/* Local team */}
               <div className="text-center w-24">
                 <img
-                  src={match.local.logo}
-                  alt={match.local.name}
+                  src={match?.local?.logo}
+                  alt={match?.local?.name}
                   className="h-8 mx-auto mb-1"
                 />
                 <span className="text-sm font-semibold">
-                  {match.local.name}
+                  {match?.local?.name}
                 </span>
               </div>
 
@@ -151,7 +151,7 @@ const LiveMatchesTicker = () => {
               {/* Visitor team */}
               <div className="text-center w-24">
                 <img
-                  src={match.visitor.logo}
+                  src={match?.visitor?.logo}
                   alt={match.visitor.name}
                   className="h-8 mx-auto mb-1"
                 />

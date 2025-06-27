@@ -133,7 +133,7 @@ export default function CreateNotice() {
           videos: input.videos,
           content: value,
           category: input.category,
-          author: { name: input.x, img: input.authorImage },
+          author: { name: input.authorName, img: input.authorImage },
           date: new Date(input.date),
         })
       ).then(() => {

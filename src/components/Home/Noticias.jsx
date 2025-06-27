@@ -8,7 +8,7 @@ import { Pagination } from "flowbite-react";
 import NoticeLoaderComponent from "./NoticeLoaderComponent";
 import FooterComp from "../FooterComp/FooterComp";
 import logoA1 from "../../assets/images/botones/A1.webp";
-import logoF1 from "../../assets/images/botones/F1.png";
+import logoF1 from "../../assets/images/botones/F1.webp";
 import logoDH from "../../assets/images/botones/DH.png";
 import logoTI from "../../assets/images/botones/TI.webp";
 import logoTN from "../../assets/images/botones/TN.webp";
@@ -25,12 +25,12 @@ export default function Noticias() {
   }, [category]);
 
   const allNotices = useSelector((state) => state.allNotices);
-
+  console.log(allNotices);
   const categoryHandler = (e) => {
     setCategory(e.target.name);
 
-    if (e.target.name === "A1") setNoticeState("A1xSuela");
-    if (e.target.name === "F1") setNoticeState("F1xSuela");
+    if (e.target.name === "A1") setNoticeState("FSP Masculino");
+    if (e.target.name === "F1") setNoticeState("FSP Femenino");
     if (e.target.name === "DH") setNoticeState("División de Honor");
     if (e.target.name === "TI") setNoticeState("Torneos Internacionales");
     if (e.target.name === "TN") setNoticeState("Torneos Nacionales");
