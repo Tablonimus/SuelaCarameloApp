@@ -25,7 +25,7 @@ export default function NoticeDetail() {
       <Sidebar active={"noticias"} />
       <div
         id="noticia"
-        className="pt-8 min-w-screen overflow-hidden flex flex-col items-center"
+        className="min-w-screen overflow-hidden flex flex-col items-center"
       >
         <div className="py-6 flex flex-col  w-11/12 lg:w-1/2 items-center justify-center m-2 rounded-lg bg-zinc-900 text-gray-200 shadow-xl ml-[70px]">
           <div className=" w-11/12 flex-flex-col items-center justify-center">

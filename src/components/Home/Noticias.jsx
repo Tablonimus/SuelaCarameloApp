@@ -5,28 +5,23 @@ import Notices from "../Notice/Notices";
 import { Pagination } from "flowbite-react";
 import NoticeLoaderComponent from "./NoticeLoaderComponent";
 import FooterComp from "../FooterComp/FooterComp";
-import logoA1 from "../../assets/images/botones/A1.png";
-import logoF1 from "../../assets/images/botones/F1.png";
-import logoDH from "../../assets/images/botones/DH.png";
-import logoTI from "../../assets/images/botones/TI.webp";
-import logoTN from "../../assets/images/botones/TN.webp";
-import logoCM from "../../assets/images/botones/CM.png";
-import suela from "../../assets/images/suela.png";
 import Sidebar from "../NavBar/Sidebar";
-
+import { motion } from "framer-motion";
+import logoSuela from "../../assets/images/banner2.png";
 export default function Noticias() {
   const dispatch = useDispatch();
   const [category, setCategory] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const categories = [
-    { value: "", label: "Últimas Noticias", logo: suela },
-    { value: "A1", label: "FSP Masculino", logo: logoA1 },
-    { value: "F1", label: "FSP Femenino", logo: logoF1 },
-    { value: "DH", label: "División de Honor", logo: logoDH },
-    { value: "CM", label: "Copa Mendoza", logo: logoCM },
-    { value: "TN", label: "Torneos Nacionales", logo: logoTN },
-    { value: "TI", label: "Torneos Internacionales", logo: logoTI },
+    { value: "", label: "Últimas Noticias" },
+    { value: "A1", label: "FSP Masculino" },
+    { value: "F1", label: "FSP Femenino" },
+    { value: "DH", label: "División de Honor" },
+    { value: "CM", label: "Copa Mendoza" },
+    { value: "TN", label: "Torneos Nacionales" },
+    { value: "TI", label: "Torneos Internacionales" },
   ];
 
   useEffect(() => {
@@ -46,9 +41,8 @@ export default function Noticias() {
 
   const handleCategoryChange = (categoryValue) => {
     setCategory(categoryValue);
-    const selected = categories.find((cat) => cat.value === categoryValue);
-
     setIsDropdownOpen(false);
+    setIsMobileMenuOpen(false);
     setCurrentPage(1);
   };
 
@@ -56,123 +50,142 @@ export default function Noticias() {
     categories.find((cat) => cat.value === category) || categories[0];
 
   return (
-    <div className="pl-[70px] flex flex-col w-full min-h-screen ">
-      <Sidebar active={"noticias"} />
+    <div className="pl-[70px] md:pl-0 flex flex-col min-h-screen">
+      {/* Sidebar para mobile */}
+      <div className="md:hidden fixed top-0 left-0 z-50">
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="m-2 p-2 rounded-lg bg-zinc-800 text-white"
+        >
+          <i className="bx bx-menu text-2xl"></i>
+        </button>
+      </div>
 
-      {/* Header con título y selector */}
-      <header className="w-full bg-zinc-900 py-6">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <h2 className="text-2xl lg:text-3xl font-bold text-white text-center md:text-left italic">
-              NOTICIAS
-            </h2>
-
-            {/* Selector mejorado para desktop */}
-            <div className="relative w-full md:w-64">
-              <p className="text-gray-400 text-sm mb-1  text-center animate-pulse">
-                Selecciona una categoría ▼
-              </p>
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center justify-between w-full px-4 py-3 bg-zinc-800 text-white rounded-lg border border-zinc-700 hover:bg-zinc-700 transition-colors"
-                aria-label="Seleccionar categoría"
-              >
-                <div className="flex items-center">
-                  {selectedCategory.logo && (
-                    <img
-                      src={selectedCategory.logo}
-                      alt={selectedCategory.label}
-                      className="w-6 h-6 mr-3 rounded-full object-cover"
-                    />
-                  )}
-                  <span className="truncate">{selectedCategory.label}</span>
-                </div>
-                <svg
-                  className={`w-5 h-5 ml-2 transition-transform ${
-                    isDropdownOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-
-              {isDropdownOpen && (
-                <div className="absolute z-20 mt-2 w-full bg-zinc-800 border border-zinc-700 rounded-lg shadow-xl max-h-80 overflow-y-auto">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat.value || "all"}
-                      onClick={() => handleCategoryChange(cat.value)}
-                      className="flex items-center w-full px-4 py-3 text-left text-white hover:bg-zinc-700 transition-colors border-b border-zinc-700 last:border-b-0"
-                    >
-                      {cat.logo && (
-                        <img
-                          src={cat.logo}
-                          alt={cat.label}
-                          className="w-6 h-6 mr-3 rounded-full object-cover"
-                        />
-                      )}
-                      <span>{cat.label}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </header>
+      <Sidebar
+        active={"noticias"}
+        isMobileOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
 
       {/* Contenido principal */}
-      <main className="flex-1">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          {/* Grid de noticias */}
-          <section
-            id="nSection"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8"
-          >
+      <main className="flex-1 md:pl-[70px] ">
+        {/* Header */}
+        <header className="w-full bg-zinc-900 py-4 md:py-6 px-4 sticky top-0 z-40 border-b border-white/10">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <img src={logoSuela} alt="" className="h-8 object-contain" />
+              <h2 className="text-xl md:text-2xl font-bold text-white text-center md:text-left">
+                NOTICIAS
+              </h2>
+
+
+              {/* Selector para mobile */}
+              <div className="md:hidden">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="flex items-center justify-between w-full px-4 py-2 bg-zinc-800 text-white rounded-lg border border-white/10"
+                >
+                  <span className="text-sm">{selectedCategory.label}</span>
+                  <i
+                    className={`bx bx-chevron-down ml-2 transition-transform ${
+                      isDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  ></i>
+                </button>
+
+                {isDropdownOpen && (
+                  <div className="absolute z-20 mt-1 w-[calc(100%-32px)] bg-zinc-800 border border-white/10 rounded-lg shadow-lg">
+                    {categories.map((cat) => (
+                      <button
+                        key={cat.value || "all"}
+                        onClick={() => handleCategoryChange(cat.value)}
+                        className="flex items-center w-full px-4 py-2 text-sm text-white hover:bg-zinc-700 border-b border-white/10 last:border-b-0"
+                      >
+                        {cat.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Selector para desktop */}
+              <div className="hidden md:block relative w-full md:w-64">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="flex items-center justify-between w-full px-4 py-2 bg-zinc-800 text-white rounded-lg border border-white/10 hover:bg-zinc-700"
+                >
+                  <span className="text-sm">{selectedCategory.label}</span>
+                  <i
+                    className={`bx bx-chevron-down ml-2 transition-transform ${
+                      isDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  ></i>
+                </button>
+
+                {isDropdownOpen && (
+                  <div className="absolute z-20 mt-1 w-full bg-zinc-800 border border-white/10 rounded-lg shadow-lg">
+                    {categories.map((cat) => (
+                      <button
+                        key={cat.value || "all"}
+                        onClick={() => handleCategoryChange(cat.value)}
+                        className="flex items-center w-full px-4 py-2 text-sm text-white hover:bg-zinc-700 border-b border-white/10 last:border-b-0"
+                      >
+                        {cat.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Grid de noticias */}
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
             {currentNotices?.length > 0 ? (
               currentNotices.map((notice, index) => (
-                <Notices
+                <motion.div
                   key={index}
-                  id={notice._id}
-                  title={notice.title}
-                  subtitle={notice.subtitle}
-                  images={notice.images}
-                  videos={notice.videos}
-                  content={notice.content}
-                  category={notice.category}
-                  author={notice.author}
-                  date={notice.date}
-                />
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                >
+                  <Notices
+                    id={notice._id}
+                    title={notice.title}
+                    subtitle={notice.subtitle}
+                    images={notice.images}
+                    videos={notice.videos}
+                    author={notice.author}
+                    date={notice.date}
+                  />
+                </motion.div>
               ))
             ) : (
               <div className="col-span-full">
                 <NoticeLoaderComponent />
               </div>
             )}
-          </section>
+          </div>
 
           {/* Paginación */}
-          <div className="flex justify-center mt-8">
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <Pagination
-                currentPage={currentPage}
-                layout="pagination"
-                nextLabel="Siguiente"
-                onPageChange={setCurrentPage}
-                previousLabel="Anterior"
-                showIcons
-                totalPages={totalPages}
-              />
+          {totalPages > 1 && (
+            <div className="flex justify-center mt-8">
+              <div className="bg-zinc-800 p-2 rounded-lg border border-white/10">
+                <Pagination
+                  currentPage={currentPage}
+                  layout="pagination"
+                  nextLabel=">"
+                  previousLabel="<"
+                  onPageChange={setCurrentPage}
+                  showIcons
+                  totalPages={totalPages}
+                  className="text-white"
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </main>
 

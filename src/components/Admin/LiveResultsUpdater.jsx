@@ -242,7 +242,7 @@ const LiveResultsUpdater = () => {
       </div>
 
       <div className="overflow-x-auto">
-        <Table>
+        <Table >
           <Table.Head>
             <Table.HeadCell>Fecha</Table.HeadCell>
             <Table.HeadCell>Local</Table.HeadCell>
@@ -251,15 +251,19 @@ const LiveResultsUpdater = () => {
             <Table.HeadCell>Estado</Table.HeadCell>
             <Table.HeadCell>Acciones</Table.HeadCell>
           </Table.Head>
-          <Table.Body>
+          <Table.Body className="border">
             {filteredMatches.map((match) => (
-              <Table.Row key={match._id}>
-                <Table.Cell>
+              <Table.Row className="border" key={match._id}>
+                <Table.Cell className="text-white">
                   {new Date(match.date).toLocaleDateString()} {match.time}
                 </Table.Cell>
-                <Table.Cell>{match?.local?.name}</Table.Cell>
-                <Table.Cell>{match?.visitor?.name}</Table.Cell>
-                <Table.Cell>
+                <Table.Cell className="text-white">
+                  {match?.local?.name}
+                </Table.Cell>
+                <Table.Cell className="text-white">
+                  {match?.visitor?.name}
+                </Table.Cell>
+                <Table.Cell className="text-white">
                   <div className="flex items-center gap-2">
                     <TextInput
                       type="number"
@@ -282,7 +286,7 @@ const LiveResultsUpdater = () => {
                   {(match.status === "penalties" ||
                     match.penaltyScore?.local > 0 ||
                     match.penaltyScore?.visitor > 0) && (
-                    <div className="mt-1 text-xs text-gray-600">
+                    <div className="mt-1 text-xs text-white">
                       Penales:
                       <TextInput
                         type="number"

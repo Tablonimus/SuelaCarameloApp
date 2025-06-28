@@ -1,8 +1,8 @@
-import { Spinner } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import Sidebar from "../NavBar/Sidebar";
+import { motion } from "framer-motion";
 
 export default function Notices({
   id,
@@ -16,50 +16,54 @@ export default function Notices({
   return (
     <>
       <Sidebar active="noticias" />
-      <Link
-        to={`/noticias/${id}`}
-        className="block bg-zinc-900 rounded-lg border border-zinc-700 overflow-hidden max-w-sm transition-transform hover:scale-[1.01]"
-      >
-        {/* Imagen de portada */}
-        {images?.[0] && (
-          <img
-            src={images[0]}
-            alt="Imagen de la noticia"
-            className="w-full h-52 object-cover"
-          />
-        )}
+      <motion.div whileHover={{ y: -5 }} className="max-w-sm">
+        <Link
+          to={`/noticias/${id}`}
+          className="block bg-zinc-900 rounded-xl border border-white/10 overflow-hidden transition-all hover:shadow-lg hover:border-orange-500/30"
+        >
+          {/* Imagen de portada o video */}
+          <div className="relative w-full aspect-video bg-zinc-800">
+            {images?.[0] && (
+              <img
+                src={images[0]}
+                alt="Imagen de la noticia"
+                className="w-full h-full object-cover"
+              />
+            )}
 
-        {/* Video embebido */}
-        {videos?.length >= 1 ? (
-          <div className="w-full aspect-video">
-            <YoutubeEmbed embedId={videos} />
+            {videos?.length >= 1 && (
+              <div className="absolute inset-0">
+                <YoutubeEmbed embedId={videos} />
+              </div>
+            )}
           </div>
-        ) : videos?.length ? (
-          <div className="flex justify-center items-center h-52">
-            <Spinner color="gray" size="lg" />
+
+          {/* Contenido */}
+          <div className="p-4 space-y-3">
+            <div className="flex justify-between items-start gap-2">
+              <h2 className="text-sm font-semibold text-white line-clamp-2">
+                {title}
+              </h2>
+              <span className="text-xs text-gray-400 whitespace-nowrap">
+                {new Date(date).toLocaleDateString("es-AR")}
+              </span>
+            </div>
+
+            <p className="text-xs text-zinc-400 line-clamp-2">{subtitle}</p>
+
+            <div className="flex items-center gap-2 pt-2 border-t border-white/10">
+              {author.img && (
+                <img
+                  src={author.img}
+                  alt={author.name}
+                  className="w-5 h-5 rounded-full object-cover"
+                />
+              )}
+              <span className="text-xs text-zinc-300">{author.name}</span>
+            </div>
           </div>
-        ) : null}
-
-        {/* Contenido */}
-        <div className="p-4 space-y-2">
-          <h2 className="text-base font-semibold text-white leading-snug">
-            {title}
-          </h2>
-
-          <p className="text-sm text-zinc-400 leading-tight">
-            {subtitle.split(" ").slice(0, 12).join(" ")}...
-          </p>
-
-          <div className="flex items-center gap-2 pt-3 border-t border-zinc-800">
-            <img
-              src={author.img}
-              alt={author.name}
-              className="w-6 h-6 rounded-full object-cover"
-            />
-            <span className="text-sm text-zinc-100">{author.name}</span>
-          </div>
-        </div>
-      </Link>
+        </Link>
+      </motion.div>
     </>
   );
 }
