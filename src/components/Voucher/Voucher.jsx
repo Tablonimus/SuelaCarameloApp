@@ -7,7 +7,7 @@ const Voucher = (props) => {
     <div className="px-1">
       <main
         id="vouchers-wrapper"
-        className="w-full  flex pl-[72px] mt-6 md:w-[800px] lg:w-[950px] lg:mt-12"
+        className="w-full  flex  mt-6 md:w-[800px] lg:w-[950px] lg:mt-12"
       >
         <section
           id="voucher-boxL"

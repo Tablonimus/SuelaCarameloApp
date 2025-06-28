@@ -23,7 +23,7 @@ const Descuentos = () => {
     },
   ];
   return (
-    <>
+    <div className="pl-[70px]  flex flex-col justify-between min-h-screen">
       <Sidebar active={"cupones"} />
 
       <header className="w-full flex flex-col justify-center items-center bg-zinc-900 gap-3 py-4 lg:py-6">
@@ -40,7 +40,7 @@ const Descuentos = () => {
         ))}
       </section>
       <FooterComp />
-    </>
+    </div>
   );
 };
 export default Descuentos;

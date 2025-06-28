@@ -6,7 +6,7 @@ import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 export default function ContactUs() {
   return (
-    <>
+    <div className="pl-[70px]  flex flex-col justify-between min-h-screen">
       <Sidebar active={"contacto"} />
 
       <header className="w-full flex flex-col justify-center items-center bg-zinc-900 gap-3 py-4 lg:py-6">
@@ -14,7 +14,7 @@ export default function ContactUs() {
           SUELA CARAMELO - CONTACTO
         </h2>
       </header>
-      <main className="flex flex-col justify-start gap-6 items-center  pl-[70px] pb-10  overflow-hidden">
+      <main className="flex flex-col justify-start gap-6 items-center pb-10  overflow-hidden">
         <img className=" mt-8 w-44 mb-4 lg:w-52" src={logoSC} alt="" />
         <h4 className="  max-w-56 font-semibold text-center leading-6 text-zinc-800 text-2xl lg:text-4xl lg:max-w-96 lg:mt-4 lg:font-bold ">
           Ponte en contacto con nosotros
@@ -57,6 +57,6 @@ export default function ContactUs() {
         </ul>
       </main>
       <FooterComp />
-    </>
+    </div>
   );
 }
