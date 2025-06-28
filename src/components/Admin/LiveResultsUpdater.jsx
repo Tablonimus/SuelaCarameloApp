@@ -9,12 +9,22 @@ import {
   Select,
   Alert,
   Spinner,
+  Toast,
 } from "flowbite-react";
-import { FaEdit, FaTrash, FaFutbol, FaSave, FaPlus } from "react-icons/fa";
+import {
+  FaEdit,
+  FaTrash,
+  FaFutbol,
+  FaSave,
+  FaPlus,
+  FaCheckCircle,
+  FaExclamationCircle,
+} from "react-icons/fa";
 
 const statusLabels = {
   pending: "Pendiente",
   first_half: "1er Tiempo",
+  halftime: "Descanso",
   second_half: "2do Tiempo",
   extra_time: "Tiempo Extra",
   penalties: "Penales",
@@ -28,6 +38,7 @@ const LiveResultsUpdater = () => {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [newMatch, setNewMatch] = useState({
     place: "",
@@ -45,8 +56,8 @@ const LiveResultsUpdater = () => {
   const [teams, setTeams] = useState([]);
   const [filterCategory, setFilterCategory] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
-  // const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
-  const BASE_URL = "http://localhost:3000/sc";
+  const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
+  // const BASE_URL = "http://localhost:3000/sc";
 
   const fetchData = async () => {
     try {
@@ -71,8 +82,6 @@ const LiveResultsUpdater = () => {
   }, []);
 
   const filteredMatches = matches.filter((match) => {
-    console.log(match);
-
     const categoryMatch =
       filterCategory === "all" || match.category === filterCategory;
     const statusMatch =
@@ -104,7 +113,6 @@ const LiveResultsUpdater = () => {
   const saveMatchChanges = async (matchId) => {
     try {
       const matchToUpdate = matches.find((m) => m._id === matchId);
-      console.log(matchToUpdate);
       const response = await fetch(BASE_URL + `/matches/${matchId}/score`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -120,8 +128,11 @@ const LiveResultsUpdater = () => {
       setMatches((prev) =>
         prev.map((m) => (m._id === matchId ? res.match : m))
       );
+      setSuccess("Partido actualizado exitosamente.");
+      setTimeout(() => setSuccess(null), 4000);
     } catch {
       setError("Error al guardar los cambios");
+      setTimeout(() => setError(null), 4000);
     }
   };
 
@@ -133,8 +144,11 @@ const LiveResultsUpdater = () => {
       });
       if (!res.ok) throw new Error();
       setMatches((prev) => prev.filter((m) => m._id !== matchId));
+      setSuccess("Partido eliminado correctamente.");
+      setTimeout(() => setSuccess(null), 4000);
     } catch {
       setError("Error al eliminar el partido");
+      setTimeout(() => setError(null), 4000);
     }
   };
 
@@ -142,6 +156,7 @@ const LiveResultsUpdater = () => {
     try {
       if (!newMatch.local || !newMatch.visitor || !newMatch.category) {
         setError("Debes completar todos los campos obligatorios.");
+        setTimeout(() => setError(null), 4000);
         return;
       }
       const res = await fetch(BASE_URL + "/matches", {
@@ -165,16 +180,27 @@ const LiveResultsUpdater = () => {
         score: { local: 0, visitor: 0 },
         penaltyScore: { local: 0, visitor: 0 },
       });
+      setSuccess("Partido creado exitosamente.");
+      setTimeout(() => setSuccess(null), 4000);
     } catch {
       setError("Error al crear el partido");
+      setTimeout(() => setError(null), 4000);
     }
   };
 
-  if (loading) return <Spinner size="xl" className="mx-auto my-8" />;
-  if (error) return <Alert color="failure">{error}</Alert>;
-
   return (
     <div className="p-4">
+      {error && (
+        <Alert color="failure" icon={FaExclamationCircle} className="mb-4">
+          {error}
+        </Alert>
+      )}
+      {success && (
+        <Alert color="success" icon={FaCheckCircle} className="mb-4">
+          {success}
+        </Alert>
+      )}
+
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-semibold">Gestión de Partidos</h2>
         <Button onClick={() => setShowModal(true)}>

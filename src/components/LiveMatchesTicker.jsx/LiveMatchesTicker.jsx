@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FaFutbol, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
-const BASE_URL = "http://localhost:3000/sc";
+const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
+// const BASE_URL = "http://localhost:3000/sc";
 
 const statusMap = {
   first_half: "1T",
+  halftime: "Descanso",
   second_half: "2T",
-  extra_time: "ET",
+  extra_time: "Tiempo Extra",
   penalties: "Penales",
   pending: "Próximo",
   finished: "Finalizado",
@@ -29,7 +30,7 @@ const LiveMatchesTicker = () => {
         setMatches(data);
         setLoading(false);
         console.log(data);
-        
+
         const interval = setInterval(async () => {
           const updated = await fetch(BASE_URL + "/matches/live");
           setMatches(await updated.json());
@@ -90,7 +91,7 @@ const LiveMatchesTicker = () => {
         {matches.map((match) => (
           <div
             key={match._id}
-            className="inline-block px-4 py-3 bg-zinc-800 rounded-xl border border-zinc-700 min-w-[280px] max-w-[320px] shadow-sm"
+            className="inline-block bg-zinc-800 border border-zinc-700 p-4 rounded-2xl shadow-md transition-transform hover:scale-[1.02]"
           >
             <div className="flex items-center justify-between">
               {/* Local team */}
@@ -134,6 +135,7 @@ const LiveMatchesTicker = () => {
                 <div className="flex items-center mt-1 text-xs text-gray-200">
                   {[
                     "first_half",
+                    "halftime",
                     "second_half",
                     "extra_time",
                     "penalties",
@@ -143,9 +145,7 @@ const LiveMatchesTicker = () => {
                   {match.status === "finished" && (
                     <FaFutbol className="text-white mr-1" />
                   )}
-                  <span className="uppercase">
-                    {statusMap[match.status] ?? "-"}
-                  </span>
+                  <span className="">{statusMap[match.status] ?? "-"}</span>
                 </div>
 
                 {match.status === "pending" && (
@@ -170,13 +170,21 @@ const LiveMatchesTicker = () => {
           </div>
         ))}
       </div>
-
       <button
         onClick={() => scroll("right")}
         className="absolute right-0 top-0 bottom-0 z-10 bg-black/30 hover:bg-black/50 px-2 flex items-center"
       >
         <FaChevronRight className="text-white text-xl" />
       </button>
+      {/* Links fijos debajo del ticker */}
+      <div className="flex justify-center gap-6 mt-3 text-sm text-blue-300 underline">
+        <a href="/fixture" className="hover:text-blue-200 transition">
+          Ver Fixture
+        </a>
+        <a href="/posiciones" className="hover:text-blue-200 transition">
+          Ver Posiciones
+        </a>
+      </div>
     </div>
   );
 };
