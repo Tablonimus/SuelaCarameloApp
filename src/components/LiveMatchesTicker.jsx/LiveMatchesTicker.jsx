@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { FaFutbol, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
+// const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
+const BASE_URL = "http://localhost:3000/sc";
+
+const statusMap = {
+  first_half: "1T",
+  second_half: "2T",
+  extra_time: "ET",
+  penalties: "Penales",
+  pending: "Próximo",
+  finished: "Finalizado",
+  suspended: "Suspendido",
+  canceled: "Cancelado",
+  postponed: "Postergado",
+};
 
 const LiveMatchesTicker = () => {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  // Fetch matches data
   useEffect(() => {
     const fetchLiveMatches = async () => {
       try {
@@ -16,17 +28,16 @@ const LiveMatchesTicker = () => {
         const data = await response.json();
         setMatches(data);
         setLoading(false);
-
-        // Refresh every 30s
+        console.log(data);
+        
         const interval = setInterval(async () => {
-          const updatedResponse = await fetch(BASE_URL + "/matches/live");
-          const updatedData = await updatedResponse.json();
-          setMatches(updatedData);
+          const updated = await fetch(BASE_URL + "/matches/live");
+          setMatches(await updated.json());
         }, 30000);
 
         return () => clearInterval(interval);
-      } catch (error) {
-        console.error("Error fetching matches:", error);
+      } catch (err) {
+        console.error("Error fetching matches:", err);
         setLoading(false);
       }
     };
@@ -62,7 +73,6 @@ const LiveMatchesTicker = () => {
 
   return (
     <div className="relative bg-zinc-900 py-3 px-2 text-white overflow-hidden">
-      {/* Left scroll button */}
       {scrollPosition > 0 && (
         <button
           onClick={() => scroll("left")}
@@ -72,7 +82,6 @@ const LiveMatchesTicker = () => {
         </button>
       )}
 
-      {/* Match ticker */}
       <div
         id="matches-ticker"
         className="flex overflow-x-auto space-x-4 px-4 scrollbar-none"
@@ -111,22 +120,31 @@ const LiveMatchesTicker = () => {
                       : match.score?.visitor ?? 0}
                   </span>
                 </div>
-
+                {(match.status === "penalties" ||
+                  (match.status === "finished" &&
+                    (match.penaltyScore?.local > 0 ||
+                      match.penaltyScore?.visitor > 0))) && (
+                  <div className="text-xs text-gray-300 mt-0.5">
+                    <span className="ml-1">
+                      ({match.penaltyScore?.local ?? 0}) - (
+                      {match.penaltyScore?.visitor ?? 0})
+                    </span>
+                  </div>
+                )}
                 <div className="flex items-center mt-1 text-xs text-gray-200">
-                  {match.status === "playing" && (
+                  {[
+                    "first_half",
+                    "second_half",
+                    "extra_time",
+                    "penalties",
+                  ].includes(match.status) && (
                     <FaFutbol className="text-green-400 animate-pulse mr-1" />
                   )}
                   {match.status === "finished" && (
                     <FaFutbol className="text-white mr-1" />
                   )}
                   <span className="uppercase">
-                    {{
-                      playing: "En vivo",
-                      finished: "Finalizado",
-                      pending: "Próximo",
-                      postponed: "Postergado",
-                      canceled: "Suspendido",
-                    }[match.status] ?? "-"}
+                    {statusMap[match.status] ?? "-"}
                   </span>
                 </div>
 
@@ -153,7 +171,6 @@ const LiveMatchesTicker = () => {
         ))}
       </div>
 
-      {/* Right scroll button */}
       <button
         onClick={() => scroll("right")}
         className="absolute right-0 top-0 bottom-0 z-10 bg-black/30 hover:bg-black/50 px-2 flex items-center"
