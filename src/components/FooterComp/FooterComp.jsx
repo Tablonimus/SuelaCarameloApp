@@ -1,5 +1,3 @@
-import React from "react";
-
 import b1 from "../../assets/images/b1.png";
 import b2 from "../../assets/images/b2.png";
 import b3 from "../../assets/images/b3.png";
@@ -11,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export default function FooterComp() {
   return (
-    <div className="bg-zinc-900 rounded-t-lg w-full py-4">
+    <div className="bg-zinc-900  w-full py-4">
       <div className="w-full text-center bg-zinc-900">
         <section className="slider lg:w-full">
           <div className="slide-track">
@@ -96,7 +94,7 @@ export default function FooterComp() {
                 <img className="object-contain h-16  " src={b4} />
               </a>
             </div>
-        
+
             <div className="slide">
               <a
                 target="_blank"

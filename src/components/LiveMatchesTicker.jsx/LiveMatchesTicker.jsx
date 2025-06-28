@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logoSC from "../../assets/images/banner2.png";
 import { FaFutbol, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
@@ -74,6 +75,10 @@ const LiveMatchesTicker = () => {
 
   return (
     <div className="relative bg-zinc-900 py-3 px-2 text-white overflow-hidden">
+      <div className="w-full flex justify-center items-center pb-2">
+        <img className="w-32 md:w-44 " src={logoSC} alt="Logo Suela Caramelo" />
+      </div>
+
       {scrollPosition > 0 && (
         <button
           onClick={() => scroll("left")}

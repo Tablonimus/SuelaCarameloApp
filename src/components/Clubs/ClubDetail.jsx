@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./card.css";
-import "./club.css";
 import PlayerCard from "./PlayerCard";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 import axios from "axios";
-import { Spinner } from "flowbite-react";
 
 const positions = [
   "Arquero",
@@ -51,18 +48,16 @@ export default function ClubDetail() {
   return (
     <>
       <Sidebar active={"club"} />
-      <main className="ml-[70px] min-h-screen px-2 flex flex-col items-center pt-16 lg:pt-28 ">
+      <main className="ml-[70px] min-h-screen px-2 flex flex-col items-center pt-16 lg:pt-28">
         {/* Flecha atrás */}
         <Link to={"/equipos"}>
-          <button className=" btn-back ml-[60px]">
-            {" "}
+          <button className="btn-back ml-[60px]">
             <i className="bx bx-left-arrow-circle"></i>
           </button>
         </Link>
-        {/* Club */}
 
-        {/* Equipos: Grupo de botones */}
-        <section className="flex flex-col bg-white/35 rounded-xl px-1">
+        {/* Plantilla del Club */}
+        <section className="flex flex-col bg-black/50 rounded-xl px-2 w-full max-w-6xl text-white">
           <div className="flex flex-col gap-2 text-center py-4">
             <h1 className="text-2xl font-bold underline">PLANTILLA</h1>
             <picture className="w-full flex items-center justify-center">
@@ -73,6 +68,7 @@ export default function ClubDetail() {
               />
             </picture>
           </div>
+
           <section className="flex flex-col mt-10 w-full justify-center items-center gap-4">
             {positions?.map(
               (position, index) =>
@@ -80,8 +76,11 @@ export default function ClubDetail() {
                   (player) =>
                     player?.position.toLowerCase() === position.toLowerCase()
                 ) && (
-                  <section key={index} className="w-full  border-t py-4">
-                    <h3 className="text-center font-bold text-zinc-900 text-2xl">
+                  <section
+                    key={index}
+                    className="w-full border-t py-6 mb-6 px-2 sm:px-4"
+                  >
+                    <h3 className="text-center font-bold  text-lg md:text-xl lg:text-2xl mb-4">
                       {position.toUpperCase()}
                     </h3>
                     <div class="gridC">
@@ -89,9 +88,7 @@ export default function ClubDetail() {
                         player?.position.toLowerCase() ===
                         position.toLowerCase() ? (
                           <PlayerCard player={player} key={index} />
-                        ) : (
-                          false
-                        )
+                        ) : null
                       )}
                     </div>
                   </section>
@@ -100,7 +97,6 @@ export default function ClubDetail() {
           </section>
         </section>
       </main>
-      {/* EQUIPOS */}
 
       <FooterComp />
     </>

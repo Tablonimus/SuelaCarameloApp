@@ -26,7 +26,7 @@ const Posiciones = () => {
     <div className="flex flex-col justify-between  ">
       <Sidebar active={"positions"} />
       <section className="pl-[70px] w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-4 lg:py-6">
-        <h2 className="text-xl text-center lg:py-2 lg:text-3xl font-bold text-white">
+        <h2 className="text-xl border-b w-full  text-center pb-2 italic lg:mb-4 lg:text-2xl  text-gray-200 font-bold uppercase">
           {`${
             positionState === "F1" ? "FSP Femenino" : "FSP Masculino"
           } - Posiciones`}

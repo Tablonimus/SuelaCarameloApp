@@ -13,62 +13,57 @@ const Home = () => {
   const images = [imgHome1, imgHome2, imgHome3, imgHome4];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Barra en vivo */}
-      <div className="w-full">
-        <LiveMatchesTicker />
-      </div>
-
-      {/* Contenido principal */}
-      <main className="flex flex-col items-center w-full px-4">
-        {/* Logo */}
-        <img
-          className="w-32 md:w-44 my-6"
-          src={logoSC}
-          alt="Logo Suela Caramelo"
-        />
-
-        {/* Carrusel */}
-        <div className="w-full h-64 sm:h-80 md:h-[28rem] mb-6">
-          <Carousel
-            leftControl={<></>}
-            rightControl={<></>}
-            draggable
-            slide
-            slideInterval={3000}
-          >
-            {images.map((image, i) => (
-              <img
-                key={i}
-                src={image}
-                alt={`Imagen ${i + 1}`}
-                className="w-full h-full object-cover"
-              />
-            ))}
-          </Carousel>
+    <div className="flex flex-col justify-between min-h-screen">
+      <div>
+        {/* Barra en vivo */}
+        <div className="w-full">
+          <LiveMatchesTicker />
         </div>
 
-        {/* Botones */}
-        <section className="flex flex-col items-center gap-4 w-full max-w-lg mb-12">
-          {[
-            { to: "/cupones/#inicio", label: "Cupones y Descuentos" },
-            { to: "/noticias", label: "Noticias" },
-            { to: "/fixture", label: "Fixture" },
-            { to: "/posiciones", label: "Posiciones" },
-            { to: "/equipos", label: "Equipos" },
-          ].map(({ to, label }) => (
-            <Link
-              key={to}
-              to={to}
-              className="w-full text-center bg-zinc-900 text-white text-base md:text-lg font-medium rounded-xl py-3 transition hover:bg-black hover:text-white"
+        {/* Contenido principal */}
+        <main className="flex flex-col items-center w-full lg:px-4 py-4 gap-4">
+          {/* Carrusel */}
+          <div className="w-full h-64 sm:h-80 md:h-[30rem]">
+            <Carousel
+              leftControl={<></>}
+              rightControl={<></>}
+              draggable
+              slide
+              slideInterval={3000}
             >
-              {label}
-            </Link>
-          ))}
-        </section>
-      </main>
+              {images.map((image, i) => (
+                <img
+                  key={i}
+                  src={image}
+                  alt={`Imagen ${i + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              ))}
+            </Carousel>
+          </div>
 
-      {/* Footer */}
+          {/* Botones */}
+          <section className="flex flex-col items-center gap-4 w-full max-w-lg mb-12">
+            {[
+              { to: "/cupones/#inicio", label: "Cupones y Descuentos" },
+              { to: "/noticias", label: "Noticias" },
+              { to: "/fixture", label: "Fixture" },
+              { to: "/posiciones", label: "Posiciones" },
+              { to: "/equipos", label: "Equipos" },
+            ].map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                className="w-full text-center bg-zinc-900 text-white text-base md:text-lg font-medium rounded-xl py-3 transition hover:bg-black hover:text-white"
+              >
+                {label}
+              </Link>
+            ))}
+          </section>
+        </main>
+
+        {/* Footer */}
+      </div>
       <FooterComp />
     </div>
   );

@@ -26,13 +26,15 @@ const Descuentos = () => {
     <>
       <Sidebar active={"cupones"} />
 
+      <header className="w-full flex flex-col justify-center items-center bg-zinc-900 gap-3 py-4 lg:py-6">
+        <h2 className="text-xl border-b w-full  text-center pb-2 italic lg:mb-4 lg:text-2xl  text-gray-200 font-bold">
+          DESCUENTOS EXCLUSIVOS
+        </h2>
+      </header>
       <section
         id="inicio"
         className="w-full h-auto py-4 lg:py-14 flex flex-col justify-center items-center lg:pb-20 "
       >
-        <h2 className="pl-[70px] text-2xl text-center text-gray-100 font-bold">
-          CUPONES DE DESCUENTOS EXCLUSIVOS
-        </h2>
         {sponsors.map((sponsor, index) => (
           <Voucher key={index} sponsor={sponsor} />
         ))}
