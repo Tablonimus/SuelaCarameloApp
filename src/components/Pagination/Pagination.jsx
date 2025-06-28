@@ -1,40 +1,120 @@
 import React from "react";
 
-// import lata from "../../assets/images/lata.png";
-
 export default function Pagination({
   fixturesPerPage,
-  fixtures,
-  pagination,
+  totalFixtures,
   currentPage,
+  onPageChange,
+  vertical = false,
 }) {
   const pageNumbers = [];
+  const totalPages = Math.ceil(totalFixtures / fixturesPerPage);
+  const maxVisibleButtons = 5;
 
-  for (let i = 1; i <= Math.ceil(fixtures / fixturesPerPage); i++) {
+  for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
 
+  const getVisiblePages = () => {
+    if (totalPages <= maxVisibleButtons) return pageNumbers;
+
+    let start = Math.max(1, currentPage - 2);
+    let end = Math.min(totalPages, currentPage + 2);
+
+    if (currentPage <= 3) {
+      end = maxVisibleButtons;
+    } else if (currentPage >= totalPages - 2) {
+      start = totalPages - maxVisibleButtons + 1;
+    }
+
+    const visible = [];
+    for (let i = start; i <= end; i++) {
+      visible.push(i);
+    }
+
+    return visible;
+  };
+
+  const visiblePages = getVisiblePages();
+
   return (
-    <div className="p-2 flex flex-col gap-2 bg-zinc-900">
-      <div className="flex justify-center w-fit bg-zinc-900">
-        {pageNumbers?.map((number) => (
+    <div
+      className={`flex ${
+        vertical ? "flex-col space-y-2" : "flex-row space-x-2"
+      } items-center justify-center`}
+    >
+      {/* Botón Anterior */}
+      {currentPage > 1 && (
+        <button
+          onClick={() => onPageChange(currentPage - 1)}
+          className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md bg-zinc-700 text-white hover:bg-zinc-600 transition-colors`}
+          aria-label="Página anterior"
+        >
+          {vertical ? "↑" : "←"}
+        </button>
+      )}
+
+      {/* Primer botón + elipsis */}
+      {visiblePages[0] > 1 && (
+        <>
           <button
-            key={number}
-            className={
-              currentPage === number
-                ? "w-10 h-10 m-1 rounded-full bg-[#F17023] border-2 border-white hover:text-orange-400"
-                : "w-10 h-10 m-1 rounded-full bg-zinc-700/60 hover:text-orange-400"
-            }
-            onClick={() => pagination(number)}
+            onClick={() => onPageChange(1)}
+            className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md ${
+              1 === currentPage
+                ? "bg-orange-500 text-white"
+                : "bg-zinc-700 text-white hover:bg-zinc-600"
+            } transition-colors`}
           >
-       
-              <span className="text-white font-bold">
-                {number.toString().length === 1 ? `${number}` : number}{" "}
-              </span>
-          
+            1
           </button>
-        ))}
-      </div>
+          {visiblePages[0] > 2 && <span className="text-white">...</span>}
+        </>
+      )}
+
+      {/* Botones visibles */}
+      {visiblePages.map((number) => (
+        <button
+          key={number}
+          onClick={() => onPageChange(number)}
+          className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md transition-colors ${
+            currentPage === number
+              ? "bg-orange-500 text-white"
+              : "bg-zinc-700 text-white hover:bg-zinc-600"
+          }`}
+        >
+          {number}
+        </button>
+      ))}
+
+      {/* Último botón + elipsis */}
+      {visiblePages[visiblePages.length - 1] < totalPages && (
+        <>
+          {visiblePages[visiblePages.length - 1] < totalPages - 1 && (
+            <span className="text-white">...</span>
+          )}
+          <button
+            onClick={() => onPageChange(totalPages)}
+            className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md ${
+              totalPages === currentPage
+                ? "bg-orange-500 text-white"
+                : "bg-zinc-700 text-white hover:bg-zinc-600"
+            } transition-colors`}
+          >
+            {totalPages}
+          </button>
+        </>
+      )}
+
+      {/* Botón Siguiente */}
+      {currentPage < totalPages && (
+        <button
+          onClick={() => onPageChange(currentPage + 1)}
+          className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md bg-zinc-700 text-white hover:bg-zinc-600 transition-colors`}
+          aria-label="Página siguiente"
+        >
+          {vertical ? "↓" : "→"}
+        </button>
+      )}
     </div>
   );
 }
