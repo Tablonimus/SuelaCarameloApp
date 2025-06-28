@@ -22,11 +22,11 @@ const Fixture = () => {
   }, [fixtureState, activeNumber]);
 
   return (
-    <div className="flex flex-col justify-between min-h-screen ">
+    <div className="pl-[70px] flex flex-col justify-between min-h-screen ">
       <Sidebar active={"fixture"} />
 
       <main>
-        <section className="pl-[70px] w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-4 lg:py-6">
+        <section className=" w-full flex flex-col justify-center items-center bg-zinc-900 gap-2 py-4 lg:py-6">
           <h2 className="text-xl border-b w-full  text-center pb-2 italic lg:mb-4 lg:text-2xl  text-gray-200 font-bold uppercase">
             {`${
               fixtureState === "F1" ? "FSP Femenino" : "FSP Masculino"
@@ -81,7 +81,7 @@ const Fixture = () => {
           </picture>
         </section>
 
-        <section className="flex flex-col justify-center items-center ml-[70px] h-full">
+        <section className="flex flex-col justify-center items-center h-full">
           <FixturePagination
             fixtures={allFixtures}
             activeNumber={activeNumber}
