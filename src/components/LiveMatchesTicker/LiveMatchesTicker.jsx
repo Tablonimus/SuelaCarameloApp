@@ -216,12 +216,16 @@ const LiveMatchesTicker = () => {
                     </span>
                   </div>
 
-                  {match.status === "penalties" && (
-                    <div className="text-[10px] text-gray-300">
-                      ({match.penaltyScore?.local ?? 0}-
-                      {match.penaltyScore?.visitor ?? 0})
-                    </div>
-                  )}
+                  {match.status === "penalties" ||
+                    (match.penaltyScore?.local ||
+                    match.penaltyScore?.visitor ? (
+                      <div className="text-[10px] text-gray-300">
+                        ({match.penaltyScore?.local ?? 0}-
+                        {match.penaltyScore?.visitor ?? 0})
+                      </div>
+                    ) : (
+                      false
+                    ))}
 
                   <div className="flex items-center mt-1 text-[10px] text-gray-200">
                     {!["pending", "postponed"].includes(match.status) && (
@@ -253,11 +257,9 @@ const LiveMatchesTicker = () => {
 
               {match.status === "pending" && (
                 <div className="text-center text-[10px] text-gray-400 mt-1">
-                  {new Date(match.date).toLocaleDateString("es-AR", {
-                    day: "2-digit",
-                    month: "2-digit",
-                  })}{" "}
-                  {match.time}
+                  {`${parseInt(match.date.substr(8, 2))}/${parseInt(
+                    match.date.substr(5, 2)
+                  )} - ${match.time} hr`}
                 </div>
               )}
             </div>

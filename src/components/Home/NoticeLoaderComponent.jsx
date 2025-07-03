@@ -2,7 +2,7 @@ import React from "react";
 
 export default function NoticeLoaderComponent() {
   return (
-    <div className="flex flex-col justify-center items-center w-96  gap-5">
+    <div className="flex flex-col justify-center items-center w-78  gap-5">
       <div className="bg-black bg-opacity-80 p-1 rounded-lg shadow-inner shadow-white  w-11/12">
         <div className="animate-pulse h-64 object-cover  bg-gray-600 rounded-t-lg ">
           {" "}

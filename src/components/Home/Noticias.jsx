@@ -78,7 +78,6 @@ export default function Noticias() {
                 NOTICIAS
               </h2>
 
-
               {/* Selector para mobile */}
               <div className="md:hidden">
                 <button
@@ -143,14 +142,8 @@ export default function Noticias() {
         {/* Grid de noticias */}
         <div className="max-w-6xl mx-auto px-4 py-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-            {currentNotices?.length > 0 ? (
-              currentNotices.map((notice, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
+            {currentNotices?.length > 0
+              ? currentNotices.map((notice, index) => (
                   <Notices
                     id={notice._id}
                     title={notice.title}
@@ -160,13 +153,8 @@ export default function Noticias() {
                     author={notice.author}
                     date={notice.date}
                   />
-                </motion.div>
-              ))
-            ) : (
-              <div className="col-span-full">
-                <NoticeLoaderComponent />
-              </div>
-            )}
+                ))
+              : [1, 2, 3, 4].map((item) => <NoticeLoaderComponent />)}
           </div>
 
           {/* Paginación */}

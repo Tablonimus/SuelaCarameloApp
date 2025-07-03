@@ -25,7 +25,7 @@ const Home = () => {
   const featuredNews = allNotices.slice(0, 3);
 
   useEffect(() => {
-    dispatch(getAllNotices(activeTab === "A1" ? "A1" : "FEM"));
+    dispatch(getAllNotices(""));
 
     async function getTeams() {
       try {
@@ -218,7 +218,7 @@ const Home = () => {
               <div className="flex-1">
                 <h2 className="text-lg font-bold text-white">Equipos</h2>
                 <p className="text-xs text-zinc-300 mt-1">
-                  Conoce a los equipos y jugadores de la FSP.
+                  Conoce a los planteles del FSP.
                 </p>
               </div>
               <div className="text-orange-400 text-xl group-hover:translate-x-2 transition-transform">

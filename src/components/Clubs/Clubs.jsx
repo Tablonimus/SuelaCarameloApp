@@ -137,7 +137,7 @@ export default function Clubs() {
                         className="h-16 w-16 object-contain"
                       />
                       <p className="text-base font-medium text-white group-hover:text-orange-400">
-                        {club.name}
+                        {club.address ? club.address : club.name}
                       </p>
                     </Link>
                   ))}

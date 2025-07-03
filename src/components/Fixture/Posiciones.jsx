@@ -114,7 +114,7 @@ const Posiciones = () => {
           <>
             <div className="relative group max-w-xl w-full bg-zinc-900 p-4 rounded-lg">
               <h3 className="text-2xl text-center lg:text-3xl font-bold text-white mb-2">
-                Actual
+                En Juego
               </h3>
               <div
                 className="cursor-pointer group h-full"
