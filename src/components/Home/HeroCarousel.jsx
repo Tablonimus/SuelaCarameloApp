@@ -130,13 +130,13 @@ const HeroCarousel = () => {
               </div>
 
               {/* Texto descriptivo opcional */}
-              {image.name && (
+              {/* {image.name && (
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 md:p-6">
                   <h2 className="text-white text-xl md:text-3xl font-bold">
                     {image.name}
                   </h2>
                 </div>
-              )}
+              )} */}
             </div>
           ))}
         </div>

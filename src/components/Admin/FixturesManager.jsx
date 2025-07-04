@@ -108,7 +108,7 @@ const FixturesManager = () => {
         formData.append("folder", "fixtures");
 
         const response = await axios.post(
-          "https://api.cloudinary.com/v1_1/tu-cloud-name/image/upload",
+          "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
           formData
         );
         imageUrl = response.data.secure_url;
@@ -145,7 +145,7 @@ const FixturesManager = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 text-white">
       <h1 className="text-3xl font-bold mb-6">Gestión de Fixtures</h1>
 
       {error && (
@@ -159,7 +159,37 @@ const FixturesManager = () => {
         </Alert>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-gray-800 p-4 rounded-lg">
+      <div className="flex justify-between">
+        {activeFixture && (
+          <Card className="mb-6 text-black w-fit ">
+            <div className="flex flex-col md:flex-row gap-4">
+              <img
+                src={activeFixture.image}
+                alt="Activo"
+                className="w-24 rounded"
+              />
+              <div className="flex flex-col justify-center">
+                <h3 className="font-bold text-lg">
+                  Fecha {activeFixture.number} - {activeFixture.category}
+                </h3>
+                <p>
+                  {activeFixture.tournament} - {activeFixture.season}
+                </p>
+                <Badge color="success" className="w-fit mt-2">
+                  Activo
+                </Badge>
+              </div>
+            </div>
+          </Card>
+        )}
+
+        <div className="flex items-end justify-end mb-4  ">
+          <Button onClick={handleCreate}>
+            <FaPlus className="mr-2" /> Nuevo Fixture
+          </Button>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-gray-600 p-4 rounded-lg text-white">
         <div>
           <Label htmlFor="category" value="Categoría" />
           <Select
@@ -209,35 +239,6 @@ const FixturesManager = () => {
             ))}
           </Select>
         </div>
-      </div>
-
-      {activeFixture && (
-        <Card className="mb-6">
-          <div className="flex flex-col md:flex-row gap-4">
-            <img
-              src={activeFixture.image}
-              alt="Activo"
-              className="w-24 rounded"
-            />
-            <div className="flex flex-col justify-center">
-              <h3 className="font-bold text-lg">
-                Fecha {activeFixture.number} - {activeFixture.category}
-              </h3>
-              <p>
-                {activeFixture.tournament} - {activeFixture.season}
-              </p>
-              <Badge color="success" className="w-fit mt-2">
-                Activo
-              </Badge>
-            </div>
-          </div>
-        </Card>
-      )}
-
-      <div className="flex justify-end mb-4">
-        <Button onClick={handleCreate}>
-          <FaPlus className="mr-2" /> Nuevo Fixture
-        </Button>
       </div>
 
       {loading ? (
