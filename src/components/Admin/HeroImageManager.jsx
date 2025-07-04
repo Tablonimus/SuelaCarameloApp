@@ -37,7 +37,7 @@ const HeroImageDashboard = () => {
   const [formData, setFormData] = useState({
     name: "",
     redirectUrl: "",
-    targetHeight: 600,
+    targetHeight: 400,
     deviceType: "desktop",
     isActive: true,
     order: 0,
@@ -47,7 +47,7 @@ const HeroImageDashboard = () => {
   const BASE_URL =
     "https://suela-caramelo-app-back-end.vercel.app/sc/hero-images";
   // const BASE_URL = "http://localhost:3000/sc/hero-images";
-  
+
   // Cargar imágenes
   const fetchHeroImages = async () => {
     try {
@@ -222,7 +222,7 @@ const HeroImageDashboard = () => {
     setFormData({
       name: "",
       redirectUrl: "",
-      targetHeight: 600,
+      targetHeight: 400,
       deviceType: "desktop",
       isActive: true,
       order: 0,
@@ -372,7 +372,7 @@ const HeroImageDashboard = () => {
                   onChange={(e) =>
                     setFormData({
                       ...formData,
-                      targetHeight: parseInt(e.target.value) || 600,
+                      targetHeight: parseInt(e.target.value),
                     })
                   }
                   required
@@ -439,7 +439,7 @@ const HeroImageDashboard = () => {
               <input
                 id="image"
                 type="file"
-                accept="image/jpeg, image/png"
+                accept="image/jpeg, image/png, image/webp"
                 onChange={handleImageChange}
                 className="block w-full text-sm text-gray-500
                   file:mr-4 file:py-2 file:px-4
@@ -466,7 +466,7 @@ const HeroImageDashboard = () => {
                     <img
                       src={previewImage}
                       alt="Preview"
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <p className="mt-1 text-sm text-gray-500">
