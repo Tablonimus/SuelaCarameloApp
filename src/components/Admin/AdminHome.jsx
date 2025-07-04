@@ -1,10 +1,8 @@
-import React from "react";
 import NavBar from "../NavBar/NavBar";
 import { Tabs } from "flowbite-react";
 import { HiAdjustments, HiUserCircle, HiArchive } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import CreateNotice from "./CreateNotice";
-import Fixtures from "./Fixtures";
 import Positions from "./Positions";
 import TeamsConverter from "./TeamsConverter";
 import GeneralPositions from "./GeneralPositions";
@@ -12,6 +10,7 @@ import DataManagment from "./DataManagment";
 import PlayersConverter from "./PlayersConverter";
 import LiveResultsUpdater from "./LiveResultsUpdater";
 import HeroImageManager from "./HeroImageManager";
+import FixturesManager from "./FixturesManager";
 
 export default function AdminHome() {
   return (
@@ -26,7 +25,7 @@ export default function AdminHome() {
             <CreateNotice />
           </Tabs.Item>
           <Tabs.Item title="Fixtures" icon={MdDashboard}>
-            <Fixtures />
+            <FixturesManager />
           </Tabs.Item>
           <Tabs.Item title="Posiciones" icon={HiAdjustments}>
             <Positions />

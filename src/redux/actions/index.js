@@ -134,7 +134,7 @@ export function getAllMatches(category) {
 export function getAllNotices(category) {
   return async function (dispatch) {
     console.log(category);
-    
+
     try {
       let json = await axios.get(`${BASE_URL}/notices?category=${category}`);
 

@@ -79,10 +79,10 @@ const Home = () => {
         </div>
 
         {/* Contenido principal */}
-          {/* Carrusel */}
-          <div className="w-full">
-            <HeroCarousel />
-          </div>
+        {/* Carrusel */}
+        <div className="w-full">
+          <HeroCarousel />
+        </div>
         <main className="flex flex-col items-center w-full lg:px-4 py-4 gap-4">
           <div className="md:col-span-2 bg-zinc-900 rounded-xl p-4 md:p-6 w-11/12 shadow-lg border border-orange-500/20">
             <div className="flex items-center mb-4 md:mb-6">
@@ -203,7 +203,7 @@ const Home = () => {
               <div className="flex-1">
                 <h2 className="text-lg font-bold text-white">Equipos</h2>
                 <p className="text-xs text-zinc-300 mt-1">
-                  Conoce a los planteles del FSP.
+                  Conoce a los planteles del FSP
                 </p>
               </div>
               <div className="text-orange-400 text-xl group-hover:translate-x-2 transition-transform">
