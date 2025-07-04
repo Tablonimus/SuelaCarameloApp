@@ -1,11 +1,28 @@
 import Voucher from "./Voucher";
 import Sidebar from "../NavBar/Sidebar";
+import tano from "../../assets/images/sponsors/tano.webp";
 import b2 from "../../assets/images/b2.png";
 import b4 from "../../assets/images/b4.png";
 import FooterComp from "../FooterComp/FooterComp";
 
 const Descuentos = () => {
   const sponsors = [
+    {
+      name: "2x1 en Birra",
+      logo: tano,
+      terminos: `2x1 en birra artesanal - Válido hasta el 25/07/2025`,
+      descuento: "2x1",
+      telefono: "-",
+      ubi: "Exclusivo consumición en local Av. Colón 121, Mendoza",
+    },
+    {
+      name: "Descuento en piadinas",
+      logo: tano,
+      terminos: `50% de descuento en piadinas - Válido hasta el 31/07/2025`,
+      descuento: "50",
+      telefono: "-",
+      ubi: "Exclusivo consumición en local Av. Colón 121, Mendoza",
+    },
     {
       name: "Calzas deportivas cortas",
       logo: b2,

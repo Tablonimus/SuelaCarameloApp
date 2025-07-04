@@ -1,7 +1,105 @@
 #couponCard {
-    background-image: url("../../assets//images/home/img-home3.webp");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-image: url("../../assets//images/home/img-home3.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Embla Carousel Base */
+.embla {
+  --slide-spacing: 0;
+  --slide-size: 100%;
+  --slide-height: auto;
+  position: relative;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  position: relative;
+}
+
+/* Botones de navegación */
+.embla__button {
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s ease;
+}
+
+.embla__button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.embla__button__svg {
+  width: 35%;
+  height: 35%;
+  fill: white;
+}
+
+/* Puntos de navegación */
+.embla__dots {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.embla__dot {
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0 0.3rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.embla__dot:after {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
+  content: "";
+  transition: all 0.3s ease;
+}
+
+.embla__dot.is-selected:after {
+  background: rgba(255, 165, 0, 0.8);
+  width: 0.8rem;
+  height: 0.8rem;
 }

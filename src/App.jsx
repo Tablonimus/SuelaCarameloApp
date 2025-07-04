@@ -11,6 +11,8 @@ import Fixture from "./components/Fixture/Fixture";
 import Posiciones from "./components/Fixture/Posiciones";
 import "./App.css";
 import AdminHome from "./components/Admin/AdminHome";
+import MatchSelector from "./components/Editor/MatchSelector";
+import LiveMatchEditor from "./components/Editor/LiveMatchEditor";
 
 function App() {
   const location = useLocation();
@@ -28,6 +30,9 @@ function App() {
         <Route path="/cupones" element={<Descuentos />} />
         <Route path="/contacto" element={<ContactUs />} />
         <Route path="/createnotice" element={<AdminHome />} />
+        <Route path="/editor" element={<MatchSelector />} />
+        <Route path="/editor/:id" element={<LiveMatchEditor />} />
+
         <Route path="*" element={<Home />} />
       </Routes>
     </section>

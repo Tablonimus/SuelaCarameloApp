@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllNotices } from "../../redux/actions";
 import axios from "axios";
+import HeroCarousel from "./HeroCarousel";
 
 const Home = () => {
   const images = [imgHome1, imgHome2, imgHome3, imgHome4];
@@ -78,27 +79,11 @@ const Home = () => {
         </div>
 
         {/* Contenido principal */}
-        <main className="flex flex-col items-center w-full lg:px-4 py-4 gap-4">
           {/* Carrusel */}
-          <div className="w-full h-64 sm:h-80 md:h-[30rem]">
-            <Carousel
-              leftControl={<></>}
-              rightControl={<></>}
-              draggable
-              slide
-              slideInterval={3000}
-            >
-              {images.map((image, i) => (
-                <img
-                  key={i}
-                  src={image}
-                  alt={`Imagen ${i + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              ))}
-            </Carousel>
+          <div className="w-full">
+            <HeroCarousel />
           </div>
-
+        <main className="flex flex-col items-center w-full lg:px-4 py-4 gap-4">
           <div className="md:col-span-2 bg-zinc-900 rounded-xl p-4 md:p-6 w-11/12 shadow-lg border border-orange-500/20">
             <div className="flex items-center mb-4 md:mb-6">
               <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2 rounded-lg shadow-md">
