@@ -30,14 +30,18 @@ const Voucher = (props) => {
             id="voucher-contact"
             className="mt-1 text-sm font-medium flex flex-col gap-[2px] sm:mt-2 lg:flex-row lg:justify-center lg:gap-8 lg:text-lg lg:mt-6"
           >
-            <li className="flex items-center lg:border-t-2 lg:border-orange-500 lg:py-1 lg:px-2">
-              <i className="bx bxs-phone mr-2 "></i>
-              {sponsor.telefono}
-            </li>
-            <li className="flex items-center lg:border-t-2 lg:border-orange-500 lg:py-1 lg:px-2">
-              <i className="bx bx-target-lock mr-2"></i>
-              {sponsor.ubi}
-            </li>
+            {sponsor.telefono && (
+              <li className="flex items-center lg:border-t-2 lg:border-orange-500 lg:py-1 lg:px-2">
+                <i className="bx bxs-phone mr-2 "></i>
+                {sponsor.telefono}
+              </li>
+            )}
+            {(sponsor.ubi || sponsor.ubicacion) && (
+              <li className="flex items-center lg:border-t-2 lg:border-orange-500 lg:py-1 lg:px-2">
+                <i className="bx bx-target-lock mr-2"></i>
+                {sponsor.ubi || sponsor.ubicacion}
+              </li>
+            )}
           </ul>
         </section>
 

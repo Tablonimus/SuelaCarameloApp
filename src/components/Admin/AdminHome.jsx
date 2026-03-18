@@ -11,6 +11,7 @@ import PlayersConverter from "./PlayersConverter";
 import LiveResultsUpdater from "./LiveResultsUpdater";
 import HeroImageManager from "./HeroImageManager";
 import FixturesManager from "./FixturesManager";
+import SponsorsManager from "./SponsorsManager";
 
 export default function AdminHome() {
   return (
@@ -44,6 +45,9 @@ export default function AdminHome() {
           </Tabs.Item>
           <Tabs.Item title="Banners" icon={HiArchive}>
             <HeroImageManager />
+          </Tabs.Item>
+          <Tabs.Item title="Sponsors" icon={HiArchive}>
+            <SponsorsManager />
           </Tabs.Item>
         </Tabs>
       </section>

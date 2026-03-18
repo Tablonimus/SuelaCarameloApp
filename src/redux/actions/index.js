@@ -365,3 +365,146 @@ export function createManyTeamsByExcel(teamsObject) {
     }
   };
 }
+
+//----------- SPONSORS & COUPONS ------------------
+// Get all sponsors
+export function getAllSponsors() {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(`${BASE_URL}/sponsors`);
+
+      dispatch({
+        type: action.GET_ALL_SPONSORS,
+        payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+
+// Create a new sponsor
+export function createSponsor(sponsor) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.post(`${BASE_URL}/sponsors`, sponsor);
+
+      dispatch({
+        type: action.CREATE_SPONSOR,
+        payload: json.data,
+      });
+
+      return alert("Sponsor creado correctamente");
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+
+// Delete a sponsor
+export function deleteSponsor(id) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.delete(`${BASE_URL}/sponsors/${id}`);
+
+      dispatch({
+        type: action.DELETE_SPONSOR,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+
+// Update a sponsor
+export function updateSponsor(sponsor) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.put(`${BASE_URL}/sponsors/${sponsor.id}`, sponsor);
+
+      dispatch({
+        type: action.UPDATE_SPONSOR,
+        payload: json.data,
+      });
+
+      return alert("Sponsor actualizado correctamente");
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+
+// Get all coupons
+export function getAllCoupons() {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(`${BASE_URL}/coupons`);
+
+      dispatch({
+        type: action.GET_ALL_COUPONS,
+        payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+
+// Create a new coupon
+export function createCoupon(coupon) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.post(`${BASE_URL}/coupons`, coupon);
+
+      dispatch({
+        type: action.CREATE_COUPON,
+        payload: json.data,
+      });
+
+      return alert("Cupón creado correctamente");
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+
+// Delete a coupon
+export function deleteCoupon(id) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.delete(`${BASE_URL}/coupons/${id}`);
+
+      dispatch({
+        type: action.DELETE_COUPON,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+
+// Update a coupon
+export function updateCoupon(coupon) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.put(`${BASE_URL}/coupons/${coupon.id}`, coupon);
+
+      dispatch({
+        type: action.UPDATE_COUPON,
+        payload: json.data,
+      });
+
+      return alert("Cupón actualizado correctamente");
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}

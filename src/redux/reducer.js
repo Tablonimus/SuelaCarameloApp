@@ -10,6 +10,9 @@ const initialState = {
   fixtures: [],
   allMatches: [],
   category: "",
+  // Sponsors & Coupons
+  sponsors: [],
+  coupons: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -109,6 +112,60 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         noticeDetail: [],
+      };
+    }
+
+    // SPONSORS & COUPONS
+    case action.GET_ALL_SPONSORS: {
+      return {
+        ...state,
+        sponsors: payload,
+      };
+    }
+    case action.CREATE_SPONSOR: {
+      return {
+        ...state,
+        sponsors: [...state.sponsors, payload],
+      };
+    }
+    case action.DELETE_SPONSOR: {
+      return {
+        ...state,
+      };
+    }
+    case action.UPDATE_SPONSOR: {
+      const updatedSponsors = state.sponsors.map((s) =>
+        s.id === payload.id ? payload : s
+      );
+      return {
+        ...state,
+        sponsors: updatedSponsors,
+      };
+    }
+    case action.GET_ALL_COUPONS: {
+      return {
+        ...state,
+        coupons: payload,
+      };
+    }
+    case action.CREATE_COUPON: {
+      return {
+        ...state,
+        coupons: [...state.coupons, payload],
+      };
+    }
+    case action.DELETE_COUPON: {
+      return {
+        ...state,
+      };
+    }
+    case action.UPDATE_COUPON: {
+      const updatedCoupons = state.coupons.map((c) =>
+        c.id === payload.id ? payload : c
+      );
+      return {
+        ...state,
+        coupons: updatedCoupons,
       };
     }
 

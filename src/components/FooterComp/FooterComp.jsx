@@ -5,93 +5,51 @@ import b4 from "../../assets/images/b4.png";
 import b8 from "../../assets/images/sponsors/fefusa.webp";
 import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllSponsors } from "../../redux/actions/index";
 
 export default function FooterComp() {
+  const dispatch = useDispatch();
+  const { sponsors } = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(getAllSponsors());
+  }, [dispatch]);
+
+  // Default sponsors as fallback
+  const defaultSponsors = [
+    { id: 1, logo: b1, name: "Sponsor 1", website: "https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9" },
+    { id: 2, logo: b2, name: "Squadra Indumentaria", website: "https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA==" },
+    { id: 3, logo: b3, name: "Sponsor 3", website: "https://maps.app.goo.gl/aystKkyxwR3Qnkft6" },
+    { id: 4, logo: b4, name: "Hache Market", website: "https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh" },
+    { id: 5, logo: b8, name: "Fefusa Mendoza", website: "https://www.instagram.com/fefusamendoza?igsh=bXhva3V0ZXhwbTE0" },
+  ];
+
+  // Use sponsors from Redux or fallback to default
+  const displaySponsors = sponsors && sponsors.length > 0 ? sponsors : defaultSponsors;
+
   return (
     <div className="bg-zinc-900  w-full py-4">
       <div className="w-full text-center bg-zinc-900">
         <section className="slider lg:w-full">
           <div className="slide-track">
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9"
-              >
-                <img className="object-contain h-16  " src={b1} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA=="
-              >
-                <img className="object-contain h-16  " src={b2} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://maps.app.goo.gl/aystKkyxwR3Qnkft6"
-              >
-                <img className="object-contain h-16  " src={b3} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh"
-              >
-                <img className="object-contain h-16  " src={b4} />
-              </a>
-            </div>     
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/fefusamendoza?igsh=bXhva3V0ZXhwbTE0"
-              >
-                <img className="object-contain h-16  " src={b8} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://maps.app.goo.gl/ZCzjqBVZ39iQCCLR9"
-              >
-                <img className="object-contain h-16  " src={b1} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/squadraindumentaria?igsh=MW9tZzZjbWlyMWlwdA=="
-              >
-                <img className="object-contain h-16  " src={b2} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://maps.app.goo.gl/aystKkyxwR3Qnkft6"
-              >
-                <img className="object-contain h-16  " src={b3} />
-              </a>
-            </div>
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/hache_market?igsh=cHEwd2Jna3cxZnlh"
-              >
-                <img className="object-contain h-16  " src={b4} />
-              </a>
-            </div>     
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/fefusamendoza?igsh=bXhva3V0ZXhwbTE0"
-              >
-                <img className="object-contain h-16  " src={b8} />
-              </a>
-            </div>
+            {/* First set of slides */}
+            {displaySponsors.map((sponsor, index) => (
+              <div className="slide" key={`first-${index}`}>
+                <a target="_blank" href={sponsor.website || sponsor.instagram || "#"}>
+                  <img className="object-contain h-16  " src={sponsor.logo} alt={sponsor.name} />
+                </a>
+              </div>
+            ))}
+            {/* Duplicate set for seamless scrolling */}
+            {displaySponsors.map((sponsor, index) => (
+              <div className="slide" key={`second-${index}`}>
+                <a target="_blank" href={sponsor.website || sponsor.instagram || "#"}>
+                  <img className="object-contain h-16  " src={sponsor.logo} alt={sponsor.name} />
+                </a>
+              </div>
+            ))}
           </div>
         </section>
 

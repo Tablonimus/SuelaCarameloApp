@@ -3,10 +3,20 @@ import Sidebar from "../NavBar/Sidebar";
 import b2 from "../../assets/images/b2.png";
 import b4 from "../../assets/images/b4.png";
 import FooterComp from "../FooterComp/FooterComp";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCoupons } from "../../redux/actions/index";
 
 const Descuentos = () => {
-  const sponsors = [
+  const dispatch = useDispatch();
+  const { coupons } = useSelector((state) => state);
 
+  useEffect(() => {
+    dispatch(getAllCoupons());
+  }, [dispatch]);
+
+  // Default coupons as fallback
+  const defaultCoupons = [
     {
       name: "Calzas deportivas cortas",
       logo: b2,
@@ -15,7 +25,6 @@ const Descuentos = () => {
       telefono: "2616 59-5240",
       ubi: "Montes de Oca 889, Godoy Cruz",
     },
-
     {
       name: "Hache Market",
       logo: b4,
@@ -23,6 +32,10 @@ const Descuentos = () => {
       descuento: "15",
     },
   ];
+
+  // Use coupons from Redux or fallback to default
+  const displayCoupons = coupons && coupons.length > 0 ? coupons : defaultCoupons;
+
   return (
     <div className="pl-[70px]  flex flex-col justify-between min-h-screen">
       <Sidebar active={"cupones"} />
@@ -36,7 +49,7 @@ const Descuentos = () => {
         id="inicio"
         className="w-full h-auto py-4 flex flex-col justify-center items-center "
       >
-        {sponsors.map((sponsor, index) => (
+        {displayCoupons.map((sponsor, index) => (
           <Voucher key={index} sponsor={sponsor} />
         ))}
       </section>
