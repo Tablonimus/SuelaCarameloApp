@@ -2,7 +2,6 @@ import b1 from "../../assets/images/b1.png";
 import b2 from "../../assets/images/b2.png";
 import b3 from "../../assets/images/b3.png";
 import b4 from "../../assets/images/b4.png";
-import b6 from "../../assets/images/sponsors/tano.webp";
 import b8 from "../../assets/images/sponsors/fefusa.webp";
 import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
@@ -44,16 +43,7 @@ export default function FooterComp() {
               >
                 <img className="object-contain h-16  " src={b4} />
               </a>
-            </div>
-
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/eltanopiadineria?igsh=YmlydG02cGp4ZHlt"
-              >
-                <img className="object-contain h-16  " src={b6} />
-              </a>
-            </div>
+            </div>     
             <div className="slide">
               <a
                 target="_blank"
@@ -93,16 +83,7 @@ export default function FooterComp() {
               >
                 <img className="object-contain h-16  " src={b4} />
               </a>
-            </div>
-
-            <div className="slide">
-              <a
-                target="_blank"
-                href="https://www.instagram.com/eltanopiadineria?igsh=YmlydG02cGp4ZHlt"
-              >
-                <img className="object-contain h-16  " src={b6} />
-              </a>
-            </div>
+            </div>     
             <div className="slide">
               <a
                 target="_blank"
@@ -138,7 +119,7 @@ export default function FooterComp() {
             </Link>
           </ul>
           <section className="w-4/5 font-semibold flex justify-center items-center  ml-[50px] lg:ml-[20px] mt-4">
-            <Footer.Copyright href="#" by="Suela Caramelo™" year={2016} />
+            <Footer.Copyright href="#" by="Suela Caramelo™ | v3.4.1" year={new Date().getFullYear()} />
           </section>
         </section>
       </div>

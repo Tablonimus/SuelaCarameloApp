@@ -39,14 +39,17 @@ const HeroCarousel = () => {
   // Filtrar imágenes según el dispositivo
   useEffect(() => {
     if (heroImages.length > 0) {
-      const deviceSpecificImages = heroImages.filter(
-        (image) => image.deviceType === (isMobile ? "mobile" : "desktop")
+      const mobileImages = heroImages.filter(
+        (image) => image.deviceType === "mobile"
+      );
+      const desktopImages = heroImages.filter(
+        (image) => image.deviceType === "desktop"
       );
 
-      // Si no hay imágenes específicas, mostrar todas
-      setFilteredImages(
-        deviceSpecificImages.length > 0 ? deviceSpecificImages : heroImages
-      );
+      let imagesToShow = isMobile ? mobileImages : desktopImages;
+      if (imagesToShow.length === 0) imagesToShow = isMobile ? desktopImages : mobileImages; // Fallback al otro tipo
+      if (imagesToShow.length === 0) imagesToShow = heroImages; // Fallback a todas
+      setFilteredImages(imagesToShow);
     }
   }, [heroImages, isMobile]);
 
