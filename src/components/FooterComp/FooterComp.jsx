@@ -11,7 +11,7 @@ import { getAllSponsors } from "../../redux/actions/index";
 
 export default function FooterComp() {
   const dispatch = useDispatch();
-  const { sponsors } = useSelector((state) => state);
+  const sponsors = useSelector((state) => state.sponsors);
 
   useEffect(() => {
     dispatch(getAllSponsors());

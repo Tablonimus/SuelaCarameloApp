@@ -43,8 +43,8 @@ export default function PlayersConverter() {
       if (searchTerm) params.searchTerm = searchTerm;
       if (selectedTeam) params.team = selectedTeam;
       const res = await axios.get(`${BASE_URL}/players`, { params });
-      setPlayers(res.data);
-      setMeta(res.meta)
+      setPlayers(res.data.data);
+      setMeta(res.data.meta)
     } catch (error) {
       console.error("Error fetching players:", error);
     } finally {

@@ -27,7 +27,7 @@ export default function ClubDetail() {
         `https://suela-caramelo-app-back-end.vercel.app/sc/players?name=${clubName}&category=${category}`
       )
     ).data;
-    setPlayers(data);
+    setPlayers(data.data || []);
   }
 
   async function getTeam(clubName) {
