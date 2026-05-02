@@ -1,10 +1,16 @@
 export const GET_ALL_NOTICES = "GET_ALL_NOTICES";
 export const GET_ALL_TEAMS = "GET_ALL_TEAMS";
+export const GET_ALL_PLAYERS = "GET_ALL_PLAYERS";
 export const GET_ALL_MATCHES = "GET_ALL_MATCHES";
 
 export const DELETE_NOTICE = "DELETE_NOTICE";
 export const CREATE_NOTICE = "CREATE_NOTICE";
 export const CREATE_TEAM = "CREATE_TEAM";
+export const UPDATE_TEAM = "UPDATE_TEAM";
+export const DELETE_TEAM = "DELETE_TEAM";
+export const CREATE_PLAYER = "CREATE_PLAYER";
+export const UPDATE_PLAYER = "UPDATE_PLAYER";
+export const DELETE_PLAYER = "DELETE_PLAYER";
 export const CREATE_MATCH = "CREATE_MATCH";
 
 export const CHANGE_CATEGORY = "CHANGE_CATEGORY";

@@ -56,7 +56,7 @@ export function getAllTeams(category) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`${BASE_URL}/teams`);
-
+      
       if (!category) {
         const filters = json.data.filter((cat) => cat.category === "A1");
         dispatch({
@@ -86,6 +86,37 @@ export function getAllTeams(category) {
                 : json.data.sort((a, b) => {
                     return a.id - b.id;
                   }),
+            copy: json.data,
+          },
+        });
+      }
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function getAllPlayers(category) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(`${BASE_URL}/players`);
+
+      if (!category) {
+        const filters = json.data.filter((cat) => cat.category === "A1");
+        dispatch({
+          type: action.GET_ALL_PLAYERS,
+          payload: {
+            filtered: filters.length > 0 ? filters : json.data,
+            copy: json.data,
+          },
+        });
+      } else {
+        const filters = json.data.filter((cat) => cat.category === category);
+        dispatch({
+          type: action.GET_ALL_PLAYERS,
+          payload: {
+            filtered: filters.length > 0 ? filters : json.data,
             copy: json.data,
           },
         });
@@ -259,6 +290,79 @@ export function createTeam(payload) {
       dispatch({
         type: action.CREATE_TEAM,
         payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function createPlayer(payload) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.post(`${BASE_URL}/players`, payload);
+      dispatch({
+        type: action.CREATE_PLAYER,
+        payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function updateTeam(team) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.put(`${BASE_URL}/teams/${team.id}`, team);
+      dispatch({
+        type: action.UPDATE_TEAM,
+        payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function updatePlayer(player) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.put(`${BASE_URL}/players/${player.id}`, player);
+      dispatch({
+        type: action.UPDATE_PLAYER,
+        payload: json.data,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function deleteTeam(id) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.delete(`${BASE_URL}/teams/${id}`);
+      dispatch({
+        type: action.DELETE_TEAM,
+      });
+
+      return "Success";
+    } catch (error) {
+      return "Server Error, try again later", console.log(error);
+    }
+  };
+}
+export function deletePlayer(id) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.delete(`${BASE_URL}/players/${id}`);
+      dispatch({
+        type: action.DELETE_PLAYER,
       });
 
       return "Success";
