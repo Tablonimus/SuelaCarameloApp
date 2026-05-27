@@ -92,7 +92,7 @@ const LiveMatchesTicker = () => {
   if (matches.length === 0) {
     return (
       <div className="bg-zinc-900 py-3 px-4 text-white text-center text-sm">
-        No hay partidos en este momento
+       
       </div>
     );
   }
