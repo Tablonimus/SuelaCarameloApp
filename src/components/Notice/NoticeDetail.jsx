@@ -1,5 +1,4 @@
-import { Carousel } from "flowbite-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { clearPage, getNoticeDetail } from "../../redux/actions";
@@ -20,21 +19,60 @@ const CATEGORY_LABELS = {
 const formatDate = (dateString) => {
   if (!dateString) return null;
   return new Date(dateString).toLocaleDateString("es-ES", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
+    day: "numeric", month: "long", year: "numeric",
   });
 };
+
+const isMP4 = (src) => /\.mp4(\?|$)/i.test(src ?? "");
+
+function VideoPlayer({ src }) {
+  if (isMP4(src)) {
+    return (
+      <video
+        controls
+        className="w-full rounded-xl border border-white/10 bg-zinc-900"
+      >
+        <source src={src} type="video/mp4" />
+        Tu navegador no soporta el reproductor de video.
+      </video>
+    );
+  }
+  return <YoutubeEmbed embedId={src} />;
+}
+
+function SectionDivider({ label }) {
+  return (
+    <div className="flex items-center gap-3 mb-4">
+      <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
+      <span className="text-[10px] font-black text-orange-400 uppercase tracking-[0.22em] whitespace-nowrap">
+        {label}
+      </span>
+      <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
+    </div>
+  );
+}
+
+const CloseIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
 
 export default function NoticeDetail() {
   const dispatch = useDispatch();
   const params   = useParams();
   const notice   = useSelector((state) => state.noticeDetail);
+  const [modalImage, setModalImage] = useState(null);
 
-  const parrafo      = notice?.content?.split("//");
+  const parrafo       = notice?.content?.split("//");
   const categoryLabel = notice?.category
     ? (CATEGORY_LABELS[notice.category] ?? notice.category)
     : null;
+
+  const hasImages  = (notice?.images?.length ?? 0) > 0;
+  const extraImages = notice?.images?.slice(1) ?? [];
+  const hasExtra   = extraImages.length > 0;
+  const hasVideo   = Boolean(notice?.videos);
 
   useEffect(() => {
     dispatch(getNoticeDetail(params.id));
@@ -70,12 +108,12 @@ export default function NoticeDetail() {
 
       <main className="flex-1">
         {!notice ? (
-          /* Skeleton de carga */
+          /* Skeleton */
           <div className="max-w-2xl mx-auto px-4 py-10 flex flex-col gap-5">
             <div className="w-full h-72 sm:h-96 bg-zinc-800 rounded-xl animate-pulse" />
             <div className="h-3.5 bg-zinc-800 rounded animate-pulse w-24" />
-            <div className="h-8  bg-zinc-800 rounded animate-pulse w-3/4" />
-            <div className="h-5  bg-zinc-800 rounded animate-pulse w-1/2" />
+            <div className="h-8   bg-zinc-800 rounded animate-pulse w-3/4" />
+            <div className="h-5   bg-zinc-800 rounded animate-pulse w-1/2" />
             <div className="h-px bg-white/10 w-full" />
             {[80, 90, 75, 85, 60].map((w, i) => (
               <div key={i} className="h-4 bg-zinc-800 rounded animate-pulse" style={{ width: `${w}%` }} />
@@ -83,34 +121,33 @@ export default function NoticeDetail() {
           </div>
         ) : (
           <>
-            {/* Hero: carousel o embed de YouTube */}
-            {notice?.images?.length > 0 ? (
-              <div className="w-full h-64 sm:h-80 lg:h-96 bg-zinc-900">
-                <Carousel
-                  leftControl={<></>}
-                  rightControl={<></>}
-                  draggable
-                  slide
-                  slideInterval={3000}
-                  className="h-full"
-                >
-                  {notice.images.map((img, index) => (
-                    <img
-                      key={index}
-                      src={img}
-                      alt=""
-                      className="w-full h-full object-cover"
-                    />
-                  ))}
-                </Carousel>
+            {/* ── Hero ── */}
+            {hasImages ? (
+              <div
+                className="w-full h-64 sm:h-80 lg:h-96 bg-zinc-900 cursor-zoom-in relative group overflow-hidden"
+                onClick={() => setModalImage(notice.images[0])}
+              >
+                <img
+                  src={notice.images[0]}
+                  alt=""
+                  className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <div className="bg-black/60 backdrop-blur-sm rounded-full p-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-            ) : notice?.videos ? (
-              <div className="w-full max-w-4xl mx-auto px-4 pt-8">
-                <YoutubeEmbed embedId={notice.videos} />
+            ) : hasVideo ? (
+              /* Fallback hero: video si no hay imágenes */
+              <div className="w-full max-w-4xl mx-auto px-4 pt-6">
+                <VideoPlayer src={notice.videos} />
               </div>
             ) : null}
 
-            {/* Cuerpo del artículo */}
+            {/* ── Cuerpo del artículo ── */}
             <div className="max-w-2xl mx-auto px-4 py-8 flex flex-col gap-6">
 
               {/* Categoría + título + subtítulo */}
@@ -169,13 +206,75 @@ export default function NoticeDetail() {
                 )
               )}
 
+              {/* ── Galería de imágenes extra (images[1+]) ── */}
+              {hasExtra && (
+                <div>
+                  <SectionDivider label="Más fotos" />
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {extraImages.map((img, i) => (
+                      <div
+                        key={i}
+                        className="aspect-square cursor-zoom-in rounded-lg overflow-hidden border border-white/10 group relative"
+                        onClick={() => setModalImage(img)}
+                      >
+                        <img
+                          src={img}
+                          alt=""
+                          className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                          <i className="bx bx-expand-alt text-white text-2xl drop-shadow-lg" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── Video (siempre abajo si hay imágenes, o ya se mostró como hero) ── */}
+              {hasVideo && hasImages && (
+                <div>
+                  <SectionDivider label="Video" />
+                  <VideoPlayer src={notice.videos} />
+                </div>
+              )}
+
             </div>
           </>
         )}
       </main>
 
       <FooterComp />
-      {/* <OtherNotices /> */}
+
+      {/* Modal de imagen ampliada */}
+      {modalImage && (
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center p-4"
+          onClick={() => setModalImage(null)}
+        >
+          <div
+            className="flex flex-col items-center w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between w-full mb-4">
+              <p className="text-[10px] font-black text-orange-400 uppercase tracking-[0.22em]">
+                {notice?.title}
+              </p>
+              <button
+                onClick={() => setModalImage(null)}
+                className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-colors"
+              >
+                <CloseIcon />
+              </button>
+            </div>
+            <img
+              src={modalImage}
+              alt="Vista ampliada"
+              className="max-w-full max-h-[80vh] object-contain rounded-xl"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
