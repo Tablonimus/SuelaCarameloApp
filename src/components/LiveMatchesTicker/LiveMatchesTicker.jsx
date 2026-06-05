@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logoSC from "../../assets/images/banner2.png";
 import { FaFutbol, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import logoA1 from "../../assets/images/botones/A1.png";
-import logoF1 from "../../assets/images/botones/F1.png";
 
 const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
 
@@ -28,8 +26,8 @@ const LiveMatchesTicker = () => {
   const [currentCategory, setCurrentCategory] = useState("A1");
 
   const categories = [
-    { value: "A1", label: "FSP Masculino", logo: logoA1 },
-    // { value: "F1", label: "FSP Femenino", logo: logoF1 }, // Descomentar cuando tengas esta categoría
+    { value: "A1", label: "FSP Masculino", logo: "/botones/A1.png" },
+    // { value: "F1", label: "FSP Femenino", logo: "/botones/F1.png" }, // Descomentar cuando tengas esta categoría
   ];
 
   const selectedCategory =

@@ -6,6 +6,7 @@ import { clearPage, getNoticeDetail } from "../../redux/actions";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
+import logoSuela from "../../assets/images/banner2.png";
 
 const CATEGORY_LABELS = {
   A1: "FSP Masculino",
@@ -47,6 +48,8 @@ export default function NoticeDetail() {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-zinc-900/95 backdrop-blur-md border-b border-white/10">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
+          <img src={logoSuela} alt="" className="h-7 object-contain flex-shrink-0" />
+          <span className="text-zinc-700 flex-shrink-0">·</span>
           <Link
             to="/noticias"
             className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors text-sm group"

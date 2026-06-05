@@ -5,22 +5,17 @@ import Notices from "../Notice/Notices";
 import NoticeLoaderComponent from "./NoticeLoaderComponent";
 import FooterComp from "../FooterComp/FooterComp";
 import Sidebar from "../NavBar/Sidebar";
-import { FaSearch, FaTimes, FaNewspaper, FaMars, FaVenus, FaTrophy, FaStar, FaFlag, FaGlobe } from "react-icons/fa";
+import { FaSearch, FaTimes, FaNewspaper } from "react-icons/fa";
 import logoSuela from "../../assets/images/banner2.png";
 
-// Para reemplazar un ícono por una imagen PNG, asigná la ruta en `image`.
-// Ej: image: "/categories/fsp-masculino.png"  (archivo en /public/categories/)
-// Con image: null se usa el ícono de react-icons como fallback.
-// Para reemplazar un ícono por una imagen PNG, asigná la ruta en `image`.
-// Ej: image: "/categories/fsp-masculino.png"  (archivo en /public/categories/)
 const CATEGORIES = [
   { value: "",   label: "Todas",                   icon: FaNewspaper, image: null },
-  { value: "A1", label: "FSP Masculino",            icon: FaMars,      image: null },
-  { value: "F1", label: "FSP Femenino",             icon: FaVenus,     image: null },
-  { value: "DH", label: "División de Honor",        icon: FaTrophy,    image: null },
-  { value: "CM", label: "Copa Mendoza",             icon: FaStar,      image: null },
-  { value: "TN", label: "Torneos Nacionales",       icon: FaFlag,      image: null },
-  { value: "TI", label: "Torneos Internacionales",  icon: FaGlobe,     image: null },
+  { value: "A1", label: "FSP Masculino",            icon: null,        image: "/botones/A1.png" },
+  { value: "F1", label: "FSP Femenino",             icon: null,        image: "/botones/F1.png" },
+  { value: "DH", label: "División de Honor",        icon: null,        image: "/botones/DH.png" },
+  { value: "CM", label: "Copa Mendoza",             icon: null,        image: "/botones/CM.png" },
+  { value: "TN", label: "Torneos Nacionales",       icon: null,        image: "/botones/TN.webp" },
+  { value: "TI", label: "Torneos Internacionales",  icon: null,        image: "/botones/TI.webp" },
 ];
 
 const NOTICES_PER_PAGE = 8;

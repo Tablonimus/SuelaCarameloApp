@@ -3,15 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGeneralPositions, getPositions } from "../../redux/actions";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
-import logoA1 from "../../assets/images/botones/A1.png";
-import logoF1 from "../../assets/images/botones/F1.png";
 import logoSuela from "../../assets/images/banner2.png";
 
 const CATEGORIES = [
-  { value: "A1", label: "FSP Masculino", logo: logoA1 },
-  { value: "F1", label: "FSP Femenino",  logo: logoF1 },
-  // { value: "DH", label: "División de Honor", logo: logoDH },
-  // { value: "CM", label: "Copa Mendoza",       logo: logoCM },
+  { value: "A1", label: "FSP Masculino", logo: "/botones/A1.png" },
+  { value: "F1", label: "FSP Femenino",  logo: "/botones/F1.png" },
+  // { value: "DH", label: "División de Honor", logo: "/botones/DH.png" },
+  // { value: "CM", label: "Copa Mendoza",       logo: "/botones/CM.png" },
 ];
 
 const ExpandIcon = () => (

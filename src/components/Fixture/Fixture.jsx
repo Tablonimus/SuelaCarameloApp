@@ -1,14 +1,12 @@
 import Sidebar from "../NavBar/Sidebar";
-import logoA1 from "../../assets/images/botones/A1.png";
-import logoF1 from "../../assets/images/botones/F1.png";
 import logoSuela from "../../assets/images/banner2.png";
 import { useEffect, useState } from "react";
 import FixturePagination from "./FixturePagination";
 import FooterComp from "../FooterComp/FooterComp";
 
 const CATEGORIES = [
-  { value: "A1", label: "FSP Masculino", logo: logoA1 },
-  { value: "F1", label: "FSP Femenino",  logo: logoF1 },
+  { value: "A1", label: "FSP Masculino", logo: "/botones/A1.png" },
+  { value: "F1", label: "FSP Femenino",  logo: "/botones/F1.png" },
 ];
 
 const TOURNAMENTS = ["Apertura", "Clausura", "Torneo Anual"];

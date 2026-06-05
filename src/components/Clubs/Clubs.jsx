@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 import axios from "axios";
-import logoA1 from "../../assets/images/botones/A1.png";
-import logoF1 from "../../assets/images/botones/F1.png";
 import logoSuela from "../../assets/images/banner2.png";
 
 const categories = [
-  { value: "A1",  label: "FSP Masculino", logo: logoA1 },
-  // { value: "FEM", label: "FSP Femenino",  logo: logoF1 },
+  { value: "A1",  label: "FSP Masculino", logo: "/botones/A1.png" },
+  // { value: "FEM", label: "FSP Femenino",  logo: "/botones/F1.png" },
 ];
 
 export default function Clubs() {
