@@ -99,6 +99,7 @@ export default function ClubDetail() {
                 <img
                   src={teamState?.logo}
                   alt={teamState?.name}
+                  fetchpriority="high"
                   className="w-full h-full object-contain"
                 />
               </div>

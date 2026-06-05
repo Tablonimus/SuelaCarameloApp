@@ -1,21 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import Noticias from "./components/Home/Noticias";
-import NoticeDetail from "./components/Notice/NoticeDetail";
-import ContactUs from "./components/ContactUs/ContactUs";
-import Clubs from "./components/Clubs/Clubs";
-import ClubDetail from "./components/Clubs/ClubDetail";
-import Descuentos from "./components/Voucher/Descuentos";
-import Home from "./components/Home/Home";
-import Fixture from "./components/Fixture/Fixture";
-import Posiciones from "./components/Fixture/Posiciones";
 import "./App.css";
-import AdminHome from "./components/Admin/AdminHome";
-import Journalist from "./components/Admin/Journalist";
-import MatchSelector from "./components/Editor/MatchSelector";
-import LiveMatchEditor from "./components/Editor/LiveMatchEditor";
 // import usePushNotifications from "./hooks/usePushNotifications";
+
+const Home          = lazy(() => import("./components/Home/Home"));
+const Noticias      = lazy(() => import("./components/Home/Noticias"));
+const NoticeDetail  = lazy(() => import("./components/Notice/NoticeDetail"));
+const Clubs         = lazy(() => import("./components/Clubs/Clubs"));
+const ClubDetail    = lazy(() => import("./components/Clubs/ClubDetail"));
+const Fixture       = lazy(() => import("./components/Fixture/Fixture"));
+const Posiciones    = lazy(() => import("./components/Fixture/Posiciones"));
+const Descuentos    = lazy(() => import("./components/Voucher/Descuentos"));
+const ContactUs     = lazy(() => import("./components/ContactUs/ContactUs"));
+const AdminHome     = lazy(() => import("./components/Admin/AdminHome"));
+const Journalist    = lazy(() => import("./components/Admin/Journalist"));
+const MatchSelector = lazy(() => import("./components/Editor/MatchSelector"));
+const LiveMatchEditor = lazy(() => import("./components/Editor/LiveMatchEditor"));
+
+function PageFallback() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-zinc-950">
+      <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
 
 const BACKEND_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
 // const BACKEND_URL = "http://localhost:3000/sc";
@@ -316,18 +325,24 @@ function App() {
     navigate("/", { replace: true });
   };
 
+  const lazy = (Component) => (
+    <Suspense fallback={<PageFallback />}>
+      <Component />
+    </Suspense>
+  );
+
   return (
     <section id="general" className="">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/noticias" element={<Noticias />} />
-        <Route path="/noticias/:id" element={<NoticeDetail />} />
-        <Route path="/equipos" element={<Clubs />} />
-        <Route path="/equipos/:category/:name" element={<ClubDetail />} />
-        <Route path="/fixture" element={<Fixture />} />
-        <Route path="/posiciones" element={<Posiciones />} />
-        <Route path="/cupones" element={<Descuentos />} />
-        <Route path="/contacto" element={<ContactUs />} />
+      <Routes>
+        <Route path="/" element={lazy(Home)} />
+        <Route path="/noticias" element={lazy(Noticias)} />
+        <Route path="/noticias/:id" element={lazy(NoticeDetail)} />
+        <Route path="/equipos" element={lazy(Clubs)} />
+        <Route path="/equipos/:category/:name" element={lazy(ClubDetail)} />
+        <Route path="/fixture" element={lazy(Fixture)} />
+        <Route path="/posiciones" element={lazy(Posiciones)} />
+        <Route path="/cupones" element={lazy(Descuentos)} />
+        <Route path="/contacto" element={lazy(ContactUs)} />
 
         <Route
           path="/editor"
@@ -395,7 +410,7 @@ function App() {
         />
 
 
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={lazy(Home)} />
       </Routes>
     </section>
   );

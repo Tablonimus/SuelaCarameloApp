@@ -1,163 +1,141 @@
-import React, { useEffect, useState, useCallback } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { DotButton, PrevButton, NextButton } from "./EmblaCarouselArrowsDots";
 import axios from "axios";
-import { useMediaQuery } from "react-responsive";
+
+const AUTOPLAY_MS = 5000;
 
 const HeroCarousel = () => {
-  const [heroImages, setHeroImages] = useState([]);
-  const [filteredImages, setFilteredImages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 5000, stopOnInteraction: false }),
-  ]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState([]);
+  const [allImages, setAllImages] = useState([]);
+  const [loading, setLoading]     = useState(true);
+  const [current, setCurrent]     = useState(0);
+  const [isMobile, setIsMobile]   = useState(() => window.innerWidth <= 768);
+  const timerRef = useRef(null);
 
-  // Detectar si es dispositivo móvil
-  const isMobile = useMediaQuery({ maxWidth: 768 });
-
-  // Obtener imágenes del backend
   useEffect(() => {
-    const fetchHeroImages = async () => {
-      try {
-        const response = await axios.get(
-          "https://suela-caramelo-app-back-end.vercel.app/sc/hero-images?isActive=true"
-        );
-        setHeroImages(response.data);
-      } catch (error) {
-        console.error("Error fetching hero images:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchHeroImages();
+    axios
+      .get("https://suela-caramelo-app-back-end.vercel.app/sc/hero-images?isActive=true")
+      .then((r) => setAllImages(r.data))
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
-  // Filtrar imágenes según el dispositivo
   useEffect(() => {
-    if (heroImages.length > 0) {
-      const mobileImages = heroImages.filter(
-        (image) => image.deviceType === "mobile"
-      );
-      const desktopImages = heroImages.filter(
-        (image) => image.deviceType === "desktop"
-      );
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
-      let imagesToShow = isMobile ? mobileImages : desktopImages;
-      if (imagesToShow.length === 0) imagesToShow = isMobile ? desktopImages : mobileImages; // Fallback al otro tipo
-      if (imagesToShow.length === 0) imagesToShow = heroImages; // Fallback a todas
-      setFilteredImages(imagesToShow);
-    }
-  }, [heroImages, isMobile]);
+  const slides = useMemo(() => {
+    if (!allImages.length) return [];
+    const mobile  = allImages.filter((img) => img.deviceType === "mobile");
+    const desktop = allImages.filter((img) => img.deviceType === "desktop");
+    let result = isMobile ? mobile : desktop;
+    if (!result.length) result = isMobile ? desktop : mobile;
+    if (!result.length) result = allImages;
+    return result;
+  }, [allImages, isMobile]);
 
-  // Configurar scroll snaps y listeners
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  const containerHeight = useMemo(() => {
+    if (!slides.length) return 400;
+    const max = Math.max(...slides.map((img) => img.targetHeight || 400));
+    return isMobile ? Math.min(max, 500) : max;
+  }, [slides, isMobile]);
+
+  useEffect(() => { setCurrent(0); }, [slides]);
+
+  const startTimer = useCallback(() => {
+    clearInterval(timerRef.current);
+    if (!slides.length) return;
+    timerRef.current = setInterval(
+      () => setCurrent((prev) => (prev + 1) % slides.length),
+      AUTOPLAY_MS
+    );
+  }, [slides.length]);
 
   useEffect(() => {
-    if (!emblaApi) return;
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, [startTimer]);
 
-    setScrollSnaps(emblaApi.scrollSnapList());
-    emblaApi.on("select", onSelect);
-
-    return () => {
-      emblaApi.off("select", onSelect);
-    };
-  }, [emblaApi, onSelect, filteredImages]);
-
-  const scrollTo = (index) => emblaApi && emblaApi.scrollTo(index);
-
-  // Reiniciar carrusel cuando cambian las imágenes filtradas
-  useEffect(() => {
-    if (emblaApi && filteredImages.length > 0) {
-      emblaApi.reInit();
-    }
-  }, [emblaApi, filteredImages]);
+  const goTo = (index) => { setCurrent(index); startTimer(); };
+  const prev = () => goTo((current - 1 + slides.length) % slides.length);
+  const next = () => goTo((current + 1) % slides.length);
 
   if (loading) {
     return (
-      <div className="w-full h-64 sm:h-80 md:h-[30rem] flex items-center justify-center bg-gray-900">
-        <div className="text-white">Cargando imágenes...</div>
+      <div
+        className="w-full flex items-center justify-center bg-zinc-900"
+        style={{ height: 300 }}
+      >
+        <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
-  if (!filteredImages.length) {
+  if (!slides.length) {
     return (
-      <div className="w-full h-64 sm:h-80 md:h-[30rem] flex items-center justify-center bg-gray-900">
-        <div className="text-white">
-          No hay imágenes disponibles para este dispositivo
-        </div>
+      <div
+        className="w-full flex items-center justify-center bg-zinc-900"
+        style={{ height: 300 }}
+      >
+        <p className="text-zinc-400 text-sm">No hay imágenes disponibles</p>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full overflow-hidden">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container flex">
-          {filteredImages.map((image, index) => (
-            <div
-              className="embla__slide flex-[0_0_100%] min-w-0 relative"
-              key={`${image._id}-${isMobile ? "mobile" : "desktop"}`}
-            >
-              <div
-                className="w-full"
-                style={{
-                  height: isMobile
-                    ? `${Math.min(image.targetHeight, 500)}px` // Limitar altura en móvil
-                    : `${image.targetHeight}px`,
-                  backgroundColor: "#1a1a1a",
-                }}
-              >
-                <img
-                  src={image.imageUrl}
-                  alt={image.name}
-                  className="w-full h-full object-cover"
-                  loading={index > 0 ? "lazy" : "eager"}
-                />
-                {image.redirectUrl && (
-                  <a
-                    href={image.redirectUrl}
-                    className="absolute inset-0 z-10"
-                    aria-label={`Enlace a ${image.name}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                )}
-              </div>
-
-              {/* Texto descriptivo opcional */}
-              {/* {image.name && (
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 md:p-6">
-                  <h2 className="text-white text-xl md:text-3xl font-bold">
-                    {image.name}
-                  </h2>
-                </div>
-              )} */}
-            </div>
-          ))}
-        </div>
+    <div
+      className="relative w-full overflow-hidden"
+      style={{ height: containerHeight }}
+    >
+      {/* Slide track */}
+      <div
+        className="flex h-full will-change-transform"
+        style={{
+          width: `${slides.length * 100}%`,
+          transform: `translateX(-${(current * 100) / slides.length}%)`,
+          transition: "transform 0.5s ease",
+        }}
+      >
+        {slides.map((image, index) => (
+          <div
+            key={image._id}
+            className="relative flex-shrink-0 h-full"
+            style={{ width: `${100 / slides.length}%` }}
+          >
+            <img
+              src={image.imageUrl}
+              alt={image.name}
+              className="w-full h-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchpriority={index === 0 ? "high" : undefined}
+            />
+            {image.redirectUrl && (
+              <a
+                href={image.redirectUrl}
+                className="absolute inset-0 z-10"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={image.name}
+              />
+            )}
+          </div>
+        ))}
       </div>
 
-      {/* Controles de navegación */}
-      <div className="absolute top-1/2 left-4 right-4 transform -translate-y-1/2 flex justify-between z-20">
-        <PrevButton onClick={() => emblaApi && emblaApi.scrollPrev()} />
-        <NextButton onClick={() => emblaApi && emblaApi.scrollNext()} />
+      {/* Prev / Next */}
+      <div className="absolute top-1/2 left-4 right-4 -translate-y-1/2 flex justify-between z-20 pointer-events-none">
+        <div className="pointer-events-auto"><PrevButton onClick={prev} /></div>
+        <div className="pointer-events-auto"><NextButton onClick={next} /></div>
       </div>
 
-      {/* Puntos de navegación */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
-        {scrollSnaps.map((_, index) => (
+      {/* Dots */}
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center z-20">
+        {slides.map((_, index) => (
           <DotButton
             key={index}
-            selected={index === selectedIndex}
-            onClick={() => scrollTo(index)}
+            selected={index === current}
+            onClick={() => goTo(index)}
           />
         ))}
       </div>

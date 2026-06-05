@@ -171,6 +171,7 @@ export default function NoticeDetail() {
                 <img
                   src={notice.images[0]}
                   alt=""
+                  fetchpriority="high"
                   className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-90"
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -215,6 +216,7 @@ export default function NoticeDetail() {
                     <img
                       src={notice.author.img}
                       alt={notice.author.name}
+                      loading="lazy"
                       className="w-10 h-10 rounded-full object-cover flex-shrink-0 ring-2 ring-white/10"
                     />
                   )}
@@ -261,6 +263,7 @@ export default function NoticeDetail() {
                         <img
                           src={img}
                           alt=""
+                          loading="lazy"
                           className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">

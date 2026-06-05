@@ -1,11 +1,3 @@
-#couponCard {
-  background-image: url("../../assets//images/home/img-home3.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
 /* Embla Carousel Base */
 .embla {
   --slide-spacing: 0;

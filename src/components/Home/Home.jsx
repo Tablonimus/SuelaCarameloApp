@@ -34,7 +34,9 @@ const NAV_LINKS = [
   { to: "/fixture",    icon: "bx-calendar-alt", label: "Fixture",       desc: "Partidos programados" },
   { to: "/posiciones", icon: "bx-table",         label: "Posiciones",   desc: "Ranking de equipos" },
   { to: "/equipos",    icon: "bx-group",         label: "Equipos",      desc: "Planteles del FSP" },
+  { to: "/noticias",   icon: "bx-news",          label: "Noticias",     desc: "Últimas noticias" },
   { to: "/cupones",    icon: "bx-wallet-alt",    label: "Descuentos",   desc: "Ofertas exclusivas" },
+  { to: "/contacto",   icon: "bxs-contact",      label: "Contacto",     desc: "Contactanos" },
 ];
 
 function NewsCard({ news }) {
@@ -49,6 +51,7 @@ function NewsCard({ news }) {
           <img
             src={news.images[0]}
             alt={news.title}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
@@ -139,22 +142,12 @@ const Home = () => {
               </h2>
             </div>
 
-            {/* 4 cols compactos en mobile, 2×2 en desktop */}
-            <div className="grid grid-cols-4 lg:grid-cols-2 gap-2 lg:gap-3">
+            {/* 3 cols en mobile (2 filas), 2×3 en desktop */}
+            <div className="grid grid-cols-3 lg:grid-cols-2 gap-2 lg:gap-3">
               {NAV_LINKS.map((link) => (
                 <NavCard key={link.to} {...link} />
               ))}
             </div>
-
-            {/* Link a contacto — solo visible en desktop */}
-            <Link
-              to="/contacto"
-              className="hidden lg:flex group items-center gap-3 bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 hover:border-orange-500/40 hover:bg-zinc-800 transition-all duration-200 mt-auto"
-            >
-              <i className="bx bxs-contact text-lg text-zinc-400 group-hover:text-orange-400 transition-colors" />
-              <span className="text-sm font-medium text-zinc-400 group-hover:text-white transition-colors">Contacto</span>
-              <i className="bx bx-chevron-right text-zinc-700 group-hover:text-orange-400 ml-auto group-hover:translate-x-0.5 transition-all" />
-            </Link>
           </aside>
 
           {/* ── Noticias: segundo en DOM → aparece abajo en mobile, izquierda en desktop ── */}

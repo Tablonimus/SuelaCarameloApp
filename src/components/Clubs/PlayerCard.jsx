@@ -10,6 +10,7 @@ export default function PlayerCard({ player }) {
       <img
         src={player.image === "-" ? defaultImg : player.image}
         alt="img11"
+        loading="lazy"
         className="max-w-sm h-96 object-cover"
       />
       <figcaption>

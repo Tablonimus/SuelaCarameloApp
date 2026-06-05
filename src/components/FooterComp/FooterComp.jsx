@@ -63,6 +63,7 @@ export default function FooterComp() {
                   className="object-contain h-16 opacity-60 hover:opacity-100 transition-opacity duration-300"
                   src={sponsor.logo}
                   alt={sponsor.name}
+                  loading="lazy"
                 />
               </a>
             </div>
@@ -74,6 +75,7 @@ export default function FooterComp() {
                   className="object-contain h-16 opacity-60 hover:opacity-100 transition-opacity duration-300"
                   src={sponsor.logo}
                   alt={sponsor.name}
+                  loading="lazy"
                 />
               </a>
             </div>
@@ -101,7 +103,7 @@ export default function FooterComp() {
 
         {/* Copyright */}
         <p className="text-xs text-zinc-600">
-          © {new Date().getFullYear()} Suela Caramelo™ · v3.4.1
+          © {new Date().getFullYear()} Suela Caramelo™
         </p>
 
       </div>

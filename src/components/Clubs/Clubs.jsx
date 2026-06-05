@@ -117,6 +117,7 @@ export default function Clubs() {
                     <img
                       src={club.logo}
                       alt={club.name}
+                      loading="lazy"
                       className="w-full h-full max-h-24 object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-lg"
                     />
                   </div>
