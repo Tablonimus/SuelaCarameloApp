@@ -14,6 +14,15 @@ import { getAllNotices } from "../../redux/actions";
 import axios from "axios";
 import HeroCarousel from "./HeroCarousel";
 
+const CATEGORY_LABELS = {
+  A1: "FSP Masculino",
+  F1: "FSP Femenino",
+  DH: "División de Honor",
+  CM: "Copa Mendoza",
+  TN: "Torneos Nacionales",
+  TI: "Torneos Internacionales",
+};
+
 const Home = () => {
   const images = [imgHome1, imgHome2, imgHome3, imgHome4];
   const dispatch = useDispatch();
@@ -94,51 +103,40 @@ const Home = () => {
               </h2>
             </div>
 
-            {/* Mobile: Columnas alargadas */}
-            <div className="flex flex-col items-center gap-3 ">
+            <div className="flex flex-col gap-2">
               {featuredNews.map((news) => (
-                <div
+                <Link
                   key={news._id}
-                  whileHover={{ y: -2 }}
-                  className="bg-zinc-800/50 hover:bg-zinc-700/70 lg:w-[50vw] lg:max-w-[50vw] transition-all rounded-lg border border-white/10"
+                  to={`/noticias/${news._id}`}
+                  className="group flex items-center gap-3 p-3 bg-zinc-800/50 hover:bg-zinc-800 rounded-xl border border-white/10 hover:border-orange-500/30 transition-all duration-200"
                 >
-                  <Link
-                    to={`/noticias/${news._id}`}
-                    className="flex items-start p-3 gap-3 h-28"
-                  >
-                    {/* Imagen */}
-                    <div className="w-1/3 h-full min-w-[100px]">
-                      <img
-                        src={news.images?.[0] || "/placeholder-news.jpg"}
-                        alt="Miniatura noticia"
-                        className="w-24 h-24 object-cover rounded-md"
-                      />
-                    </div>
+                  {/* Imagen */}
+                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-700">
+                    <img
+                      src={news.images?.[0] || "/placeholder-news.jpg"}
+                      alt={news.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
 
-                    {/* Contenido */}
-                    <div className="flex-1 flex flex-col h-full justify-between gap-1">
-                      <div>
-                        <span className="text-[9px] font-semibold text-orange-400">
-                          {news.category == "A1"
-                            ? "FSP Masculino"
-                            : "FSP Femenino"}
-                        </span>
-                        <h3 className="text-[11px] font-bold text-white line-clamp-2 mt-1">
-                          {news.title}
-                        </h3>
-                        <h4 className="text-[10px] font-bold text-white/70 line-clamp-2 mt-1 ">
-                          {news.subtitle}
-                        </h4>
-                      </div>
-                      <span className="text-xs text-end text-zinc-400 ">
-                        {new Date(news.date).toLocaleDateString("es-AR", {
-                          // day: "numeric",
-                          // month: "short",
-                        })}
+                  {/* Contenido */}
+                  <div className="flex-1 flex flex-col gap-1 min-w-0">
+                    {news.category && (
+                      <span className="inline-flex w-fit items-center bg-orange-500/15 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
+                        {CATEGORY_LABELS[news.category] ?? news.category}
                       </span>
-                    </div>
-                  </Link>
-                </div>
+                    )}
+                    <h3 className="text-sm font-bold text-white line-clamp-2 leading-snug">
+                      {news.title}
+                    </h3>
+                    <span className="text-xs text-zinc-500">
+                      {new Date(news.date).toLocaleDateString("es-AR")}
+                    </span>
+                  </div>
+
+                  {/* Chevron */}
+                  <i className="bx bx-chevron-right text-xl text-zinc-600 group-hover:text-orange-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
+                </Link>
               ))}
             </div>
 
