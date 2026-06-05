@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Alert } from "flowbite-react";
-import { FaPlus, FaTrash, FaCheckCircle, FaExclamationCircle, FaUserShield, FaUser, FaSearch } from "react-icons/fa";
+import { FaPlus, FaTrash, FaCheckCircle, FaExclamationCircle, FaUserShield, FaUser, FaSearch, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdRateReview } from "react-icons/md";
 
 const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
@@ -12,13 +12,15 @@ const ROLE_CONFIG = {
   reporter: { label: "Notero",  color: "bg-green-700"  },
 };
 
-const defaultForm = { username: "", password: "", role: "reporter" };
+const defaultForm = { username: "", password: "", confirm: "", role: "reporter" };
 
 export default function UsersManager() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState(defaultForm);
+  const [showPwd, setShowPwd] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [creating, setCreating] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
   const [updatingId, setUpdatingId] = useState(null);
@@ -57,17 +59,23 @@ export default function UsersManager() {
       flash("error", "Usuario y contraseña son obligatorios.");
       return;
     }
+    if (form.password !== form.confirm) {
+      flash("error", "Las contraseñas no coinciden.");
+      return;
+    }
     setCreating(true);
     try {
       const res = await fetch(`${BASE_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ username: form.username, password: form.password, role: form.role }),
       });
       const data = await res.json();
       if (!res.ok) { flash("error", data.message || "Error al crear el usuario"); return; }
       setUsers((prev) => [data, ...prev]);
       setForm(defaultForm);
+      setShowPwd(false);
+      setShowConfirm(false);
       setShowModal(false);
       flash("success", `Usuario "${data.username}" creado.`);
     } catch {
@@ -218,7 +226,7 @@ export default function UsersManager() {
       {/* Modal nuevo usuario */}
       <Modal
         show={showModal}
-        onClose={() => !creating && setShowModal(false)}
+        onClose={() => { if (!creating) { setShowModal(false); setShowPwd(false); setShowConfirm(false); setForm(defaultForm); } }}
         size="md"
         theme={{
           content: {
@@ -249,13 +257,46 @@ export default function UsersManager() {
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wide">Contraseña</label>
-              <input
-                type="password"
-                placeholder="Mínimo 3 caracteres"
-                value={form.password}
-                onChange={(e) => setForm((p) => ({ ...p, password: e.target.value }))}
-                className={inputClass}
-              />
+              <div className="relative">
+                <input
+                  type={showPwd ? "text" : "password"}
+                  placeholder="Mínimo 3 caracteres"
+                  value={form.password}
+                  onChange={(e) => setForm((p) => ({ ...p, password: e.target.value }))}
+                  className={`w-full ${inputClass} pr-10`}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPwd((v) => !v)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition-colors"
+                  tabIndex={-1}
+                >
+                  {showPwd ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wide">Repetir contraseña</label>
+              <div className="relative">
+                <input
+                  type={showConfirm ? "text" : "password"}
+                  placeholder="Repetí la contraseña"
+                  value={form.confirm}
+                  onChange={(e) => setForm((p) => ({ ...p, confirm: e.target.value }))}
+                  className={`w-full ${inputClass} pr-10 ${form.confirm && form.password !== form.confirm ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}`}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirm((v) => !v)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition-colors"
+                  tabIndex={-1}
+                >
+                  {showConfirm ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+              {form.confirm && form.password !== form.confirm && (
+                <p className="text-xs text-red-400">Las contraseñas no coinciden</p>
+              )}
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wide">Rol</label>
