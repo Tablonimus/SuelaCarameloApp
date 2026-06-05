@@ -1,8 +1,9 @@
 import Voucher from "./Voucher";
 import Sidebar from "../NavBar/Sidebar";
+import FooterComp from "../FooterComp/FooterComp";
+import logoSuela from "../../assets/images/banner2.png";
 import b2 from "../../assets/images/b2.png";
 import b4 from "../../assets/images/b4.png";
-import FooterComp from "../FooterComp/FooterComp";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCoupons } from "../../redux/actions/index";
@@ -15,7 +16,6 @@ const Descuentos = () => {
     dispatch(getAllCoupons());
   }, [dispatch]);
 
-  // Default coupons as fallback
   const defaultCoupons = [
     {
       name: "Calzas deportivas cortas",
@@ -33,28 +33,36 @@ const Descuentos = () => {
     },
   ];
 
-  // Use coupons from Redux or fallback to default
   const displayCoupons = coupons && coupons.length > 0 ? coupons : defaultCoupons;
 
   return (
-    <div className="pl-[70px]  flex flex-col justify-between min-h-screen">
-      <Sidebar active={"cupones"} />
+    <div className="pl-[70px] flex flex-col min-h-screen bg-zinc-950">
+      <Sidebar active="cupones" />
 
-      <header className="w-full flex flex-col justify-center items-center bg-zinc-900 gap-3 py-4 lg:py-6">
-        <h2 className="text-xl border-b w-full  text-center pb-2 italic  lg:text-2xl  text-gray-200 font-bold">
-          DESCUENTOS EXCLUSIVOS
-        </h2>
+      {/* Header — mismo patrón que el resto de la app */}
+      <header className="sticky top-0 z-40 bg-zinc-900/95 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+          <img src={logoSuela} alt="" className="h-7 object-contain flex-shrink-0" />
+          <span className="text-sm font-bold text-white tracking-widest uppercase hidden sm:block flex-shrink-0">
+            Descuentos
+          </span>
+          <span className="text-zinc-600 hidden sm:block flex-shrink-0">·</span>
+          <span className="text-sm font-semibold text-orange-400 hidden sm:block">
+            {displayCoupons.length} {displayCoupons.length === 1 ? "cupón exclusivo" : "cupones exclusivos"}
+          </span>
+        </div>
       </header>
-      <section
-        id="inicio"
-        className="w-full h-auto py-4 flex flex-col justify-center items-center "
-      >
+
+      {/* Cupones */}
+      <main className="flex-1 flex flex-col items-center py-8 px-4">
         {displayCoupons.map((sponsor, index) => (
           <Voucher key={index} sponsor={sponsor} />
         ))}
-      </section>
+      </main>
+
       <FooterComp />
     </div>
   );
 };
+
 export default Descuentos;
