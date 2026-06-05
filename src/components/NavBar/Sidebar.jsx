@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import logoSC from "../../assets/images/banner2.png";
-import logoSC2 from "../../assets/images/suela.png";
 import { useState } from "react";
 
 const Sidebar = ({ active }) => {
@@ -16,7 +15,7 @@ const Sidebar = ({ active }) => {
         <div className="logo_details">
           <img
             className={!isOpen ? "hidden max-w-10" : null}
-            src={logoSC2}
+            src={logoSC}
             alt=""
           />
           <i onClick={toggleSidebar} className="bx bx-menu" id="btn"></i>
