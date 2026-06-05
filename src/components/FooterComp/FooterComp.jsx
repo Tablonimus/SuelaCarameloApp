@@ -40,7 +40,7 @@ export default function FooterComp() {
       <div className="max-w-6xl mx-auto px-4 pt-5 pb-3">
         <div className="flex items-center gap-3">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
-          <span className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.25em] whitespace-nowrap">
+          <span className="text-[10px] font-black text-orange-400 uppercase tracking-[0.25em] whitespace-nowrap">
             Auspiciantes
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />

@@ -1,16 +1,11 @@
 import logoSC from "../../assets/images/banner2.png";
-import imgHome1 from "../../assets/images/heroSection/hero1.webp";
-import imgHome2 from "../../assets/images/heroSection/hero2.webp";
-import imgHome3 from "../../assets/images/heroSection/hero3.webp";
-import imgHome4 from "../../assets/images/heroSection/hero4.webp";
 import FooterComp from "../FooterComp/FooterComp";
 import { Link } from "react-router-dom";
 import "./home.css";
 import LiveMatchesTicker from "../LiveMatchesTicker/LiveMatchesTicker";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getAllNotices } from "../../redux/actions";
-import axios from "axios";
 import HeroCarousel from "./HeroCarousel";
 
 const CATEGORY_LABELS = {
@@ -23,44 +18,79 @@ const CATEGORY_LABELS = {
 };
 
 const NAV_LINKS = [
-  { to: "/fixture",    icon: "bx-calendar-alt",  label: "Fixture Completo",       desc: "Consultá todos los partidos programados" },
-  { to: "/posiciones", icon: "bx-table",          label: "Tabla de Posiciones",    desc: "Revisá el ranking de los equipos" },
-  { to: "/equipos",    icon: "bx-group",          label: "Equipos",                desc: "Conocé los planteles del FSP" },
-  { to: "/cupones",    icon: "bx-wallet-alt",     label: "Cupones y Descuentos",   desc: "Descubrí ofertas exclusivas para vos" },
+  { to: "/fixture",    icon: "bx-calendar-alt", label: "Fixture",       desc: "Partidos programados" },
+  { to: "/posiciones", icon: "bx-table",         label: "Posiciones",   desc: "Ranking de equipos" },
+  { to: "/equipos",    icon: "bx-group",         label: "Equipos",      desc: "Planteles del FSP" },
+  { to: "/cupones",    icon: "bx-wallet-alt",    label: "Descuentos",   desc: "Ofertas exclusivas" },
 ];
 
-const Home = () => {
-  const images = [imgHome1, imgHome2, imgHome3, imgHome4];
-  const dispatch = useDispatch();
-  const [activeTab, setActiveTab]     = useState("A1");
-  const [teamsState, setTeamsState]   = useState({ A1: [], FEM: [] });
-  const [isLoading, setIsLoading]     = useState(true);
+function NewsCard({ news }) {
+  return (
+    <Link
+      to={`/noticias/${news._id}`}
+      className="group flex flex-col bg-zinc-900 border border-white/10 rounded-xl overflow-hidden hover:border-orange-500/40 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-200 h-full"
+    >
+      {/* Imagen */}
+      <div className="relative h-44 sm:h-48 overflow-hidden bg-zinc-800 flex-shrink-0">
+        {news.images?.[0] ? (
+          <img
+            src={news.images[0]}
+            alt={news.title}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <i className="bx bx-news text-4xl text-zinc-700" />
+          </div>
+        )}
+        {news.category && (
+          <span className="absolute bottom-2 left-2 bg-orange-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
+            {CATEGORY_LABELS[news.category] ?? news.category}
+          </span>
+        )}
+      </div>
 
-  const allNotices  = useSelector((state) => state.allNotices);
-  const featuredNews = allNotices.slice(0, 3);
+      {/* Contenido */}
+      <div className="flex flex-col gap-1.5 p-3 flex-1">
+        <h3 className="text-sm font-bold text-white line-clamp-2 leading-snug group-hover:text-orange-400 transition-colors">
+          {news.title}
+        </h3>
+        {news.subtitle && (
+          <p className="text-xs text-zinc-500 line-clamp-1">{news.subtitle}</p>
+        )}
+        <p className="text-xs text-zinc-600 mt-auto pt-1">
+          {new Date(news.date).toLocaleDateString("es-AR")}
+        </p>
+      </div>
+    </Link>
+  );
+}
+
+function NavCard({ to, icon, label, desc }) {
+  return (
+    <Link
+      to={to}
+      className="group flex flex-col items-center lg:items-start gap-2 lg:gap-2.5 bg-zinc-900 border border-white/10 rounded-xl p-3 lg:p-4 hover:border-orange-500/40 hover:bg-zinc-800 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-200"
+    >
+      <div className="bg-orange-500 p-2 rounded-lg shadow-sm group-hover:rotate-6 transition-transform">
+        <i className={`bx ${icon} text-lg lg:text-xl text-white`} />
+      </div>
+      <div className="text-center lg:text-left">
+        <p className="text-xs lg:text-sm font-bold text-white">{label}</p>
+        <p className="hidden lg:block text-xs text-zinc-500 mt-0.5 leading-snug">{desc}</p>
+      </div>
+    </Link>
+  );
+}
+
+const Home = () => {
+  const dispatch   = useDispatch();
+  const allNotices = useSelector((state) => state.allNotices);
+  const featuredNews = allNotices.slice(0, 4);
 
   useEffect(() => {
     dispatch(getAllNotices(""));
-
-    async function getTeams() {
-      try {
-        setIsLoading(true);
-        const teams = (
-          await axios.get("https://suela-caramelo-app-back-end.vercel.app/sc/teams")
-        ).data;
-        setTeamsState({
-          A1:  teams.filter((t) => t.category === "A1").slice(0, 4).map(({ logo, name, _id }) => ({ logo, name, _id })),
-          FEM: teams.filter((t) => t.category === "FEM").slice(0, 4).map(({ logo, name, _id }) => ({ logo, name, _id })),
-        });
-      } catch (error) {
-        console.error("Error fetching teams:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    getTeams();
-  }, [dispatch, activeTab]);
+  }, [dispatch]);
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-950">
@@ -71,88 +101,81 @@ const Home = () => {
       </div>
 
       {/* Ticker de partidos */}
-      <div className="w-full">
-        <LiveMatchesTicker />
-      </div>
+      <LiveMatchesTicker />
 
       {/* Hero carousel */}
-      <div className="w-full">
-        <HeroCarousel />
-      </div>
+      <HeroCarousel />
 
       {/* Contenido principal */}
-      <main className="flex-1 flex flex-col items-center w-full px-4 py-6 gap-4 max-w-2xl mx-auto w-full">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        {/* Últimas noticias */}
-        <section className="w-full bg-zinc-900 border border-white/10 rounded-xl p-4 md:p-5">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2 rounded-lg shadow-md">
-              <i className="bx bx-news text-lg text-white" />
+          {/* ── Secciones: primero en DOM → aparece arriba en mobile, derecha en desktop ── */}
+          <aside className="flex flex-col gap-3 order-1 lg:order-2">
+            <div className="flex items-center gap-2.5">
+              <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-1.5 rounded-lg shadow-md">
+                <i className="bx bx-grid-alt text-base text-white" />
+              </div>
+              <h2 className="text-sm font-bold text-white uppercase tracking-widest">
+                Secciones
+              </h2>
             </div>
-            <h2 className="text-base font-bold text-white">Últimas Noticias</h2>
-          </div>
 
-          <div className="flex flex-col gap-2">
-            {featuredNews.map((news) => (
-              <Link
-                key={news._id}
-                to={`/noticias/${news._id}`}
-                className="group flex items-center gap-3 p-3 bg-zinc-800/50 hover:bg-zinc-800 rounded-xl border border-white/10 hover:border-orange-500/30 transition-all duration-200"
-              >
-                <div className="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-700">
-                  <img
-                    src={news.images?.[0] || "/placeholder-news.jpg"}
-                    alt={news.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex-1 flex flex-col gap-1 min-w-0">
-                  {news.category && (
-                    <span className="inline-flex w-fit items-center bg-orange-500/15 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
-                      {CATEGORY_LABELS[news.category] ?? news.category}
-                    </span>
-                  )}
-                  <h3 className="text-sm font-bold text-white line-clamp-2 leading-snug">
-                    {news.title}
-                  </h3>
-                  <span className="text-xs text-zinc-500">
-                    {new Date(news.date).toLocaleDateString("es-AR")}
-                  </span>
-                </div>
-                <i className="bx bx-chevron-right text-xl text-zinc-600 group-hover:text-orange-400 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
-              </Link>
-            ))}
-          </div>
+            {/* 4 cols compactos en mobile, 2×2 en desktop */}
+            <div className="grid grid-cols-4 lg:grid-cols-2 gap-2 lg:gap-3">
+              {NAV_LINKS.map((link) => (
+                <NavCard key={link.to} {...link} />
+              ))}
+            </div>
 
-          <Link
-            to="/noticias"
-            className="mt-4 inline-flex items-center justify-end w-full text-sm text-orange-400 hover:text-orange-300 group"
-          >
-            Ver todas
-            <i className="bx bx-chevron-right ml-1 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </section>
-
-        {/* Accesos rápidos */}
-        <section className="w-full flex flex-col gap-2">
-          {NAV_LINKS.map(({ to, icon, label, desc }) => (
+            {/* Link a contacto — solo visible en desktop */}
             <Link
-              key={to}
-              to={to}
-              className="group flex items-center gap-4 bg-zinc-900 border border-white/10 rounded-xl px-4 py-3.5 hover:border-orange-500/40 hover:bg-zinc-800 transition-all duration-200"
+              to="/contacto"
+              className="hidden lg:flex group items-center gap-3 bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 hover:border-orange-500/40 hover:bg-zinc-800 transition-all duration-200 mt-auto"
             >
-              <div className="bg-orange-500 p-2.5 rounded-lg flex-shrink-0 shadow-sm group-hover:rotate-6 transition-transform">
-                <i className={`bx ${icon} text-xl text-white`} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold text-white">{label}</p>
-                <p className="text-xs text-zinc-500 mt-0.5">{desc}</p>
-              </div>
-              <i className="bx bx-chevron-right text-xl text-zinc-600 group-hover:text-orange-400 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+              <i className="bx bxs-contact text-lg text-zinc-400 group-hover:text-orange-400 transition-colors" />
+              <span className="text-sm font-medium text-zinc-400 group-hover:text-white transition-colors">Contacto</span>
+              <i className="bx bx-chevron-right text-zinc-700 group-hover:text-orange-400 ml-auto group-hover:translate-x-0.5 transition-all" />
             </Link>
-          ))}
-        </section>
+          </aside>
 
+          {/* ── Noticias: segundo en DOM → aparece abajo en mobile, izquierda en desktop ── */}
+          <section className="lg:col-span-2 flex flex-col gap-4 order-2 lg:order-1">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-1.5 rounded-lg shadow-md">
+                  <i className="bx bx-news text-base text-white" />
+                </div>
+                <h2 className="text-sm font-bold text-white uppercase tracking-widest">
+                  Últimas Noticias
+                </h2>
+              </div>
+              <Link
+                to="/noticias"
+                className="flex items-center gap-1 text-xs text-orange-400 hover:text-orange-300 group transition-colors"
+              >
+                Ver todas
+                <i className="bx bx-chevron-right group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Grid de cards — 2 cols en sm+, 1 col en mobile */}
+            {allNotices.length === 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="bg-zinc-800/50 rounded-xl animate-pulse aspect-[4/3]" />
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {featuredNews.map((news) => (
+                  <NewsCard key={news._id} news={news} />
+                ))}
+              </div>
+            )}
+          </section>
+
+        </div>
       </main>
 
       <FooterComp />
