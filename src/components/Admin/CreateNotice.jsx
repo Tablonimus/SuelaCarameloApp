@@ -1,14 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createNotice } from "../../redux/actions/index";
 import { Modal, Alert } from "flowbite-react";
-import { FaPlus, FaEdit, FaEye, FaCheckCircle, FaExclamationCircle, FaTrash } from "react-icons/fa";
+import { FaPlus, FaEdit, FaEye, FaCheckCircle, FaExclamationCircle, FaTrash, FaSearch, FaTimes } from "react-icons/fa";
 import NoticeForm from "./NoticeForm";
 
 const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
 // const BASE_URL = "http://localhost:3000/sc";
 
-export default function CreateNotice() {
+const CATEGORIES = [
+  { value: "", label: "Todas las categorías" },
+  { value: "A1", label: "FSP Masculino" },
+  { value: "F1", label: "FSP Femenino" },
+  { value: "DH", label: "División de Honor" },
+  { value: "CM", label: "Copa Mendoza" },
+  { value: "TN", label: "Torneos Nacionales" },
+  { value: "TI", label: "Torneos Internacionales" },
+];
+
+function getCategoryLabel(value) {
+  return CATEGORIES.find((c) => c.value === value)?.label ?? value ?? "—";
+}
+
+export default function CreateNotice({ userRole = "reporter" }) {
+  const canApprove = userRole === "admin" || userRole === "reviewer";
+  const canDelete  = userRole === "admin";
+  const canEdit    = (notice) => userRole === "admin" || userRole === "reviewer" || !notice.is_approved;
   const dispatch = useDispatch();
 
   const [notices, setNotices] = useState([]);
@@ -17,6 +34,12 @@ export default function CreateNotice() {
   const [totalPages, setTotalPages] = useState(1);
   const [total, setTotal] = useState(0);
   const LIMIT = 20;
+
+  // Search and filter state
+  const [searchInput, setSearchInput] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
+
   const [showModal, setShowModal] = useState(false);
   const [editingNotice, setEditingNotice] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -25,13 +48,31 @@ export default function CreateNotice() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
+  // Debounce searchInput → searchQuery (400ms)
+  useEffect(() => {
+    const t = setTimeout(() => setSearchQuery(searchInput.trim()), 400);
+    return () => clearTimeout(t);
+  }, [searchInput]);
+
+  // When search or category changes, reset to page 1
+  useEffect(() => {
+    setPage(1);
+  }, [searchQuery, categoryFilter]);
+
+  // Fetch whenever page, searchQuery, or categoryFilter change
+  useEffect(() => {
+    fetchNotices(page);
+  }, [page, searchQuery, categoryFilter]); // eslint-disable-line react-hooks/exhaustive-deps
+
   async function fetchNotices(p = page) {
     try {
       setLoadingNotices(true);
-      const res = await fetch(`${BASE_URL}/notices?admin=true&page=${p}&limit=${LIMIT}`);
+      const params = new URLSearchParams({ admin: "true", page: p, limit: LIMIT });
+      if (searchQuery) params.set("search", searchQuery);
+      if (categoryFilter) params.set("category", categoryFilter);
+      const res = await fetch(`${BASE_URL}/notices?${params}`);
       const json = await res.json();
       if (Array.isArray(json)) {
-        // backend sin paginación (todavía no deployado)
         setNotices(json);
         setTotal(json.length);
         setTotalPages(1);
@@ -46,8 +87,6 @@ export default function CreateNotice() {
       setLoadingNotices(false);
     }
   }
-
-  useEffect(() => { fetchNotices(page); }, [page]);
 
   function showError(msg) {
     setError(msg);
@@ -75,6 +114,14 @@ export default function CreateNotice() {
     setEditingNotice(null);
   }
 
+  function clearFilters() {
+    setSearchInput("");
+    setSearchQuery("");
+    setCategoryFilter("");
+  }
+
+  const hasActiveFilters = searchInput !== "" || categoryFilter !== "";
+
   async function handleFormSubmit(noticeData) {
     setSubmitting(true);
     try {
@@ -90,6 +137,7 @@ export default function CreateNotice() {
         showSuccess("Noticia actualizada correctamente.");
       } else {
         await dispatch(createNotice(noticeData));
+        clearFilters();
         setPage(1);
         await fetchNotices(1);
         showSuccess("Noticia creada correctamente.");
@@ -124,6 +172,7 @@ export default function CreateNotice() {
       const res = await fetch(`${BASE_URL}/notices/${id}`, { method: "DELETE" });
       if (!res.ok) throw new Error();
       setNotices((prev) => prev.filter((n) => n._id !== id));
+      setTotal((t) => t - 1);
       showSuccess("Noticia eliminada.");
     } catch {
       showError("Error al eliminar la noticia");
@@ -149,34 +198,43 @@ export default function CreateNotice() {
         <FaEye className="text-xs" />
         <span className="hidden sm:inline">Vista previa</span>
       </a>
-      <button
-        onClick={() => openEdit(notice)}
-        disabled={notice.is_approved}
-        title={notice.is_approved ? "Desaprobá la nota para editarla" : "Editar"}
-        className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors disabled:bg-zinc-600 disabled:cursor-not-allowed disabled:opacity-50"
-      >
-        <FaEdit className="text-xs" />
-        <span>Editar</span>
-      </button>
-      <button
-        onClick={() => handleToggleApproval(notice._id)}
-        disabled={togglingId === notice._id}
-        className={`px-3 py-1.5 rounded-lg text-xs font-semibold text-white transition-colors disabled:bg-zinc-500 disabled:cursor-not-allowed ${
-          notice.is_approved ? "bg-yellow-600 hover:bg-yellow-700" : "bg-green-600 hover:bg-green-700"
-        }`}
-      >
-        {togglingId === notice._id ? "..." : notice.is_approved ? "Desaprobar" : "Aprobar"}
-      </button>
-      <button
-        onClick={() => handleDeleteNotice(notice._id)}
-        disabled={deletingId === notice._id}
-        className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-red-700 hover:bg-red-600 transition-colors disabled:bg-zinc-500 disabled:cursor-not-allowed"
-      >
-        <FaTrash className="text-xs" />
-        <span className="hidden sm:inline">{deletingId === notice._id ? "..." : "Eliminar"}</span>
-      </button>
+
+      {canEdit(notice) && (
+        <button
+          onClick={() => openEdit(notice)}
+          className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+        >
+          <FaEdit className="text-xs" />
+          <span>Editar</span>
+        </button>
+      )}
+
+      {canApprove && (
+        <button
+          onClick={() => handleToggleApproval(notice._id)}
+          disabled={togglingId === notice._id}
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold text-white transition-colors disabled:bg-zinc-500 disabled:cursor-not-allowed ${
+            notice.is_approved ? "bg-yellow-600 hover:bg-yellow-700" : "bg-green-600 hover:bg-green-700"
+          }`}
+        >
+          {togglingId === notice._id ? "..." : notice.is_approved ? "Desaprobar" : "Aprobar"}
+        </button>
+      )}
+
+      {canDelete && (
+        <button
+          onClick={() => handleDeleteNotice(notice._id)}
+          disabled={deletingId === notice._id}
+          className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-red-700 hover:bg-red-600 transition-colors disabled:bg-zinc-500 disabled:cursor-not-allowed"
+        >
+          <FaTrash className="text-xs" />
+          <span className="hidden sm:inline">{deletingId === notice._id ? "..." : "Eliminar"}</span>
+        </button>
+      )}
     </div>
   );
+
+  const inputClass = "bg-zinc-900 border border-white/10 text-white rounded-lg text-sm placeholder-zinc-500 focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition-colors";
 
   return (
     <div className="p-3 sm:p-4">
@@ -191,7 +249,9 @@ export default function CreateNotice() {
       <div className="flex justify-between items-center mb-4 gap-3">
         <div>
           <h2 className="text-xl sm:text-2xl font-semibold text-white">Gestión de Noticias</h2>
-          <p className="text-xs text-zinc-500 mt-0.5">{notices.length} notas en total</p>
+          <p className="text-xs text-zinc-500 mt-0.5">
+            {hasActiveFilters ? `${total} resultados` : `${total} notas en total`}
+          </p>
         </div>
         <button
           onClick={openCreate}
@@ -203,6 +263,51 @@ export default function CreateNotice() {
         </button>
       </div>
 
+      {/* Filtros */}
+      <div className="flex flex-col sm:flex-row gap-2 mb-4">
+        {/* Buscador por título */}
+        <div className="relative flex-1">
+          <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 text-sm pointer-events-none" />
+          <input
+            type="text"
+            placeholder="Buscar por título..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className={`${inputClass} w-full pl-9 pr-9 py-2.5`}
+          />
+          {searchInput && (
+            <button
+              onClick={() => setSearchInput("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white transition-colors"
+            >
+              <FaTimes className="text-sm" />
+            </button>
+          )}
+        </div>
+
+        {/* Filtro por categoría */}
+        <select
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+          className={`${inputClass} px-3 py-2.5 sm:w-52 cursor-pointer`}
+        >
+          {CATEGORIES.map((cat) => (
+            <option key={cat.value} value={cat.value}>{cat.label}</option>
+          ))}
+        </select>
+
+        {/* Limpiar filtros */}
+        {hasActiveFilters && (
+          <button
+            onClick={clearFilters}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-zinc-400 border border-white/10 hover:border-white/30 hover:text-white transition-colors flex-shrink-0"
+          >
+            <FaTimes className="text-xs" />
+            Limpiar
+          </button>
+        )}
+      </div>
+
       {/* Loading */}
       {loadingNotices ? (
         <div className="flex items-center gap-2 text-white py-8">
@@ -210,7 +315,16 @@ export default function CreateNotice() {
           <span>Cargando noticias...</span>
         </div>
       ) : notices.length === 0 ? (
-        <p className="text-zinc-400 py-8 text-center">No hay noticias publicadas.</p>
+        <div className="py-12 text-center">
+          <p className="text-zinc-400">
+            {hasActiveFilters ? "No se encontraron noticias con esos filtros." : "No hay noticias publicadas."}
+          </p>
+          {hasActiveFilters && (
+            <button onClick={clearFilters} className="mt-2 text-xs text-orange-400 hover:text-orange-300 underline">
+              Limpiar filtros
+            </button>
+          )}
+        </div>
       ) : (
         <>
           {/* ── Vista mobile: cards ── */}
@@ -225,7 +339,7 @@ export default function CreateNotice() {
                 </div>
                 <div className="flex items-center gap-3 text-xs text-zinc-400">
                   <span className="bg-zinc-700 px-2 py-0.5 rounded font-medium text-zinc-300">
-                    {notice.category || "—"}
+                    {getCategoryLabel(notice.category)}
                   </span>
                   <span>
                     {notice.date ? new Date(notice.date).toLocaleDateString("es-AR") : "—"}
@@ -254,7 +368,7 @@ export default function CreateNotice() {
                     <td className="px-4 py-3 text-white font-medium max-w-xs truncate">
                       {notice.title || "(sin título)"}
                     </td>
-                    <td className="px-4 py-3 text-zinc-300">{notice.category || "-"}</td>
+                    <td className="px-4 py-3 text-zinc-300">{getCategoryLabel(notice.category)}</td>
                     <td className="px-4 py-3 text-zinc-300">
                       {notice.date ? new Date(notice.date).toLocaleDateString("es-AR") : "-"}
                     </td>
@@ -269,9 +383,10 @@ export default function CreateNotice() {
               </tbody>
             </table>
           </div>
+
           {/* Paginador */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between mt-5 gap-3">
+            <div className="flex items-center justify-between mt-5 gap-3 flex-wrap">
               <p className="text-xs text-zinc-500">
                 Mostrando {(page - 1) * LIMIT + 1}–{Math.min(page * LIMIT, total)} de {total} notas
               </p>

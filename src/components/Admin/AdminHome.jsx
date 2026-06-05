@@ -13,23 +13,23 @@ import FixturesManager from "./FixturesManager";
 import SponsorsManager from "./SponsorsManager";
 import UsersManager from "./UsersManager";
 
-const ALL_TABS = [
-  { title: "Resultados en Vivo", icon: MdDashboard,   roles: ["admin"],                         component: <LiveResultsUpdater /> },
-  { title: "Notas",              icon: HiUserCircle,  roles: ["admin", "reviewer", "reporter"], component: <CreateNotice /> },
-  { title: "Fixtures",           icon: MdDashboard,   roles: ["admin"],                         component: <FixturesManager /> },
-  { title: "Posiciones",         icon: HiAdjustments, roles: ["admin"],                         component: <Positions /> },
-  { title: "Tabla General",      icon: HiAdjustments, roles: ["admin"],                         component: <GeneralPositions /> },
-  { title: "Jugadores",          icon: HiAdjustments, roles: ["admin"],                         component: <PlayersConverter /> },
-  { title: "Equipos",            icon: HiAdjustments, roles: ["admin"],                         component: <TeamsConverter /> },
-  { title: "Banners",            icon: HiArchive,     roles: ["admin"],                         component: <HeroImageManager /> },
-  { title: "Sponsors",           icon: HiArchive,     roles: ["admin"],                         component: <SponsorsManager /> },
-  { title: "Usuarios",           icon: FaUsers,       roles: ["admin"],                         component: <UsersManager /> },
-];
-
 const ROLE_LABEL = { admin: "Administrador", reviewer: "Revisor", reporter: "Notero" };
 const ROLE_COLOR = { admin: "text-orange-400", reviewer: "text-blue-400", reporter: "text-green-400" };
 
 export default function AdminHome({ userRole = "reporter", currentUser, onLogout }) {
+  const ALL_TABS = [
+    { title: "Notas",              icon: HiUserCircle,  roles: ["admin", "reviewer", "reporter"], component: <CreateNotice userRole={userRole} /> },
+    { title: "Resultados en Vivo", icon: MdDashboard,   roles: ["admin"],                         component: <LiveResultsUpdater /> },
+    { title: "Fixtures",           icon: MdDashboard,   roles: ["admin"],                         component: <FixturesManager /> },
+    { title: "Posiciones",         icon: HiAdjustments, roles: ["admin"],                         component: <Positions /> },
+    { title: "Tabla General",      icon: HiAdjustments, roles: ["admin"],                         component: <GeneralPositions /> },
+    { title: "Jugadores",          icon: HiAdjustments, roles: ["admin"],                         component: <PlayersConverter /> },
+    { title: "Equipos",            icon: HiAdjustments, roles: ["admin"],                         component: <TeamsConverter /> },
+    { title: "Banners",            icon: HiArchive,     roles: ["admin"],                         component: <HeroImageManager /> },
+    { title: "Sponsors",           icon: HiArchive,     roles: ["admin"],                         component: <SponsorsManager /> },
+    { title: "Usuarios",           icon: FaUsers,       roles: ["admin"],                         component: <UsersManager /> },
+  ];
+
   const visibleTabs = ALL_TABS.filter((tab) => tab.roles.includes(userRole));
   const [activeIndex, setActiveIndex] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
