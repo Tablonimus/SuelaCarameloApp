@@ -7,6 +7,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllNotices } from "../../redux/actions";
 import HeroCarousel from "./HeroCarousel";
+import SEO from "../SEO/SEO";
+
+const HOME_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://suelacaramelo.com.ar/#webpage",
+  "url": "https://suelacaramelo.com.ar",
+  "name": "Suela Caramelo | Liga de Fútbol de Salón · Mendoza",
+  "isPartOf": { "@id": "https://suelacaramelo.com.ar/#website" },
+  "about": { "@id": "https://suelacaramelo.com.ar/#organization" },
+  "description": "Portal oficial de la liga Suela Caramelo. Accedé a noticias, fixture, posiciones y equipos del futsal mendocino.",
+  "inLanguage": "es-AR"
+};
 
 const CATEGORY_LABELS = {
   A1: "FSP Masculino",
@@ -94,6 +107,11 @@ const Home = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-950">
+      <SEO
+        description="Suela Caramelo: la liga de fútbol de salón (futsal) más importante de Mendoza, Argentina. Noticias, fixture, posiciones y equipos del FSP Masculino, Femenino, División de Honor y Copa Mendoza."
+        url="/"
+        jsonLd={HOME_JSONLD}
+      />
 
       {/* Logo bar */}
       <div className="flex items-center justify-center py-2 bg-zinc-900 border-b border-white/10">

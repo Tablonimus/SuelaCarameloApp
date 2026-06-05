@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Noticias from "./components/Home/Noticias";
 import NoticeDetail from "./components/Notice/NoticeDetail";
 import ContactUs from "./components/ContactUs/ContactUs";
@@ -218,21 +219,30 @@ function ProtectedRoute({
   rememberSession,
   setRememberSession,
 }) {
-  if (isAuthenticated) return children;
+  const noIndex = (
+    <Helmet>
+      <meta name="robots" content="noindex, nofollow" />
+    </Helmet>
+  );
+
+  if (isAuthenticated) return <>{noIndex}{children}</>;
 
   return (
-    <LoginModal
-      isOpen={showLogin}
-      username={username}
-      setUsername={setUsername}
-      password={password}
-      setPassword={setPassword}
-      onSubmit={onSubmit}
-      onCancel={onCancel}
-      error={error}
-      rememberSession={rememberSession}
-      setRememberSession={setRememberSession}
-    />
+    <>
+      {noIndex}
+      <LoginModal
+        isOpen={showLogin}
+        username={username}
+        setUsername={setUsername}
+        password={password}
+        setPassword={setPassword}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+        error={error}
+        rememberSession={rememberSession}
+        setRememberSession={setRememberSession}
+      />
+    </>
   );
 }
 

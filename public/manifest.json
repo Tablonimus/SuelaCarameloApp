@@ -1,9 +1,24 @@
 {
-    "name": "Mi PWA SuelApp",
-    "short_name": "SuelApp",
-    "start_url": ".",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#000000",
-    "gcm_sender_id": "573253536739"
+  "name": "Suela Caramelo",
+  "short_name": "SuelaCaramelo",
+  "description": "Liga de fútbol de salón (futsal) de Mendoza, Argentina. Noticias, fixture y posiciones.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#ed7020",
+  "orientation": "portrait",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "/suela.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/suela.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "gcm_sender_id": "573253536739"
 }

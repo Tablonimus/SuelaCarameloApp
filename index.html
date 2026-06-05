@@ -8,35 +8,95 @@
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-BQZ8HZXXVJ");
     </script>
+
     <meta charset="UTF-8" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="icon" type="image/png" href="/suela.png" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Suela Caramelo</title>
-
-    <link rel="apple-touch-icon" href="/suela.ico" sizes="180x180" />
-    <link rel="mask-icon" href="/suela.ico" color="#ed7020" />
     <meta name="theme-color" content="#ed7020" />
 
-    <meta
-      name="description"
-      content="Suela Caramelo: Noticias del fútbol de salon."
-    />
-    <meta
-      name="keywords"
-      content="Suela caramelo, suela, caramelo, suelacaramelo, fútbol de salon, salon, futbol, futsal, futsal de salon, afa, fefusa, amfusa, futsal mendoza, mendoza"
-    />
-    <meta name="robots" content="index" />
-    <meta name="robots" content="follow" />
+    <!-- Favicon / PWA -->
+    <link rel="icon" type="image/png" href="/suela.png" />
+    <link rel="apple-touch-icon" href="/suela.png" sizes="180x180" />
+    <link rel="mask-icon" href="/suela.ico" color="#ed7020" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Fallback SEO (react-helmet-async overrides per-page) -->
+    <title>Suela Caramelo | Liga de Fútbol de Salón · Mendoza</title>
+    <meta name="description" content="Suela Caramelo: la liga de fútbol de salón (futsal) más importante de Mendoza, Argentina. Noticias, fixture, posiciones y equipos del FSP Masculino, Femenino, División de Honor y Copa Mendoza." />
+    <meta name="keywords" content="Suela Caramelo, futsal Mendoza, fútbol de salón Mendoza, FSP Masculino, FSP Femenino, División de Honor, Copa Mendoza, FEFUSA, liga futsal Argentina" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://suelacaramelo.com.ar" />
+
+    <!-- Open Graph fallback -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:site_name"   content="Suela Caramelo" />
+    <meta property="og:title"       content="Suela Caramelo | Liga de Fútbol de Salón · Mendoza" />
+    <meta property="og:description" content="Suela Caramelo: la liga de fútbol de salón (futsal) más importante de Mendoza, Argentina. Noticias, fixture, posiciones y equipos." />
+    <meta property="og:image"       content="https://suelacaramelo.com.ar/suela.png" />
+    <meta property="og:url"         content="https://suelacaramelo.com.ar" />
+    <meta property="og:locale"      content="es_AR" />
+
+    <!-- Twitter / X fallback -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Suela Caramelo | Liga de Fútbol de Salón · Mendoza" />
+    <meta name="twitter:description" content="Suela Caramelo: la liga de fútbol de salón (futsal) más importante de Mendoza, Argentina." />
+    <meta name="twitter:image"       content="https://suelacaramelo.com.ar/suela.png" />
+
+    <!-- JSON-LD: SportsOrganization — entidad principal para GEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsOrganization",
+      "@id": "https://suelacaramelo.com.ar/#organization",
+      "name": "Suela Caramelo",
+      "alternateName": ["Liga Suela Caramelo", "SC", "SuelaCaramelo"],
+      "description": "Suela Caramelo es la liga de fútbol de salón (futsal) más importante de Mendoza, Argentina. Organiza los torneos FSP Masculino, FSP Femenino, División de Honor, Copa Mendoza y torneos nacionales e internacionales.",
+      "url": "https://suelacaramelo.com.ar",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://suelacaramelo.com.ar/suela.png"
+      },
+      "sport": "Futsal",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Mendoza, Argentina",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mendoza",
+          "addressRegion": "Mendoza",
+          "addressCountry": "AR"
+        }
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Mendoza, Argentina"
+      },
+      "sameAs": [
+        "https://www.instagram.com/suelacaramelo/",
+        "https://www.youtube.com/@suelacaramelo",
+        "https://www.facebook.com/SuelaCarameloOk",
+        "https://www.tiktok.com/@suelacaramelo"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://suelacaramelo.com.ar/#website",
+      "name": "Suela Caramelo",
+      "url": "https://suelacaramelo.com.ar",
+      "description": "Portal oficial de la liga Suela Caramelo. Noticias, fixture, posiciones y equipos del futsal mendocino.",
+      "publisher": { "@id": "https://suelacaramelo.com.ar/#organization" },
+      "inLanguage": "es-AR"
+    }
+    </script>
+
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"

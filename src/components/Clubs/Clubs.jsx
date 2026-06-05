@@ -4,6 +4,7 @@ import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 import axios from "axios";
 import logoSuela from "../../assets/images/banner2.png";
+import SEO from "../SEO/SEO";
 
 const categories = [
   { value: "A1",  label: "FSP Masculino", logo: "/botones/A1.png" },
@@ -40,6 +41,11 @@ export default function Clubs() {
 
   return (
     <>
+      <SEO
+        title="Equipos"
+        description="Todos los equipos participantes de la liga Suela Caramelo, Mendoza. Planteles completos, jugadores y cuerpo técnico del FSP Masculino y FSP Femenino."
+        url="/equipos"
+      />
       <Sidebar active="equipos" />
       <div className="ml-[70px] flex flex-col min-h-screen bg-zinc-950">
 

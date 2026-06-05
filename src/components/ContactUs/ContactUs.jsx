@@ -3,6 +3,18 @@ import logoSC from "../../assets/images/banner2.png";
 import { Link } from "react-router-dom";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
+import SEO from "../SEO/SEO";
+
+const CONTACT_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "url": "https://suelacaramelo.com.ar/contacto",
+  "name": "Contacto | Suela Caramelo",
+  "description": "Contactá a Suela Caramelo a través de Instagram, YouTube, Facebook, TikTok o por correo electrónico.",
+  "mainEntity": {
+    "@id": "https://suelacaramelo.com.ar/#organization"
+  }
+};
 
 const SOCIALS = [
   {
@@ -45,6 +57,12 @@ const SOCIALS = [
 export default function ContactUs() {
   return (
     <div className="pl-[70px] flex flex-col min-h-screen bg-zinc-950">
+      <SEO
+        title="Contacto"
+        description="Contactá a Suela Caramelo, la liga de fútbol de salón de Mendoza. Escribinos por Instagram, YouTube, Facebook, TikTok o correo electrónico. Estamos para escucharte."
+        url="/contacto"
+        jsonLd={CONTACT_JSONLD}
+      />
       <Sidebar active="contacto" />
 
       {/* Header */}

@@ -4,6 +4,7 @@ import PlayerCard from "./PlayerCard";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 import axios from "axios";
+import SEO from "../SEO/SEO";
 
 const positions = [
   "Arquero",
@@ -48,8 +49,25 @@ export default function ClubDetail() {
     load();
   }, []);
 
+  const teamJsonLd = teamState ? {
+    "@context": "https://schema.org",
+    "@type": "SportsTeam",
+    "name": teamState.name,
+    "sport": "Futsal",
+    "memberOf": { "@id": "https://suelacaramelo.com.ar/#organization" },
+    ...(teamState.img && { "image": teamState.img }),
+    "url": `https://suelacaramelo.com.ar/equipos/${category}/${urlName}`,
+  } : null;
+
   return (
     <>
+      <SEO
+        title={teamState?.name ?? urlName}
+        description={`Plantel y jugadores de ${teamState?.name ?? urlName} en la liga Suela Caramelo, Mendoza.`}
+        image={teamState?.img}
+        url={`/equipos/${category}/${urlName}`}
+        jsonLd={teamJsonLd}
+      />
       <Sidebar active="club" />
       <div className="ml-[70px] min-h-screen flex flex-col bg-zinc-950">
 

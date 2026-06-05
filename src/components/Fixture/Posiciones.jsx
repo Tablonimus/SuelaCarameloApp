@@ -4,6 +4,7 @@ import { getGeneralPositions, getPositions } from "../../redux/actions";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 import logoSuela from "../../assets/images/banner2.png";
+import SEO from "../SEO/SEO";
 
 const CATEGORIES = [
   { value: "A1", label: "FSP Masculino", logo: "/botones/A1.png" },
@@ -84,6 +85,11 @@ const Posiciones = () => {
 
   return (
     <div className="pl-[70px] flex flex-col min-h-screen bg-zinc-950">
+      <SEO
+        title="Posiciones"
+        description="Tabla de posiciones de la liga Suela Caramelo, Mendoza. Rankings por categoría: FSP Masculino, FSP Femenino, División de Honor y Copa Mendoza."
+        url="/posiciones"
+      />
       <Sidebar active="positions" />
 
       {/* Header — mismo patrón que Fixture / Clubs / Noticias */}

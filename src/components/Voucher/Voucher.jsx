@@ -1,5 +1,3 @@
-import logovoucher from "/logovoucher.png";
-/* import "./voucher.css"; */
 
 const Voucher = (props) => {
   const { sponsor } = props;

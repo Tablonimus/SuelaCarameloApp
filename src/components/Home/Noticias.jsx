@@ -7,6 +7,7 @@ import FooterComp from "../FooterComp/FooterComp";
 import Sidebar from "../NavBar/Sidebar";
 import { FaSearch, FaTimes, FaNewspaper } from "react-icons/fa";
 import logoSuela from "../../assets/images/banner2.png";
+import SEO from "../SEO/SEO";
 
 const CATEGORIES = [
   { value: "",   label: "Todas",                   icon: FaNewspaper, image: null },
@@ -57,6 +58,11 @@ export default function Noticias() {
 
   return (
     <div className="pl-[70px] md:pl-0 flex flex-col min-h-screen bg-zinc-950">
+      <SEO
+        title="Noticias"
+        description="Últimas noticias del fútbol de salón mendocino. Cobertura de FSP Masculino, FSP Femenino, División de Honor, Copa Mendoza y torneos nacionales e internacionales."
+        url="/noticias"
+      />
       {/* Sidebar mobile toggle */}
       <div className="md:hidden fixed top-0 left-0 z-50">
         <button

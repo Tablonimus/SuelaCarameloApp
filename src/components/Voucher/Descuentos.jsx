@@ -2,6 +2,7 @@ import Voucher from "./Voucher";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 import logoSuela from "../../assets/images/banner2.png";
+import SEO from "../SEO/SEO";
 import b2 from "../../assets/images/b2.png";
 import b4 from "../../assets/images/b4.png";
 import { useEffect } from "react";
@@ -37,6 +38,11 @@ const Descuentos = () => {
 
   return (
     <div className="pl-[70px] flex flex-col min-h-screen bg-zinc-950">
+      <SEO
+        title="Descuentos y Cupones"
+        description="Cupones exclusivos y descuentos para seguidores de Suela Caramelo, la liga de fútbol de salón de Mendoza. Beneficios en comercios y marcas amigas."
+        url="/cupones"
+      />
       <Sidebar active="cupones" />
 
       {/* Header — mismo patrón que el resto de la app */}
@@ -48,7 +54,7 @@ const Descuentos = () => {
           </span>
           <span className="text-zinc-600 hidden sm:block flex-shrink-0">·</span>
           <span className="text-sm font-semibold text-orange-400 hidden sm:block">
-            {displayCoupons.length} {displayCoupons.length === 1 ? "cupón exclusivo" : "cupones exclusivos"}
+            {displayCoupons.length} {displayCoupons.length === 1 ? "cupón" : "cupones"} exclusivos
           </span>
         </div>
       </header>

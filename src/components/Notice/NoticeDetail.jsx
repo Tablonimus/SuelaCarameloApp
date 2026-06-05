@@ -6,6 +6,7 @@ import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import Sidebar from "../NavBar/Sidebar";
 import FooterComp from "../FooterComp/FooterComp";
 import logoSuela from "../../assets/images/banner2.png";
+import SEO from "../SEO/SEO";
 
 const CATEGORY_LABELS = {
   A1: "FSP Masculino",
@@ -74,6 +75,38 @@ export default function NoticeDetail() {
   const hasExtra   = extraImages.length > 0;
   const hasVideo   = Boolean(notice?.videos);
 
+  const seoDescription = notice?.subtitle
+    || (notice?.content?.replace(/<[^>]+>/g, "").slice(0, 155) ?? "");
+
+  const articleJsonLd = notice ? {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": notice.title,
+    "description": seoDescription,
+    "image": notice.images?.[0] ? [notice.images[0]] : ["https://suelacaramelo.com.ar/suela.png"],
+    "datePublished": notice.date,
+    "dateModified": notice.date,
+    "author": {
+      "@type": "Person",
+      "name": notice.author?.name || "Suela Caramelo"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Suela Caramelo",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://suelacaramelo.com.ar/suela.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://suelacaramelo.com.ar/noticias/${params.id}`
+    },
+    ...(categoryLabel && { "articleSection": categoryLabel }),
+    "inLanguage": "es-AR",
+    "isPartOf": { "@id": "https://suelacaramelo.com.ar/#website" }
+  } : null;
+
   useEffect(() => {
     dispatch(getNoticeDetail(params.id));
     return () => dispatch(clearPage());
@@ -81,6 +114,14 @@ export default function NoticeDetail() {
 
   return (
     <div className="pl-[70px] flex flex-col min-h-screen bg-zinc-950">
+      <SEO
+        title={notice?.title}
+        description={seoDescription || undefined}
+        image={notice?.images?.[0]}
+        url={`/noticias/${params.id}`}
+        type="article"
+        jsonLd={articleJsonLd}
+      />
       <Sidebar active="noticias" />
 
       {/* Header */}

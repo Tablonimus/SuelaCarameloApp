@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Block admin/editor routes from indexing
+Disallow: /editor
+Disallow: /editor/
+Disallow: /createnotice
+Disallow: /crear-nota
+Disallow: /redaccion
+
+Sitemap: https://suelacaramelo.com.ar/sitemap.xml

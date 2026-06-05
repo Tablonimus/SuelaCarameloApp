@@ -1,5 +1,6 @@
 import Sidebar from "../NavBar/Sidebar";
 import logoSuela from "../../assets/images/banner2.png";
+import SEO from "../SEO/SEO";
 import { useEffect, useState } from "react";
 import FixturePagination from "./FixturePagination";
 import FooterComp from "../FooterComp/FooterComp";
@@ -44,6 +45,11 @@ const Fixture = () => {
 
   return (
     <div className="pl-[70px] flex flex-col min-h-screen bg-zinc-950">
+      <SEO
+        title="Fixture"
+        description="Calendario y resultados de partidos de la liga Suela Caramelo. Fixture del FSP Masculino y FSP Femenino de Mendoza — Apertura, Clausura y Torneo Anual."
+        url="/fixture"
+      />
       <Sidebar active="fixture" />
 
       {/* Header — mismo patrón que Noticias / Clubs */}
