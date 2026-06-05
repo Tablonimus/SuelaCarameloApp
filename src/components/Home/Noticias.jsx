@@ -55,6 +55,11 @@ export default function Noticias() {
   const hasActiveSearch = searchInput !== "";
   const selectedCategory = CATEGORIES.find((c) => c.value === category) ?? CATEGORIES[0];
 
+  function goToPage(p) {
+    setCurrentPage(p);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
   return (
     <div className="pl-[70px] md:pl-0 flex flex-col min-h-screen bg-zinc-950">
       {/* Sidebar mobile toggle */}
@@ -196,14 +201,14 @@ export default function Noticias() {
               </p>
               <div className="flex items-center gap-1 order-1 sm:order-2">
                 <button
-                  onClick={() => setCurrentPage(1)}
+                  onClick={() => goToPage(1)}
                   disabled={currentPage === 1}
                   className="px-2 py-1.5 rounded-lg text-sm text-zinc-400 hover:bg-zinc-800 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >
                   «
                 </button>
                 <button
-                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  onClick={() => goToPage(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
                   className="px-3 py-1.5 rounded-lg text-sm font-medium text-zinc-400 hover:bg-zinc-800 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >
@@ -223,7 +228,7 @@ export default function Noticias() {
                     ) : (
                       <button
                         key={item}
-                        onClick={() => setCurrentPage(item)}
+                        onClick={() => goToPage(item)}
                         className={`w-9 h-9 rounded-lg text-sm font-semibold transition-colors ${
                           currentPage === item
                             ? "bg-orange-500 text-white"
@@ -236,14 +241,14 @@ export default function Noticias() {
                   )}
 
                 <button
-                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  onClick={() => goToPage(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
                   className="px-3 py-1.5 rounded-lg text-sm font-medium text-zinc-400 hover:bg-zinc-800 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >
                   Siguiente
                 </button>
                 <button
-                  onClick={() => setCurrentPage(totalPages)}
+                  onClick={() => goToPage(totalPages)}
                   disabled={currentPage === totalPages}
                   className="px-2 py-1.5 rounded-lg text-sm text-zinc-400 hover:bg-zinc-800 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >

@@ -248,6 +248,10 @@ function App() {
   const [rememberSession, setRememberSession] = useState(false);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location.pathname]);
+
+  useEffect(() => {
     if (isProtectedRoute(location.pathname)) {
       const saved = loadSession();
       if (saved) {
