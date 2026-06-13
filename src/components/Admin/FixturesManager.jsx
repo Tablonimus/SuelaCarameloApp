@@ -1,16 +1,5 @@
-// FixturesManager.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Table,
-  Button,
-  Alert,
-  Spinner,
-  Badge,
-  Card,
-  Label,
-  Select,
-} from "flowbite-react";
 import FixtureForm from "./FixtureForm";
 import {
   FaEdit,
@@ -19,6 +8,8 @@ import {
   FaCheckCircle,
   FaTimesCircle,
 } from "react-icons/fa";
+
+const LIMIT = 15;
 
 const CATEGORY_LABELS = {
   A1: "FSP Masculino", F1: "FSP Femenino",
@@ -36,13 +27,18 @@ const FixturesManager = () => {
   const [success, setSuccess] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [editingFixture, setEditingFixture] = useState(null);
-  const [filters, setFilters] = useState({
-    category: "A1",
-    season: "",
-    tournament: "",
-  });
+  const [filters, setFilters] = useState({ category: "A1", season: "", tournament: "" });
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [fixturesCache, setFixturesCache] = useState([]);
 
   const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc/fixtures";
+
+  const applyPage = (all, targetPage) => {
+    const start = (targetPage - 1) * LIMIT;
+    setFixtures(all.slice(start, start + LIMIT));
+    setTotalPages(Math.max(1, Math.ceil(all.length / LIMIT)));
+  };
 
   const fetchFixtures = async () => {
     try {
@@ -51,22 +47,27 @@ const FixturesManager = () => {
       if (filters.category) params.append("category", filters.category);
       if (filters.season) params.append("season", filters.season);
       if (filters.tournament) params.append("tournament", filters.tournament);
-
       const response = await axios.get(`${BASE_URL}?${params.toString()}`);
-      setFixtures(response.data.fixtures);
+      const all = response.data.fixtures ?? [];
+      setFixturesCache(all);
       setActiveFixture(response.data.activeFixture);
       setSeasons(response.data.seasons);
       setTournaments(response.data.tournaments);
-    } catch (err) {
+      setPage(1);
+      applyPage(all, 1);
+    } catch {
       setError("Error al cargar los fixtures");
     } finally {
       setLoading(false);
     }
   };
 
+  useEffect(() => { fetchFixtures(); }, [filters]); // eslint-disable-line react-hooks/exhaustive-deps
+
   useEffect(() => {
-    fetchFixtures();
-  }, [filters]);
+    if (!fixturesCache.length) return;
+    applyPage(fixturesCache, page);
+  }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSetActive = async (id) => {
     try {
@@ -81,7 +82,6 @@ const FixturesManager = () => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("¿Estás seguro de eliminar este fixture?")) return;
-
     try {
       await axios.delete(`${BASE_URL}/${id}`);
       fetchFixtures();
@@ -92,15 +92,8 @@ const FixturesManager = () => {
     }
   };
 
-  const handleEdit = (fixture) => {
-    setEditingFixture(fixture);
-    setShowModal(true);
-  };
-
-  const handleCreate = () => {
-    setEditingFixture(null);
-    setShowModal(true);
-  };
+  const handleEdit = (fixture) => { setEditingFixture(fixture); setShowModal(true); };
+  const handleCreate = () => { setEditingFixture(null); setShowModal(true); };
 
   const handleSubmitFixture = async (data) => {
     try {
@@ -112,7 +105,6 @@ const FixturesManager = () => {
         formData.append("file", data.imageFile);
         formData.append("upload_preset", "suelApp");
         formData.append("folder", "fixtures");
-
         const response = await axios.post(
           "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
           formData
@@ -123,13 +115,8 @@ const FixturesManager = () => {
       const payload = {
         ...data,
         number: parseInt(data.number),
-        matchweek:
-          data.stage === "temporada" ? parseInt(data.matchweek) : undefined,
-        playDates: {
-          from: data.playDates?.from || null,
-          to: data.playDates?.to || null,
-        },
-
+        matchweek: data.stage === "temporada" ? parseInt(data.matchweek) : undefined,
+        playDates: { from: data.playDates?.from || null, to: data.playDates?.to || null },
         image: imageUrl,
       };
 
@@ -151,59 +138,53 @@ const FixturesManager = () => {
   };
 
   return (
-    <div className="p-4 text-white">
-      <h1 className="text-3xl font-bold mb-6">Gestión de Fixtures</h1>
+    <div className="p-4">
+      <h1 className="text-3xl text-white font-bold mb-6">Gestión de Fixtures</h1>
 
       {error && (
-        <Alert color="failure" icon={FaTimesCircle} className="mb-4">
-          {error}
-        </Alert>
+        <div className="mb-4 flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl px-4 py-3 text-sm">
+          <FaTimesCircle className="flex-shrink-0" /> {error}
+        </div>
       )}
       {success && (
-        <Alert color="success" icon={FaCheckCircle} className="mb-4">
-          {success}
-        </Alert>
+        <div className="mb-4 flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl px-4 py-3 text-sm">
+          <FaCheckCircle className="flex-shrink-0" /> {success}
+        </div>
       )}
 
-      <div className="flex justify-between">
-        {activeFixture && (
-          <Card className="mb-6 text-black w-fit ">
-            <div className="flex flex-col md:flex-row gap-4">
-              <img
-                src={activeFixture.image}
-                alt="Activo"
-                className="w-24 rounded"
-              />
-              <div className="flex flex-col justify-center">
-                <h3 className="font-bold text-lg">
-                  Fecha {activeFixture.number} — {CATEGORY_LABELS[activeFixture.category] ?? activeFixture.category}
-                </h3>
-                <p>
-                  {activeFixture.tournament} - {activeFixture.season}
-                </p>
-                <Badge color="success" className="w-fit mt-2">
-                  Activo
-                </Badge>
-              </div>
+      {/* Header: fixture activo + botón nuevo */}
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
+        {activeFixture ? (
+          <div className="bg-gray-800 rounded-2xl p-4 flex items-center gap-4">
+            <img src={activeFixture.image} alt="Activo" className="w-14 h-14 rounded-xl object-cover flex-shrink-0" />
+            <div>
+              <p className="text-white font-bold text-sm">
+                Fecha {activeFixture.number} — {CATEGORY_LABELS[activeFixture.category] ?? activeFixture.category}
+              </p>
+              <p className="text-gray-400 text-xs mt-0.5">{activeFixture.tournament} · {activeFixture.season}</p>
+              <span className="inline-block mt-1.5 bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                Activo
+              </span>
             </div>
-          </Card>
+          </div>
+        ) : (
+          <div />
         )}
-
-        <div className="flex items-end justify-end mb-4  ">
-          <Button onClick={handleCreate}>
-            <FaPlus className="mr-2" /> Nuevo Fixture
-          </Button>
-        </div>
+        <button
+          onClick={handleCreate}
+          className="bg-orange-500 hover:bg-orange-400 text-white font-semibold px-5 py-2 rounded-xl transition-colors flex items-center gap-2 flex-shrink-0"
+        >
+          <FaPlus className="text-sm" /> Nuevo Fixture
+        </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-gray-600 p-4 rounded-lg text-white">
-        <div>
-          <Label htmlFor="category" value="Categoría" />
-          <Select
-            id="category"
+
+      {/* Filtros */}
+      <div className="bg-gray-800 rounded-2xl p-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <select
             value={filters.category}
-            onChange={(e) =>
-              setFilters({ ...filters, category: e.target.value })
-            }
+            onChange={(e) => setFilters({ ...filters, category: e.target.value })}
+            className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none text-sm"
           >
             <option value="A1">FSP Masculino</option>
             <option value="F1">FSP Femenino</option>
@@ -211,99 +192,125 @@ const FixturesManager = () => {
             <option value="TI">TI</option>
             <option value="TN">TN</option>
             <option value="CM">CM</option>
-          </Select>
-        </div>
-        <div>
-          <Label htmlFor="season" value="Temporada" />
-          <Select
-            id="season"
+          </select>
+          <select
             value={filters.season}
             onChange={(e) => setFilters({ ...filters, season: e.target.value })}
+            className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none text-sm"
           >
-            <option value="">Todas</option>
-            {seasons.map((season) => (
-              <option key={season} value={season}>
-                {season}
-              </option>
-            ))}
-          </Select>
-        </div>
-        <div>
-          <Label htmlFor="tournament" value="Torneo" />
-          <Select
-            id="tournament"
+            <option value="">Todas las temporadas</option>
+            {seasons.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+          <select
             value={filters.tournament}
-            onChange={(e) =>
-              setFilters({ ...filters, tournament: e.target.value })
-            }
+            onChange={(e) => setFilters({ ...filters, tournament: e.target.value })}
+            className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none text-sm"
           >
-            <option value="">Todos</option>
-            {tournaments.map((tournament) => (
-              <option key={tournament} value={tournament}>
-                {tournament}
-              </option>
-            ))}
-          </Select>
+            <option value="">Todos los torneos</option>
+            {tournaments.map((t) => <option key={t} value={t}>{t}</option>)}
+          </select>
         </div>
       </div>
 
+      {/* Tabla */}
       {loading ? (
-        <div className="text-center">
-          <Spinner size="xl" />
+        <div className="flex items-center justify-center py-16">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
+            <p className="text-gray-400">Cargando fixtures...</p>
+          </div>
         </div>
       ) : (
-        <Table hoverable>
-          <Table.Head>
-            <Table.HeadCell>#</Table.HeadCell>
-            <Table.HeadCell>Categoría</Table.HeadCell>
-            <Table.HeadCell>Temporada</Table.HeadCell>
-            <Table.HeadCell>Torneo</Table.HeadCell>
-            <Table.HeadCell>Etapa</Table.HeadCell>
-            <Table.HeadCell>Estado</Table.HeadCell>
-            <Table.HeadCell>Acciones</Table.HeadCell>
-          </Table.Head>
-          <Table.Body>
-            {fixtures.map((f) => (
-              <Table.Row key={f._id}>
-                <Table.Cell>{f.number}</Table.Cell>
-                <Table.Cell>{CATEGORY_LABELS[f.category] ?? f.category}</Table.Cell>
-                <Table.Cell>{f.season}</Table.Cell>
-                <Table.Cell>{f.tournament}</Table.Cell>
-                <Table.Cell className="capitalize">{f.stage}</Table.Cell>
-                <Table.Cell>
-                  {f.is_Active ? (
-                    <Badge color="success">Activo</Badge>
-                  ) : (
-                    <Badge color="gray">Inactivo</Badge>
-                  )}
-                </Table.Cell>
-                <Table.Cell>
-                  <div className="flex gap-2">
-                    {!f.is_Active && (
-                      <Button
-                        size="xs"
-                        color="success"
-                        onClick={() => handleSetActive(f._id)}
-                      >
-                        Activar
-                      </Button>
-                    )}
-                    <Button size="xs" onClick={() => handleEdit(f)}>
-                      <FaEdit />
-                    </Button>
-                    <Button
-                      size="xs"
-                      color="failure"
-                      onClick={() => handleDelete(f._id)}
-                    >
-                      <FaTrash />
-                    </Button>
-                  </div>
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
+        <div className="bg-gray-800 rounded-2xl p-4">
+          <div className="overflow-x-auto">
+            <table className="w-full text-white text-sm">
+              <thead>
+                <tr className="border-b border-gray-700 text-gray-400 text-xs uppercase tracking-wider">
+                  <th className="text-left p-3">#</th>
+                  <th className="text-left p-3">Categoría</th>
+                  <th className="text-left p-3">Temporada</th>
+                  <th className="text-left p-3">Torneo</th>
+                  <th className="text-left p-3">Etapa</th>
+                  <th className="text-left p-3">Estado</th>
+                  <th className="text-left p-3">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {fixtures.length === 0 ? (
+                  <tr>
+                    <td colSpan="7" className="text-center p-8 text-gray-500">
+                      No hay fixtures para este filtro
+                    </td>
+                  </tr>
+                ) : fixtures.map((f) => (
+                  <tr key={f._id} className="border-b border-gray-700 hover:bg-gray-700/40 transition-colors">
+                    <td className="p-3 font-semibold">{f.number}</td>
+                    <td className="p-3">{CATEGORY_LABELS[f.category] ?? f.category}</td>
+                    <td className="p-3 text-gray-400">{f.season}</td>
+                    <td className="p-3 text-gray-400">{f.tournament}</td>
+                    <td className="p-3 capitalize text-gray-400">{f.stage}</td>
+                    <td className="p-3">
+                      {f.is_Active ? (
+                        <span className="bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                          Activo
+                        </span>
+                      ) : (
+                        <span className="bg-gray-700 border border-gray-600 text-gray-400 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                          Inactivo
+                        </span>
+                      )}
+                    </td>
+                    <td className="p-3">
+                      <div className="flex gap-2">
+                        {!f.is_Active && (
+                          <button
+                            onClick={() => handleSetActive(f._id)}
+                            className="bg-green-600 hover:bg-green-500 text-white text-xs px-3 py-1 rounded-lg transition-colors"
+                          >
+                            Activar
+                          </button>
+                        )}
+                        <button
+                          onClick={() => handleEdit(f)}
+                          className="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3 py-1 rounded-lg transition-colors"
+                        >
+                          <FaEdit />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(f._id)}
+                          className="bg-red-600 hover:bg-red-500 text-white text-xs px-3 py-1 rounded-lg transition-colors"
+                        >
+                          <FaTrash />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-4 mt-5 pt-4 border-t border-gray-700">
+              <button
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1 || loading}
+                className="px-4 py-1.5 rounded-lg bg-gray-700 text-gray-300 text-sm font-medium hover:bg-gray-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              >
+                ← Anterior
+              </button>
+              <span className="text-sm text-gray-400">
+                Página <span className="font-semibold text-white">{page}</span> de <span className="font-semibold text-white">{totalPages}</span>
+              </span>
+              <button
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages || loading}
+                className="px-4 py-1.5 rounded-lg bg-gray-700 text-gray-300 text-sm font-medium hover:bg-gray-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              >
+                Siguiente →
+              </button>
+            </div>
+          )}
+        </div>
       )}
 
       <FixtureForm

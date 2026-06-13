@@ -1,14 +1,6 @@
 // Versión completa y adaptada a tus requerimientos
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Table,
-  Button,
-  Label,
-  Select,
-  Alert,
-  Spinner,
-} from "flowbite-react";
-import {
   FaEdit,
   FaTrash,
   FaFutbol,
@@ -85,7 +77,6 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
     penaltyScore: { local: 0, visitor: 0 },
     assignedTo: "",
   });
-  const [categories, setCategories] = useState([]);
   const [teams, setTeams] = useState([]);
   const [users, setUsers] = useState([]);
   const [filterCategory, setFilterCategory] = useState("all");
@@ -122,7 +113,6 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
         setMatches(Array.isArray(matchesPayload) ? matchesPayload : []);
       }
       setTeams(results[1]);
-      setCategories(["A1", "FEM"]);
       if (isAdmin) setUsers(results[2]);
     } catch {
       setError("Error al cargar los datos");
@@ -435,128 +425,175 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
       {/* ── Main panel ── */}
       <div className="p-4">
         {error && !liveEdit && (
-          <Alert color="failure" icon={FaExclamationCircle} className="mb-4">{error}</Alert>
+          <div className="mb-4 flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl px-4 py-3 text-sm">
+            <FaExclamationCircle className="flex-shrink-0" /> {error}
+          </div>
         )}
         {success && (
-          <Alert color="success" icon={FaCheckCircle} className="mb-4">{success}</Alert>
+          <div className="mb-4 flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl px-4 py-3 text-sm">
+            <FaCheckCircle className="flex-shrink-0" /> {success}
+          </div>
         )}
 
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-semibold">Gestión de Partidos</h2>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl text-white font-bold">Gestión de Partidos</h1>
           {isAdmin && (
-            <Button onClick={() => setShowModal(true)}>
-              <FaPlus className="mr-2" />
-              Nuevo
-            </Button>
+            <button
+              onClick={() => setShowModal(true)}
+              className="bg-orange-500 hover:bg-orange-400 text-white font-semibold px-5 py-2 rounded-xl transition-colors flex items-center gap-2"
+            >
+              <FaPlus className="text-sm" /> Nuevo Partido
+            </button>
           )}
         </div>
 
         {/* Admin desktop: filtros + tabla paginada */}
         {isAdmin && !isMobile && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div>
-                <Label htmlFor="category-filter" value="Categoría" />
-                <Select id="category-filter" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
-                  <option value="all">Todas</option>
+            <div className="bg-gray-800 rounded-2xl p-4 mb-4">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <select
+                  value={filterCategory}
+                  onChange={(e) => setFilterCategory(e.target.value)}
+                  className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none text-sm"
+                >
+                  <option value="all">Todas las categorías</option>
                   <option value="A1">FSP Masculino</option>
                   <option value="FEM">FSP Femenino</option>
-                </Select>
-              </div>
-              <div>
-                <Label htmlFor="status-filter" value="Estado" />
-                <Select id="status-filter" value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
-                  <option value="all">Todos</option>
+                </select>
+                <select
+                  value={filterStatus}
+                  onChange={(e) => setFilterStatus(e.target.value)}
+                  className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none text-sm"
+                >
+                  <option value="all">Todos los estados</option>
                   <option value="pending">Pendiente</option>
                   <option value="playing">En juego</option>
                   <option value="finished">Finalizado</option>
                   <option value="suspended">Suspendido</option>
                   <option value="postponed">Aplazado</option>
                   <option value="canceled">Cancelado</option>
-                </Select>
+                </select>
+                {(filterCategory !== "all" || filterStatus !== "all") && (
+                  <button
+                    onClick={() => { setFilterCategory("all"); setFilterStatus("all"); }}
+                    className="px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-400 hover:text-white text-sm transition-colors"
+                  >
+                    Limpiar
+                  </button>
+                )}
               </div>
             </div>
 
-            <div className="overflow-x-auto">
-              <Table>
-                <Table.Head>
-                  <Table.HeadCell>Fecha</Table.HeadCell>
-                  <Table.HeadCell>Local</Table.HeadCell>
-                  <Table.HeadCell>Visitante</Table.HeadCell>
-                  <Table.HeadCell>Marcador</Table.HeadCell>
-                  <Table.HeadCell>Estado</Table.HeadCell>
-                  <Table.HeadCell>Acciones</Table.HeadCell>
-                </Table.Head>
-                <Table.Body className="border">
-                  {filteredMatches.map((match) => (
-                    <Table.Row className="border" key={match._id}>
-                      <Table.Cell className="text-white whitespace-nowrap">
-                        {match.date ? new Date(match.date).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "2-digit" }) : "—"}
-                        {match.time && <span className="text-zinc-400 ml-1">{match.time}</span>}
-                      </Table.Cell>
-                      <Table.Cell className="text-white">
-                        <div className="flex items-center gap-2">
-                          {match.local?.logo && <img src={match.local.logo} className="w-6 h-6 object-contain rounded" />}
-                          {match.local?.name}
-                        </div>
-                      </Table.Cell>
-                      <Table.Cell className="text-white">
-                        <div className="flex items-center gap-2">
-                          {match.visitor?.logo && <img src={match.visitor.logo} className="w-6 h-6 object-contain rounded" />}
-                          {match.visitor?.name}
-                        </div>
-                      </Table.Cell>
-                      <Table.Cell className="text-white font-bold tabular-nums">
-                        {match.score?.local ?? 0} - {match.score?.visitor ?? 0}
-                        {(match.status === "penalties" || match.penaltyScore?.local > 0 || match.penaltyScore?.visitor > 0) && (
-                          <div className="text-xs text-zinc-400 font-normal">
-                            pen: {match.penaltyScore?.local ?? 0} - {match.penaltyScore?.visitor ?? 0}
-                          </div>
-                        )}
-                      </Table.Cell>
-                      <Table.Cell>
-                        <span className={`text-xs px-2 py-1 rounded-full font-semibold ${statusColors[match.status] ?? "bg-zinc-700 text-zinc-300"}`}>
-                          {statusLabels[match.status]}
-                        </span>
-                      </Table.Cell>
-                      <Table.Cell>
-                        <div className="flex gap-2">
-                          <Button size="xs" onClick={() => handleOpenEditModal(match)}>
-                            <FaEdit className="mr-1" />Editar
-                          </Button>
-                          <Button size="xs" color="failure" onClick={() => deleteMatch(match._id)}>
-                            <FaTrash />
-                          </Button>
-                        </div>
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
-                </Table.Body>
-              </Table>
-            </div>
+            <div className="bg-gray-800 rounded-2xl p-4">
+              {loading ? (
+                <div className="flex items-center justify-center py-16">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
+                    <p className="text-gray-400">Cargando partidos...</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-white text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-700 text-gray-400 text-xs uppercase tracking-wider">
+                        <th className="text-left p-3">Fecha</th>
+                        <th className="text-left p-3">Local</th>
+                        <th className="text-left p-3">Visitante</th>
+                        <th className="text-left p-3">Marcador</th>
+                        <th className="text-left p-3">Estado</th>
+                        <th className="text-left p-3">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredMatches.length === 0 ? (
+                        <tr>
+                          <td colSpan="6" className="text-center p-8 text-gray-500">
+                            No hay partidos para este filtro
+                          </td>
+                        </tr>
+                      ) : filteredMatches.map((match) => (
+                        <tr key={match._id} className="border-b border-gray-700 hover:bg-gray-700/40 transition-colors">
+                          <td className="p-3 whitespace-nowrap">
+                            {match.date ? new Date(match.date).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "2-digit" }) : "—"}
+                            {match.time && <span className="text-gray-400 ml-1 text-xs">{match.time}</span>}
+                          </td>
+                          <td className="p-3">
+                            <div className="flex items-center gap-2">
+                              {match.local?.logo
+                                ? <img src={match.local.logo} alt="" className="w-7 h-7 object-contain rounded flex-shrink-0" />
+                                : <div className="w-7 h-7 bg-gray-700 rounded flex items-center justify-center text-gray-500 text-xs flex-shrink-0">?</div>}
+                              <span className="font-medium">{match.local?.name ?? "—"}</span>
+                            </div>
+                          </td>
+                          <td className="p-3">
+                            <div className="flex items-center gap-2">
+                              {match.visitor?.logo
+                                ? <img src={match.visitor.logo} alt="" className="w-7 h-7 object-contain rounded flex-shrink-0" />
+                                : <div className="w-7 h-7 bg-gray-700 rounded flex items-center justify-center text-gray-500 text-xs flex-shrink-0">?</div>}
+                              <span className="font-medium">{match.visitor?.name ?? "—"}</span>
+                            </div>
+                          </td>
+                          <td className="p-3 font-bold tabular-nums">
+                            {match.score?.local ?? 0} - {match.score?.visitor ?? 0}
+                            {(match.status === "penalties" || match.penaltyScore?.local > 0 || match.penaltyScore?.visitor > 0) && (
+                              <div className="text-xs text-gray-400 font-normal">
+                                pen: {match.penaltyScore?.local ?? 0} - {match.penaltyScore?.visitor ?? 0}
+                              </div>
+                            )}
+                          </td>
+                          <td className="p-3">
+                            <span className={`text-xs px-2 py-1 rounded-full font-semibold ${statusColors[match.status] ?? "bg-zinc-700 text-zinc-300"}`}>
+                              {statusLabels[match.status]}
+                            </span>
+                          </td>
+                          <td className="p-3">
+                            <div className="flex gap-2">
+                              <button
+                                onClick={() => handleOpenEditModal(match)}
+                                className="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3 py-1 rounded-lg transition-colors flex items-center gap-1"
+                              >
+                                <FaEdit /> Editar
+                              </button>
+                              <button
+                                onClick={() => deleteMatch(match._id)}
+                                className="bg-red-600 hover:bg-red-500 text-white text-xs px-3 py-1 rounded-lg transition-colors"
+                              >
+                                <FaTrash />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
 
-            {/* Paginación */}
-            {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-4 mt-5">
-                <button
-                  onClick={() => setPage((p) => Math.max(1, p - 1))}
-                  disabled={page === 1}
-                  className="px-4 py-1.5 rounded-lg bg-zinc-800 text-zinc-300 text-sm font-medium hover:bg-zinc-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                >
-                  ← Anterior
-                </button>
-                <span className="text-sm text-zinc-400">
-                  Página <span className="font-semibold text-white">{page}</span> de <span className="font-semibold text-white">{totalPages}</span>
-                </span>
-                <button
-                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                  disabled={page === totalPages}
-                  className="px-4 py-1.5 rounded-lg bg-zinc-800 text-zinc-300 text-sm font-medium hover:bg-zinc-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                >
-                  Siguiente →
-                </button>
-              </div>
-            )}
+              {/* Paginación */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-4 mt-5 pt-4 border-t border-gray-700">
+                  <button
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                    className="px-4 py-1.5 rounded-lg bg-gray-700 text-gray-300 text-sm font-medium hover:bg-gray-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  >
+                    ← Anterior
+                  </button>
+                  <span className="text-sm text-gray-400">
+                    Página <span className="font-semibold text-white">{page}</span> de <span className="font-semibold text-white">{totalPages}</span>
+                  </span>
+                  <button
+                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                    disabled={page === totalPages}
+                    className="px-4 py-1.5 rounded-lg bg-gray-700 text-gray-300 text-sm font-medium hover:bg-gray-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  >
+                    Siguiente →
+                  </button>
+                </div>
+              )}
+            </div>
           </>
         )}
 
@@ -564,7 +601,9 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
         {(!isAdmin || isMobile) && (
           <div className="space-y-3">
             {loading ? (
-              <div className="flex justify-center py-16"><Spinner size="xl" /></div>
+              <div className="flex justify-center py-16">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-orange-500"></div>
+              </div>
             ) : cardMatches.length === 0 ? (
               <div className="text-center py-16">
                 <FaFutbol className="text-zinc-700 text-4xl mx-auto mb-3" />

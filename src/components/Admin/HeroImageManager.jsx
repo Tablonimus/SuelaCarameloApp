@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
-  Button,
-  Modal,
-  Label,
-  TextInput,
-  Alert,
-  Card,
-  Spinner,
-  Select,
-  Badge,
-  Table,
-} from "flowbite-react";
-import {
   FaEdit,
   FaTrash,
   FaPlus,
@@ -44,94 +32,71 @@ const HeroImageDashboard = () => {
     imageFile: null,
   });
 
-  const BASE_URL =
-    "https://suela-caramelo-app-back-end.vercel.app/sc/hero-images";
+  const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc/hero-images";
   // const BASE_URL = "http://localhost:3000/sc/hero-images";
 
-  // Cargar imágenes
   const fetchHeroImages = async () => {
     try {
       setLoading(true);
       const response = await axios.get(BASE_URL);
       setHeroImages(response.data);
-    } catch (err) {
+    } catch {
       setError("Error al cargar las imágenes");
-      console.error("Fetch error:", err);
+      setTimeout(() => setError(null), 4000);
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchHeroImages();
-  }, []);
+  useEffect(() => { fetchHeroImages(); }, []);
 
-  // Manejar cambio de imagen (previsualización)
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     if (!file.type.match("image.*")) {
       setError("Solo se permiten archivos de imagen (JPEG, PNG)");
       setTimeout(() => setError(null), 4000);
       return;
     }
-
     if (file.size > 5 * 1024 * 1024) {
-      // 5MB max
       setError("La imagen no debe exceder los 5MB");
       setTimeout(() => setError(null), 4000);
       return;
     }
-
-    const previewUrl = URL.createObjectURL(file);
-    setPreviewImage(previewUrl);
-    setFormData({ ...formData, imageFile: file });
+    if (previewImage && !editingId) URL.revokeObjectURL(previewImage);
+    setPreviewImage(URL.createObjectURL(file));
+    setFormData((prev) => ({ ...prev, imageFile: file }));
   };
 
-  // Subir imagen a Cloudinary
   const uploadToCloudinary = async (file) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "suelApp");
-    formData.append("folder", "hero_images");
-
-    try {
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
-        formData
-      );
-      return response.data.secure_url;
-    } catch (err) {
-      console.error("Cloudinary upload error:", err);
-      throw new Error("Error al subir la imagen a Cloudinary");
-    }
+    const fd = new FormData();
+    fd.append("file", file);
+    fd.append("upload_preset", "suelApp");
+    fd.append("folder", "hero_images");
+    const response = await axios.post(
+      "https://api.cloudinary.com/v1_1/tablonimus/image/upload",
+      fd
+    );
+    return response.data.secure_url;
   };
 
-  // Guardar o actualizar imagen
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e?.preventDefault();
     try {
       setUploading(true);
       setError(null);
 
-      // Validaciones
-      if (!formData.name.trim()) {
-        throw new Error("El nombre es requerido");
-      }
-      if (!formData.imageFile && !editingId) {
-        throw new Error("Debes seleccionar una imagen");
-      }
+      if (!formData.name.trim()) throw new Error("El nombre es requerido");
+      if (!formData.imageFile && !editingId) throw new Error("Debes seleccionar una imagen");
 
       let imageUrl = editingId
         ? heroImages.find((img) => img._id === editingId)?.imageUrl
         : null;
 
-      // Subir nueva imagen si es necesario
-      if (formData.imageFile && !editingId) {
+      if (formData.imageFile) {
         imageUrl = await uploadToCloudinary(formData.imageFile);
       }
 
-      // Preparar payload para el backend
       const payload = {
         name: formData.name,
         imageUrl,
@@ -156,11 +121,7 @@ const HeroImageDashboard = () => {
       );
 
       resetForm();
-      setSuccess(
-        editingId
-          ? "Imagen actualizada exitosamente"
-          : "Imagen agregada correctamente"
-      );
+      setSuccess(editingId ? "Imagen actualizada exitosamente" : "Imagen agregada correctamente");
       setTimeout(() => setSuccess(null), 4000);
     } catch (err) {
       setError(err.message || "Error al procesar la solicitud");
@@ -170,7 +131,6 @@ const HeroImageDashboard = () => {
     }
   };
 
-  // Editar imagen existente
   const handleEdit = (image) => {
     setFormData({
       name: image.name,
@@ -186,30 +146,25 @@ const HeroImageDashboard = () => {
     setShowModal(true);
   };
 
-  // Eliminar imagen
   const handleDelete = async (id) => {
     if (!window.confirm("¿Estás seguro de eliminar esta imagen?")) return;
-
     try {
       await axios.delete(`${BASE_URL}/${id}`);
       setHeroImages((prev) => prev.filter((img) => img._id !== id));
       setSuccess("Imagen eliminada correctamente");
       setTimeout(() => setSuccess(null), 4000);
-    } catch (err) {
+    } catch {
       setError("Error al eliminar la imagen");
       setTimeout(() => setError(null), 4000);
     }
   };
 
-  // Cambiar orden
   const updateOrder = async (id, direction) => {
     try {
       setLoading(true);
-      const response = await axios.patch(`${BASE_URL}/${id}/order`, {
-        direction,
-      });
+      const response = await axios.patch(`${BASE_URL}/${id}/order`, { direction });
       setHeroImages(response.data);
-    } catch (err) {
+    } catch {
       setError("Error al actualizar el orden");
       setTimeout(() => setError(null), 4000);
     } finally {
@@ -217,18 +172,9 @@ const HeroImageDashboard = () => {
     }
   };
 
-  // Resetear formulario
   const resetForm = () => {
-    setFormData({
-      name: "",
-      redirectUrl: "",
-      targetHeight: 400,
-      deviceType: "desktop",
-      isActive: true,
-      order: 0,
-      imageFile: null,
-    });
-    if (previewImage) URL.revokeObjectURL(previewImage);
+    setFormData({ name: "", redirectUrl: "", targetHeight: 400, deviceType: "desktop", isActive: true, order: 0, imageFile: null });
+    if (previewImage && !editingId) URL.revokeObjectURL(previewImage);
     setPreviewImage(null);
     setEditingId(null);
     setShowModal(false);
@@ -236,287 +182,296 @@ const HeroImageDashboard = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold mb-6">Administrador de Hero Images</h1>
+      <h1 className="text-3xl text-white font-bold mb-6">Gestión de Banners</h1>
 
-      {/* Notificaciones */}
       {error && (
-        <Alert color="failure" icon={FaExclamationCircle} className="mb-4">
-          {error}
-        </Alert>
+        <div className="mb-4 flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl px-4 py-3 text-sm">
+          <FaExclamationCircle className="flex-shrink-0" /> {error}
+        </div>
       )}
       {success && (
-        <Alert color="success" icon={FaCheckCircle} className="mb-4">
-          {success}
-        </Alert>
+        <div className="mb-4 flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl px-4 py-3 text-sm">
+          <FaCheckCircle className="flex-shrink-0" /> {success}
+        </div>
       )}
 
-      {/* Controles superiores */}
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex gap-4">
-          <Button color="gray" onClick={fetchHeroImages} disabled={loading}>
-            {loading ? <Spinner size="sm" /> : "Refrescar"}
-          </Button>
-        </div>
-        <Button onClick={() => setShowModal(true)}>
-          <FaPlus className="mr-2" />
-          Nueva Imagen
-        </Button>
-      </div>
+      <button
+        onClick={() => setShowModal(true)}
+        className="bg-orange-500 hover:bg-orange-400 text-white font-semibold px-5 py-2 rounded-xl mb-6 transition-colors flex items-center gap-2"
+      >
+        <FaPlus className="text-sm" /> Nuevo Banner
+      </button>
 
-      {/* Tabla de imágenes */}
+      {/* Tabla */}
       {loading ? (
-        <div className="text-center py-8">
-          <Spinner size="xl" />
+        <div className="flex items-center justify-center py-16">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
+            <p className="text-gray-400">Cargando banners...</p>
+          </div>
         </div>
       ) : (
-        <div className="overflow-x-auto">
-          <Table hoverable>
-            <Table.Head>
-              <Table.HeadCell>Orden</Table.HeadCell>
-              <Table.HeadCell>Nombre</Table.HeadCell>
-              <Table.HeadCell>Dispositivo</Table.HeadCell>
-              <Table.HeadCell>Altura</Table.HeadCell>
-              <Table.HeadCell>Estado</Table.HeadCell>
-              <Table.HeadCell>Acciones</Table.HeadCell>
-            </Table.Head>
-            <Table.Body className="divide-y">
-              {heroImages.map((image) => (
-                <Table.Row key={image._id}>
-                  <Table.Cell>
-                    <div className="flex items-center gap-2">
-                      <span>{image.order}</span>
-                      <div className="flex flex-col">
+        <div className="bg-gray-800 rounded-2xl p-4">
+          <div className="overflow-x-auto">
+            <table className="w-full text-white text-sm">
+              <thead>
+                <tr className="border-b border-gray-700 text-gray-400 text-xs uppercase tracking-wider">
+                  <th className="text-left p-3">Preview</th>
+                  <th className="text-left p-3">Nombre</th>
+                  <th className="text-left p-3">Dispositivo</th>
+                  <th className="text-left p-3">Altura</th>
+                  <th className="text-left p-3">Orden</th>
+                  <th className="text-left p-3">Estado</th>
+                  <th className="text-left p-3">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {heroImages.length === 0 ? (
+                  <tr>
+                    <td colSpan="7" className="text-center p-8 text-gray-500">
+                      No hay banners cargados
+                    </td>
+                  </tr>
+                ) : heroImages.map((image) => (
+                  <tr key={image._id} className="border-b border-gray-700 hover:bg-gray-700/40 transition-colors">
+                    <td className="p-3">
+                      {image.imageUrl ? (
+                        <img
+                          src={image.imageUrl}
+                          alt={image.name}
+                          className="w-24 h-12 object-cover rounded-lg border border-gray-600"
+                        />
+                      ) : (
+                        <div className="w-24 h-12 bg-gray-700 rounded-lg border border-gray-600 flex items-center justify-center text-gray-500 text-xs">
+                          Sin imagen
+                        </div>
+                      )}
+                    </td>
+                    <td className="p-3 font-medium max-w-[180px] truncate">{image.name}</td>
+                    <td className="p-3">
+                      <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-0.5 rounded-full border ${
+                        image.deviceType === "desktop"
+                          ? "bg-indigo-500/20 border-indigo-500/30 text-indigo-300"
+                          : "bg-pink-500/20 border-pink-500/30 text-pink-300"
+                      }`}>
+                        {image.deviceType === "desktop" ? <FaDesktop /> : <FaMobile />}
+                        {image.deviceType === "desktop" ? "Desktop" : "Mobile"}
+                      </span>
+                    </td>
+                    <td className="p-3 text-gray-400">{image.targetHeight}px</td>
+                    <td className="p-3">
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold">{image.order}</span>
+                        <div className="flex flex-col gap-0.5">
+                          <button
+                            onClick={() => updateOrder(image._id, "up")}
+                            disabled={loading}
+                            className="text-gray-500 hover:text-orange-400 transition-colors disabled:opacity-30"
+                          >
+                            <FaArrowUp size={11} />
+                          </button>
+                          <button
+                            onClick={() => updateOrder(image._id, "down")}
+                            disabled={loading}
+                            className="text-gray-500 hover:text-orange-400 transition-colors disabled:opacity-30"
+                          >
+                            <FaArrowDown size={11} />
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="p-3">
+                      {image.isActive ? (
+                        <span className="bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                          Activo
+                        </span>
+                      ) : (
+                        <span className="bg-gray-700 border border-gray-600 text-gray-400 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                          Inactivo
+                        </span>
+                      )}
+                    </td>
+                    <td className="p-3">
+                      <div className="flex gap-2">
                         <button
-                          onClick={() => updateOrder(image._id, "up")}
-                          disabled={loading}
-                          className="text-gray-500 hover:text-blue-600"
+                          onClick={() => handleEdit(image)}
+                          className="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3 py-1 rounded-lg transition-colors"
                         >
-                          <FaArrowUp size={14} />
+                          <FaEdit />
                         </button>
                         <button
-                          onClick={() => updateOrder(image._id, "down")}
-                          disabled={loading}
-                          className="text-gray-500 hover:text-blue-600"
+                          onClick={() => handleDelete(image._id)}
+                          className="bg-red-600 hover:bg-red-500 text-white text-xs px-3 py-1 rounded-lg transition-colors"
                         >
-                          <FaArrowDown size={14} />
+                          <FaTrash />
                         </button>
                       </div>
-                    </div>
-                  </Table.Cell>
-                  <Table.Cell>{image.name}</Table.Cell>
-                  <Table.Cell>
-                    <Badge
-                      icon={
-                        image.deviceType === "desktop" ? FaDesktop : FaMobile
-                      }
-                      color={image.deviceType === "desktop" ? "indigo" : "pink"}
-                    >
-                      {image.deviceType === "desktop" ? "Desktop" : "Mobile"}
-                    </Badge>
-                  </Table.Cell>
-                  <Table.Cell>{image.targetHeight}px</Table.Cell>
-                  <Table.Cell>
-                    <Badge color={image.isActive ? "success" : "gray"}>
-                      {image.isActive ? "Activo" : "Inactivo"}
-                    </Badge>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <div className="flex gap-2">
-                      <Button size="xs" onClick={() => handleEdit(image)}>
-                        <FaEdit />
-                      </Button>
-                      <Button
-                        size="xs"
-                        color="failure"
-                        onClick={() => handleDelete(image._id)}
-                      >
-                        <FaTrash />
-                      </Button>
-                    </div>
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
-      {/* Modal para crear/editar */}
-      <Modal show={showModal} onClose={resetForm} size="xl">
-        <Modal.Header>
-          {editingId ? "Editar Imagen" : "Agregar Nueva Imagen"}
-        </Modal.Header>
-        <Modal.Body>
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="name" value="Nombre de la imagen*" />
-                <TextInput
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  placeholder="Ej: Banner Principal Temporada 2023"
-                  required
-                />
-              </div>
-              <div>
-                <Label htmlFor="targetHeight" value="Altura (px)*" />
-                <TextInput
-                  id="targetHeight"
-                  type="number"
-                  min="100"
-                  max="2000"
-                  value={formData.targetHeight}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      targetHeight: parseInt(e.target.value),
-                    })
-                  }
-                  required
-                />
-              </div>
+      {/* Modal crear / editar */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-800 rounded-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto shadow-2xl">
+
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
+              <h2 className="text-xl text-white font-bold">
+                {editingId ? "Editar Banner" : "Nuevo Banner"}
+              </h2>
+              <button
+                type="button"
+                onClick={resetForm}
+                disabled={uploading}
+                className="text-gray-400 hover:text-white transition-colors text-2xl leading-none"
+              >×</button>
             </div>
 
-            <div>
-              <Label
-                htmlFor="redirectUrl"
-                value="URL de redirección (opcional)"
-              />
-              <TextInput
-                id="redirectUrl"
-                type="url"
-                value={formData.redirectUrl}
-                placeholder="https://ejemplo.com/promocion-especial"
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    redirectUrl: e.target.value,
-                  })
-                }
-              />
-            </div>
+            <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-5">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="deviceType" value="Dispositivo*" />
-                <Select
-                  id="deviceType"
-                  value={formData.deviceType}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      deviceType: e.target.value,
-                    })
-                  }
-                  required
-                >
-                  <option value="desktop">Desktop</option>
-                  <option value="mobile">Mobile</option>
-                </Select>
-              </div>
-              <div>
-                <Label htmlFor="order" value="Orden de visualización" />
-                <TextInput
-                  id="order"
-                  type="number"
-                  min="0"
-                  value={formData.order}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      order: parseInt(e.target.value) || 0,
-                    })
-                  }
-                />
-              </div>
-            </div>
-
-            <div>
-              <Label htmlFor="image" value="Imagen*" />
-              <input
-                id="image"
-                type="file"
-                accept="image/jpeg, image/png, image/webp"
-                onChange={handleImageChange}
-                className="block w-full text-sm text-gray-500
-                  file:mr-4 file:py-2 file:px-4
-                  file:rounded-md file:border-0
-                  file:text-sm file:font-semibold
-                  file:bg-blue-50 file:text-blue-700
-                  hover:file:bg-blue-100"
-                required={!editingId}
-              />
-              <p className="mt-1 text-sm text-gray-500">
-                Formatos aceptados: JPEG, PNG (Máx. 5MB)
-              </p>
-
+              {/* Preview de imagen */}
               {previewImage && (
-                <div className="mt-4">
-                  <Label value="Vista previa" />
-                  <div
-                    className="mt-1 border rounded-lg overflow-hidden"
-                    style={{
-                      height: `${formData.targetHeight}px`,
-                      backgroundColor: "#f3f4f6",
-                    }}
-                  >
-                    <img
-                      src={previewImage}
-                      alt="Preview"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Altura actual: {formData.targetHeight}px
-                  </p>
+                <div className="rounded-xl overflow-hidden border border-gray-700 bg-gray-900">
+                  <img
+                    src={previewImage}
+                    alt="Vista previa"
+                    className="w-full max-h-48 object-cover"
+                  />
                 </div>
               )}
-            </div>
 
-            <div className="flex items-center">
-              <input
-                id="isActive"
-                type="checkbox"
-                checked={formData.isActive}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    isActive: e.target.checked,
-                  })
-                }
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-              />
-              <Label htmlFor="isActive" className="ml-2">
-                Mostrar en el hero section
-              </Label>
-            </div>
+              {/* Info general */}
+              <div>
+                <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Información</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="col-span-2 flex flex-col gap-1">
+                    <label className="text-gray-300 text-sm font-medium">Nombre *</label>
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Ej: Banner Principal Temporada 2025"
+                      disabled={uploading}
+                      className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                    />
+                  </div>
+                  <div className="col-span-2 flex flex-col gap-1">
+                    <label className="text-gray-300 text-sm font-medium">URL de redirección</label>
+                    <input
+                      type="url"
+                      value={formData.redirectUrl}
+                      onChange={(e) => setFormData({ ...formData, redirectUrl: e.target.value })}
+                      placeholder="https://..."
+                      disabled={uploading}
+                      className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-gray-300 text-sm font-medium">Dispositivo *</label>
+                    <select
+                      value={formData.deviceType}
+                      onChange={(e) => setFormData({ ...formData, deviceType: e.target.value })}
+                      disabled={uploading}
+                      className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                    >
+                      <option value="desktop">Desktop</option>
+                      <option value="mobile">Mobile</option>
+                    </select>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-gray-300 text-sm font-medium">Altura (px)</label>
+                    <input
+                      type="number"
+                      min="100"
+                      max="2000"
+                      value={formData.targetHeight}
+                      onChange={(e) => setFormData({ ...formData, targetHeight: parseInt(e.target.value) || 400 })}
+                      disabled={uploading}
+                      className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-gray-300 text-sm font-medium">Orden</label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={formData.order}
+                      onChange={(e) => setFormData({ ...formData, order: parseInt(e.target.value) || 0 })}
+                      disabled={uploading}
+                      className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Imagen */}
+              <div>
+                <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Imagen *</p>
+                <label className={`cursor-pointer inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-colors ${uploading ? "bg-gray-600 text-gray-400 cursor-not-allowed" : "bg-amber-600 hover:bg-amber-500 text-white"}`}>
+                  {editingId ? "Cambiar imagen" : "Seleccionar imagen"}
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    onChange={handleImageChange}
+                    className="hidden"
+                    disabled={uploading}
+                    required={!editingId}
+                  />
+                </label>
+                <p className="mt-1.5 text-xs text-gray-500">JPEG, PNG, WebP · Máx. 5 MB</p>
+              </div>
+
+              {/* Visible en hero */}
+              <div className="flex items-center gap-3">
+                <input
+                  id="isActive"
+                  type="checkbox"
+                  checked={formData.isActive}
+                  onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
+                  disabled={uploading}
+                  className="w-4 h-4 rounded accent-orange-500"
+                />
+                <label htmlFor="isActive" className="text-gray-300 text-sm font-medium cursor-pointer">
+                  Mostrar en el hero section
+                </label>
+              </div>
+
+              {/* Botones */}
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="submit"
+                  disabled={uploading}
+                  className={`flex-1 flex items-center justify-center gap-2 font-bold rounded-xl py-3 transition-colors ${
+                    uploading ? "bg-gray-600 text-gray-400 cursor-not-allowed" : "bg-orange-500 hover:bg-orange-400 text-white"
+                  }`}
+                >
+                  {uploading ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                      Subiendo...
+                    </>
+                  ) : (editingId ? "Guardar cambios" : "Crear banner")}
+                </button>
+                <button
+                  type="button"
+                  onClick={resetForm}
+                  disabled={uploading}
+                  className="flex-1 font-bold rounded-xl py-3 bg-gray-700 hover:bg-gray-600 text-gray-300 transition-colors"
+                >
+                  Cancelar
+                </button>
+              </div>
+
+            </form>
           </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            onClick={handleSubmit}
-            disabled={uploading}
-            gradientMonochrome="info"
-          >
-            {uploading ? (
-              <>
-                <Spinner size="sm" className="mr-2" />
-                Procesando...
-              </>
-            ) : editingId ? (
-              "Actualizar Imagen"
-            ) : (
-              "Guardar Imagen"
-            )}
-          </Button>
-          <Button color="gray" onClick={resetForm} disabled={uploading}>
-            Cancelar
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        </div>
+      )}
     </div>
   );
 };
