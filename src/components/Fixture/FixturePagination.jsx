@@ -23,18 +23,20 @@ export default function FixturePagination({ fixtures, activeNumber }) {
   const [modalImage, setModalImage]   = useState(null);
   const chipsRef                      = useRef(null);
   const activeChipRef                 = useRef(null);
+  const isInitialScroll               = useRef(true);
 
   useEffect(() => {
     setCurrentPage(initialPage());
   }, [fixtures, activeNumber]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Centrar el chip activo cuando cambia la página
+  // Centrar el chip activo: instantáneo al cargar, suave en clicks
   useEffect(() => {
     if (activeChipRef.current && chipsRef.current) {
       const container = chipsRef.current;
       const chip      = activeChipRef.current;
       const offset    = chip.offsetLeft - container.clientWidth / 2 + chip.clientWidth / 2;
-      container.scrollTo({ left: offset, behavior: "smooth" });
+      container.scrollTo({ left: offset, behavior: isInitialScroll.current ? "instant" : "smooth" });
+      isInitialScroll.current = false;
     }
   }, [currentPage]);
 
@@ -119,6 +121,9 @@ export default function FixturePagination({ fixtures, activeNumber }) {
 
         {/* Chips de fecha */}
         <div className="px-4 pb-5 border-t border-white/10 pt-4">
+          <p className="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest mb-2.5">
+            Seleccionar jornada
+          </p>
           <div
             ref={chipsRef}
             className="flex gap-1.5 overflow-x-auto"

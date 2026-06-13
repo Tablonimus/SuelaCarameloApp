@@ -17,17 +17,18 @@ const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
 
 const Fixture = () => {
   const [allFixtures, setAllFixtures]     = useState([]);
-  const [activeFixture, setActiveFixture] = useState(null);   // fixture con is_Active → para saltar a la fecha
+  const [activeFixture, setActiveFixture] = useState(null);
   const [category, setCategory]           = useState("A1");
   const [loading, setLoading]             = useState(true);
-  const [options, setOptions]             = useState([]);     // pills "Apertura 2025", etc.
-  const [selectedKey, setSelectedKey]     = useState(null);   // pill seleccionada
+  const [options, setOptions]             = useState([]);
+  const [selectedKey, setSelectedKey]     = useState(null);
+  const [activeFechas, setActiveFechas]   = useState({}); // { A1: 12, F1: 8 }
 
+  // Fetch de todos los fixtures de la categoría + config del torneo activo
   const fetchFixtures = async (cat) => {
     try {
       setLoading(true);
 
-      // Fetch en paralelo: fixtures de la categoría + config del torneo activo
       const [fixtureRes, configRes] = await Promise.all([
         fetch(`${BASE_URL}/fixtures?category=${cat}`),
         fetch(`${BASE_URL}/configs/active-tournament`),
@@ -38,6 +39,11 @@ const Fixture = () => {
       const all = fixtureData.fixtures ?? [];
       setAllFixtures(all);
       setActiveFixture(fixtureData.activeFixture);
+
+      // Actualizar fecha activa para esta categoría en el header
+      if (fixtureData.activeFixture?.number != null) {
+        setActiveFechas((prev) => ({ ...prev, [cat]: fixtureData.activeFixture.number }));
+      }
 
       // Construir pills solo para combos que tienen fixtures reales
       const seasons     = (fixtureData.seasons ?? []).slice().sort().reverse();
@@ -52,7 +58,7 @@ const Fixture = () => {
       }
       setOptions(combined);
 
-      // Default: torneo activo según configs collection
+      // Default: torneo activo según configs
       const defaultKey = configData
         ? combined.find((o) => o.tournament === configData.tournament && o.season === configData.season)?.key
         : combined.find((o) => o.tournament === fixtureData.activeFixture?.tournament && o.season === fixtureData.activeFixture?.season)?.key;
@@ -65,11 +71,31 @@ const Fixture = () => {
     }
   };
 
+  // Al montar, pre-carga las fechas activas de TODAS las categorías para el header
+  useEffect(() => {
+    const fetchAllActiveFechas = async () => {
+      try {
+        const results = await Promise.all(
+          CATEGORIES.map(({ value }) =>
+            fetch(`${BASE_URL}/fixtures?category=${value}`).then((r) => r.json())
+          )
+        );
+        const map = {};
+        CATEGORIES.forEach(({ value }, i) => {
+          if (results[i].activeFixture?.number != null) {
+            map[value] = results[i].activeFixture.number;
+          }
+        });
+        setActiveFechas(map);
+      } catch {}
+    };
+    fetchAllActiveFechas();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     fetchFixtures(category);
   }, [category]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Fixtures a mostrar en el paginador — solo los del combo seleccionado
   const selected        = options.find((o) => o.key === selectedKey);
   const displayFixtures = selected
     ? allFixtures.filter((f) => f.tournament === selected.tournament && f.season === selected.season)
@@ -90,7 +116,7 @@ const Fixture = () => {
       <header className="sticky top-0 z-40 bg-zinc-900/95 backdrop-blur-md border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-2.5">
 
-          {/* Row 1: logo + título */}
+          {/* Row 1: logo + título + combo activo */}
           <div className="flex items-center gap-3 min-w-0">
             <img src={logoSuela} alt="" className="h-7 object-contain flex-shrink-0" />
             <span className="text-sm font-bold text-white tracking-widest uppercase hidden sm:block flex-shrink-0">
@@ -103,12 +129,12 @@ const Fixture = () => {
             </span>
           </div>
 
-          {/* Row 2: pills torneo+año + separador + categoría */}
+          {/* Row 2: pills torneo+año + separador + pills de categoría con fecha activa */}
           <div
             className="flex items-center gap-3 overflow-x-auto pb-0.5"
             style={{ scrollbarWidth: "none" }}
           >
-            {/* Pills combinados */}
+            {/* Pills torneo+año */}
             {options.length > 0 && (
               <div className="flex gap-1.5 flex-shrink-0">
                 {options.map((opt) => (
@@ -129,22 +155,35 @@ const Fixture = () => {
 
             {options.length > 0 && <div className="w-px h-5 bg-white/10 flex-shrink-0" />}
 
-            {/* Categoría */}
+            {/* Pills de categoría con fecha activa */}
             <div className="flex gap-1.5 flex-shrink-0">
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat.value}
-                  onClick={() => setCategory(cat.value)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
-                    category === cat.value
-                      ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
-                      : "bg-zinc-800 text-zinc-400 border border-white/10 hover:border-white/30 hover:text-white"
-                  }`}
-                >
-                  <img src={cat.logo} alt="" className="w-4 h-4 object-contain" />
-                  {cat.label}
-                </button>
-              ))}
+              {CATEGORIES.map((cat) => {
+                const isSelected   = category === cat.value;
+                const fechaActiva  = activeFechas[cat.value];
+                return (
+                  <button
+                    key={cat.value}
+                    onClick={() => setCategory(cat.value)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                      isSelected
+                        ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
+                        : "bg-zinc-800 text-zinc-400 border border-white/10 hover:border-white/30 hover:text-white"
+                    }`}
+                  >
+                    <img src={cat.logo} alt="" className="w-4 h-4 object-contain" />
+                    {cat.label}
+                    {fechaActiva != null && (
+                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none ${
+                        isSelected
+                          ? "bg-white/25 text-white"
+                          : "bg-zinc-700 text-zinc-400"
+                      }`}>
+                        F{fechaActiva}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
