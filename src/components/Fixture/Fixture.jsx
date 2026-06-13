@@ -17,26 +17,32 @@ const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
 
 const Fixture = () => {
   const [allFixtures, setAllFixtures]     = useState([]);
-  const [activeFixture, setActiveFixture] = useState(null);
+  const [activeFixture, setActiveFixture] = useState(null);   // fixture con is_Active → para saltar a la fecha
   const [category, setCategory]           = useState("A1");
   const [loading, setLoading]             = useState(true);
-  const [options, setOptions]             = useState([]);   // pills combinados "Apertura 2025"
-  const [selectedKey, setSelectedKey]     = useState(null); // "Apertura-2025"
+  const [options, setOptions]             = useState([]);     // pills "Apertura 2025", etc.
+  const [selectedKey, setSelectedKey]     = useState(null);   // pill seleccionada
 
   const fetchFixtures = async (cat) => {
     try {
       setLoading(true);
-      const res  = await fetch(`${BASE_URL}/fixtures?category=${cat}`);
-      const data = await res.json();
 
-      const all = data.fixtures ?? [];
+      // Fetch en paralelo: fixtures de la categoría + config del torneo activo
+      const [fixtureRes, configRes] = await Promise.all([
+        fetch(`${BASE_URL}/fixtures?category=${cat}`),
+        fetch(`${BASE_URL}/configs/active-tournament`),
+      ]);
+      const fixtureData = await fixtureRes.json();
+      const configData  = configRes.ok ? await configRes.json() : null;
+
+      const all = fixtureData.fixtures ?? [];
       setAllFixtures(all);
-      setActiveFixture(data.activeFixture);
+      setActiveFixture(fixtureData.activeFixture);
 
-      // Construir pills combinados solo para combos que tienen fixtures reales
-      const seasons     = (data.seasons ?? []).slice().sort().reverse(); // años desc
-      const tournaments = data.tournaments ?? [];
-      const combined = [];
+      // Construir pills solo para combos que tienen fixtures reales
+      const seasons     = (fixtureData.seasons ?? []).slice().sort().reverse();
+      const tournaments = fixtureData.tournaments ?? [];
+      const combined    = [];
       for (const s of seasons) {
         for (const t of TOURNEY_ORDER) {
           if (tournaments.includes(t) && all.some((f) => f.tournament === t && f.season === s)) {
@@ -46,11 +52,11 @@ const Fixture = () => {
       }
       setOptions(combined);
 
-      // Default: el combo del fixture activo, o el primero de la lista
-      const active = data.activeFixture;
-      const defaultKey = active
-        ? combined.find((o) => o.tournament === active.tournament && o.season === active.season)?.key
-        : combined[0]?.key;
+      // Default: torneo activo según configs collection
+      const defaultKey = configData
+        ? combined.find((o) => o.tournament === configData.tournament && o.season === configData.season)?.key
+        : combined.find((o) => o.tournament === fixtureData.activeFixture?.tournament && o.season === fixtureData.activeFixture?.season)?.key;
+
       setSelectedKey(defaultKey ?? combined[0]?.key ?? null);
     } catch (error) {
       console.error("Error fetching fixtures:", error);
@@ -61,7 +67,7 @@ const Fixture = () => {
 
   useEffect(() => {
     fetchFixtures(category);
-  }, [category]);
+  }, [category]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Fixtures a mostrar en el paginador — solo los del combo seleccionado
   const selected        = options.find((o) => o.key === selectedKey);
@@ -70,7 +76,6 @@ const Fixture = () => {
     : allFixtures;
 
   const selectedCategory = CATEGORIES.find((c) => c.value === category);
-  const currentPageTitle = activeFixture?.number || "1";
 
   return (
     <div className="pl-[70px] flex flex-col min-h-screen bg-zinc-950">
@@ -85,7 +90,7 @@ const Fixture = () => {
       <header className="sticky top-0 z-40 bg-zinc-900/95 backdrop-blur-md border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-2.5">
 
-          {/* Row 1: logo + título + fecha activa */}
+          {/* Row 1: logo + título */}
           <div className="flex items-center gap-3 min-w-0">
             <img src={logoSuela} alt="" className="h-7 object-contain flex-shrink-0" />
             <span className="text-sm font-bold text-white tracking-widest uppercase hidden sm:block flex-shrink-0">
@@ -95,7 +100,6 @@ const Fixture = () => {
             <span className="text-sm font-semibold text-orange-400 truncate hidden sm:block">
               {selectedCategory?.label}
               {selected && ` — ${selected.label}`}
-              {activeFixture && ` — Fecha ${currentPageTitle}`}
             </span>
           </div>
 
@@ -105,21 +109,23 @@ const Fixture = () => {
             style={{ scrollbarWidth: "none" }}
           >
             {/* Pills combinados */}
-            <div className="flex gap-1.5 flex-shrink-0">
-              {options.map((opt) => (
-                <button
-                  key={opt.key}
-                  onClick={() => setSelectedKey(opt.key)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
-                    selectedKey === opt.key
-                      ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
-                      : "bg-zinc-800 text-zinc-400 border border-white/10 hover:border-white/30 hover:text-white"
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
+            {options.length > 0 && (
+              <div className="flex gap-1.5 flex-shrink-0">
+                {options.map((opt) => (
+                  <button
+                    key={opt.key}
+                    onClick={() => setSelectedKey(opt.key)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                      selectedKey === opt.key
+                        ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
+                        : "bg-zinc-800 text-zinc-400 border border-white/10 hover:border-white/30 hover:text-white"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            )}
 
             {options.length > 0 && <div className="w-px h-5 bg-white/10 flex-shrink-0" />}
 
@@ -157,7 +163,7 @@ const Fixture = () => {
             fixtures={displayFixtures}
             activeNumber={
               selected?.tournament === activeFixture?.tournament &&
-              selected?.season === activeFixture?.season
+              selected?.season     === activeFixture?.season
                 ? activeFixture?.number
                 : null
             }

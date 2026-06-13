@@ -9,8 +9,9 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 
-const LIMIT = 15;
+const LIMIT        = 15;
 const TOURNEY_ORDER = ["Apertura", "Clausura", "Torneo Anual"];
+const CONFIG_URL   = "https://suela-caramelo-app-back-end.vercel.app/sc/configs";
 
 const CATEGORY_LABELS = {
   A1: "FSP Masculino", F1: "FSP Femenino",
@@ -19,12 +20,13 @@ const CATEGORY_LABELS = {
 };
 
 const FixturesManager = () => {
-  const [fixtures, setFixtures]         = useState([]);
-  const [activeFixture, setActiveFixture] = useState(null);
-  const [seasons, setSeasons]           = useState([]);
-  const [tournaments, setTournaments]   = useState([]);
-  const [categoryAllCache, setCategoryAllCache] = useState([]); // full unfiltered list for current category
-  const [loading, setLoading]           = useState(true);
+  const [fixtures, setFixtures]                   = useState([]);
+  const [activeFixture, setActiveFixture]         = useState(null);
+  const [activeTournamentConfig, setActiveTournamentConfig] = useState(null); // from configs collection
+  const [seasons, setSeasons]                     = useState([]);
+  const [tournaments, setTournaments]             = useState([]);
+  const [categoryAllCache, setCategoryAllCache]   = useState([]);
+  const [loading, setLoading]                     = useState(true);
   const [error, setError]               = useState(null);
   const [success, setSuccess]           = useState(null);
   const [showModal, setShowModal]       = useState(false);
@@ -71,6 +73,13 @@ const FixturesManager = () => {
     } catch {}
   };
 
+  const fetchActiveTournamentConfig = async () => {
+    try {
+      const res = await axios.get(`${CONFIG_URL}/active-tournament`);
+      setActiveTournamentConfig(res.data);
+    } catch {}
+  };
+
   useEffect(() => { fetchFixtures(); }, [filters]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -81,6 +90,10 @@ const FixturesManager = () => {
   useEffect(() => {
     fetchCategoryAll(filters.category);
   }, [filters.category]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    fetchActiveTournamentConfig();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Build all available tournament+season combos for the Torneo Activo selector
   const tournamentOptions = (() => {
@@ -109,12 +122,17 @@ const FixturesManager = () => {
   };
 
   const handleActivateTournament = async (opt) => {
-    // Activate the fixture with the highest number in this tournament+season
-    const matching = categoryAllCache
-      .filter((f) => f.tournament === opt.tournament && f.season === opt.season)
-      .sort((a, b) => b.number - a.number);
-    if (!matching.length) return;
-    await handleSetActive(matching[0]._id);
+    try {
+      const res = await axios.patch(`${CONFIG_URL}/active-tournament`, {
+        tournament: opt.tournament,
+        season:     opt.season,
+      });
+      setActiveTournamentConfig(res.data);
+      setSuccess(`Torneo activo: ${opt.label}`);
+      setTimeout(() => setSuccess(null), 4000);
+    } catch {
+      setError("Error al actualizar el torneo activo");
+    }
   };
 
   const handleDelete = async (id) => {
@@ -200,8 +218,8 @@ const FixturesManager = () => {
           <div className="flex flex-wrap gap-2">
             {tournamentOptions.map((opt) => {
               const isActive =
-                activeFixture?.tournament === opt.tournament &&
-                activeFixture?.season    === opt.season;
+                activeTournamentConfig?.tournament === opt.tournament &&
+                activeTournamentConfig?.season     === opt.season;
               return (
                 <button
                   key={opt.key}
