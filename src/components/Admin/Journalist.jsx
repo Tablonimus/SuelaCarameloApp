@@ -175,9 +175,9 @@ export default function Journalist() {
               name="category"
               onChange={(e) => handleChange(e)}
             >
-              <option value="A1">Seleccione categoria</option>
-              <option value="A1">A1</option>
-              <option value="F1">F1</option>
+              <option value="">Seleccione categoría</option>
+              <option value="A1">FSP Masculino</option>
+              <option value="F1">FSP Femenino</option>
               <option value="DH">DH</option>
               <option value="TI">TI</option>
               <option value="TN">TN</option>

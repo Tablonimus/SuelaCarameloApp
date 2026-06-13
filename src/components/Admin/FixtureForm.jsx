@@ -187,8 +187,8 @@ const FixtureForm = ({ show, onClose, onSubmit, initialData }) => {
                 onChange={handleChange}
                 required
               >
-                <option value="A1">A1 - FSP Masculino</option>
-                <option value="F1">F1 - FSP Femenino</option>
+                <option value="A1">FSP Masculino</option>
+                <option value="F1">FSP Femenino</option>
                 <option value="A2">A2 - Segunda División</option>
                 <option value="F2">F2 - Femenino B</option>
                 <option value="DH">DH - Honor</option>

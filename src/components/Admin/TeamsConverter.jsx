@@ -175,8 +175,8 @@ export default function TeamsConverter() {
             className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none text-sm"
           >
             <option value="">Todas las categorías</option>
-            <option value="A1">A1 — FSP Masculino</option>
-            <option value="F1">F1 — FSP Femenino</option>
+            <option value="A1">FSP Masculino</option>
+            <option value="F1">FSP Femenino</option>
           </select>
           {(filterName || filterCategory) && (
             <button
@@ -337,8 +337,8 @@ export default function TeamsConverter() {
                       disabled={loading}
                     >
                       <option value="">Seleccionar...</option>
-                      <option value="A1">A1 — FSP Masculino</option>
-                      <option value="F1">F1 — FSP Femenino</option>
+                      <option value="A1">FSP Masculino</option>
+                      <option value="F1">FSP Femenino</option>
                     </select>
                   </div>
                   <div className="flex flex-col gap-1">

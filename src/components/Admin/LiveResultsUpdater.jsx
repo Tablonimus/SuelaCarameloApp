@@ -1,15 +1,13 @@
 // Versión completa y adaptada a tus requerimientos
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Table,
   Button,
-  Modal,
   Label,
   TextInput,
   Select,
   Alert,
   Spinner,
-  Toast,
 } from "flowbite-react";
 import {
   FaEdit,
@@ -35,6 +33,19 @@ const statusLabels = {
   canceled: "Cancelado",
 };
 
+const LIMIT = 10;
+
+const ACTIVE_STATUSES = ["first_half", "halftime", "second_half", "extra_time", "penalties"];
+
+function isRecentMatch(match) {
+  if (ACTIVE_STATUSES.includes(match.status)) return true;
+  const matchDate = new Date(match.date);
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setHours(0, 0, 0, 0);
+  return matchDate >= yesterday;
+}
+
 const statusColors = {
   pending:      "bg-zinc-700 text-zinc-300",
   first_half:   "bg-green-600/30 text-green-400",
@@ -56,6 +67,13 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [localSearch, setLocalSearch] = useState("");
+  const [localOpen, setLocalOpen] = useState(false);
+  const [visitorSearch, setVisitorSearch] = useState("");
+  const [visitorOpen, setVisitorOpen] = useState(false);
+  const localRef = useRef(null);
+  const visitorRef = useRef(null);
   const [newMatch, setNewMatch] = useState({
     place: "",
     date: "",
@@ -75,6 +93,9 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
   const [filterCategory, setFilterCategory] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
   const [liveEdit, setLiveEdit] = useState(null);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
   // const BASE_URL = "http://localhost:3000/sc";
 
@@ -82,8 +103,8 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
     try {
       setLoading(true);
       const matchesUrl = isAdmin
-        ? BASE_URL + "/matches"
-        : BASE_URL + `/matches?assignedTo=${currentUser?.username ?? ""}`;
+        ? `${BASE_URL}/matches?page=${page}&limit=${LIMIT}`
+        : `${BASE_URL}/matches?assignedTo=${currentUser?.username ?? ""}`;
 
       const requests = [
         fetch(matchesUrl).then((res) => res.json()),
@@ -94,7 +115,13 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
       }
 
       const results = await Promise.all(requests);
-      setMatches(results[0]);
+      const matchesPayload = results[0];
+      if (matchesPayload?.data) {
+        setMatches(matchesPayload.data);
+        setTotalPages(matchesPayload.meta?.totalPages ?? 1);
+      } else {
+        setMatches(Array.isArray(matchesPayload) ? matchesPayload : []);
+      }
       setTeams(results[1]);
       setCategories(["A1", "FEM"]);
       if (isAdmin) setUsers(results[2]);
@@ -107,6 +134,21 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
 
   useEffect(() => {
     fetchData();
+  }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (localRef.current && !localRef.current.contains(e.target)) setLocalOpen(false);
+      if (visitorRef.current && !visitorRef.current.contains(e.target)) setVisitorOpen(false);
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const filteredMatches = matches.filter((match) => {
@@ -121,6 +163,11 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
         : match.status === filterStatus);
     return categoryMatch && statusMatch;
   });
+
+  // Vista de cards: solo partidos activos o de ayer en adelante
+  const cardMatches = isMobile || !isAdmin
+    ? matches.filter(isRecentMatch)
+    : [];
 
   const handleScoreChange = (id, team, value, penalty = false) => {
     setMatches((prev) =>
@@ -217,13 +264,15 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
     }
   }
 
-  const handleCreateMatch = async () => {
+  const handleCreateMatch = async (e) => {
+    e?.preventDefault();
+    if (!newMatch.local || !newMatch.visitor || !newMatch.category) {
+      setError("Completá local, visitante y categoría.");
+      setTimeout(() => setError(null), 4000);
+      return;
+    }
     try {
-      if (!newMatch.local || !newMatch.visitor || !newMatch.category) {
-        setError("Debes completar todos los campos obligatorios.");
-        setTimeout(() => setError(null), 4000);
-        return;
-      }
+      setSubmitting(true);
       const res = await fetch(BASE_URL + "/matches", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -231,17 +280,12 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
       });
       if (!res.ok) throw new Error();
       const createdMatch = await res.json();
-      setMatches((prev) => [...prev, createdMatch.match]);
+      setMatches((prev) => [createdMatch.match, ...prev]);
       setShowModal(false);
+      setLocalSearch(""); setVisitorSearch("");
       setNewMatch({
-        place: "",
-        date: "",
-        time: "",
-        local: "",
-        visitor: "",
-        category: "",
-        referee: "",
-        status: "pending",
+        place: "", date: "", time: "", local: "", visitor: "",
+        category: "", referee: "", status: "pending",
         score: { local: 0, visitor: 0 },
         penaltyScore: { local: 0, visitor: 0 },
         assignedTo: "",
@@ -251,14 +295,16 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
     } catch {
       setError("Error al crear el partido");
       setTimeout(() => setError(null), 4000);
+    } finally {
+      setSubmitting(false);
     }
   };
 
   return (
     <div className="relative">
 
-      {/* ── Fullscreen editor — reporter mode ── */}
-      {!isAdmin && liveEdit && (
+      {/* ── Fullscreen editor — reporter + admin mobile ── */}
+      {(!isAdmin || isMobile) && liveEdit && (
         <div className="fixed inset-0 z-50 bg-zinc-950 flex flex-col">
           {/* Header */}
           <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-zinc-900 flex-shrink-0">
@@ -419,15 +465,16 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
           )}
         </div>
 
-        {/* Admin: filtros + tabla */}
-        {isAdmin && (
+        {/* Admin desktop: filtros + tabla paginada */}
+        {isAdmin && !isMobile && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div>
                 <Label htmlFor="category-filter" value="Categoría" />
                 <Select id="category-filter" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
                   <option value="all">Todas</option>
-                  {categories.map((cat) => <option key={cat}>{cat}</option>)}
+                  <option value="A1">FSP Masculino</option>
+                  <option value="FEM">FSP Femenino</option>
                 </Select>
               </div>
               <div>
@@ -506,21 +553,44 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                 </Table.Body>
               </Table>
             </div>
+
+            {/* Paginación */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-4 mt-5">
+                <button
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                  className="px-4 py-1.5 rounded-lg bg-zinc-800 text-zinc-300 text-sm font-medium hover:bg-zinc-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                >
+                  ← Anterior
+                </button>
+                <span className="text-sm text-zinc-400">
+                  Página <span className="font-semibold text-white">{page}</span> de <span className="font-semibold text-white">{totalPages}</span>
+                </span>
+                <button
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                  className="px-4 py-1.5 rounded-lg bg-zinc-800 text-zinc-300 text-sm font-medium hover:bg-zinc-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                >
+                  Siguiente →
+                </button>
+              </div>
+            )}
           </>
         )}
 
-        {/* Reporter: lista de cards */}
-        {!isAdmin && (
+        {/* Cards: reporter siempre + admin en mobile */}
+        {(!isAdmin || isMobile) && (
           <div className="space-y-3">
             {loading ? (
               <div className="flex justify-center py-16"><Spinner size="xl" /></div>
-            ) : filteredMatches.length === 0 ? (
+            ) : cardMatches.length === 0 ? (
               <div className="text-center py-16">
                 <FaFutbol className="text-zinc-700 text-4xl mx-auto mb-3" />
-                <p className="text-zinc-500">No tenés partidos asignados.</p>
+                <p className="text-zinc-500">{isAdmin ? "No hay partidos recientes." : "No tenés partidos asignados."}</p>
               </div>
             ) : (
-              filteredMatches.map((match) => (
+              cardMatches.map((match) => (
                 <button
                   key={match._id}
                   onClick={() => openEdit(match)}
@@ -575,67 +645,251 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
         )}
 
         {/* Modal nuevo partido — solo admin */}
-        <Modal show={showModal} onClose={() => setShowModal(false)}>
-          <Modal.Header>Nuevo Partido</Modal.Header>
-          <Modal.Body>
-            <div className="space-y-4">
-              <div>
-                <Label value="Lugar" />
-                <TextInput value={newMatch.place} onChange={(e) => setNewMatch({ ...newMatch, place: e.target.value })} />
+        {showModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+            <div className="bg-gray-800 rounded-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto shadow-2xl">
+
+              {/* Header */}
+              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
+                <h2 className="text-xl text-white font-bold">Nuevo Partido</h2>
+                <button
+                  type="button"
+                  onClick={() => setShowModal(false)}
+                  disabled={submitting}
+                  className="text-gray-400 hover:text-white transition-colors text-2xl leading-none"
+                >×</button>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+
+              <form onSubmit={handleCreateMatch} className="p-6 flex flex-col gap-5">
+
+                {/* Equipos */}
                 <div>
-                  <Label value="Fecha" />
-                  <TextInput type="date" value={newMatch.date} onChange={(e) => setNewMatch({ ...newMatch, date: e.target.value })} />
+                  <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Equipos</p>
+                  <div className="grid grid-cols-2 gap-3">
+
+                    {/* Local */}
+                    <div className="flex flex-col gap-1 relative" ref={localRef}>
+                      <label className="text-gray-300 text-sm font-medium">Local *</label>
+                      <div
+                        className={`flex items-center gap-2 rounded-lg px-3 py-2 bg-gray-700 border cursor-text transition-colors ${localOpen ? "border-orange-500" : "border-gray-600"} ${submitting ? "opacity-50 pointer-events-none" : ""}`}
+                        onClick={() => !submitting && setLocalOpen(true)}
+                      >
+                        {!localOpen && newMatch.local && (() => {
+                          const t = teams.find(t => t._id === newMatch.local);
+                          return t?.logo ? <img src={t.logo} alt="" className="w-5 h-5 object-contain flex-shrink-0" /> : null;
+                        })()}
+                        <input
+                          type="text"
+                          value={localOpen ? localSearch : (teams.find(t => t._id === newMatch.local)?.name ?? "")}
+                          onChange={(e) => { setLocalSearch(e.target.value); setLocalOpen(true); }}
+                          onFocus={() => { setLocalSearch(""); setLocalOpen(true); }}
+                          placeholder="Buscar equipo..."
+                          disabled={submitting}
+                          className="flex-1 min-w-0 bg-transparent text-white text-sm focus:outline-none placeholder-gray-500"
+                        />
+                        <span className="text-gray-400 text-xs flex-shrink-0">▾</span>
+                      </div>
+                      {localOpen && (
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-gray-700 border border-gray-600 rounded-xl shadow-2xl z-20 max-h-52 overflow-y-auto">
+                          {(() => {
+                            const filtered = teams.filter(t => t.name.toLowerCase().includes(localSearch.toLowerCase()));
+                            return filtered.length === 0 ? (
+                              <div className="px-4 py-3 text-gray-400 text-sm">Sin resultados</div>
+                            ) : (
+                              <>
+                                {newMatch.local && (
+                                  <button type="button" onClick={() => { setNewMatch(p => ({ ...p, local: "" })); setLocalOpen(false); setLocalSearch(""); }}
+                                    className="w-full px-4 py-2 text-left text-xs text-gray-400 hover:bg-gray-600 border-b border-gray-600">
+                                    Quitar selección
+                                  </button>
+                                )}
+                                {filtered.map(team => (
+                                  <button key={team._id} type="button"
+                                    onClick={() => { setNewMatch(p => ({ ...p, local: team._id })); setLocalOpen(false); setLocalSearch(""); }}
+                                    className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-600 transition-colors ${newMatch.local === team._id ? "bg-gray-600" : ""}`}
+                                  >
+                                    {team.logo
+                                      ? <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain rounded flex-shrink-0" />
+                                      : <div className="w-8 h-8 bg-gray-500 rounded flex items-center justify-center text-xs text-gray-300 flex-shrink-0">?</div>}
+                                    <span className="text-white text-sm truncate">{team.name}</span>
+                                    {newMatch.local === team._id && <span className="ml-auto text-orange-400 text-xs flex-shrink-0">✓</span>}
+                                  </button>
+                                ))}
+                              </>
+                            );
+                          })()}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Visitante */}
+                    <div className="flex flex-col gap-1 relative" ref={visitorRef}>
+                      <label className="text-gray-300 text-sm font-medium">Visitante *</label>
+                      <div
+                        className={`flex items-center gap-2 rounded-lg px-3 py-2 bg-gray-700 border cursor-text transition-colors ${visitorOpen ? "border-orange-500" : "border-gray-600"} ${submitting ? "opacity-50 pointer-events-none" : ""}`}
+                        onClick={() => !submitting && setVisitorOpen(true)}
+                      >
+                        {!visitorOpen && newMatch.visitor && (() => {
+                          const t = teams.find(t => t._id === newMatch.visitor);
+                          return t?.logo ? <img src={t.logo} alt="" className="w-5 h-5 object-contain flex-shrink-0" /> : null;
+                        })()}
+                        <input
+                          type="text"
+                          value={visitorOpen ? visitorSearch : (teams.find(t => t._id === newMatch.visitor)?.name ?? "")}
+                          onChange={(e) => { setVisitorSearch(e.target.value); setVisitorOpen(true); }}
+                          onFocus={() => { setVisitorSearch(""); setVisitorOpen(true); }}
+                          placeholder="Buscar equipo..."
+                          disabled={submitting}
+                          className="flex-1 min-w-0 bg-transparent text-white text-sm focus:outline-none placeholder-gray-500"
+                        />
+                        <span className="text-gray-400 text-xs flex-shrink-0">▾</span>
+                      </div>
+                      {visitorOpen && (
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-gray-700 border border-gray-600 rounded-xl shadow-2xl z-20 max-h-52 overflow-y-auto">
+                          {(() => {
+                            const filtered = teams.filter(t => t.name.toLowerCase().includes(visitorSearch.toLowerCase()));
+                            return filtered.length === 0 ? (
+                              <div className="px-4 py-3 text-gray-400 text-sm">Sin resultados</div>
+                            ) : (
+                              <>
+                                {newMatch.visitor && (
+                                  <button type="button" onClick={() => { setNewMatch(p => ({ ...p, visitor: "" })); setVisitorOpen(false); setVisitorSearch(""); }}
+                                    className="w-full px-4 py-2 text-left text-xs text-gray-400 hover:bg-gray-600 border-b border-gray-600">
+                                    Quitar selección
+                                  </button>
+                                )}
+                                {filtered.map(team => (
+                                  <button key={team._id} type="button"
+                                    onClick={() => { setNewMatch(p => ({ ...p, visitor: team._id })); setVisitorOpen(false); setVisitorSearch(""); }}
+                                    className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-600 transition-colors ${newMatch.visitor === team._id ? "bg-gray-600" : ""}`}
+                                  >
+                                    {team.logo
+                                      ? <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain rounded flex-shrink-0" />
+                                      : <div className="w-8 h-8 bg-gray-500 rounded flex items-center justify-center text-xs text-gray-300 flex-shrink-0">?</div>}
+                                    <span className="text-white text-sm truncate">{team.name}</span>
+                                    {newMatch.visitor === team._id && <span className="ml-auto text-orange-400 text-xs flex-shrink-0">✓</span>}
+                                  </button>
+                                ))}
+                              </>
+                            );
+                          })()}
+                        </div>
+                      )}
+                    </div>
+
+                  </div>
                 </div>
+
+                {/* Detalles del partido */}
                 <div>
-                  <Label value="Hora" />
-                  <TextInput type="time" value={newMatch.time} onChange={(e) => setNewMatch({ ...newMatch, time: e.target.value })} />
+                  <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Detalles del partido</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-gray-300 text-sm font-medium">Categoría *</label>
+                      <select
+                        className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                        value={newMatch.category}
+                        onChange={(e) => setNewMatch({ ...newMatch, category: e.target.value })}
+                        disabled={submitting}
+                      >
+                        <option value="">Seleccionar...</option>
+                        <option value="A1">FSP Masculino</option>
+                        <option value="FEM">FSP Femenino</option>
+                      </select>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="text-gray-300 text-sm font-medium">Árbitro</label>
+                      <input
+                        className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                        type="text"
+                        value={newMatch.referee}
+                        onChange={(e) => setNewMatch({ ...newMatch, referee: e.target.value })}
+                        disabled={submitting}
+                        placeholder="Nombre del árbitro"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="text-gray-300 text-sm font-medium">Fecha</label>
+                      <input
+                        className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                        type="date"
+                        value={newMatch.date}
+                        onChange={(e) => setNewMatch({ ...newMatch, date: e.target.value })}
+                        disabled={submitting}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="text-gray-300 text-sm font-medium">Hora</label>
+                      <input
+                        className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                        type="time"
+                        value={newMatch.time}
+                        onChange={(e) => setNewMatch({ ...newMatch, time: e.target.value })}
+                        disabled={submitting}
+                      />
+                    </div>
+                    <div className="col-span-2 flex flex-col gap-1">
+                      <label className="text-gray-300 text-sm font-medium">Lugar</label>
+                      <input
+                        className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                        type="text"
+                        value={newMatch.place}
+                        onChange={(e) => setNewMatch({ ...newMatch, place: e.target.value })}
+                        disabled={submitting}
+                        placeholder="Ej: Polideportivo Municipal"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
+
+                {/* Asignación */}
                 <div>
-                  <Label value="Local" />
-                  <Select value={newMatch.local} onChange={(e) => setNewMatch({ ...newMatch, local: e.target.value })}>
-                    <option value="">Seleccionar equipo</option>
-                    {teams.map((t) => <option key={t._id} value={t._id}>{t.name}</option>)}
-                  </Select>
+                  <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Asignación</p>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-gray-300 text-sm font-medium">Asignar a</label>
+                    <select
+                      className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                      value={newMatch.assignedTo}
+                      onChange={(e) => setNewMatch({ ...newMatch, assignedTo: e.target.value })}
+                      disabled={submitting}
+                    >
+                      <option value="">Sin asignar</option>
+                      {users.map((u) => <option key={u._id} value={u.username}>{u.username} ({u.role})</option>)}
+                    </select>
+                  </div>
                 </div>
-                <div>
-                  <Label value="Visitante" />
-                  <Select value={newMatch.visitor} onChange={(e) => setNewMatch({ ...newMatch, visitor: e.target.value })}>
-                    <option value="">Seleccionar equipo</option>
-                    {teams.map((t) => <option key={t._id} value={t._id}>{t.name}</option>)}
-                  </Select>
+
+                {/* Botones */}
+                <div className="flex gap-3 pt-2">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className={`flex-1 flex items-center justify-center gap-2 font-bold rounded-xl py-3 transition-colors ${
+                      submitting
+                        ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                        : "bg-orange-500 hover:bg-orange-400 text-white"
+                    }`}
+                  >
+                    {submitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                        Creando...
+                      </>
+                    ) : "Crear partido"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                    disabled={submitting}
+                    className="flex-1 font-bold rounded-xl py-3 bg-gray-700 hover:bg-gray-600 text-gray-300 transition-colors"
+                  >
+                    Cancelar
+                  </button>
                 </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label value="Categoría" />
-                  <Select value={newMatch.category} onChange={(e) => setNewMatch({ ...newMatch, category: e.target.value })}>
-                    <option value="">Seleccionar Categoría</option>
-                    {categories.map((cat) => <option key={cat}>{cat}</option>)}
-                  </Select>
-                </div>
-                <div>
-                  <Label value="Árbitro" />
-                  <TextInput value={newMatch.referee} onChange={(e) => setNewMatch({ ...newMatch, referee: e.target.value })} />
-                </div>
-              </div>
-              <div>
-                <Label value="Asignar a" />
-                <Select value={newMatch.assignedTo} onChange={(e) => setNewMatch({ ...newMatch, assignedTo: e.target.value })}>
-                  <option value="">Sin asignar</option>
-                  {users.map((u) => <option key={u._id} value={u.username}>{u.username} ({u.role})</option>)}
-                </Select>
-              </div>
+              </form>
             </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={handleCreateMatch}>Crear</Button>
-            <Button color="gray" onClick={() => setShowModal(false)}>Cancelar</Button>
-          </Modal.Footer>
-        </Modal>
+          </div>
+        )}
       </div>
     </div>
   );
