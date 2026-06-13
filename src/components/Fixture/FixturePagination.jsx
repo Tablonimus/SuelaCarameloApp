@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Pagination from "../Pagination/Pagination";
+import React, { useState, useEffect, useRef } from "react";
 
 const ExpandIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -14,7 +13,6 @@ const CloseIcon = () => (
 );
 
 export default function FixturePagination({ fixtures, activeNumber }) {
-  // currentPage es siempre un índice 1-based del array, no el número de fixture
   const initialPage = () => {
     if (!activeNumber || !fixtures?.length) return 1;
     const idx = fixtures.findIndex((f) => f.number === activeNumber);
@@ -23,21 +21,29 @@ export default function FixturePagination({ fixtures, activeNumber }) {
 
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [modalImage, setModalImage]   = useState(null);
+  const chipsRef                      = useRef(null);
+  const activeChipRef                 = useRef(null);
 
-  // Cuando cambia la lista (torneo/categoría), volver al fixture activo o al primero
   useEffect(() => {
     setCurrentPage(initialPage());
   }, [fixtures, activeNumber]); // eslint-disable-line react-hooks/exhaustive-deps
-  const fixturesPerPage = 1;
+
+  // Centrar el chip activo cuando cambia la página
+  useEffect(() => {
+    if (activeChipRef.current && chipsRef.current) {
+      const container = chipsRef.current;
+      const chip      = activeChipRef.current;
+      const offset    = chip.offsetLeft - container.clientWidth / 2 + chip.clientWidth / 2;
+      container.scrollTo({ left: offset, behavior: "smooth" });
+    }
+  }, [currentPage]);
 
   const currentFixture = fixtures?.[currentPage - 1];
 
   const formatDate = (dateString) => {
     if (!dateString) return null;
     return new Date(dateString).toLocaleDateString("es-ES", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
+      day: "numeric", month: "long", year: "numeric",
     });
   };
 
@@ -65,7 +71,6 @@ export default function FixturePagination({ fixtures, activeNumber }) {
 
         {/* Info del fixture */}
         <div className="px-5 py-4 border-b border-white/10">
-          {/* Etiqueta de fase — divisor central */}
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
             <span className="text-[10px] font-black text-orange-400 uppercase tracking-[0.22em] whitespace-nowrap">
@@ -74,12 +79,9 @@ export default function FixturePagination({ fixtures, activeNumber }) {
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
           </div>
 
-          {/* Fecha + torneo */}
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h3 className="text-2xl font-black text-white leading-none">
-                {dateTitle}
-              </h3>
+              <h3 className="text-2xl font-black text-white leading-none">{dateTitle}</h3>
               {currentFixture.playDates?.from && (
                 <p className="text-xs text-zinc-500 mt-1.5">
                   {formatDate(currentFixture.playDates.from)}
@@ -106,31 +108,44 @@ export default function FixturePagination({ fixtures, activeNumber }) {
               alt={`Fixture ${currentFixture.number}`}
               className="w-full h-auto object-contain transition-all duration-300 group-hover:brightness-90"
             />
-            {/* Overlay expandir */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
               <div className="bg-black/60 backdrop-blur-sm rounded-full p-3">
                 <ExpandIcon />
               </div>
             </div>
           </div>
-          <p className="text-center text-xs text-zinc-600 mt-2">
-            Tocá la imagen para ampliar
-          </p>
+          <p className="text-center text-xs text-zinc-600 mt-2">Tocá la imagen para ampliar</p>
         </div>
 
-        {/* Paginador */}
-        <div className="px-5 pb-5 flex items-center justify-between gap-4 border-t border-white/10 pt-4">
-          <span className="text-xs text-zinc-500">
-            {currentPage} de {fixtures?.length}
-          </span>
-          <Pagination
-            fixturesPerPage={fixturesPerPage}
-            totalFixtures={fixtures?.length}
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
-          />
+        {/* Chips de fecha */}
+        <div className="px-4 pb-5 border-t border-white/10 pt-4">
+          <div
+            ref={chipsRef}
+            className="flex gap-1.5 overflow-x-auto"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {fixtures.map((f, idx) => {
+              const isActive = currentPage === idx + 1;
+              const isToday  = f.number === activeNumber;
+              return (
+                <button
+                  key={f._id ?? idx}
+                  ref={isActive ? activeChipRef : null}
+                  onClick={() => setCurrentPage(idx + 1)}
+                  className={`flex-shrink-0 min-w-[2.5rem] h-9 px-3 rounded-xl text-sm font-bold transition-all duration-150 ${
+                    isActive
+                      ? "bg-orange-500 text-white shadow-lg shadow-orange-500/30 scale-105"
+                      : isToday
+                      ? "bg-orange-500/20 text-orange-400 border border-orange-500/40 hover:bg-orange-500/30"
+                      : "bg-zinc-800 text-zinc-400 border border-white/10 hover:border-white/30 hover:text-white"
+                  }`}
+                >
+                  {f.number}
+                </button>
+              );
+            })}
+          </div>
         </div>
-
       </div>
 
       {/* Modal pantalla completa */}
@@ -143,17 +158,12 @@ export default function FixturePagination({ fixtures, activeNumber }) {
             className="flex flex-col items-center w-full max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Cabecera del modal */}
             <div className="flex items-center justify-between w-full mb-4">
               <div>
-                <p className="text-[10px] font-black text-orange-400 uppercase tracking-[0.22em]">
-                  {stageLabel}
-                </p>
+                <p className="text-[10px] font-black text-orange-400 uppercase tracking-[0.22em]">{stageLabel}</p>
                 <h3 className="text-xl font-black text-white">{dateTitle}</h3>
                 {currentFixture.playDates?.from && (
-                  <p className="text-xs text-zinc-500 mt-0.5">
-                    {formatDate(currentFixture.playDates.from)}
-                  </p>
+                  <p className="text-xs text-zinc-500 mt-0.5">{formatDate(currentFixture.playDates.from)}</p>
                 )}
               </div>
               <button
@@ -163,7 +173,6 @@ export default function FixturePagination({ fixtures, activeNumber }) {
                 <CloseIcon />
               </button>
             </div>
-
             <img
               src={modalImage}
               alt="Vista ampliada"

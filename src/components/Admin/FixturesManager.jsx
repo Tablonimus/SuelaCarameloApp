@@ -10,26 +10,28 @@ import {
 } from "react-icons/fa";
 
 const LIMIT = 15;
+const TOURNEY_ORDER = ["Apertura", "Clausura", "Torneo Anual"];
 
 const CATEGORY_LABELS = {
   A1: "FSP Masculino", F1: "FSP Femenino",
-  A2: "Segunda Div.", F2: "Femenino B",
+  A2: "Segunda Div.",  F2: "Femenino B",
   DH: "DH", TI: "TI", TN: "TN", CM: "CM",
 };
 
 const FixturesManager = () => {
-  const [fixtures, setFixtures] = useState([]);
+  const [fixtures, setFixtures]         = useState([]);
   const [activeFixture, setActiveFixture] = useState(null);
-  const [seasons, setSeasons] = useState([]);
-  const [tournaments, setTournaments] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [seasons, setSeasons]           = useState([]);
+  const [tournaments, setTournaments]   = useState([]);
+  const [categoryAllCache, setCategoryAllCache] = useState([]); // full unfiltered list for current category
+  const [loading, setLoading]           = useState(true);
+  const [error, setError]               = useState(null);
+  const [success, setSuccess]           = useState(null);
+  const [showModal, setShowModal]       = useState(false);
   const [editingFixture, setEditingFixture] = useState(null);
-  const [filters, setFilters] = useState({ category: "A1", season: "", tournament: "" });
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [filters, setFilters]           = useState({ category: "A1", season: "", tournament: "" });
+  const [page, setPage]                 = useState(1);
+  const [totalPages, setTotalPages]     = useState(1);
   const [fixturesCache, setFixturesCache] = useState([]);
 
   const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc/fixtures";
@@ -44,8 +46,8 @@ const FixturesManager = () => {
     try {
       setLoading(true);
       const params = new URLSearchParams();
-      if (filters.category) params.append("category", filters.category);
-      if (filters.season) params.append("season", filters.season);
+      if (filters.category)   params.append("category",   filters.category);
+      if (filters.season)     params.append("season",     filters.season);
       if (filters.tournament) params.append("tournament", filters.tournament);
       const response = await axios.get(`${BASE_URL}?${params.toString()}`);
       const all = response.data.fixtures ?? [];
@@ -62,6 +64,13 @@ const FixturesManager = () => {
     }
   };
 
+  const fetchCategoryAll = async (cat) => {
+    try {
+      const res = await axios.get(`${BASE_URL}?category=${cat}`);
+      setCategoryAllCache(res.data.fixtures ?? []);
+    } catch {}
+  };
+
   useEffect(() => { fetchFixtures(); }, [filters]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -69,10 +78,29 @@ const FixturesManager = () => {
     applyPage(fixturesCache, page);
   }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  useEffect(() => {
+    fetchCategoryAll(filters.category);
+  }, [filters.category]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Build all available tournament+season combos for the Torneo Activo selector
+  const tournamentOptions = (() => {
+    const result = [];
+    const allSeasons = [...new Set(categoryAllCache.map((f) => f.season))].sort().reverse();
+    for (const s of allSeasons) {
+      for (const t of TOURNEY_ORDER) {
+        if (categoryAllCache.some((f) => f.tournament === t && f.season === s)) {
+          result.push({ key: `${t}-${s}`, label: `${t} ${s}`, tournament: t, season: s });
+        }
+      }
+    }
+    return result;
+  })();
+
   const handleSetActive = async (id) => {
     try {
       await axios.patch(`${BASE_URL}/${id}/activate`);
       fetchFixtures();
+      fetchCategoryAll(filters.category);
       setSuccess("Fixture activado correctamente");
       setTimeout(() => setSuccess(null), 4000);
     } catch {
@@ -80,11 +108,21 @@ const FixturesManager = () => {
     }
   };
 
+  const handleActivateTournament = async (opt) => {
+    // Activate the fixture with the highest number in this tournament+season
+    const matching = categoryAllCache
+      .filter((f) => f.tournament === opt.tournament && f.season === opt.season)
+      .sort((a, b) => b.number - a.number);
+    if (!matching.length) return;
+    await handleSetActive(matching[0]._id);
+  };
+
   const handleDelete = async (id) => {
     if (!window.confirm("¿Estás seguro de eliminar este fixture?")) return;
     try {
       await axios.delete(`${BASE_URL}/${id}`);
       fetchFixtures();
+      fetchCategoryAll(filters.category);
       setSuccess("Fixture eliminado correctamente");
       setTimeout(() => setSuccess(null), 4000);
     } catch {
@@ -92,8 +130,8 @@ const FixturesManager = () => {
     }
   };
 
-  const handleEdit = (fixture) => { setEditingFixture(fixture); setShowModal(true); };
-  const handleCreate = () => { setEditingFixture(null); setShowModal(true); };
+  const handleEdit   = (fixture) => { setEditingFixture(fixture); setShowModal(true); };
+  const handleCreate = ()         => { setEditingFixture(null);    setShowModal(true); };
 
   const handleSubmitFixture = async (data) => {
     try {
@@ -129,6 +167,7 @@ const FixturesManager = () => {
       }
 
       fetchFixtures();
+      fetchCategoryAll(filters.category);
       setShowModal(false);
       setEditingFixture(null);
       setTimeout(() => setSuccess(null), 4000);
@@ -152,16 +191,57 @@ const FixturesManager = () => {
         </div>
       )}
 
-      {/* Header: fixture activo + botón nuevo */}
+      {/* ── Torneo Activo ── */}
+      {tournamentOptions.length > 0 && (
+        <div className="bg-gray-800 rounded-2xl p-4 mb-4">
+          <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">
+            Torneo Activo
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {tournamentOptions.map((opt) => {
+              const isActive =
+                activeFixture?.tournament === opt.tournament &&
+                activeFixture?.season    === opt.season;
+              return (
+                <button
+                  key={opt.key}
+                  onClick={() => !isActive && handleActivateTournament(opt)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all border ${
+                    isActive
+                      ? "bg-orange-500 text-white border-orange-500 shadow-lg shadow-orange-500/25 cursor-default"
+                      : "bg-gray-700 text-gray-300 border-gray-600 hover:border-orange-500/60 hover:text-white hover:bg-gray-600 cursor-pointer"
+                  }`}
+                >
+                  {opt.label}
+                  {isActive && (
+                    <span className="flex items-center gap-1 bg-white/20 text-xs px-1.5 py-0.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
+                      Activo
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* ── Header: fixture activo card + botón Nuevo ── */}
       <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
         {activeFixture ? (
           <div className="bg-gray-800 rounded-2xl p-4 flex items-center gap-4">
-            <img src={activeFixture.image} alt="Activo" className="w-14 h-14 rounded-xl object-cover flex-shrink-0" />
+            <img
+              src={activeFixture.image}
+              alt="Activo"
+              className="w-14 h-14 rounded-xl object-cover flex-shrink-0"
+            />
             <div>
               <p className="text-white font-bold text-sm">
                 Fecha {activeFixture.number} — {CATEGORY_LABELS[activeFixture.category] ?? activeFixture.category}
               </p>
-              <p className="text-gray-400 text-xs mt-0.5">{activeFixture.tournament} · {activeFixture.season}</p>
+              <p className="text-gray-400 text-xs mt-0.5">
+                {activeFixture.tournament} · {activeFixture.season}
+              </p>
               <span className="inline-block mt-1.5 bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                 Activo
               </span>
@@ -178,7 +258,7 @@ const FixturesManager = () => {
         </button>
       </div>
 
-      {/* Filtros */}
+      {/* ── Filtros ── */}
       <div className="bg-gray-800 rounded-2xl p-4 mb-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <select
@@ -212,11 +292,11 @@ const FixturesManager = () => {
         </div>
       </div>
 
-      {/* Tabla */}
+      {/* ── Tabla ── */}
       {loading ? (
         <div className="flex items-center justify-center py-16">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4" />
             <p className="text-gray-400">Cargando fixtures...</p>
           </div>
         </div>
@@ -243,7 +323,10 @@ const FixturesManager = () => {
                     </td>
                   </tr>
                 ) : fixtures.map((f) => (
-                  <tr key={f._id} className="border-b border-gray-700 hover:bg-gray-700/40 transition-colors">
+                  <tr
+                    key={f._id}
+                    className="border-b border-gray-700 hover:bg-gray-700/40 transition-colors"
+                  >
                     <td className="p-3 font-semibold">{f.number}</td>
                     <td className="p-3">{CATEGORY_LABELS[f.category] ?? f.category}</td>
                     <td className="p-3 text-gray-400">{f.season}</td>
@@ -299,7 +382,10 @@ const FixturesManager = () => {
                 ← Anterior
               </button>
               <span className="text-sm text-gray-400">
-                Página <span className="font-semibold text-white">{page}</span> de <span className="font-semibold text-white">{totalPages}</span>
+                Página{" "}
+                <span className="font-semibold text-white">{page}</span>
+                {" "}de{" "}
+                <span className="font-semibold text-white">{totalPages}</span>
               </span>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
