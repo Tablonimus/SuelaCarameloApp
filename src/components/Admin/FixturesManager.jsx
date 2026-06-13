@@ -20,6 +20,12 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 
+const CATEGORY_LABELS = {
+  A1: "FSP Masculino", F1: "FSP Femenino",
+  A2: "Segunda Div.", F2: "Femenino B",
+  DH: "DH", TI: "TI", TN: "TN", CM: "CM",
+};
+
 const FixturesManager = () => {
   const [fixtures, setFixtures] = useState([]);
   const [activeFixture, setActiveFixture] = useState(null);
@@ -64,7 +70,7 @@ const FixturesManager = () => {
 
   const handleSetActive = async (id) => {
     try {
-      await axios.patch(`${BASE_URL}/${id}/active`);
+      await axios.patch(`${BASE_URL}/${id}/activate`);
       fetchFixtures();
       setSuccess("Fixture activado correctamente");
       setTimeout(() => setSuccess(null), 4000);
@@ -170,7 +176,7 @@ const FixturesManager = () => {
               />
               <div className="flex flex-col justify-center">
                 <h3 className="font-bold text-lg">
-                  Fecha {activeFixture.number} - {activeFixture.category}
+                  Fecha {activeFixture.number} — {CATEGORY_LABELS[activeFixture.category] ?? activeFixture.category}
                 </h3>
                 <p>
                   {activeFixture.tournament} - {activeFixture.season}
@@ -260,7 +266,7 @@ const FixturesManager = () => {
             {fixtures.map((f) => (
               <Table.Row key={f._id}>
                 <Table.Cell>{f.number}</Table.Cell>
-                <Table.Cell>{f.category}</Table.Cell>
+                <Table.Cell>{CATEGORY_LABELS[f.category] ?? f.category}</Table.Cell>
                 <Table.Cell>{f.season}</Table.Cell>
                 <Table.Cell>{f.tournament}</Table.Cell>
                 <Table.Cell className="capitalize">{f.stage}</Table.Cell>

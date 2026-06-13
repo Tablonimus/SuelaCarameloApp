@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
 
 const ExpandIcon = () => (
@@ -14,14 +14,23 @@ const CloseIcon = () => (
 );
 
 export default function FixturePagination({ fixtures, activeNumber }) {
-  const [currentPage, setCurrentPage] = useState(activeNumber || 1);
+  // currentPage es siempre un índice 1-based del array, no el número de fixture
+  const initialPage = () => {
+    if (!activeNumber || !fixtures?.length) return 1;
+    const idx = fixtures.findIndex((f) => f.number === activeNumber);
+    return idx >= 0 ? idx + 1 : 1;
+  };
+
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [modalImage, setModalImage]   = useState(null);
+
+  // Cuando cambia la lista (torneo/categoría), volver al fixture activo o al primero
+  useEffect(() => {
+    setCurrentPage(initialPage());
+  }, [fixtures, activeNumber]); // eslint-disable-line react-hooks/exhaustive-deps
   const fixturesPerPage = 1;
 
-  const currentFixture = fixtures?.slice(
-    (currentPage - 1) * fixturesPerPage,
-    currentPage * fixturesPerPage
-  )?.[0];
+  const currentFixture = fixtures?.[currentPage - 1];
 
   const formatDate = (dateString) => {
     if (!dateString) return null;
@@ -112,7 +121,7 @@ export default function FixturePagination({ fixtures, activeNumber }) {
         {/* Paginador */}
         <div className="px-5 pb-5 flex items-center justify-between gap-4 border-t border-white/10 pt-4">
           <span className="text-xs text-zinc-500">
-            Fecha {currentPage} de {fixtures?.length}
+            {currentPage} de {fixtures?.length}
           </span>
           <Pagination
             fixturesPerPage={fixturesPerPage}

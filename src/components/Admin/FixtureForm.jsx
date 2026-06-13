@@ -215,15 +215,13 @@ const FixtureForm = ({ show, onClose, onSubmit, initialData }) => {
             </div>
           )}
 
-          {
+          {formData.stage !== "temporada" && (
             <div>
               <Label value="Fechas de Juego*" />
               <div className="flex items-center gap-2">
                 <Datepicker
                   value={formData?.playDates?.from}
-                  onSelectedDateChanged={(date) =>
-                    handleDateChange("from", date)
-                  }
+                  onSelectedDateChanged={(date) => handleDateChange("from", date)}
                   placeholderText="Desde"
                   required
                   icon={FaCalendarAlt}
@@ -233,13 +231,12 @@ const FixtureForm = ({ show, onClose, onSubmit, initialData }) => {
                   value={formData?.playDates?.to}
                   onSelectedDateChanged={(date) => handleDateChange("to", date)}
                   placeholderText="Hasta"
-                  // minDate={formData?.playDates?.from}
                   required
                   icon={FaCalendarAlt}
                 />
               </div>
             </div>
-          }
+          )}
 
           <div>
             <Label htmlFor="image" value="Imagen del Fixture*" />
