@@ -96,6 +96,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [editingMatch, setEditingMatch] = useState(null);
   const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
   // const BASE_URL = "http://localhost:3000/sc";
 
@@ -164,52 +165,30 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
     return categoryMatch && statusMatch;
   });
 
-  // Vista de cards: solo partidos activos o de ayer en adelante
-  const cardMatches = isMobile || !isAdmin
-    ? matches.filter(isRecentMatch)
+  // Admin ve todos sus partidos; reporter solo activos o recientes
+  const cardMatches = (isMobile || !isAdmin)
+    ? (isAdmin ? matches : matches.filter(isRecentMatch))
     : [];
 
-  const handleScoreChange = (id, team, value, penalty = false) => {
-    setMatches((prev) =>
-      prev.map((m) =>
-        m._id === id
-          ? {
-              ...m,
-              [penalty ? "penaltyScore" : "score"]: {
-                ...(penalty ? m.penaltyScore : m.score),
-                [team]: parseInt(value) || 0,
-              },
-            }
-          : m
-      )
-    );
-  };
-
-  const saveMatchChanges = async (matchId) => {
-    try {
-      const matchToUpdate = matches.find((m) => m._id === matchId);
-      const response = await fetch(BASE_URL + `/matches/${matchId}/score`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          localScore: matchToUpdate.score.local,
-          visitorScore: matchToUpdate.score.visitor,
-          status: matchToUpdate.status,
-          penaltyScore: matchToUpdate.penaltyScore,
-        }),
-      });
-      if (!response.ok) throw new Error();
-      const res = await response.json();
-      setMatches((prev) =>
-        prev.map((m) => (m._id === matchId ? res.match : m))
-      );
-      setSuccess("Partido actualizado exitosamente.");
-      setTimeout(() => setSuccess(null), 4000);
-    } catch {
-      setError("Error al guardar los cambios");
-      setTimeout(() => setError(null), 4000);
-    }
-  };
+  function handleOpenEditModal(match) {
+    setEditingMatch(match);
+    setNewMatch({
+      place: match.place ?? "",
+      date: match.date ? match.date.slice(0, 10) : "",
+      time: match.time ?? "",
+      local: match.local?._id ?? match.local ?? "",
+      visitor: match.visitor?._id ?? match.visitor ?? "",
+      category: match.category ?? "",
+      referee: match.referee ?? "",
+      status: match.status ?? "pending",
+      score: { local: match.score?.local ?? 0, visitor: match.score?.visitor ?? 0 },
+      penaltyScore: { local: match.penaltyScore?.local ?? 0, visitor: match.penaltyScore?.visitor ?? 0 },
+      assignedTo: match.assignedTo ?? "",
+    });
+    setLocalSearch("");
+    setVisitorSearch("");
+    setShowModal(true);
+  }
 
   const deleteMatch = async (matchId) => {
     if (!window.confirm("¿Eliminar este partido?")) return;
@@ -264,7 +243,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
     }
   }
 
-  const handleCreateMatch = async (e) => {
+  const handleSubmitMatch = async (e) => {
     e?.preventDefault();
     if (!newMatch.local || !newMatch.visitor || !newMatch.category) {
       setError("Completá local, visitante y categoría.");
@@ -273,15 +252,24 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
     }
     try {
       setSubmitting(true);
-      const res = await fetch(BASE_URL + "/matches", {
-        method: "POST",
+      const isEditing = !!editingMatch;
+      const url = isEditing
+        ? `${BASE_URL}/matches/${editingMatch._id}`
+        : `${BASE_URL}/matches`;
+      const res = await fetch(url, {
+        method: isEditing ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newMatch),
       });
       if (!res.ok) throw new Error();
-      const createdMatch = await res.json();
-      setMatches((prev) => [createdMatch.match, ...prev]);
+      const payload = await res.json();
+      if (isEditing) {
+        setMatches((prev) => prev.map((m) => m._id === editingMatch._id ? payload.match : m));
+      } else {
+        setMatches((prev) => [payload.match, ...prev]);
+      }
       setShowModal(false);
+      setEditingMatch(null);
       setLocalSearch(""); setVisitorSearch("");
       setNewMatch({
         place: "", date: "", time: "", local: "", visitor: "",
@@ -290,10 +278,10 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
         penaltyScore: { local: 0, visitor: 0 },
         assignedTo: "",
       });
-      setSuccess("Partido creado exitosamente.");
+      setSuccess(isEditing ? "Partido actualizado exitosamente." : "Partido creado exitosamente.");
       setTimeout(() => setSuccess(null), 4000);
     } catch {
-      setError("Error al crear el partido");
+      setError(editingMatch ? "Error al actualizar el partido" : "Error al crear el partido");
       setTimeout(() => setError(null), 4000);
     } finally {
       setSubmitting(false);
@@ -504,47 +492,42 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                 <Table.Body className="border">
                   {filteredMatches.map((match) => (
                     <Table.Row className="border" key={match._id}>
-                      <Table.Cell className="text-white">
-                        {new Date(match.date).toLocaleDateString()} {match.time}
+                      <Table.Cell className="text-white whitespace-nowrap">
+                        {match.date ? new Date(match.date).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "2-digit" }) : "—"}
+                        {match.time && <span className="text-zinc-400 ml-1">{match.time}</span>}
                       </Table.Cell>
-                      <Table.Cell className="text-white">{match?.local?.name}</Table.Cell>
-                      <Table.Cell className="text-white">{match?.visitor?.name}</Table.Cell>
                       <Table.Cell className="text-white">
                         <div className="flex items-center gap-2">
-                          <TextInput type="number" className="w-14 text-center" value={match.score.local}
-                            onChange={(e) => handleScoreChange(match._id, "local", e.target.value)} />
-                          <span>-</span>
-                          <TextInput type="number" className="w-14 text-center" value={match.score.visitor}
-                            onChange={(e) => handleScoreChange(match._id, "visitor", e.target.value)} />
+                          {match.local?.logo && <img src={match.local.logo} className="w-6 h-6 object-contain rounded" />}
+                          {match.local?.name}
                         </div>
+                      </Table.Cell>
+                      <Table.Cell className="text-white">
+                        <div className="flex items-center gap-2">
+                          {match.visitor?.logo && <img src={match.visitor.logo} className="w-6 h-6 object-contain rounded" />}
+                          {match.visitor?.name}
+                        </div>
+                      </Table.Cell>
+                      <Table.Cell className="text-white font-bold tabular-nums">
+                        {match.score?.local ?? 0} - {match.score?.visitor ?? 0}
                         {(match.status === "penalties" || match.penaltyScore?.local > 0 || match.penaltyScore?.visitor > 0) && (
-                          <div className="mt-1 text-xs text-white">
-                            Penales:
-                            <TextInput type="number" className="w-12 mx-1 inline-block" value={match.penaltyScore?.local || 0}
-                              onChange={(e) => handleScoreChange(match._id, "local", e.target.value, true)} />
-                            -
-                            <TextInput type="number" className="w-12 mx-1 inline-block" value={match.penaltyScore?.visitor || 0}
-                              onChange={(e) => handleScoreChange(match._id, "visitor", e.target.value, true)} />
+                          <div className="text-xs text-zinc-400 font-normal">
+                            pen: {match.penaltyScore?.local ?? 0} - {match.penaltyScore?.visitor ?? 0}
                           </div>
                         )}
                       </Table.Cell>
                       <Table.Cell>
-                        <Select value={match.status} onChange={(e) => {
-                          const val = e.target.value;
-                          setMatches((prev) => prev.map((m) => m._id === match._id ? { ...m, status: val } : m));
-                        }}>
-                          {Object.entries(statusLabels).map(([value, label]) => (
-                            <option key={value} value={value}>{label}</option>
-                          ))}
-                        </Select>
+                        <span className={`text-xs px-2 py-1 rounded-full font-semibold ${statusColors[match.status] ?? "bg-zinc-700 text-zinc-300"}`}>
+                          {statusLabels[match.status]}
+                        </span>
                       </Table.Cell>
                       <Table.Cell>
                         <div className="flex gap-2">
-                          <Button size="xs" color="success" onClick={() => saveMatchChanges(match._id)}>
-                            <FaSave className="mr-1" />Guardar
+                          <Button size="xs" onClick={() => handleOpenEditModal(match)}>
+                            <FaEdit className="mr-1" />Editar
                           </Button>
                           <Button size="xs" color="failure" onClick={() => deleteMatch(match._id)}>
-                            <FaTrash className="mr-1" />
+                            <FaTrash />
                           </Button>
                         </div>
                       </Table.Cell>
