@@ -4,7 +4,6 @@ import {
   Table,
   Button,
   Label,
-  TextInput,
   Select,
   Alert,
   Spinner,
@@ -13,7 +12,6 @@ import {
   FaEdit,
   FaTrash,
   FaFutbol,
-  FaSave,
   FaPlus,
   FaCheckCircle,
   FaExclamationCircle,
@@ -574,10 +572,10 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
               </div>
             ) : (
               cardMatches.map((match) => (
-                <button
+                <div
                   key={match._id}
-                  onClick={() => openEdit(match)}
-                  className="w-full bg-zinc-900 border border-white/10 rounded-2xl p-4 hover:border-orange-500/40 hover:bg-zinc-800/80 transition-all text-left group"
+                  className={`w-full bg-zinc-900 border border-white/10 rounded-2xl p-4 transition-all text-left ${!isAdmin ? "cursor-pointer hover:border-orange-500/40 hover:bg-zinc-800/80 group" : ""}`}
+                  onClick={!isAdmin ? () => openEdit(match) : undefined}
                 >
                   <div className="flex items-center gap-3">
                     {/* Local */}
@@ -617,11 +615,31 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                       {match.time && ` · ${match.time}`}
                       {match.place && ` · ${match.place}`}
                     </span>
-                    <span className="text-xs text-orange-400 font-semibold flex items-center gap-1 group-hover:text-orange-300">
-                      <FaEdit className="text-xs" /> Editar
-                    </span>
+                    {!isAdmin && (
+                      <span className="text-xs text-orange-400 font-semibold flex items-center gap-1 group-hover:text-orange-300">
+                        <FaEdit className="text-xs" /> Editar
+                      </span>
+                    )}
                   </div>
-                </button>
+
+                  {/* Admin mobile: explicit action buttons */}
+                  {isAdmin && (
+                    <div className="mt-3 flex gap-2 border-t border-white/5 pt-3">
+                      <button
+                        onClick={(e) => { e.stopPropagation(); openEdit(match); }}
+                        className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-zinc-800 text-orange-400 text-sm font-semibold hover:bg-zinc-700 active:scale-95 transition-all"
+                      >
+                        <FaEdit className="text-xs" /> Editar en vivo
+                      </button>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); deleteMatch(match._id); }}
+                        className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-red-900/30 text-red-400 text-sm font-semibold hover:bg-red-900/50 active:scale-95 transition-all"
+                      >
+                        <FaTrash className="text-xs" />
+                      </button>
+                    </div>
+                  )}
+                </div>
               ))
             )}
           </div>
@@ -634,16 +652,16 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
 
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
-                <h2 className="text-xl text-white font-bold">Nuevo Partido</h2>
+                <h2 className="text-xl text-white font-bold">{editingMatch ? "Editar Partido" : "Nuevo Partido"}</h2>
                 <button
                   type="button"
-                  onClick={() => setShowModal(false)}
+                  onClick={() => { setShowModal(false); setEditingMatch(null); }}
                   disabled={submitting}
                   className="text-gray-400 hover:text-white transition-colors text-2xl leading-none"
                 >×</button>
               </div>
 
-              <form onSubmit={handleCreateMatch} className="p-6 flex flex-col gap-5">
+              <form onSubmit={handleSubmitMatch} className="p-6 flex flex-col gap-5">
 
                 {/* Equipos */}
                 <div>
@@ -858,11 +876,11 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
                         Creando...
                       </>
-                    ) : "Crear partido"}
+                    ) : (editingMatch ? "Guardar cambios" : "Crear partido")}
                   </button>
                   <button
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => { setShowModal(false); setEditingMatch(null); }}
                     disabled={submitting}
                     className="flex-1 font-bold rounded-xl py-3 bg-gray-700 hover:bg-gray-600 text-gray-300 transition-colors"
                   >
