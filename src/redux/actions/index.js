@@ -100,27 +100,22 @@ export function getAllTeams(category) {
 export function getAllPlayers(category) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`${BASE_URL}/players`);
+      const params = { limit: 1000 };
+      if (category) params.category = category;
+      let json = await axios.get(`${BASE_URL}/players`, { params });
 
-      if (!category) {
-        const filters = json.data.filter((cat) => cat.category === "A1");
-        dispatch({
-          type: action.GET_ALL_PLAYERS,
-          payload: {
-            filtered: filters.length > 0 ? filters : json.data,
-            copy: json.data,
-          },
-        });
-      } else {
-        const filters = json.data.filter((cat) => cat.category === category);
-        dispatch({
-          type: action.GET_ALL_PLAYERS,
-          payload: {
-            filtered: filters.length > 0 ? filters : json.data,
-            copy: json.data,
-          },
-        });
-      }
+      // Players endpoint returns { data: [], meta: {} }
+      const allPlayers = json.data.data || [];
+
+      const targetCategory = category || "A1";
+      const filters = allPlayers.filter((p) => p.category === targetCategory);
+      dispatch({
+        type: action.GET_ALL_PLAYERS,
+        payload: {
+          filtered: filters.length > 0 ? filters : allPlayers,
+          copy: allPlayers,
+        },
+      });
 
       return "Success";
     } catch (error) {
@@ -316,7 +311,8 @@ export function createPlayer(payload) {
 export function updateTeam(team) {
   return async function (dispatch) {
     try {
-      let json = await axios.put(`${BASE_URL}/teams/${team.id}`, team);
+      const id = team._id || team.id;
+      let json = await axios.put(`${BASE_URL}/teams/${id}`, team);
       dispatch({
         type: action.UPDATE_TEAM,
         payload: json.data,
@@ -331,7 +327,8 @@ export function updateTeam(team) {
 export function updatePlayer(player) {
   return async function (dispatch) {
     try {
-      let json = await axios.put(`${BASE_URL}/players/${player.id}`, player);
+      const id = player._id || player.id;
+      let json = await axios.put(`${BASE_URL}/players/${id}`, player);
       dispatch({
         type: action.UPDATE_PLAYER,
         payload: json.data,

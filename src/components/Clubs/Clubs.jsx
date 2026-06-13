@@ -98,7 +98,14 @@ export default function Clubs() {
           {loading ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div key={i} className="bg-zinc-800/50 rounded-xl animate-pulse aspect-square" />
+                <div key={i} className="bg-zinc-800/50 rounded-2xl animate-pulse flex flex-col">
+                  <div className="flex-1 flex items-center justify-center px-6 pt-8 pb-6">
+                    <div className="w-24 h-24 rounded-full bg-zinc-700/60" />
+                  </div>
+                  <div className="px-3 py-3 border-t border-white/5">
+                    <div className="h-3 bg-zinc-700/60 rounded mx-auto w-3/4" />
+                  </div>
+                </div>
               ))}
             </div>
           ) : currentTeams.length === 0 ? (
@@ -109,28 +116,33 @@ export default function Clubs() {
                 <Link
                   key={index}
                   to={`/equipos/${category}/${club.name}`}
-                  title={club.address ? club.address : club.name}
-                  className="group flex flex-col items-center justify-between gap-3 bg-zinc-900 border border-white/10 rounded-xl p-5 sm:p-6 hover:border-orange-500/40 hover:bg-zinc-800 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-200 h-full"
+                  className="group relative flex flex-col bg-zinc-900 border border-white/10 rounded-2xl overflow-hidden hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 hover:-translate-y-1 transition-all duration-300"
                 >
+                  {/* Shimmer diagonal al hover */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 55%)" }}
+                  />
+
                   {/* Logo */}
-                  <div className="flex-1 flex items-center justify-center w-20 sm:w-24">
+                  <div className="flex items-center justify-center px-6 pt-8 pb-6">
                     <img
                       src={club.logo}
                       alt={club.name}
                       loading="lazy"
-                      className="w-full h-full max-h-24 object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-lg"
+                      className="w-24 h-24 sm:w-28 sm:h-28 object-contain transition-all duration-300 group-hover:scale-110 drop-shadow-lg group-hover:drop-shadow-[0_0_22px_rgba(249,115,22,0.45)]"
                     />
                   </div>
-                  {/* Nombre — bloque fijo de 2 líneas para que todas las cards sean iguales */}
-                  <p className="w-full text-xs sm:text-sm font-bold text-white text-center group-hover:text-orange-400 transition-colors uppercase tracking-wide leading-tight overflow-hidden"
-                    style={{
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                    }}
-                  >
-                    {club.address ? club.address : club.name}
-                  </p>
+
+                  {/* Franja inferior */}
+                  <div className="px-3 py-3 bg-gradient-to-t from-zinc-950 to-zinc-900/60 border-t border-white/5">
+                    <p
+                      className="text-xs sm:text-sm font-black text-white text-center uppercase tracking-wider leading-tight group-hover:text-orange-400 transition-colors duration-200"
+                      style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
+                    >
+                      {club.name}
+                    </p>
+                  </div>
                 </Link>
               ))}
             </div>

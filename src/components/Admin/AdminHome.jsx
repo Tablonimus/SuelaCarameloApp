@@ -19,7 +19,7 @@ const ROLE_COLOR = { admin: "text-orange-400", reviewer: "text-blue-400", report
 export default function AdminHome({ userRole = "reporter", currentUser, onLogout }) {
   const ALL_TABS = [
     { title: "Notas",              icon: HiUserCircle,  roles: ["admin", "reviewer", "reporter"], component: <CreateNotice userRole={userRole} /> },
-    { title: "Resultados en Vivo", icon: MdDashboard,   roles: ["admin"],                         component: <LiveResultsUpdater /> },
+    { title: "Resultados en Vivo", icon: MdDashboard,   roles: ["admin", "reviewer", "reporter"], component: <LiveResultsUpdater userRole={userRole} currentUser={currentUser} /> },
     { title: "Fixtures",           icon: MdDashboard,   roles: ["admin"],                         component: <FixturesManager /> },
     { title: "Posiciones",         icon: HiAdjustments, roles: ["admin"],                         component: <Positions /> },
     { title: "Tabla General",      icon: HiAdjustments, roles: ["admin"],                         component: <GeneralPositions /> },

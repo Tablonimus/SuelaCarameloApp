@@ -6,13 +6,24 @@ import FooterComp from "../FooterComp/FooterComp";
 import axios from "axios";
 import SEO from "../SEO/SEO";
 
+const POSITION_NORMALIZE = {
+  "director tecnico":  "Director Técnico",
+  "ayudante tecnico":  "Ayudante Técnico",
+  "preparador fisico": "Preparador Físico",
+};
+
+function normalizePosition(pos = "") {
+  const lower = pos.toLowerCase();
+  return POSITION_NORMALIZE[lower] ?? pos;
+}
+
 const positions = [
   "Arquero",
   "Poste",
   "Ala",
   "Pivote",
-  "-",
   "Director Técnico",
+  "Ayudante Técnico",
   "Preparador Físico",
 ];
 
@@ -25,7 +36,7 @@ export default function ClubDetail() {
   async function getPlayers(clubName) {
     const data = (
       await axios.get(
-        `https://suela-caramelo-app-back-end.vercel.app/sc/players?name=${clubName}&category=${category}`
+        `https://suela-caramelo-app-back-end.vercel.app/sc/players?team=${clubName}&limit=100`
       )
     ).data;
     setPlayers(data.data || []);
@@ -84,10 +95,10 @@ export default function ClubDetail() {
             <div className="absolute top-4 left-4">
               <Link
                 to="/equipos"
-                className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors text-sm group"
+                className="group flex items-center gap-2 px-3 py-2 rounded-xl bg-zinc-800 border border-white/10 hover:border-orange-500/50 hover:bg-zinc-700 transition-all duration-200 text-sm font-semibold text-white"
               >
-                <i className="bx bx-left-arrow-alt text-xl group-hover:-translate-x-0.5 transition-transform" />
-                <span className="hidden sm:inline font-medium">Equipos</span>
+                <i className="bx bx-left-arrow-alt text-lg group-hover:-translate-x-0.5 transition-transform" />
+                <span className="hidden sm:inline">Equipos</span>
               </Link>
             </div>
 
@@ -129,7 +140,7 @@ export default function ClubDetail() {
           ) : (
             positions.map((position, index) =>
               players.find(
-                (p) => p?.position.toLowerCase() === position.toLowerCase()
+                (p) => normalizePosition(p?.position) === position
               ) ? (
                 <section key={index} className="mb-16">
                   {/* Cabecera de posición */}
@@ -143,10 +154,9 @@ export default function ClubDetail() {
                     <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
                   </div>
 
-                  {/* Cards de jugadores — sin modificar */}
-                  <div class="gridC">
+                  <div className="gridC">
                     {players?.map((player, idx) =>
-                      player?.position.toLowerCase() === position.toLowerCase() ? (
+                      normalizePosition(player?.position) === position ? (
                         <PlayerCard player={player} key={idx} />
                       ) : null
                     )}
