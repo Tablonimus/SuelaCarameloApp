@@ -560,8 +560,8 @@ export default function PlayersConverter() {
                       disabled={loading}
                     >
                       <option value="">Seleccionar...</option>
-                      <option value="A1">FSP Masculino</option>
-                      <option value="F1">FSP Femenino</option>
+                      <option value="FSP Masculino">FSP Masculino</option>
+                      <option value="FSP Femenino">FSP Femenino</option>
                     </select>
                   </div>
                   <div className="col-span-2 flex flex-col gap-1">

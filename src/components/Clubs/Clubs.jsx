@@ -7,13 +7,13 @@ import logoSuela from "../../assets/images/banner2.png";
 import SEO from "../SEO/SEO";
 
 const categories = [
-  { value: "A1",  label: "FSP Masculino", logo: "/botones/A1.png" },
-  // { value: "FEM", label: "FSP Femenino",  logo: "/botones/F1.png" },
+  { value: "FSP Masculino",  label: "FSP Masculino", logo: "/botones/A1.png" },
+  { value: "FSP Femenino", label: "FSP Femenino",  logo: "/botones/F1.png" },
 ];
 
 export default function Clubs() {
-  const [teamsState, setTeamsState] = useState({ FEM: [], A1: [] });
-  const [category, setCategory] = useState("A1");
+  const [teamsState, setTeamsState] = useState({ "FSP Masculino": [], "FSP Femenino": [] });
+  const [category, setCategory] = useState("FSP Masculino");
   const [loading, setLoading]     = useState(true);
 
   useEffect(() => {
@@ -24,8 +24,8 @@ export default function Clubs() {
           await axios.get("https://suela-caramelo-app-back-end.vercel.app/sc/teams")
         ).data;
         setTeamsState({
-          A1:  teams.filter((t) => t.category === "A1"),
-          FEM: teams.filter((t) => t.category === "FEM"),
+          "FSP Masculino": teams.filter((t) => t.category === "FSP Masculino"),
+          "FSP Femenino": teams.filter((t) => t.category === "FSP Femenino"),
         });
       } catch (e) {
         console.error(e);

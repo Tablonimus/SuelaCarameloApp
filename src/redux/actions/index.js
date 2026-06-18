@@ -56,40 +56,20 @@ export function getAllTeams(category) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`${BASE_URL}/teams`);
-      
-      if (!category) {
-        const filters = json.data.filter((cat) => cat.category === "A1");
-        dispatch({
-          type: action.GET_ALL_TEAMS,
-          payload: {
-            filtered:
-              filters.length > 0
-                ? filters.sort((a, b) => {
-                    return a.id - b.id;
-                  })
-                : json.data.sort((a, b) => {
-                    return a.id - b.id;
-                  }),
-            copy: json.data,
-          },
-        });
+      const allTeams = json.data.sort((a, b) => a.id - b.id);
+
+      let filtered;
+      if (category) {
+        const byCategory = allTeams.filter((t) => t.category === category);
+        filtered = byCategory.length > 0 ? byCategory : allTeams;
       } else {
-        const filters = json.data.filter((cat) => cat.category === category);
-        dispatch({
-          type: action.GET_ALL_TEAMS,
-          payload: {
-            filtered:
-              filters.length > 0
-                ? filters.sort((a, b) => {
-                    return a.id - b.id;
-                  })
-                : json.data.sort((a, b) => {
-                    return a.id - b.id;
-                  }),
-            copy: json.data,
-          },
-        });
+        filtered = allTeams;
       }
+
+      dispatch({
+        type: action.GET_ALL_TEAMS,
+        payload: { filtered, copy: json.data },
+      });
 
       return "Success";
     } catch (error) {
@@ -104,17 +84,19 @@ export function getAllPlayers(category) {
       if (category) params.category = category;
       let json = await axios.get(`${BASE_URL}/players`, { params });
 
-      // Players endpoint returns { data: [], meta: {} }
       const allPlayers = json.data.data || [];
 
-      const targetCategory = category || "A1";
-      const filters = allPlayers.filter((p) => p.category === targetCategory);
+      let filtered;
+      if (category) {
+        const byCategory = allPlayers.filter((p) => p.category === category);
+        filtered = byCategory.length > 0 ? byCategory : allPlayers;
+      } else {
+        filtered = allPlayers;
+      }
+
       dispatch({
         type: action.GET_ALL_PLAYERS,
-        payload: {
-          filtered: filters.length > 0 ? filters : allPlayers,
-          copy: allPlayers,
-        },
+        payload: { filtered, copy: allPlayers },
       });
 
       return "Success";
@@ -451,7 +433,7 @@ export function createManyTeamsByExcel(teamsObject) {
   return async function (dispatch) {
     try {
       let json = await axios.post(
-        `${BASE_URL}/teams/create-many?category=A1`,
+        `${BASE_URL}/teams/create-many?category=FSP Masculino`,
         teamsObject
       );
 
