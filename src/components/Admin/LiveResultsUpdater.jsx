@@ -460,6 +460,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                   <option value="all">Todas las categorías</option>
                   <option value="A1">FSP Masculino</option>
                   <option value="FEM">FSP Femenino</option>
+                  <option value="Ascenso">Ascenso</option>
                 </select>
                 <select
                   value={filterStatus}
@@ -835,6 +836,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                         <option value="">Seleccionar...</option>
                         <option value="A1">FSP Masculino</option>
                         <option value="FEM">FSP Femenino</option>
+                        <option value="Ascenso">Ascenso</option>
                       </select>
                     </div>
                     <div className="flex flex-col gap-1">

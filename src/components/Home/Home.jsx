@@ -24,6 +24,7 @@ const HOME_JSONLD = {
 const CATEGORY_LABELS = {
   A1: "FSP Masculino",
   F1: "FSP Femenino",
+  Ascenso: "Ascenso",
   DH: "División de Honor",
   CM: "Copa Mendoza",
   TN: "Torneos Nacionales",

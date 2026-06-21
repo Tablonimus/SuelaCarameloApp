@@ -342,7 +342,7 @@ export default function CreateNotice({ userRole = "reporter" }) {
                     {getCategoryLabel(notice.category)}
                   </span>
                   <span>
-                    {notice.date ? new Date(notice.date).toLocaleDateString("es-AR") : "—"}
+                    {notice.date ? new Date(notice.date).toLocaleDateString("es-AR", { timeZone: "UTC" }) : "—"}
                   </span>
                 </div>
                 <NoticeActions notice={notice} />
@@ -370,7 +370,7 @@ export default function CreateNotice({ userRole = "reporter" }) {
                     </td>
                     <td className="px-4 py-3 text-zinc-300">{getCategoryLabel(notice.category)}</td>
                     <td className="px-4 py-3 text-zinc-300">
-                      {notice.date ? new Date(notice.date).toLocaleDateString("es-AR") : "-"}
+                      {notice.date ? new Date(notice.date).toLocaleDateString("es-AR", { timeZone: "UTC" }) : "-"}
                     </td>
                     <td className="px-4 py-3">
                       <ApprovalBadge approved={notice.is_approved} />

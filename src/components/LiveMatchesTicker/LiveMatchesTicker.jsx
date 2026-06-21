@@ -27,7 +27,7 @@ const LiveMatchesTicker = () => {
 
   const categories = [
     { value: "A1", label: "FSP Masculino", logo: "/botones/A1.png" },
-    // { value: "F1", label: "FSP Femenino", logo: "/botones/F1.png" }, // Descomentar cuando tengas esta categoría
+    { value: "Ascenso", label: "Ascenso", logo: "/botones/A1.png" },
   ];
 
   const selectedCategory =

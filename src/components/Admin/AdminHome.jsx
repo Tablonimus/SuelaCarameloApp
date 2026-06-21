@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HiAdjustments, HiUserCircle, HiArchive, HiLogout, HiMenu, HiX } from "react-icons/hi";
+import { HiAdjustments, HiUserCircle, HiArchive, HiLogout, HiMenu, HiX, HiChartBar } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import CreateNotice from "./CreateNotice";
@@ -12,6 +12,7 @@ import HeroImageManager from "./HeroImageManager";
 import FixturesManager from "./FixturesManager";
 import SponsorsManager from "./SponsorsManager";
 import UsersManager from "./UsersManager";
+import AnalyticsDashboard from "./AnalyticsDashboard";
 
 const ROLE_LABEL = { admin: "Administrador", reviewer: "Revisor", reporter: "Notero" };
 const ROLE_COLOR = { admin: "text-orange-400", reviewer: "text-blue-400", reporter: "text-green-400" };
@@ -28,6 +29,7 @@ export default function AdminHome({ userRole = "reporter", currentUser, onLogout
     { title: "Banners",            icon: HiArchive,     roles: ["admin"],                         component: <HeroImageManager /> },
     { title: "Sponsors",           icon: HiArchive,     roles: ["admin"],                         component: <SponsorsManager /> },
     { title: "Usuarios",           icon: FaUsers,       roles: ["admin"],                         component: <UsersManager /> },
+    { title: "Estadísticas",       icon: HiChartBar,    roles: ["admin"],                         component: <AnalyticsDashboard /> },
   ];
 
   const visibleTabs = ALL_TABS.filter((tab) => tab.roles.includes(userRole));

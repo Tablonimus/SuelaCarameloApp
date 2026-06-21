@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import "./App.css";
 // import usePushNotifications from "./hooks/usePushNotifications";
+import usePageViewTracker from "./hooks/usePageViewTracker";
 
 const Home          = lazy(() => import("./components/Home/Home"));
 const Noticias      = lazy(() => import("./components/Home/Noticias"));
@@ -285,6 +286,7 @@ function ProtectedRoute({
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
+  usePageViewTracker();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [showLogin, setShowLogin] = useState(isProtectedRoute(location.pathname));
