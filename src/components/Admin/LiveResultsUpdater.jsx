@@ -721,8 +721,8 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                       disabled={submitting}
                     >
                       <option value="">Seleccionar...</option>
-                      <option value="A1">FSP Masculino</option>
-                      <option value="FEM">FSP Femenino</option>
+                      <option value="FSP Masculino">FSP Masculino</option>
+                      <option value="FSP Femenino">FSP Femenino</option>
                       <option value="Ascenso">Ascenso</option>
                     </select>
                   </div>

@@ -10,8 +10,8 @@ const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
 
 const CATEGORIES = [
   { value: "", label: "Todas las categorías" },
-  { value: "A1", label: "FSP Masculino" },
-  { value: "F1", label: "FSP Femenino" },
+  { value: "FSP Masculino", label: "FSP Masculino" },
+  { value: "FSP Femenino", label: "FSP Femenino" },
   { value: "DH", label: "División de Honor" },
   { value: "CM", label: "Copa Mendoza" },
   { value: "TN", label: "Torneos Nacionales" },

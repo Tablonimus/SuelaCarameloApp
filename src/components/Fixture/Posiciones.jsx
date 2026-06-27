@@ -7,8 +7,8 @@ import logoSuela from "../../assets/images/banner2.png";
 import SEO from "../SEO/SEO";
 
 const CATEGORIES = [
-  { value: "A1", label: "FSP Masculino", logo: "/botones/A1.png" },
-  { value: "F1", label: "FSP Femenino",  logo: "/botones/F1.png" },
+  { value: "FSP Masculino", label: "FSP Masculino", logo: "/botones/A1.png" },
+  { value: "FSP Femenino", label: "FSP Femenino",  logo: "/botones/F1.png" },
   // { value: "DH", label: "División de Honor", logo: "/botones/DH.png" },
   // { value: "CM", label: "Copa Mendoza",       logo: "/botones/CM.png" },
 ];
@@ -66,7 +66,7 @@ function ImageCard({ title, src, onClick }) {
 
 const Posiciones = () => {
   const dispatch = useDispatch();
-  const [positionState, setPositionState] = useState("A1");
+  const [positionState, setPositionState] = useState("FSP Masculino");
   const [modalImage, setModalImage]       = useState(null);
   const [loading, setLoading]             = useState(true);
 

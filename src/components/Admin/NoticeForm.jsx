@@ -189,8 +189,8 @@ export default function NoticeForm({ onSubmit, onClose, submitting, initialData 
             <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wide">Categoría</label>
             <select name="category" value={input.category} onChange={handleChange} className={inputClass}>
               <option value="">Seleccione categoría...</option>
-              <option value="A1">FSP Masculino</option>
-              <option value="F1">FSP Femenino</option>
+              <option value="FSP Masculino">FSP Masculino</option>
+              <option value="FSP Femenino">FSP Femenino</option>
               <option value="DH">División de Honor</option>
               <option value="CM">Copa Mendoza</option>
               <option value="TN">Torneos Nacionales</option>

@@ -11,8 +11,8 @@ import SEO from "../SEO/SEO";
 
 const CATEGORIES = [
   { value: "",   label: "Todas",                   icon: FaNewspaper, image: null },
-  { value: "A1", label: "FSP Masculino",            icon: null,        image: "/botones/A1.png" },
-  { value: "F1", label: "FSP Femenino",             icon: null,        image: "/botones/F1.png" },
+  { value: "FSP Masculino", label: "FSP Masculino",   icon: null,        image: "/botones/A1.png" },
+  { value: "FSP Femenino", label: "FSP Femenino",   icon: null,        image: "/botones/F1.png" },
   { value: "DH", label: "División de Honor",        icon: null,        image: "/botones/DH.png" },
   { value: "CM", label: "Copa Mendoza",             icon: null,        image: "/botones/CM.png" },
   { value: "TN", label: "Torneos Nacionales",       icon: null,        image: "/botones/TN.webp" },

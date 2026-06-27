@@ -31,7 +31,7 @@ const FixturesManager = () => {
   const [success, setSuccess]           = useState(null);
   const [showModal, setShowModal]       = useState(false);
   const [editingFixture, setEditingFixture] = useState(null);
-  const [filters, setFilters]           = useState({ category: "A1", season: "", tournament: "" });
+  const [filters, setFilters]           = useState({ category: "FSP Masculino", season: "", tournament: "" });
   const [page, setPage]                 = useState(1);
   const [totalPages, setTotalPages]     = useState(1);
   const [fixturesCache, setFixturesCache] = useState([]);
@@ -286,8 +286,8 @@ const FixturesManager = () => {
             onChange={(e) => setFilters({ ...filters, category: e.target.value })}
             className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none text-sm"
           >
-            <option value="A1">FSP Masculino</option>
-            <option value="F1">FSP Femenino</option>
+            <option value="FSP Masculino">FSP Masculino</option>
+            <option value="FSP Femenino">FSP Femenino</option>
             <option value="DH">DH</option>
             <option value="TI">TI</option>
             <option value="TN">TN</option>

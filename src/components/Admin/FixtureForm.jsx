@@ -16,7 +16,7 @@ const EMPTY_FORM = {
   number:     "",
   stage:      "temporada",
   image:      "",
-  category:   "A1",
+  category:   "FSP Masculino",
   season:     "2026",
   tournament: "Apertura",
   playDates:  { from: "", to: "" },
@@ -169,8 +169,8 @@ const FixtureForm = ({ show, onClose, onSubmit, initialData }) => {
             <div>
               <label className={labelClass}>Categoría *</label>
               <select name="category" value={formData.category} onChange={handleChange} className={inputClass}>
-                <option value="A1">FSP Masculino</option>
-                <option value="F1">FSP Femenino</option>
+                <option value="FSP Masculino">FSP Masculino</option>
+                <option value="FSP Femenino">FSP Femenino</option>
                 <option value="A2">A2 - Segunda Div.</option>
                 <option value="F2">F2 - Femenino B</option>
                 <option value="DH">DH - Honor</option>

@@ -6,8 +6,8 @@ import FixturePagination from "./FixturePagination";
 import FooterComp from "../FooterComp/FooterComp";
 
 const CATEGORIES = [
-  { value: "A1", label: "FSP Masculino", logo: "/botones/A1.png" },
-  { value: "F1", label: "FSP Femenino",  logo: "/botones/F1.png" },
+  { value: "FSP Masculino", label: "FSP Masculino", logo: "/botones/A1.png" },
+  { value: "FSP Femenino", label: "FSP Femenino",  logo: "/botones/F1.png" },
 ];
 
 const TOURNEY_ORDER = ["Apertura", "Clausura", "Torneo Anual"];
@@ -18,7 +18,7 @@ const BASE_URL = "https://suela-caramelo-app-back-end.vercel.app/sc";
 const Fixture = () => {
   const [allFixtures, setAllFixtures]     = useState([]);
   const [activeFixture, setActiveFixture] = useState(null);
-  const [category, setCategory]           = useState("A1");
+  const [category, setCategory]           = useState("FSP Masculino");
   const [loading, setLoading]             = useState(true);
   const [options, setOptions]             = useState([]);
   const [selectedKey, setSelectedKey]     = useState(null);
