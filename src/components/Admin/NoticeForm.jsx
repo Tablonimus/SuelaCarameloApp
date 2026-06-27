@@ -195,6 +195,7 @@ export default function NoticeForm({ onSubmit, onClose, submitting, initialData 
               <option value="CM">Copa Mendoza</option>
               <option value="TN">Torneos Nacionales</option>
               <option value="TI">Torneos Internacionales</option>
+              <option value="Ascenso">Ascenso</option>
             </select>
           </div>
           <div className="flex flex-col gap-1.5 flex-1">

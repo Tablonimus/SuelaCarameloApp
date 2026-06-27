@@ -23,10 +23,11 @@ const LiveMatchesTicker = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [hasLiveMatches, setHasLiveMatches] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [currentCategory, setCurrentCategory] = useState("A1");
+  const [currentCategory, setCurrentCategory] = useState("FSP Masculino");
 
   const categories = [
-    { value: "A1", label: "FSP Masculino", logo: "/botones/A1.png" },
+    { value: "FSP Masculino", label: "FSP Masculino", logo: "/botones/A1.png" },
+    { value: "FSP Femenino", label: "FSP Femenino", logo: "/botones/F1.png" },
     { value: "Ascenso", label: "Ascenso", logo: "/botones/A1.png" },
   ];
 

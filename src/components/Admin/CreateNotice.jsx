@@ -16,6 +16,7 @@ const CATEGORIES = [
   { value: "CM", label: "Copa Mendoza" },
   { value: "TN", label: "Torneos Nacionales" },
   { value: "TI", label: "Torneos Internacionales" },
+  { value: "Ascenso", label: "Ascenso" },
 ];
 
 function getCategoryLabel(value) {

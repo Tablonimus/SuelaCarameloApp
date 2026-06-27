@@ -111,7 +111,7 @@ export function getAllMatches(category) {
       let json = await axios.get(`${BASE_URL}/matchs`);
 
       if (!category) {
-        const filters = json.data.filter((cat) => cat.category === "A1");
+        const filters = json.data.filter((cat) => cat.category === "FSP Masculino");
         dispatch({
           type: action.GET_ALL_MATCHES,
           payload: {

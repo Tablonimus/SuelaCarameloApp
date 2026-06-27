@@ -25,6 +25,12 @@ const statusLabels = {
 
 const LIMIT = 10;
 
+const MATCH_CAT_TO_TEAM_CAT = {
+  "FSP Masculino": "FSP Masculino",
+  "FSP Femenino": "FSP Femenino",
+  Ascenso: "Ascenso",
+};
+
 const ACTIVE_STATUSES = ["first_half", "halftime", "second_half", "extra_time", "penalties"];
 
 function isRecentMatch(match) {
@@ -458,8 +464,8 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                   className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none text-sm"
                 >
                   <option value="all">Todas las categorías</option>
-                  <option value="A1">FSP Masculino</option>
-                  <option value="FEM">FSP Femenino</option>
+                  <option value="FSP Masculino">FSP Masculino</option>
+                  <option value="FSP Femenino">FSP Femenino</option>
                   <option value="Ascenso">Ascenso</option>
                 </select>
                 <select
@@ -525,7 +531,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                               {match.local?.logo
                                 ? <img src={match.local.logo} alt="" className="w-7 h-7 object-contain rounded flex-shrink-0" />
                                 : <div className="w-7 h-7 bg-gray-700 rounded flex items-center justify-center text-gray-500 text-xs flex-shrink-0">?</div>}
-                              <span className="font-medium">{match.local?.name ?? "—"}</span>
+                              <span className="font-medium">{match.local?.shortName || match.local?.name ?? "—"}</span>
                             </div>
                           </td>
                           <td className="p-3">
@@ -533,7 +539,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                               {match.visitor?.logo
                                 ? <img src={match.visitor.logo} alt="" className="w-7 h-7 object-contain rounded flex-shrink-0" />
                                 : <div className="w-7 h-7 bg-gray-700 rounded flex items-center justify-center text-gray-500 text-xs flex-shrink-0">?</div>}
-                              <span className="font-medium">{match.visitor?.name ?? "—"}</span>
+                              <span className="font-medium">{match.visitor?.shortName || match.visitor?.name ?? "—"}</span>
                             </div>
                           </td>
                           <td className="p-3 font-bold tabular-nums">
@@ -625,7 +631,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                           ? <img src={match.local.logo} className="w-full h-full object-cover" />
                           : <FaFutbol className="text-zinc-600 text-base" />}
                       </div>
-                      <span className="font-bold text-white text-sm truncate">{match.local?.name}</span>
+                      <span className="font-bold text-white text-sm truncate">{match.local?.shortName || match.local?.name}</span>
                     </div>
 
                     {/* Score + status */}
@@ -645,7 +651,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                           ? <img src={match.visitor.logo} className="w-full h-full object-cover" />
                           : <FaFutbol className="text-zinc-600 text-base" />}
                       </div>
-                      <span className="font-bold text-white text-sm truncate text-right">{match.visitor?.name}</span>
+                      <span className="font-bold text-white text-sm truncate text-right">{match.visitor?.shortName || match.visitor?.name}</span>
                     </div>
                   </div>
 
@@ -703,6 +709,25 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
 
               <form onSubmit={handleSubmitMatch} className="p-6 flex flex-col gap-5">
 
+                {/* Categoría (primero para filtrar equipos) */}
+                <div>
+                  <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Categoría</p>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-gray-300 text-sm font-medium">Categoría *</label>
+                    <select
+                      className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
+                      value={newMatch.category}
+                      onChange={(e) => setNewMatch({ ...newMatch, category: e.target.value, local: "", visitor: "" })}
+                      disabled={submitting}
+                    >
+                      <option value="">Seleccionar...</option>
+                      <option value="A1">FSP Masculino</option>
+                      <option value="FEM">FSP Femenino</option>
+                      <option value="Ascenso">Ascenso</option>
+                    </select>
+                  </div>
+                </div>
+
                 {/* Equipos */}
                 <div>
                   <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Equipos</p>
@@ -733,9 +758,12 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                       {localOpen && (
                         <div className="absolute top-full left-0 right-0 mt-1 bg-gray-700 border border-gray-600 rounded-xl shadow-2xl z-20 max-h-52 overflow-y-auto">
                           {(() => {
-                            const filtered = teams.filter(t => t.name.toLowerCase().includes(localSearch.toLowerCase()));
+                            const teamCat = MATCH_CAT_TO_TEAM_CAT[newMatch.category];
+                            const filtered = teams
+                              .filter(t => !teamCat || t.category === teamCat)
+                              .filter(t => t.name.toLowerCase().includes(localSearch.toLowerCase()));
                             return filtered.length === 0 ? (
-                              <div className="px-4 py-3 text-gray-400 text-sm">Sin resultados</div>
+                              <div className="px-4 py-3 text-gray-400 text-sm">{!newMatch.category ? "Seleccioná una categoría primero" : "Sin resultados"}</div>
                             ) : (
                               <>
                                 {newMatch.local && (
@@ -788,9 +816,12 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                       {visitorOpen && (
                         <div className="absolute top-full left-0 right-0 mt-1 bg-gray-700 border border-gray-600 rounded-xl shadow-2xl z-20 max-h-52 overflow-y-auto">
                           {(() => {
-                            const filtered = teams.filter(t => t.name.toLowerCase().includes(visitorSearch.toLowerCase()));
+                            const teamCat = MATCH_CAT_TO_TEAM_CAT[newMatch.category];
+                            const filtered = teams
+                              .filter(t => !teamCat || t.category === teamCat)
+                              .filter(t => t.name.toLowerCase().includes(visitorSearch.toLowerCase()));
                             return filtered.length === 0 ? (
-                              <div className="px-4 py-3 text-gray-400 text-sm">Sin resultados</div>
+                              <div className="px-4 py-3 text-gray-400 text-sm">{!newMatch.category ? "Seleccioná una categoría primero" : "Sin resultados"}</div>
                             ) : (
                               <>
                                 {newMatch.visitor && (
@@ -825,20 +856,6 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                 <div>
                   <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Detalles del partido</p>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="flex flex-col gap-1">
-                      <label className="text-gray-300 text-sm font-medium">Categoría *</label>
-                      <select
-                        className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
-                        value={newMatch.category}
-                        onChange={(e) => setNewMatch({ ...newMatch, category: e.target.value })}
-                        disabled={submitting}
-                      >
-                        <option value="">Seleccionar...</option>
-                        <option value="A1">FSP Masculino</option>
-                        <option value="FEM">FSP Femenino</option>
-                        <option value="Ascenso">Ascenso</option>
-                      </select>
-                    </div>
                     <div className="flex flex-col gap-1">
                       <label className="text-gray-300 text-sm font-medium">Árbitro</label>
                       <input

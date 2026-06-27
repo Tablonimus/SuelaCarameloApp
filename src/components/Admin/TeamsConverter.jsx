@@ -13,6 +13,7 @@ const defaultTeamInput = {
   stadium: "",
   colors: "",
   category: "",
+  shortName: "",
 };
 
 export default function TeamsConverter() {
@@ -201,6 +202,7 @@ export default function TeamsConverter() {
               <tr className="border-b border-gray-700 text-gray-400 text-xs uppercase tracking-wider">
                 <th className="text-left p-3">Logo</th>
                 <th className="text-left p-3">Nombre</th>
+                <th className="text-left p-3">Abrev.</th>
                 <th className="text-left p-3">Dirección</th>
                 <th className="text-left p-3">Fundación</th>
                 <th className="text-left p-3">Estadio</th>
@@ -219,6 +221,7 @@ export default function TeamsConverter() {
                       }
                     </td>
                     <td className="p-3 font-medium">{team.name}</td>
+                    <td className="p-3 text-gray-400 font-mono text-xs">{team.shortName || "—"}</td>
                     <td className="p-3 text-gray-400">{team.address || "—"}</td>
                     <td className="p-3 text-gray-400">{team.foundation || "—"}</td>
                     <td className="p-3 text-gray-400">{team.stadium || "—"}</td>
@@ -245,7 +248,7 @@ export default function TeamsConverter() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="7" className="text-center p-8 text-gray-500">
+                  <td colSpan="8" className="text-center p-8 text-gray-500">
                     {filterName || filterCategory ? "Sin resultados para ese filtro" : "No hay equipos cargados"}
                   </td>
                 </tr>
@@ -315,7 +318,7 @@ export default function TeamsConverter() {
               <div>
                 <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Información del equipo</p>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="col-span-2 flex flex-col gap-1">
+                  <div className="flex flex-col gap-1">
                     <label className="text-gray-300 text-sm font-medium">Nombre *</label>
                     <input
                       className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none"
@@ -325,6 +328,19 @@ export default function TeamsConverter() {
                       onChange={handleChange}
                       disabled={loading}
                       placeholder="Ej: Club Atlético Suela"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-gray-300 text-sm font-medium">Abreviación</label>
+                    <input
+                      className="rounded-lg px-3 py-2 bg-gray-700 text-white border border-gray-600 focus:border-orange-500 focus:outline-none uppercase font-mono"
+                      type="text"
+                      name="shortName"
+                      value={teamInput.shortName}
+                      onChange={handleChange}
+                      disabled={loading}
+                      placeholder="Ej: BOC"
+                      maxLength={10}
                     />
                   </div>
                   <div className="flex flex-col gap-1">
