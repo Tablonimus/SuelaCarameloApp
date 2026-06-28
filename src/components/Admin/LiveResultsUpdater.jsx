@@ -531,7 +531,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                               {match.local?.logo
                                 ? <img src={match.local.logo} alt="" className="w-7 h-7 object-contain rounded flex-shrink-0" />
                                 : <div className="w-7 h-7 bg-gray-700 rounded flex items-center justify-center text-gray-500 text-xs flex-shrink-0">?</div>}
-                              <span className="font-medium">{match.local?.shortName || match.local?.name ?? "—"}</span>
+                              <span className="font-medium">{match.local?.shortName || match.local?.name || "—"}</span>
                             </div>
                           </td>
                           <td className="p-3">
@@ -539,7 +539,7 @@ const LiveResultsUpdater = ({ userRole = "reporter", currentUser = null }) => {
                               {match.visitor?.logo
                                 ? <img src={match.visitor.logo} alt="" className="w-7 h-7 object-contain rounded flex-shrink-0" />
                                 : <div className="w-7 h-7 bg-gray-700 rounded flex items-center justify-center text-gray-500 text-xs flex-shrink-0">?</div>}
-                              <span className="font-medium">{match.visitor?.shortName || match.visitor?.name ?? "—"}</span>
+                              <span className="font-medium">{match.visitor?.shortName || match.visitor?.name || "—"}</span>
                             </div>
                           </td>
                           <td className="p-3 font-bold tabular-nums">
