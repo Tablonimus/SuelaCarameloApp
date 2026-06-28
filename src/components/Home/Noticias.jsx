@@ -17,6 +17,7 @@ const CATEGORIES = [
   { value: "CM", label: "Copa Mendoza",             icon: null,        image: "/botones/CM.png" },
   { value: "TN", label: "Torneos Nacionales",       icon: null,        image: "/botones/TN.webp" },
   { value: "TI", label: "Torneos Internacionales",  icon: null,        image: "/botones/TI.webp" },
+  { value: "Ascenso", label: "Ascenso",            icon: null,        image: "/botones/A1.png" },
 ];
 
 const NOTICES_PER_PAGE = 8;

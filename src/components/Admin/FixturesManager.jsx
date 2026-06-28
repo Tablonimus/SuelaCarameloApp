@@ -16,6 +16,7 @@ const CONFIG_URL   = "https://suela-caramelo-app-back-end.vercel.app/sc/configs"
 const CATEGORY_LABELS = {
   A1: "FSP Masculino", F1: "FSP Femenino",
   A2: "Segunda Div.",  F2: "Femenino B",
+  Ascenso: "Ascenso",
   DH: "DH", TI: "TI", TN: "TN", CM: "CM",
 };
 
@@ -292,6 +293,7 @@ const FixturesManager = () => {
             <option value="TI">TI</option>
             <option value="TN">TN</option>
             <option value="CM">CM</option>
+            <option value="Ascenso">Ascenso</option>
           </select>
           <select
             value={filters.season}

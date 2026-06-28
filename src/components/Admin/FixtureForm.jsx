@@ -177,6 +177,7 @@ const FixtureForm = ({ show, onClose, onSubmit, initialData }) => {
                 <option value="TI">TI - Infantiles</option>
                 <option value="TN">TN - Novenas</option>
                 <option value="CM">CM - Mendoza</option>
+                <option value="Ascenso">Ascenso</option>
               </select>
             </div>
           </div>
